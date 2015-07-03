@@ -1,0 +1,504 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HTML & CSS Tutorial - Teil 5: Blog und weitere Seiten | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/html-css/de/part5/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/html-css/part5/" />
+    <link rel="alternate" hreflang="de" href="http://code.makery.ch/library/html-css/de/part5/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Erstellen Sie eine Dateistruktur für mehrere Webseiten. Lernen Sie eine Struktur für einen Blog aufzustellen.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="HTML & CSS Tutorial - Teil 5: Blog und weitere Seiten | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Erstellen Sie eine Dateistruktur für mehrere Webseiten. Lernen Sie eine Struktur für einen Blog aufzustellen." />
+    <meta property="og:url" content="http://code.makery.ch/library/html-css/de/part5/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/html-css/portfolio-de.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/html-css-de-part5.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artikel dieser Serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/html-css/de/" class="list-group-item">
+        Einleitung</a>
+      <a href="/library/html-css/de/part1/" class="list-group-item">
+        Teil 1: Unsere erste Webseite</a>
+      <a href="/library/html-css/de/part2/" class="list-group-item">
+        Teil 2: Webseite veröffentlichen</a>
+      <a href="/library/html-css/de/part3/" class="list-group-item">
+        Teil 3: Einführung in CSS</a>
+      <a href="/library/html-css/de/part4/" class="list-group-item">
+        Teil 4: Entwicklertools im Browser</a>
+      <a href="/library/html-css/de/part5/" class="list-group-item active">
+        Teil 5: Blog und weitere Seiten</a>
+      <a href="/library/html-css/de/part6/" class="list-group-item">
+        Teil 6: Navigation</a>
+      <a href="/library/html-css/de/part7/" class="list-group-item">
+        Teil 7: Bootstrap Framework</a>
+      <a href="/library/html-css/de/next/" class="list-group-item">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Downloads</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-html-css/releases/download/v1.0/portfolio-part5.zip" class="list-group-item">
+<i class="fa fa-fw fa-file-archive-o"></i>        Portfolio Teil 5</a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Sprachen</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/html-css/part5/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/html-css/de/part5/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> Deutsch
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">HTML & CSS Tutorial - Teil 5: Blog und weitere Seiten</h1>
+            <div class="article-date">
+  Aug 13, 2014
+  • Updated Mar 18, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Artikel dieser Serie <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/html-css/de/">
+        Einleitung</a></li>
+      <li class=""><a href="/library/html-css/de/part1/">
+        Teil 1: Unsere erste Webseite</a></li>
+      <li class=""><a href="/library/html-css/de/part2/">
+        Teil 2: Webseite veröffentlichen</a></li>
+      <li class=""><a href="/library/html-css/de/part3/">
+        Teil 3: Einführung in CSS</a></li>
+      <li class=""><a href="/library/html-css/de/part4/">
+        Teil 4: Entwicklertools im Browser</a></li>
+      <li class=" active"><a href="/library/html-css/de/part5/">
+        Teil 5: Blog und weitere Seiten</a></li>
+      <li class=""><a href="/library/html-css/de/part6/">
+        Teil 6: Navigation</a></li>
+      <li class=""><a href="/library/html-css/de/part7/">
+        Teil 7: Bootstrap Framework</a></li>
+      <li class=""><a href="/library/html-css/de/next/">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Downloads <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-html-css/releases/download/v1.0/portfolio-part5.zip">
+<i class="fa fa-fw fa-file-archive-o"></i>        Portfolio Teil 5</a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Sprachen <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class="">
+        <a href="/library/html-css/part5/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class=" active">
+        <a href="/library/html-css/de/part5/"><i class="fa fa-fw fa-globe"></i> Deutsch</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p>Unser Portfolio hat bis hierhin nur eine Startseite. Die meisten <em>Websites</em> (gemeint ist damit der ganze Webauftritt) haben natürlich mehr als nur eine Seite. In diesem Teil werden wir weitere Seiten erstellen.</p>
+<h2 id="neue-seiten-erstellen">Neue Seiten erstellen</h2>
+<p>Wir erstellen drei neue Seiten: Eine Seite für unseren eigenen <strong>Blog</strong>, eine für <strong>Projekte</strong> und eine für <strong>Kontaktinformationen</strong>. </p>
+<p>Diese drei Seiten stellen unsere "Hauptseiten" dar. Das heisst, dass wir daran denken müssen, dass jeweils weitere Unterseiten dazukommen könnten. So wird es zum Beispiel im Blog später für jeden Blogeintrag eine eigenen Unterseite geben. Aus diesem Grund werden wir für diese drei Seiten <strong>je einen eigenen Unterordner</strong> erstellen. Das gibt uns eine gute Ordnung. </p>
+<p>Damit bei einem Aufruf des Unterordners die jeweilige Hauptseite automatisch als erstes angezeigt wird, nennen wir alle Hauptseiten <code>index.html</code>.</p>
+<p>Eine neue Seite zu erstellen ist einfach. Am besten kopieren Sie die bisherige <code>index.html</code>, damit Sie bereits die Grundstruktur haben. Dann müssen wir natürlich jeweils ein paar Anpassungen vornehmen.</p>
+<div class="alert alert-info">
+<strong>Wichtig:</strong> Achten Sie darauf, dass Sie beim Benennen von Unterordnern und Dateinamen keine Umlaute, Sonderzeichen oder Leerschläge verwenden. Meistens wählt man auch nur Kleinbuchstaben. Sie können Wörter aber zum Beispiel durch ein Minus (<code>-</code>) trennen, wenn Sie möchten.
+</div>
+
+
+<h2 id="seite-f-r-den-blog">Seite für den Blog</h2>
+<p>Erstellen Sie einen Unterordner in Ihrem <em>Portfolio</em>-Ordner namens <code>blog</code>. Kopieren Sie die Datei <code>index.html</code> in diesen Unterordner. Nun sollte Ihre Dateistruktur so aussehen:</p>
+<p><img src="/assets/library/html-css/part5/blog-subfolder.png" alt="Blog Unterordner"></p>
+<p>Öffnen Sie nun die kopierte Datei <code>blog/index.html</code> in Ihrem Browser (wenn Sie den Brackets-Editor verwenden, klicken Sie auf den Blitz für die <em>Live-Vorschau</em>). Nun werden Sie merken, dass zwei Dinge nicht funktionieren:</p>
+<ol>
+<li>Das Bild wird nicht angezeigt.</li>
+<li>Die im CSS definierten Farben werden nicht übernommen.</li>
+</ol>
+<p>Da wir uns in einem Unterordner befinden, stimmt jetzt die URL (oder auch Pfad genannt) nicht mehr. Damit das Bild angezeigt würde, müssten wir für das <code>src</code>-Attribut anstatt <code>marco.jpg</code> nun <code>../marco.jpg</code> angeben. Aber wahrscheinlich wollen wir nicht schon wieder das gleiche Bild auf der Blogseite. Also können Sie das gesamte <code>img</code>-Element entfernen.</p>
+<p>Beim <strong>CSS</strong> ist es üblich, dass man die Regeln jeweils <strong>für das gesamte Projekt</strong> definiert. So ist es wichtig, dass wir die gleiche CSS-Datei auch in der Blogseite verwenden können. Dies erreichen wir, indem wir die URL ändern von <code>main.css</code> auf <code>../main.css</code>. So sieht jetzt das gesamte <code>link</code>-Element aus:</p>
+<h5 id="blog-index-html">blog/index.html</h5>
+<pre class="prettyprint lang-html">
+&lt;link rel="stylesheet" href="../main.css">
+</pre>
+
+<p>Diese Änderung sollte dazu führen, dass das Styling vom CSS auch für die Blogseite übernommen wird.</p>
+<p>Jetzt passen wir noch den Titel und Inhalt an:</p>
+<h5 id="blog-index-html-blog-haupt-bersicht">blog/index.html - Blog Hauptübersicht</h5>
+<pre class="prettyprint lang-html">
+&lt;!DOCTYPE html>
+
+&lt;html>
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;link rel="stylesheet" href="../main.css">
+    &lt;title>Blog - Web Portfolio von Marco&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;h1 class="title">Blog&lt;/h1>
+
+    &lt;p>Hier schreibe ich über alles, was mir beim Lernen von Webprogrammierung begegnet.&lt;/p>
+
+    &lt;h2>Blogeinträge&lt;/h2>
+
+    &lt;!-- Hier kommt eine Liste mit allen Blogeinträgen. -->
+
+  &lt;/body>
+&lt;/html>
+</pre>
+
+<p>Im HTML-Code oben sehen Sie ein neues Element mit den Tags <code>&lt;!--</code> und <code>--&gt;</code>. Mit diesen Tags können wir in HTML einen <strong>Kommentar</strong> hinschreiben. Kommentare sind nur für uns als Programmierer gedacht und werden vom Browser ignoriert.</p>
+<h3 id="blogeintrag-als-unterseite">Blogeintrag als Unterseite</h3>
+<p>Der Blog braucht natürlich noch Einträge. Wir erstellen für jeden Blogeintrag eine eigen HTML-Unterseite. Erstellen Sie einen Unterordner innerhalb des <code>blog</code>-Ordners mit dem Namen <code>erster-eintrag</code>. Kopieren Sie die Datei <code>blog/index.html</code> in diesen Ordner hinein.</p>
+<p><img src="/assets/library/html-css/part5/blog-entry-subfolder-de.png" alt="Blogeintrag"></p>
+<p>Im Blogeintrag ändern wir den Inhalt wie folgt ab:</p>
+<h5 id="blog-erster-eintrag-index-html-erster-blogeintrag">blog/erster-eintrag/index.html - Erster Blogeintrag</h5>
+<pre class="prettyprint lang-html">
+&lt;!DOCTYPE html>
+
+&lt;html>
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;link rel="stylesheet" href="../../main.css">
+    &lt;title>Erster Eintrag - Web Portfolio von Marco&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;h1 class="title">Erster Eintrag&lt;/h1>
+    &lt;p>02. August 2014&lt;/p>
+
+    &lt;hr>
+
+    &lt;p>Dies ist mein erster Eintrag im Blog.&lt;/p>
+
+  &lt;/body>
+&lt;/html>
+</pre>
+
+<p>Auch hier ist ein neues HTML-Element enthalten (<code>hr</code>). Sie werden mit ausprobieren oder einer Internetsuche schnell herausfinden, was es bewirkt.</p>
+<h3 id="legen-sie-los-mit-blogeintr-gen-">Legen Sie los mit Blogeinträgen!</h3>
+<p>Ich empfehle Ihnen, dass Sie sofort damit anfangen, Blogeinträge zu schreiben. Sie könnten an jedem Tag, an dem Sie etwas Neues über Programmieren gelernt haben, einen kurzen Eintrag dazu schreiben. Ich notiere hier ein paar Gedanken, die Sie zu mögliche Inhalten inspirieren könnten:</p>
+<ul>
+<li>Was habe ich heute gelernt?<ul>
+<li>Screenshots einfügen</li>
+<li>Links zu hilfreichen Seiten</li>
+</ul>
+</li>
+<li>Welche Probleme sind mir begegnet?</li>
+<li>Wie habe ich diese Probleme gelöst?</li>
+<li>Woran sollte ich das nächste Mal arbeiten?</li>
+</ul>
+<p>Mit solchen Blogeinträgen werden Sie beim Lernen von Programmierung viel schneller vorwärts kommen:</p>
+<ol>
+<li>Sie werden sich bewusst, was Sie gelernt haben &rarr; mehr Motivation!</li>
+<li>Sie können später in ihrer persönlichen Dokumentation etwas nachschlagen, z.B. Links zu hilfreichen Seiten.</li>
+<li>Sie üben beim Schreiben der Einträge gleich die gelernten HTML-Elemente und CSS-Regeln.</li>
+<li>Wenn Sie Ihre Website veröffentlichen, dann können Sie Ihren Blog auch anderen zugänglich machen. So können Sie Ihr Wissen mit anderen Teilen oder jemanden einladen, Ihnen bei einem Problem zu helfen.</li>
+<li>Falls Sie Ihr Portfolio veröffentlichen, würde mich das sehr interessieren. Schreiben Sie dann irgendwo einen Kommentar mit dem Link!</li>
+</ol>
+<p><em>Also, warten Sie nicht und legen Sie los. Es lohnt sich!</em></p>
+<h4 id="zweiter-blogeintrag">Zweiter Blogeintrag</h4>
+<div class="alert alert-info">
+  <strong>Hinweis:</strong> Erstellen Sie für jeden Blogeintrag einen eigenen Unterordner (mit einer <code>index.html</code>-Seite). So haben Sie eine gute Ordnung und können Bilder oder andere Dateien für den Blogeintrag im Unterordner ablegen.
+</div>
+
+<p><img src="/assets/library/html-css/part5/blog-entry-subfolder2-de.png" alt="Blogeintrag 2"></p>
+<h2 id="seite-f-r-projekte">Seite für Projekte</h2>
+<p>Wenn wir später verschiedene Webseiten und Webapplikationen programmieren, wäre es natürlich nützlich, eine separate Seite zu haben, wo wir diese aufführen könnten. Wir bereiten schon mal eine Seite für unsere Projekte vor, jedoch noch ohne Inhalt.</p>
+<p>Gehen Sie wie oben beim Blog vor und erstellen Sie einen Unterordner <code>projekte</code> mit einer Datei <code>index.html</code>:</p>
+<h5 id="projekte-index-html">projekte/index.html</h5>
+<pre class="prettyprint lang-html">
+&lt;!DOCTYPE html>
+
+&lt;html>
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;link rel="stylesheet" href="../main.css">
+    &lt;title>Projekte - Web Portfolio von Marco&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;h1 class="title">Projekte&lt;/h1>
+
+    &lt;p>Hier finden Sie später meine Webprojekte.&lt;/p>
+
+  &lt;/body>
+&lt;/html>
+</pre>
+
+
+<h2 id="seite-f-r-kontakt">Seite für Kontakt</h2>
+<p>Als letzte Hauptseite fügen wir eine Seite mit Kontaktinformationen hinzu. Erstellen Sie einen Unterordner <code>kontakt</code> mit einer Datei <code>index.html</code>.</p>
+<div class="alert alert-danger">
+<strong>Wichtig:</strong> <em>Überlegen Sie sich gut, welche Informationen Sie öffentlich machen wollen! Geben Sie zum Beispiel <strong>nicht Ihre Haupt-E-Mail-Adresse an</strong>, denn es kann sein, dass Sie nachher auf diese Adresse Spamnachrichten erhalten.</em>
+</div>
+
+
+<h5 id="kontakt-index-html">kontakt/index.html</h5>
+<pre class="prettyprint lang-html">
+&lt;!DOCTYPE html>
+
+&lt;html>
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;link rel="stylesheet" href="../main.css">
+    &lt;title>Kontakt - Web Portfolio von Marco&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;h1 class="title">Kontakt&lt;/h1>
+
+    &lt;p>
+      Sie können mich kontaktieren per Mail: &lt;a href="mailto:spammails@gmx.ch">spammails@gmx.ch&lt;/a>
+    &lt;/p>
+
+    &lt;p>
+      Marco Jakob&lt;br>
+      Schweiz
+    &lt;/p>
+  &lt;/body>
+&lt;/html>
+</pre>
+
+<p>Bei der Adresse sehen Sie ein neues Element: <code>&lt;br&gt;</code>. Es bewirkt einen Zeilenumbruch. Beachten Sie auch den speziellen Link mit <code>mailto:</code> und der E-Mail-Adresse. Dieser Link bewirkt, dass das E-Mail-Programm geöffnet wird und gleich die Adresse ausgefüllt ist.</p>
+<p>Nun haben wir bereits fünf HTML-Seiten:</p>
+<p><img src="/assets/library/html-css/part5/all-files-de.png" alt="Alle Dateien"></p>
+<h2 id="wie-weiter-">Wie weiter?</h2>
+<p>Was natürlich fehlt, ist eine Navigation, so dass man einfach zwischen diesen Seiten hin und her wechseln kann. </p>
+<p>&rarr; Das nehmen wir gleich in Angriff im <a href="/library/html-css/de/part6/">Teil 6: Navigieren zwischen Seiten</a>.</p>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/html-css/de/" data-toggle="tooltip" title="Einleitung">Intro</a>
+      </li>
+        <li>
+      <a href="/library/html-css/de/part1/" data-toggle="tooltip" title="Teil 1: Unsere erste Webseite">1</a>
+      </li>
+        <li>
+      <a href="/library/html-css/de/part2/" data-toggle="tooltip" title="Teil 2: Webseite veröffentlichen">2</a>
+      </li>
+        <li>
+      <a href="/library/html-css/de/part3/" data-toggle="tooltip" title="Teil 3: Einführung in CSS">3</a>
+      </li>
+        <li>
+      <a href="/library/html-css/de/part4/" data-toggle="tooltip" title="Teil 4: Entwicklertools im Browser">4</a>
+      </li>
+        <li class="active">
+      <a href="/library/html-css/de/part5/" data-toggle="tooltip" title="Teil 5: Blog und weitere Seiten">5</a>
+      </li>
+        <li>
+      <a href="/library/html-css/de/part6/" data-toggle="tooltip" title="Teil 6: Navigation">6</a>
+      </li>
+        <li>
+      <a href="/library/html-css/de/part7/" data-toggle="tooltip" title="Teil 7: Bootstrap Framework">7</a>
+      </li>
+        <li>
+      <a href="/library/html-css/de/next/" data-toggle="tooltip" title="Nächste Schritte"><i class="fa fa-flag-checkered"></i></a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/html-css/de/part5/';
+    var disqus_url = 'http://code.makery.ch/library/html-css/de/part5/';
+    var disqus_title = 'HTML & CSS Tutorial - Teil 5: Blog und weitere Seiten';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

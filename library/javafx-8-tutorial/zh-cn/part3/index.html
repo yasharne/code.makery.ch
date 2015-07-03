@@ -1,0 +1,885 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JavaFX 8 教程 - 第三部分：与用户的交互 | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part3/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/javafx-8-tutorial/part3/" />
+    <link rel="alternate" hreflang="es" href="http://code.makery.ch/library/javafx-8-tutorial/es/part3/" />
+    <link rel="alternate" hreflang="fr" href="http://code.makery.ch/library/javafx-8-tutorial/fr/part3/" />
+    <link rel="alternate" hreflang="id" href="http://code.makery.ch/library/javafx-8-tutorial/id/part3/" />
+    <link rel="alternate" hreflang="it" href="http://code.makery.ch/library/javafx-8-tutorial/it/part3/" />
+    <link rel="alternate" hreflang="pt" href="http://code.makery.ch/library/javafx-8-tutorial/pt/part3/" />
+    <link rel="alternate" hreflang="ru" href="http://code.makery.ch/library/javafx-8-tutorial/ru/part3/" />
+    <link rel="alternate" hreflang="tr" href="http://code.makery.ch/library/javafx-8-tutorial/tr/part3/" />
+    <link rel="alternate" hreflang="uk" href="http://code.makery.ch/library/javafx-8-tutorial/uk/part3/" />
+    <link rel="alternate" hreflang="zh-cn" href="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part3/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="JavaFX 8 教程 - 第三部分：与用户的交互 | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part3/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/javafx-8-tutorial/part3/addressapp-part3.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/javafx-8-tutorial-zh-cn-part3.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">系列文章</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/zh-cn/" class="list-group-item">
+        简介</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part1/" class="list-group-item">
+        第一部分：Scene Builder</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part2/" class="list-group-item">
+        第二部分：Model 和 TableView</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part3/" class="list-group-item active">
+        第三部分：与用户的交互</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part4/" class="list-group-item">
+        第四部分：CSS 样式</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part5/" class="list-group-item">
+        第五部分：将数据用 XML 格式存储</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part6/" class="list-group-item">
+        第六部分：统计图</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part7/" class="list-group-item">
+        第七部分：部署</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">下载源代码</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/addressapp-jfx8-part-3.zip" class="list-group-item">
+<i class="fa fa-fw fa-download"></i>        Part 3 as Eclipse Project <em>(requires at least JDK 8u20)</em></a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">语言</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/part3/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/javafx-8-tutorial/es/part3/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Español
+      </a>
+      <a href="/library/javafx-8-tutorial/fr/part3/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Français
+      </a>
+      <a href="/library/javafx-8-tutorial/id/part3/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Bahasa Indonesia
+      </a>
+      <a href="/library/javafx-8-tutorial/it/part3/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Italiano
+      </a>
+      <a href="/library/javafx-8-tutorial/pt/part3/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Português
+      </a>
+      <a href="/library/javafx-8-tutorial/ru/part3/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Русский
+      </a>
+      <a href="/library/javafx-8-tutorial/tr/part3/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Türkçe
+      </a>
+      <a href="/library/javafx-8-tutorial/uk/part3/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Українська
+      </a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part3/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> 中文（简体）
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">JavaFX 8 教程 - 第三部分：与用户的交互</h1>
+            <div class="article-date">
+  Oct 08, 2014
+  • Updated Jan 15, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">系列文章 <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/">
+        简介</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part1/">
+        第一部分：Scene Builder</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part2/">
+        第二部分：Model 和 TableView</a></li>
+      <li class=" active"><a href="/library/javafx-8-tutorial/zh-cn/part3/">
+        第三部分：与用户的交互</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part4/">
+        第四部分：CSS 样式</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part5/">
+        第五部分：将数据用 XML 格式存储</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part6/">
+        第六部分：统计图</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part7/">
+        第七部分：部署</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">下载源代码 <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/addressapp-jfx8-part-3.zip">
+<i class="fa fa-fw fa-download"></i>        Part 3 as Eclipse Project <em>(requires at least JDK 8u20)</em></a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">语言 <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class="">
+        <a href="/library/javafx-8-tutorial/part3/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/es/part3/"><i class="fa fa-fw fa-globe"></i> Español</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/fr/part3/"><i class="fa fa-fw fa-globe"></i> Français</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/id/part3/"><i class="fa fa-fw fa-globe"></i> Bahasa Indonesia</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/it/part3/"><i class="fa fa-fw fa-globe"></i> Italiano</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/pt/part3/"><i class="fa fa-fw fa-globe"></i> Português</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/ru/part3/"><i class="fa fa-fw fa-globe"></i> Русский</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/tr/part3/"><i class="fa fa-fw fa-globe"></i> Türkçe</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/uk/part3/"><i class="fa fa-fw fa-globe"></i> Українська</a>
+    </li>
+      <li class=" active">
+        <a href="/library/javafx-8-tutorial/zh-cn/part3/"><i class="fa fa-fw fa-globe"></i> 中文（简体）</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p><img src="/assets/library/javafx-8-tutorial/part3/addressapp-part3.png" alt="Screenshot AddressApp Part 3"></p>
+<h2 id="-3-">第3部分的主题：</h2>
+<ol>
+<li>在表中<strong>反应选择的改变</strong>（TableView中）。</li>
+<li>增加<strong>增加</strong>，<strong>编辑</strong>和<strong>删除</strong>按钮的功能。</li>
+<li>创建自定义<strong>弹出对话框</strong>编辑人员。</li>
+<li><strong>验证用户输入</strong>。</li>
+</ol>
+<hr>
+<h2 id="-">响应表的选择</h2>
+<p>显然，我们还没有使用应用程序的右边。想法是当用户选择表中的人员时，在右边显示人员的详情。</p>
+<p>首先，让我们在<code>PersonOverviewController</code>添加一个新的方法，帮助我们使用单个人员的数据填写标签。</p>
+<p>创建方法<code>showPersonDetails(Person person)</code>。遍历所有标签，并且使用<code>setText(…)</code>方法设置标签的文本为个人的详情。如果null作为参数传递，所有的标签应该被清空。</p>
+<h5 id="personoverviewcontroller-java">PersonOverviewController.java</h5>
+<pre class="prettyprint lang-java">
+/**
+ * Fills all text fields to show details about the person.
+ * If the specified person is null, all text fields are cleared.
+ * 
+ * @param person the person or null
+ */
+private void showPersonDetails(Person person) {
+    if (person != null) {
+        // Fill the labels with info from the person object.
+        firstNameLabel.setText(person.getFirstName());
+        lastNameLabel.setText(person.getLastName());
+        streetLabel.setText(person.getStreet());
+        postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
+        cityLabel.setText(person.getCity());
+
+        // TODO: We need a way to convert the birthday into a String! 
+        // birthdayLabel.setText(...);
+    } else {
+        // Person is null, remove all the text.
+        firstNameLabel.setText("");
+        lastNameLabel.setText("");
+        streetLabel.setText("");
+        postalCodeLabel.setText("");
+        cityLabel.setText("");
+        birthdayLabel.setText("");
+    }
+}
+</pre>
+
+
+<h3 id="-">转换生日日期为字符串</h3>
+<p>你注意到我们没有设置<code>birthday</code>到标签中，因为它是<code>LocalDate</code>类型，不是<code>String</code>。我们首先需要格式化日期。</p>
+<p>在几个地方上我们使用<code>LocalDate</code>和<code>String</code>之间的转换。好的实践是创建一个带有<code>static</code>方法的帮助类。我们称它为<code>DateUtil</code>，并且把它放到单独的包中，称为<code>ch.makery.address.util</code>。</p>
+<h5 id="dateutil-java">DateUtil.java</h5>
+<pre class="prettyprint lang-java">
+package ch.makery.address.util;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+/**
+ * Helper functions for handling dates.
+ * 
+ * @author Marco Jakob
+ */
+public class DateUtil {
+
+    /** The date pattern that is used for conversion. Change as you wish. */
+    private static final String DATE_PATTERN = "dd.MM.yyyy";
+
+    /** The date formatter. */
+    private static final DateTimeFormatter DATE_FORMATTER = 
+            DateTimeFormatter.ofPattern(DATE_PATTERN);
+
+    /**
+     * Returns the given date as a well formatted String. The above defined 
+     * {@link DateUtil#DATE_PATTERN} is used.
+     * 
+     * @param date the date to be returned as a string
+     * @return formatted string
+     */
+    public static String format(LocalDate date) {
+        if (date == null) {
+            return null;
+        }
+        return DATE_FORMATTER.format(date);
+    }
+
+    /**
+     * Converts a String in the format of the defined {@link DateUtil#DATE_PATTERN} 
+     * to a {@link LocalDate} object.
+     * 
+     * Returns null if the String could not be converted.
+     * 
+     * @param dateString the date as String
+     * @return the date object or null if it could not be converted
+     */
+    public static LocalDate parse(String dateString) {
+        try {
+            return DATE_FORMATTER.parse(dateString, LocalDate::from);
+        } catch (DateTimeParseException e) {
+            return null;
+        }
+    }
+
+    /**
+     * Checks the String whether it is a valid date.
+     * 
+     * @param dateString
+     * @return true if the String is a valid date
+     */
+    public static boolean validDate(String dateString) {
+        // Try to parse the String.
+        return DateUtil.parse(dateString) != null;
+    }
+}
+</pre>
+
+<div class="alert alert-info">
+<strong>提示</strong>：你能通过改变<code>DATE_PATTERN</code>修改日期的格式。所有可能的格式参考 <a class="alert-link" href="http://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html">DateTimeFormatter</a>.
+</div>
+
+
+<h4 id="-dateutil">使用DateUtil</h4>
+<p>现在，我们需要在<code>PersonOverviewController</code>的<code>showPersonDetails</code>方法中使用我们新建的<code>DateUtil</code>。使用下面这样替代我们添加的<code>TODO</code>。</p>
+<pre class="prettyprint lang-java">
+birthdayLabel.setText(DateUtil.format(person.getBirthday()));
+</pre>
+
+
+<h3 id="-">监听表选择的改变</h3>
+<p>为了当用户在人员表中选择一个人时获得通知，我们需要<strong>监听改变</strong>。</p>
+<p>在JavaFX中有一个接口称为<a href="http://docs.oracle.com/javase/8/javafx/api/"><code>ChangeListener</code></a>，带有一个方法<code>changed()</code>。该方法有三个参数：<code>observable</code>, <code>oldValue</code>和<code>newValue</code>。</p>
+<p>我们使用<em>Java 8 lambda</em>表达式创建这样一个<code>ChangeListener</code>。让我们添加一些行到<code>PersonOverviewController</code>的<code>initialize()</code>方法中。现在看起来是这样的。</p>
+<h5 id="personoverviewcontroller-java">PersonOverviewController.java</h5>
+<pre class="prettyprint lang-java">
+@FXML
+private void initialize() {
+    // Initialize the person table with the two columns.
+    firstNameColumn.setCellValueFactory(
+            cellData -> cellData.getValue().firstNameProperty());
+    lastNameColumn.setCellValueFactory(
+            cellData -> cellData.getValue().lastNameProperty());
+
+    // Clear person details.
+    showPersonDetails(null);
+
+    // Listen for selection changes and show the person details when changed.
+    personTable.getSelectionModel().selectedItemProperty().addListener(
+            (observable, oldValue, newValue) -> showPersonDetails(newValue));
+}
+</pre>
+
+<p>使用<code>showPersonDetails(null)</code>，我们重设个人详情。</p>
+<p>使用<code>personTable.getSelectionModel...</code>，我们获得人员表的<code>selectedItemProperty</code>，并且添加监听。不管什么时候用户选择表中的人员，都会执行我们的<code>lambda</code>表达式。我们获取新选择的人员，并且把它传递给<code>showPersonDetails(...)</code>方法。</p>
+<p>现在试着<strong>运行你的应用程序</strong>，验证当你选择表中的人员时，关于该人员的详情是否正确的显示。</p>
+<p>如果有些事情不能工作，你可以对比下<a href="/assets/library/javafx-8-tutorial/part3/PersonOverviewController.java">PersonOverviewController.java</a>中的<code>PersonOverviewController</code>类</p>
+<hr>
+<h2 id="-">删除按钮</h2>
+<p>我们的用户接口已经包含一个删除按钮，但是没有任何功能。我们能在<em>SceneBuilder</em>中的按钮上选择动作。在我们控制器中的任何使用<code>@FXML</code>（或者它是公用的）注释的方法都可以被<em>Scene Builder</em>访问。因此，让我们在<code>PersonOverviewController</code>类的最后添加一个删除方法。</p>
+<h5 id="personoverviewcontroller-java">PersonOverviewController.java</h5>
+<pre class="prettyprint lang-java">
+/**
+ * Called when the user clicks on the delete button.
+ */
+@FXML
+private void handleDeletePerson() {
+    int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
+    personTable.getItems().remove(selectedIndex);
+}
+</pre>
+
+<p>现在，使用<em>SceneBuilder</em>打开<code>PersonOverview.fxml</code>文件，选择<em>Delete</em>按钮，打开<em>Code</em>组，在<strong>On Actin</strong>的下拉菜单中选择<code>handleDeletePerson</code>。</p>
+<p><img src="/assets/library/javafx-8-tutorial/part3/handle-delete.png" alt="On Action"></p>
+<h3 id="-">错误处理</h3>
+<p>如果你现在运行应用程序，你应该能够从表中删除选择的人员。但是，<strong>当你没有在表中选择人员时点击删除按钮时会发生什么呢</strong>。</p>
+<p>这里有一个<code>ArrayIndexOutOfBoundsException</code>，因为它不能删除掉索引为-1人员项目。索引-1由<code>getSelectedIndex()</code>返回，它意味着你没有选择项目。</p>
+<p>当然，忽略这种错误不是非常好。我们应该让用户知道在删除时必须选择一个人员。（更好的是我们应该禁用删除按钮，以便用户没有机会做错误的事情）。</p>
+<p>我们添加一个弹出对话框通知用户，你将需要<em>*添加一个库</em><a href="/blog/javafx-8-dialogs/">Dialogs</a>：</p>
+<ol>
+<li>下载<a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/controlsfx-8.0.6_20.jar">controlsfx-8.0.6_20.jar</a> （你也能从<a href="http://fxexperience.com/controlsfx/">ControlsFX Website</a>中获取）。
+<strong>重要：ControlsFX必须是8.0.6_20以上版本才能在<code>JDK8U20</code>以上版本工作。</strong></li>
+<li>在项目中创建一个<strong>lib</strong>子目录，添加controlsf jar文件到该目录下。</li>
+<li>添加库到你的项目<strong>classpath</strong>中。在Eclipse中<em>右击jar文件</em>|选择<em>Build Path</em>| <em>Add to Build Path</em>。现在Eclipse知道这个库了。</li>
+</ol>
+<p><img src="/assets/library/javafx-8-tutorial/part3/controlsfx-library.png" alt="ControlsFX Libaray"></p>
+<p>对<code>handleDeletePerson()</code>方法做一些修改后，不管什么时候用户没有选择表中的人员时按下删除按钮，我们能显示一个简单的对话框。</p>
+<h5 id="personoverviewcontroller-java">PersonOverviewController.java</h5>
+<pre class="prettyprint lang-java">
+/**
+ * Called when the user clicks on the delete button.
+ */
+@FXML
+private void handleDeletePerson() {
+    int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
+    if (selectedIndex >= 0) {
+        personTable.getItems().remove(selectedIndex);
+    } else {
+        // Nothing selected.
+        Dialogs.create()
+            .title("No Selection")
+            .masthead("No Person Selected")
+            .message("Please select a person in the table.")
+            .showWarning();
+    }
+}
+</pre>
+
+<div class="alert alert-info">
+更多如何使用Dialog的示例，请阅读<a class="alert-link" href="/blog/javafx-8-dialogs/">JavaFX 8 Dialogs</a>.
+</div>
+
+
+
+<hr>
+<h2 id="-">新建和编辑对话框</h2>
+<p>新建和编辑的动作有点工作：我们需要一个自定义带表单的对话框（例如：新的Stage），询问用户关于人员的详情。</p>
+<h3 id="-">设计对话框</h3>
+<ol>
+<li><p>在<em>view</em>包中创建新的fxml文件，称为<code>PersonEditDialog.fxml</code>
+<img src="/assets/library/javafx-8-tutorial/part3/person-edit-dialog1.png" alt="Create Edit Dialog"></p>
+</li>
+<li><p>使用<code>GridPan</code>，<code>Label</code>，<code>TextField</code>和<code>Button</code>创建一个对话框，如下所示:<br><img src="/assets/library/javafx-8-tutorial/part3/person-edit-dialog2.png" alt="Edit Dialog">   </p>
+</li>
+</ol>
+<p><em>如果你不能完成工作，你能下载这个<a href="/assets/library/javafx-8-tutorial/part3/PersonEditDialog.fxml">PersonEditDialog.fxml</a>.</em> </p>
+<h3 id="-">创建控制器</h3>
+<p>为对话框创建控制器<code>PersonEditDialogController.java</code>:</p>
+<h5 id="personeditdialogcontroller-java">PersonEditDialogController.java</h5>
+<pre class="prettyprint lang-java pre-scrollable">
+package ch.makery.address.view;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import org.controlsfx.dialog.Dialogs;
+
+import ch.makery.address.model.Person;
+import ch.makery.address.util.DateUtil;
+
+/**
+ * Dialog to edit details of a person.
+ * 
+ * @author Marco Jakob
+ */
+public class PersonEditDialogController {
+
+    @FXML
+    private TextField firstNameField;
+    @FXML
+    private TextField lastNameField;
+    @FXML
+    private TextField streetField;
+    @FXML
+    private TextField postalCodeField;
+    @FXML
+    private TextField cityField;
+    @FXML
+    private TextField birthdayField;
+
+
+    private Stage dialogStage;
+    private Person person;
+    private boolean okClicked = false;
+
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the fxml file has been loaded.
+     */
+    @FXML
+    private void initialize() {
+    }
+
+    /**
+     * Sets the stage of this dialog.
+     * 
+     * @param dialogStage
+     */
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
+    }
+
+    /**
+     * Sets the person to be edited in the dialog.
+     * 
+     * @param person
+     */
+    public void setPerson(Person person) {
+        this.person = person;
+
+        firstNameField.setText(person.getFirstName());
+        lastNameField.setText(person.getLastName());
+        streetField.setText(person.getStreet());
+        postalCodeField.setText(Integer.toString(person.getPostalCode()));
+        cityField.setText(person.getCity());
+        birthdayField.setText(DateUtil.format(person.getBirthday()));
+        birthdayField.setPromptText("dd.mm.yyyy");
+    }
+
+    /**
+     * Returns true if the user clicked OK, false otherwise.
+     * 
+     * @return
+     */
+    public boolean isOkClicked() {
+        return okClicked;
+    }
+
+    /**
+     * Called when the user clicks ok.
+     */
+    @FXML
+    private void handleOk() {
+        if (isInputValid()) {
+            person.setFirstName(firstNameField.getText());
+            person.setLastName(lastNameField.getText());
+            person.setStreet(streetField.getText());
+            person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
+            person.setCity(cityField.getText());
+            person.setBirthday(DateUtil.parse(birthdayField.getText()));
+
+            okClicked = true;
+            dialogStage.close();
+        }
+    }
+
+    /**
+     * Called when the user clicks cancel.
+     */
+    @FXML
+    private void handleCancel() {
+        dialogStage.close();
+    }
+
+    /**
+     * Validates the user input in the text fields.
+     * 
+     * @return true if the input is valid
+     */
+    private boolean isInputValid() {
+        String errorMessage = "";
+
+        if (firstNameField.getText() == null || firstNameField.getText().length() == 0) {
+            errorMessage += "No valid first name!\n"; 
+        }
+        if (lastNameField.getText() == null || lastNameField.getText().length() == 0) {
+            errorMessage += "No valid last name!\n"; 
+        }
+        if (streetField.getText() == null || streetField.getText().length() == 0) {
+            errorMessage += "No valid street!\n"; 
+        }
+
+        if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0) {
+            errorMessage += "No valid postal code!\n"; 
+        } else {
+            // try to parse the postal code into an int.
+            try {
+                Integer.parseInt(postalCodeField.getText());
+            } catch (NumberFormatException e) {
+                errorMessage += "No valid postal code (must be an integer)!\n"; 
+            }
+        }
+
+        if (cityField.getText() == null || cityField.getText().length() == 0) {
+            errorMessage += "No valid city!\n"; 
+        }
+
+        if (birthdayField.getText() == null || birthdayField.getText().length() == 0) {
+            errorMessage += "No valid birthday!\n";
+        } else {
+            if (!DateUtil.validDate(birthdayField.getText())) {
+                errorMessage += "No valid birthday. Use the format dd.mm.yyyy!\n";
+            }
+        }
+
+        if (errorMessage.length() == 0) {
+            return true;
+        } else {
+            // Show the error message.
+            Dialogs.create()
+                .title("Invalid Fields")
+                .masthead("Please correct invalid fields")
+                .message(errorMessage)
+                .showError();
+            return false;
+        }
+    }
+}
+</pre>
+
+<p>关于该控制器的一些事情应该注意：</p>
+<ol>
+<li><code>setPerson(…)</code>方法可以从其它类中调用，用来设置编辑的人员。</li>
+<li>当用户点击OK按钮时，调用<code>handleOK()</code>方法。首先，通过调用<code>isInputValid()</code>方法做一些验证。只有验证成功，Person对象使用输入的数据填充。这些修改将直接应用到Person对象上，传递给<code>setPerson(…)</code>。</li>
+<li>布尔值<code>okClicked</code>被使用，以便调用者决定用户是否点击OK或者Cancel按钮。</li>
+</ol>
+<h3 id="-">连接视图和控制器</h3>
+<p>使用已经创建的视图（FXML）和控制器，需要连接到一起。</p>
+<ol>
+<li>使用SceneBuilder打开<code>PersonEditDialog.fxml</code>文件</li>
+<li>在左边的<em>Controller</em>组中选择<code>PersonEditDialogController</code>作为控制器类</li>
+<li>设置所有<strong>TextField</strong>的<code>fx:id</code>到相应的控制器字段上。</li>
+<li>设置两个按钮的<strong>onAction</strong>到相应的处理方法上。</li>
+</ol>
+<h3 id="-">打开对话框</h3>
+<p>在<code>MainApp</code>中添加一个方法加载和显示编辑人员的对话框。</p>
+<h5 id="mainapp-java">MainApp.java</h5>
+<pre class="prettyprint lang-java">
+/**
+ * Opens a dialog to edit details for the specified person. If the user
+ * clicks OK, the changes are saved into the provided person object and true
+ * is returned.
+ * 
+ * @param person the person object to be edited
+ * @return true if the user clicked OK, false otherwise.
+ */
+public boolean showPersonEditDialog(Person person) {
+    try {
+        // Load the fxml file and create a new stage for the popup dialog.
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(MainApp.class.getResource("view/PersonEditDialog.fxml"));
+        AnchorPane page = (AnchorPane) loader.load();
+
+        // Create the dialog Stage.
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Edit Person");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(primaryStage);
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+
+        // Set the person into the controller.
+        PersonEditDialogController controller = loader.getController();
+        controller.setDialogStage(dialogStage);
+        controller.setPerson(person);
+
+        // Show the dialog and wait until the user closes it
+        dialogStage.showAndWait();
+
+        return controller.isOkClicked();
+    } catch (IOException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+</pre>
+
+<p>添加下面的方法到<code>PersonOverviewController</code>中。当用户按下<em>New</em>或<em>Edit</em>按钮时，这些方法将从<code>MainApp</code>中调用<code>showPersonEditDialog(...)</code>。</p>
+<h5 id="personoverviewcontroller-java">PersonOverviewController.java</h5>
+<pre class="prettyprint lang-java">
+/**
+ * Called when the user clicks the new button. Opens a dialog to edit
+ * details for a new person.
+ */
+@FXML
+private void handleNewPerson() {
+    Person tempPerson = new Person();
+    boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
+    if (okClicked) {
+        mainApp.getPersonData().add(tempPerson);
+    }
+}
+
+/**
+ * Called when the user clicks the edit button. Opens a dialog to edit
+ * details for the selected person.
+ */
+@FXML
+private void handleEditPerson() {
+    Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
+    if (selectedPerson != null) {
+        boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
+        if (okClicked) {
+            showPersonDetails(selectedPerson);
+        }
+
+    } else {
+        // Nothing selected.
+        Dialogs.create()
+            .title("No Selection")
+            .masthead("No Person Selected")
+            .message("Please select a person in the table.")
+            .showWarning();
+    }
+}
+</pre>
+
+<p>在Scene Builder中打开<code>PersonOverview.fxml</code>文件，为New和Edit按钮的<em>On Action</em>中选择对应的方法。</p>
+<hr>
+<h2 id="-">完成!</h2>
+<p>现在你应该有一个可以工作的<em>Address应用</em>。应用能够添加、编辑和删除人员。这里甚至有一些文本字段的验证避免坏的用户输入。</p>
+<p>我希望本应用的概念和结构让开始编写自己的JavaFX应用！玩的开心。</p>
+<h3 id="-">下一步是什么？</h3>
+<p>在教程<a href="/library/javafx-8-tutorial/zh-cn/part4/">第4部分</a>中将添加一些CSS样式表。</p>
+<h5 id="-">你可能有兴趣的一些其他文章</h5>
+<ul>
+<li><a href="/blog/javafx-8-dialogs/">JavaFX Dialogs</a></li>
+<li><a href="/blog/javafx-8-date-picker/">JavaFX Date Picker</a></li>
+<li><a href="/blog/javafx-8-event-handling-examples/">JavaFX Event Handling Examples</a></li>
+<li><a href="/blog/javafx-8-tableview-sorting-filtering/">JavaFX TableView Sorting and Filtering</a></li>
+<li><a href="/blog/javafx-8-tableview-cell-renderer/">JavaFX TableView Cell Renderer</a></li>
+</ul>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/" data-toggle="tooltip" title="简介">简介</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part1/" data-toggle="tooltip" title="第一部分：Scene Builder">1</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part2/" data-toggle="tooltip" title="第二部分：Model 和 TableView">2</a>
+      </li>
+        <li class="active">
+      <a href="/library/javafx-8-tutorial/zh-cn/part3/" data-toggle="tooltip" title="第三部分：与用户的交互">3</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part4/" data-toggle="tooltip" title="第四部分：CSS 样式">4</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part5/" data-toggle="tooltip" title="第五部分：将数据用 XML 格式存储">5</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part6/" data-toggle="tooltip" title="第六部分：统计图">6</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part7/" data-toggle="tooltip" title="第七部分：部署">7</a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/javafx-8-tutorial/zh-cn/part3/';
+    var disqus_url = 'http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part3/';
+    var disqus_title = 'JavaFX 8 教程 - 第三部分：与用户的交互';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

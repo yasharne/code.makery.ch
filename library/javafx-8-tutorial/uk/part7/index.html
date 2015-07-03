@@ -1,0 +1,533 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Підручник з JavaFX 8 - Частина 7: Розгортання | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/javafx-8-tutorial/uk/part7/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/javafx-8-tutorial/part7/" />
+    <link rel="alternate" hreflang="es" href="http://code.makery.ch/library/javafx-8-tutorial/es/part7/" />
+    <link rel="alternate" hreflang="fr" href="http://code.makery.ch/library/javafx-8-tutorial/fr/part7/" />
+    <link rel="alternate" hreflang="id" href="http://code.makery.ch/library/javafx-8-tutorial/id/part7/" />
+    <link rel="alternate" hreflang="it" href="http://code.makery.ch/library/javafx-8-tutorial/it/part7/" />
+    <link rel="alternate" hreflang="pt" href="http://code.makery.ch/library/javafx-8-tutorial/pt/part7/" />
+    <link rel="alternate" hreflang="ru" href="http://code.makery.ch/library/javafx-8-tutorial/ru/part7/" />
+    <link rel="alternate" hreflang="tr" href="http://code.makery.ch/library/javafx-8-tutorial/tr/part7/" />
+    <link rel="alternate" hreflang="uk" href="http://code.makery.ch/library/javafx-8-tutorial/uk/part7/" />
+    <link rel="alternate" hreflang="zh-cn" href="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part7/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Розгортання JavaFX додатку з упаковки, що залежить від платформи (native package). Створення інсталяційниого пакета для Windows, Mac чи Linux">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Підручник з JavaFX 8 - Частина 7: Розгортання | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Розгортання JavaFX додатку з упаковки, що залежить від платформи (native package). Створення інсталяційниого пакета для Windows, Mac чи Linux" />
+    <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/uk/part7/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/javafx-8-tutorial/part7/addressapp-macos.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/javafx-8-tutorial-uk-part7.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Статті цієї серії</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/uk/" class="list-group-item">
+        Вступ</a>
+      <a href="/library/javafx-8-tutorial/uk/part1/" class="list-group-item">
+        Частина 1: Scene Builder</a>
+      <a href="/library/javafx-8-tutorial/uk/part2/" class="list-group-item">
+        Частина 2: Модель та компонент TableView</a>
+      <a href="/library/javafx-8-tutorial/uk/part3/" class="list-group-item">
+        Частина 3: Взаємодія з користувачем</a>
+      <a href="/library/javafx-8-tutorial/uk/part4/" class="list-group-item">
+        Частина 4: Стилізація за допомогою CSS</a>
+      <a href="/library/javafx-8-tutorial/uk/part5/" class="list-group-item">
+        Частина 5: Збереження даних в XML</a>
+      <a href="/library/javafx-8-tutorial/uk/part6/" class="list-group-item">
+        Частина 6: Статистична діаграма</a>
+      <a href="/library/javafx-8-tutorial/uk/part7/" class="list-group-item active">
+        Частина 7: Розгортання</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Скачати вихідний код</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.1/addressapp-jfx8u40-part-7.zip" class="list-group-item">
+<i class="fa fa-fw fa-download"></i>        Частина 7 як проект Eclipse <em>(Необхідно хоча б JDK 8u40)</em></a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Мови</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/javafx-8-tutorial/es/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Español
+      </a>
+      <a href="/library/javafx-8-tutorial/fr/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Français
+      </a>
+      <a href="/library/javafx-8-tutorial/id/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Bahasa Indonesia
+      </a>
+      <a href="/library/javafx-8-tutorial/it/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Italiano
+      </a>
+      <a href="/library/javafx-8-tutorial/pt/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Português
+      </a>
+      <a href="/library/javafx-8-tutorial/ru/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Русский
+      </a>
+      <a href="/library/javafx-8-tutorial/tr/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Türkçe
+      </a>
+      <a href="/library/javafx-8-tutorial/uk/part7/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> Українська
+      </a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> 中文（简体）
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Підручник з JavaFX 8 - Частина 7: Розгортання</h1>
+            <div class="article-date">
+  May 10, 2014
+  • Updated Jun 25, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Статті цієї серії <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/javafx-8-tutorial/uk/">
+        Вступ</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part1/">
+        Частина 1: Scene Builder</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part2/">
+        Частина 2: Модель та компонент TableView</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part3/">
+        Частина 3: Взаємодія з користувачем</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part4/">
+        Частина 4: Стилізація за допомогою CSS</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part5/">
+        Частина 5: Збереження даних в XML</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part6/">
+        Частина 6: Статистична діаграма</a></li>
+      <li class=" active"><a href="/library/javafx-8-tutorial/uk/part7/">
+        Частина 7: Розгортання</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Скачати вихідний код <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.1/addressapp-jfx8u40-part-7.zip">
+<i class="fa fa-fw fa-download"></i>        Частина 7 як проект Eclipse <em>(Необхідно хоча б JDK 8u40)</em></a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Мови <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class="">
+        <a href="/library/javafx-8-tutorial/part7/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/es/part7/"><i class="fa fa-fw fa-globe"></i> Español</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/fr/part7/"><i class="fa fa-fw fa-globe"></i> Français</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/id/part7/"><i class="fa fa-fw fa-globe"></i> Bahasa Indonesia</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/it/part7/"><i class="fa fa-fw fa-globe"></i> Italiano</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/pt/part7/"><i class="fa fa-fw fa-globe"></i> Português</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/ru/part7/"><i class="fa fa-fw fa-globe"></i> Русский</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/tr/part7/"><i class="fa fa-fw fa-globe"></i> Türkçe</a>
+    </li>
+      <li class=" active">
+        <a href="/library/javafx-8-tutorial/uk/part7/"><i class="fa fa-fw fa-globe"></i> Українська</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/zh-cn/part7/"><i class="fa fa-fw fa-globe"></i> 中文（简体）</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p><img src="/assets/library/javafx-8-tutorial/part7/addressapp-part7.png" alt="Screenshot AddressApp Part 7"></p>
+<p>Я думаю, що потрібно написати останню частину цього підручника, щоб показати, як розгорнути (запакувати та опублікувати) AddressApp.</p>
+<hr>
+<h2 id="-7-">Частина 7: Зміст</h2>
+<ul>
+<li>Розгортання нашого JavaFX додатку у вигляді <strong>упаковки, що залежить від платформи</strong> (native package) з використанням плагіна е(fx)clipse.</li>
+</ul>
+<hr>
+<h2 id="-">Що таке розгортання</h2>
+<p>Розгортання - це процес упаковки і доставки програмного забезпечення до користувача. Це важлива частина процесу розробки ПЗ, тому що тут відбувається перший контакт користувача з нашим додатком.</p>
+<p>Java рекламується під слоганом <strong>"Написано одного разу, працює скрізь"</strong> для того, щоб проілюструвати <em>кросплатформову перевагу</em> даної мови програмування. В ідеалі, це означає, що наш Java додаток запуститися на будь-якому пристрої, де встановлена віртуальна машина Java (JVM). </p>
+<p>У минулому, досвід користувача при установці Java додатку не завжди був гладким. Якщо у користувача в системі не була встановлена необхідна версія Java, він перенаправлявся для її інсталяції. Це призводило до деяких труднощів: до необхідності мати права адміністратора, до виникнення питань сумісності версій Java, і т.д.</p>
+<p>На щастя, JavaFX надає нову опцію розгортання, яка має назву <strong>упаковка, що залежить від платформи</strong> (native package) або "Автономна упаковка додатку" (Self-Contained Application Package). Нативна упаковка - це пакет, що містить разом Java-додаток і середовище виконання Java для конкретної платформи.</p>
+<p>Офіційна документація по JavaFX від Oracle містить вичерпне керівництво для всіх можливих варіантів <a href="http://docs.oracle.com/javafx/2/deployment/jfxpub-deployment.htm">розгортання JavaFX додатків</a>.</p>
+<p>В цій статті я покажу, як створити "нативну упаковку" за допомогою додатку Eclipse та <a href="http://www.eclipse.org/efxclipse/">плагіна e(fx)clipse</a>.</p>
+<hr>
+<h2 id="-">Створення нативної упаковки</h2>
+<p>Мета полягає у створенні автономно-упакованого додатку, розміщеного в одній директорії на комп'ютері користувача. Як приблизно буде виглядати результат для нашого додатку на Windows, можна подивитися нижче:</p>
+<p><img src="/assets/library/javafx-8-tutorial/part7/native-package.png" alt="AddressApp Native Package"></p>
+<p>Папка <code>app</code> містить дані нашого додатку, а папка <code>runtime</code> - платформо-залежне середовище виконання.</p>
+<p>Для того, щоб зробити цей процес більш комфортним для користувача, ми надамо йому програму-інсталятор:</p>
+<ul>
+<li><code>exe</code>-інсталятор для Windows;</li>
+<li><code>dmg</code>-інсталятор (перетягни й відпусти, drag and drop) для MacOS.</li>
+</ul>
+<p>Плагін e(fx)clipse допоможе нам згенерувати нативну упаковку та інсталятор.</p>
+<h3 id="-1-build-fxbuild">Крок 1 - Редагуємо файл build.fxbuild</h3>
+<p>Файл <code>build.fxbuild</code> використовується плагіном e(fx)clipse для генерації файлу, який буде використовуватися інструментом збірки <strong>Ant</strong>. (Якщо у вас немає файлу <code>build.fxbuild</code>, створіть <em>новий JavaFX проект</em> в додатку Eclipse та скопіюйте згенерований файл.)</p>
+<ol>
+<li><p>Відкрийте файл <code>build.fxbuild</code> з кореневої папки вашого проекту.</p>
+</li>
+<li><p>Заповніть всі поля, помічені зірочкою. <em>Для MacOS: не використовуйте пробіли в назві додатку (в полі <strong>Application Title</strong>) оскільки це, здається, приводить до проблем).</em>
+<img src="/assets/library/javafx-8-tutorial/part7/fxbuild-settings.png" alt="fxbuild settings"></p>
+</li>
+<li><p>Виберіть значення <strong>формату упаковки</strong>: для Windows - <code>exe</code>, для MacOS - <code>dmg</code>, для Linux - <code>rpm</code>.</p>
+</li>
+<li><p>Натисніть на посилання <code>Generate ant build.xml only</code> праворуч.<br><img src="/assets/library/javafx-8-tutorial/part7/generate-ant-build.png" alt="generate ant build"></p>
+</li>
+<li><p>Перевірте, чи створилась нова папка <code>build</code> з файлом <code>build.xml</code>.</p>
+</li>
+</ol>
+<h3 id="-2-">Крок 2 - Додамо в інсталятор іконки</h3>
+<p>Ми можемо додати в наш інсталятор пару гарних зображень:</p>
+<ul>
+<li><a href="/assets/library/javafx-8-tutorial/part7/AddressApp.ico">AddressApp.ico</a> для іконки інсталяційного файлу</li>
+<li><a href="/assets/library/javafx-8-tutorial/part7/AddressApp-setup-icon.bmp">AddressApp-setup-icon.bmp</a> для екрану привітання інсталятора</li>
+<li><a href="/assets/library/javafx-8-tutorial/part7/AddressApp.icns">AddressApp.icns</a> - для інсталятора під MacOS</li>
+<li><a href="/assets/library/javafx-8-tutorial/part7/AddressApp-volume.icns">AddressApp-volume.icns</a> для інсталятора під MacOS</li>
+</ul>
+<ol>
+<li><p>Створіть наступні піддиректорії в папці <code>build</code>:</p>
+<ul>
+<li><code>build/package/windows</code> (використовується лише в Windows)</li>
+<li><code>build/package/macosx</code> (використовується лише в MacOS)</li>
+</ul>
+</li>
+<li><p>Скопіюйте відповідні іконки з приведених посилань та розмістіть їх в призначені для них папки. В результаті це повинно виглядати так:<br><img src="/assets/library/javafx-8-tutorial/part7/installer-icons.png" alt="Installer Icons"></p>
+</li>
+<li><p><strong>Важливо</strong>: Імена іконок повинні точно співпадати з <strong>іменем додатку</strong> (Application title), яке ви вказали в <code>build.fxbuild</code>:</p>
+<ul>
+<li><code>YourAppTitle.ico</code></li>
+<li><code>YourAppTitle-setup-icon.bmp</code></li>
+<li><code>YourAppTitle.icns</code></li>
+<li><code>YourAppTitle-volume.icns</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="-3-">Крок 3 - Додаємо ресурси</h3>
+<p>Наша папка <code>resources</code> не скопіюється автоматично. Ми повинні вручну додати її в папку <code>build</code>:</p>
+<ol>
+<li>Створіть піддиректорію <code>dist</code> в папці <code>build</code>:<ul>
+<li><code>build/dist</code></li>
+</ul>
+</li>
+<li>Скопіюйте папку <code>resources</code> (яка містить іконки для нашого додатку) в <code>build/dist</code>.<br><img src="/assets/library/javafx-8-tutorial/part7/build-resources.png" alt="Build Resources"></li>
+</ol>
+<h3 id="-4-build-xml-">Крок 4 - Редагуємо build.xml та включаємо в нього іконки</h3>
+<p>Плагін e(fx)clipse згенерував файл <code>build/build.xml</code>, який готовий для виконання за допомогою Ant. Проте, поки що, наші іконки відображатись не будуть.</p>
+<p>Оскільки e(fx)clipse не може повідомити (поки що?), що нам необхідно приєднати додаткові ресурси, такі як наша папка <code>resources</code>, нам необхідно зробити це вручну, шляхом редагування <code>build.xml</code>.</p>
+<p>Відкрийте <code>build.xml</code> та знайдіть тег <code>&lt;path id="fxant"&gt;</code>. Додайте однин рядок для <code>${basedir}</code> (це зробить наші іконки доступними):</p>
+<h5 id="build-xml-basedir-">build.xml - додаємо "basedir"</h5>
+<pre class="prettyprint lang-xml">
+&lt;path id="fxant"&gt;
+  &lt;filelist&gt;
+    &lt;file name="${java.home}\..\lib\ant-javafx.jar"/&gt;
+    &lt;file name="${java.home}\lib\jfxrt.jar"/&gt;
+    <mark>&lt;file name="${basedir}"/&gt;</mark>
+  &lt;/filelist&gt;
+&lt;/path&gt;
+</pre>
+
+<p>Нижче знайдете блок коду <code>fx:resources id="appRes"</code>. Додайте однин рядок для наших ресурсів:</p>
+<h5 id="build-xml-resources-">build.xml - додаємо "resources"</h5>
+<pre class="prettyprint lang-xml">
+&lt;fx:resources id="appRes"&gt;
+    &lt;fx:fileset dir="dist" includes="AddressApp.jar"/&gt;
+    &lt;fx:fileset dir="dist" includes="libs/*"/&gt;
+    <mark>&lt;fx:fileset dir="dist" includes="resources/**"/&gt;</mark>
+&lt;/fx:resources&gt; 
+</pre>
+
+<p>Чомусь, номер версії не додається в <code>fx:application</code>, який завжди встановлює версію нашого інсталятора як <code>1.0</code> (як вказали кілька чоловік в коментарях). Для виправлення цього, додайте номер версії вручну (дякую Марку, що <a href="/library/javafx-8-tutorial/part7/#comment-1566725959">вияснив це</a>):</p>
+<h5 id="build-xml-version-">build.xml - додаємо "version"</h5>
+<pre class="prettyprint lang-xml">
+&lt;fx:application id="fxApplication"
+    name="AddressApp"
+    mainClass="ch.makery.address.MainApp"
+    <mark>version="1.0"</mark>
+/>
+</pre>
+
+<p>Тепер ми можемо запускати <code>build.xml</code> через Ant. Це згенерує нам працездатний jar файл проекту. Але ми хочемо піти на крок далі і створити хороший інсталятор.</p>
+<h3 id="-5-exe-windows">Крок 5 - exe інсталятор під Windows</h3>
+<p><img src="/assets/library/javafx-8-tutorial/part7/addressapp-windows.png" alt="AddressApp on Windows"></p>
+<p>За допомогою <strong>Inno Setup</strong> ми можемо створити для нашого додатку інсталятор під Windows у вигляді єдиного <code>.exe</code> файлу. Створений <code>.exe</code> інсталятор буде проводити установку програми на рівні користувача (не потрібні права адміністратора). Також буде створено ярлик (в меню або на робочому столі).</p>
+<ol>
+<li><p>Завантажте <a href="http://www.jrsoftware.org/isdl.php">Inno Setup</a> версії 5 чи вище. Встановіть Inno Setup на ваш комп'ютер. Наш Ant скрипт буде використовуватися для автоматичної генерації інсталятора.</p>
+</li>
+<li><p>Вкажіть шлях до Windows, Inno Setup (наприклад, <code>C:\Program Files (x86)\Inno Setup 5</code>). Для цього, додайте Inno Setup до змінної <code>Path</code> в ваших змінних оточення. Якщо ви не знаєте де їх знайти, почитайте <a href="http://www.computerhope.com/issues/ch000549.htm">як встановити шляхи та змінні оточення в Windows</a>.</p>
+</li>
+<li><p>Перевантажте додаток Eclipse, та продовжуйте з кроку 6.</p>
+</li>
+</ol>
+<h3 id="-5-dmg-macos">Крок 5 - dmg інсталятор для MacOS</h3>
+<p><img src="/assets/library/javafx-8-tutorial/part7/addressapp-macos.png" alt="AddressApp on Mac"></p>
+<p>Для створення <code>dmg</code> інсталятора під MacOS ніяких додаткових інструментів не потрібно.</p>
+<p>Примітка: Для того, щоб зображення інсталятора відображалося, ви повинні назвати це зображення так само, як і додаток.</p>
+<h3 id="-5-rpm-linux">Крок 5 - rpm інсталятор для Linux</h3>
+<p>Для інших способів встановлення додатку (<code>msi</code> для Windows, <code>rpm</code> для Linux) читайте <a href="https://blogs.oracle.com/talkingjavadeployment/entry/native_packaging_for_javafx">цю статтю</a> чи <a href="http://docs.oracle.com/javafx/2/deployment/self-contained-packaging.htm#A1324980">документацію від Oracle</a>.</p>
+<h3 id="-6-build-xml">Крок 6 - Запускаємо build.xml</h3>
+<p>На останньому кроці ми запустимо файл <code>build.xml</code> за допомогою Ant: виконайте клік <em>правою кнопкою мишки</em> на файлі <code>build.xml</code> <em>| Run As | Ant Build</em>.</p>
+<p><img src="/assets/library/javafx-8-tutorial/part7/run-ant-build.png" alt="Run Ant Build"></p>
+<p>Збірка додатку займе <strong>трохи часу</strong> (близько хвилини на моєму комп'ютері).</p>
+<p>Якщо все пройшло вдало, ви повинні знайти нативні збірки в папці <code>build/deploy/bundles</code>. Ось так виглядає версія для Windows:</p>
+<p><img src="/assets/library/javafx-8-tutorial/part7/deployed-file.png" alt="Deployed File"></p>
+<p>Файл <code>AddressApp-1.0.exe</code> може використовуватися як єдиний файл для установки програми. Цей інсталятор скопіює нашу збірку в папку <code>C:/Users/[yourname]/AppData/Local/AddressApp</code>.</p>
+<h3 id="-">Що далі?</h3>
+<p>Сподіваюся, що цей підручник допоможе вам почати працювати з JavaFX і з цього моменту ви зможете писати свої JavaFX проекти.</p>
+<p>Я ціную будь-який зворотній зв'язок. Не соромтеся писати коментарі, якщо у вас є будь-які пропозиції або якщо вам щось не зрозуміло.</p>
+<h5 id="-">Вам можуть бути цікаві також деякі інші статті</h5>
+<ul>
+<li><a href="/blog/javafx-dialogs-official/">JavaFX Dialogs (official)</a></li>
+<li><a href="/blog/javafx-8-date-picker/">JavaFX Date Picker</a></li>
+<li><a href="/blog/javafx-8-event-handling-examples/">JavaFX Event Handling Examples</a></li>
+<li><a href="/blog/javafx-8-tableview-sorting-filtering/">JavaFX TableView Sorting and Filtering</a></li>
+<li><a href="/blog/javafx-8-tableview-cell-renderer/">JavaFX TableView Cell Renderer</a></li>
+</ul>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/javafx-8-tutorial/uk/" data-toggle="tooltip" title="Вступ">Intro</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part1/" data-toggle="tooltip" title="Частина 1: Scene Builder">1</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part2/" data-toggle="tooltip" title="Частина 2: Модель та компонент TableView">2</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part3/" data-toggle="tooltip" title="Частина 3: Взаємодія з користувачем">3</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part4/" data-toggle="tooltip" title="Частина 4: Стилізація за допомогою CSS">4</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part5/" data-toggle="tooltip" title="Частина 5: Збереження даних в XML">5</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part6/" data-toggle="tooltip" title="Частина 6: Статистична діаграма">6</a>
+      </li>
+        <li class="active">
+      <a href="/library/javafx-8-tutorial/uk/part7/" data-toggle="tooltip" title="Частина 7: Розгортання">7</a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/javafx-8-tutorial/uk/part7/';
+    var disqus_url = 'http://code.makery.ch/library/javafx-8-tutorial/uk/part7/';
+    var disqus_title = 'Підручник з JavaFX 8 - Частина 7: Розгортання';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

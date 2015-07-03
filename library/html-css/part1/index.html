@@ -1,0 +1,519 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HTML & CSS Tutorial - Part 1: Your First Website | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/html-css/part1/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/html-css/part1/" />
+    <link rel="alternate" hreflang="de" href="http://code.makery.ch/library/html-css/de/part1/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Create your first website. Get to know the programming tools and learn the basics of HTML and CSS.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="HTML & CSS Tutorial - Part 1: Your First Website | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Create your first website. Get to know the programming tools and learn the basics of HTML and CSS." />
+    <meta property="og:url" content="http://code.makery.ch/library/html-css/part1/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/html-css/portfolio.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/html-css-en-part1.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Articles in this Series</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/html-css/" class="list-group-item">
+        Introduction</a>
+      <a href="/library/html-css/part1/" class="list-group-item active">
+        Part 1: Your First Website</a>
+      <a href="/library/html-css/part2/" class="list-group-item">
+        Part 2: Publishing Your Website</a>
+      <a href="/library/html-css/part3/" class="list-group-item">
+        Part 3: Introduction to CSS</a>
+      <a href="/library/html-css/part4/" class="list-group-item">
+        Part 4: Development Tools in the Browser</a>
+      <a href="/library/html-css/part5/" class="list-group-item">
+        Part 5: Blog and Other Pages</a>
+      <a href="/library/html-css/part6/" class="list-group-item">
+        Part 6: Navigation</a>
+      <a href="/library/html-css/part7/" class="list-group-item">
+        Part 7: Bootstrap Framework</a>
+      <a href="/library/html-css/next/" class="list-group-item">
+<i class="fa fa-fw fa-flag-checkered"></i>        Next Steps</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Downloads</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-html-css/releases/download/v1.0/portfolio-part1.zip" class="list-group-item">
+<i class="fa fa-fw fa-file-archive-o"></i>        Portfolio Part 1</a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Languages</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/html-css/part1/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/html-css/de/part1/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Deutsch
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">HTML & CSS Tutorial - Part 1: Your First Website</h1>
+            <div class="article-date">
+  Apr 08, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Articles in this Series <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/html-css/">
+        Introduction</a></li>
+      <li class=" active"><a href="/library/html-css/part1/">
+        Part 1: Your First Website</a></li>
+      <li class=""><a href="/library/html-css/part2/">
+        Part 2: Publishing Your Website</a></li>
+      <li class=""><a href="/library/html-css/part3/">
+        Part 3: Introduction to CSS</a></li>
+      <li class=""><a href="/library/html-css/part4/">
+        Part 4: Development Tools in the Browser</a></li>
+      <li class=""><a href="/library/html-css/part5/">
+        Part 5: Blog and Other Pages</a></li>
+      <li class=""><a href="/library/html-css/part6/">
+        Part 6: Navigation</a></li>
+      <li class=""><a href="/library/html-css/part7/">
+        Part 7: Bootstrap Framework</a></li>
+      <li class=""><a href="/library/html-css/next/">
+<i class="fa fa-fw fa-flag-checkered"></i>        Next Steps</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Downloads <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-html-css/releases/download/v1.0/portfolio-part1.zip">
+<i class="fa fa-fw fa-file-archive-o"></i>        Portfolio Part 1</a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Languages <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=" active">
+        <a href="/library/html-css/part1/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/html-css/de/part1/"><i class="fa fa-fw fa-globe"></i> Deutsch</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p>Let's dive right in and create our first web page.</p>
+<h2 id="our-tools">Our Tools</h2>
+<p>For web development, you need two programs: an <abbr data-toggle="tooltip" title="Normal text editor or a code editor">editor</abbr> to create the files for the website and a <abbr data-toggle="tooltip" title="For example, Internet Explorer, Firefox, Safari, or Chrome">browser</abbr> to view and test your website.</p>
+<h3 id="editor">Editor</h3>
+<p>For creating web pages, a normal text editor would be sufficient. But there are editors that greatly simplify your work as a programmer. Therefore, I recommend that you use a modern code editor.</p>
+<p><img src="/assets/library/html-css/part1/brackets-editor-screenshot.png" alt="Brackets Editor"></p>
+<p>My current favorite among the many editors is <a href="http://brackets.io/">Brackets</a> (free from Adobe). You may use an editor of your choice but I will occasionally refer to some functions of Brackets. Good alternatives to Brackets are be <a href="http://atom.io">Atom</a> or the slightly older but very good <a href="http://notepad-plus-plus.org/">Notepad++</a>.</p>
+<p><a href="http://brackets.io" target="_blank"><img src="/assets/library/html-css/part1/brackets-editor-logo.jpg" alt="Brackets Editor Logo">
+</a></p>
+<p>Go ahead and install an editor. If you do not know which one, use <a href="http://brackets.io">Brackets</a> for now.</p>
+<h3 id="browser">Browser</h3>
+<p>Our website should, of course, run in all major browsers (Internet Explorer, Firefox, Chrome and Safari). However, for web development I recommend you use <a href="https://www.google.com/chrome/browser/">Chrome</a>. Chrome includes very useful tools for developers which you will use often. In addition, Chrome is best supported by the Brackets editor so that changes in the editor are immediately visible in Chrome (via <em>Live Reload</em>).</p>
+<p><a href="https://www.google.com/chrome/browser/" target="_blank"><img src="/assets/library/html-css/part1/chrome-logo.png" alt="Chrome Logo"></a></p>
+<p>If you do not have Chrome on your computer, you can <a href="https://www.google.com/chrome/browser/">install it here</a>.</p>
+<h2 id="creating-an-html-document">Creating an HTML Document</h2>
+<p>Equipped with editor and browser, let's create the first HTML document for our website.</p>
+<ol>
+<li><p>Create a folder on your computer for your project. Name the folder <em>Portfolio</em> (or anything you want).</p>
+</li>
+<li><p>Open Brackets (or your code editor of choice).</p>
+</li>
+<li><p>Open the <strong>File</strong> menu and select <strong>Open Folder ...</strong>. Browse for the folder you created and open it.</p>
+<p>
+<img src="/assets/library/html-css/part1/open-folder.png" alt="Open Folder">
+</p>
+</li>
+<li><p>Right-click below the folder and select <strong>New File</strong>. Name the file <code>index.html</code>.</p>
+<p>
+<img src="/assets/library/html-css/part1/new-file.png" alt="New File">
+</p>
+</li>
+<li><p>Now you have a blank text file named <code>index.html</code>.</p>
+<p>
+<img src="/assets/library/html-css/part1/new-index-file.png" alt="index.html">
+</p>
+
+
+</li>
+</ol>
+<h3 id="why-index-html-">Why index.html?</h3>
+<p>You could probably assume, the name <code>index.html</code> does have special meaning. If a website address is called, for example <code>http://code.makery.ch</code>, the <code>index.html</code> file is automatically displayed first, which in this case is <code>http://code.makery.ch/index.html</code>. For us, our first <code>index.html</code> will become our home page.</p>
+<h3 id="viewing-and-refreshing">Viewing and Refreshing</h3>
+<p>Now you can fill the document with content. Type the following lines in your HTML.</p>
+<p><img src="/assets/library/html-css/part1/first-website-de.png" alt="HTML Structure"></p>
+<p>To view the page, click the <em>flash</em> on the right border of Brackets (Live Preview). If Brackets finds the Chrome browser, the page is now displayed and whenever you make changes, they are automatically updated.</p>
+<div class="alert alert-info">
+<p>
+If the <strong>page does not appear</strong>: Locate the <code>index.html</code> file on your computer and open it in Chrome or in another browser.
+</p>
+<p>
+If the page is <strong>not updated automatically</strong>: Save all files and click <code>F5</code> or <code>cmd+R</code> in the browser. 
+</p>
+</div>
+
+<p><strong>Congratulations! You have just created your first website!</strong></p>
+<h3 id="indentation">Indentation</h3>
+<p>In order to keep your code clean, it is important that you correctly indent the lines with the <strong>tab key</strong>. The default in Brackets is usually a tab size of 4 spaces. I find this a bit long. I recommend that you change the setting at the bottom of Brackets to <code>Spaces: 2</code>.</p>
+<p><img src="/assets/library/html-css/part1/brackets-spaces.png" alt="Brackets Spaces"></p>
+<p><strong>Important:</strong> Pay close attention to the example code and indent accordingly. It is important that you develop clean programming habits from the very beginning!</p>
+<div class="alert alert-info">
+  <p><strong>Tip 1:</strong> Use <code>Shift+Tab</code> keys to move indentation to the left.</p>
+  <p><strong>Tip 2:</strong> You can indent multiple lines at once if you select them and click <code>Tab</code> or <code>Shift+Tab</code>.</p>
+</div>
+
+
+<h2 id="html-elements">HTML Elements</h2>
+<h3 id="tags">Tags</h3>
+<p>In the above example you have already seen the typical HTML characters with angle brackets. These are called <strong>tags</strong>.</p>
+<p><strong>HTML elements</strong> consist usually (but not always) of two tags, one opening and one closing. In our example, <code>&lt;html&gt;</code> is an opening tag and <code>&lt;/html&gt;</code> with the slash is a closing tag.</p>
+<p>The text between the opening and the closing tag is the content of the HTML element. With <code>&lt;html&gt;</code> and <code>&lt;/html&gt;</code> we tell the browser about the beginning and end of the HTML of our web page.</p>
+<p>The second tag we have seen is the <code>&lt;body&gt;</code> tag. It states that all content between the opening <code>&lt;body&gt;</code> and the closing <code>&lt;/body&gt;</code> tags are to be shown in the main area of the browser.</p>
+<h3 id="attributes">Attributes</h3>
+<p>Attributes declare additional information for an item. Attributes are part of the opening tag of an element and always have a <strong>name</strong> and a <strong>value</strong>.</p>
+<p>As an example, let's look at the HTML element for a link. It is probably one of the most important elements &mdash; what would the internet be without links?</p>
+<p><img src="/assets/library/html-css/part1/html-element-attribute.png" alt="HTML Element"></p>
+<p>The <code>&lt;a&gt;</code> element above includes an <code>href</code> attribute (short for "hypertext reference") with the value <code>http://code.makery.ch</code>. The browser knows that it must show the link as <a href="http://code.makery.ch">My Website</a>.</p>
+<h2 id="basic-structure-of-an-html-page">Basic Structure of an HTML Page</h2>
+<p>We have already seen the two elements <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code>. But the basic structure of an HTML page usually contains a few more. Adjust your website to the following code. Afterwards, we will discuss each element it.</p>
+<h5 id="html-structure">HTML Structure</h5>
+<pre class="prettyprint lang-html">
+&lt;!DOCTYPE html>
+&lt;html>
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;title>Web Portfolio of Marco&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;h1>Web Portfolio of Marco&lt;/h1>
+    &lt;p>Write anything you want to tell the world.&lt;/p>
+  &lt;/body>
+&lt;/html>
+</pre>
+
+
+<h4 id="explanations">Explanations</h4>
+<ul>
+<li>Always put <code>&lt;!DOCTYPE html&gt;</code> on the first line. It tells the browser about the type of the document.</li>
+<li>The <code>&lt;html&gt;</code> tag indicates the start and <code>&lt;/html&gt;</code> the end of the document.</li>
+<li>The <code>&lt;head&gt;</code> element contains additional information about the page. In contrast to the <code>&lt;body&gt;</code> element, this information does not appear in the main area of the browser.<ul>
+<li>Within the <code>&lt;head&gt;</code>, there should be an indication about the character set: <code>&lt;meta charset="utf-8"&gt;</code>. If you do not specify the character set some special characters may not get displayed correctly. You might have noticed that the <code>&lt;meta&gt;</code> element has no closing tag. There are a few <abbr data-toggle="tooltip" title="Important elements without closing tags: <br>, <img>, <meta>, <hr>, <link>, <input>">elements without closing tags</abbr>, but they are the exception.</li>
+<li>Next you'll see the <code>&lt;title&gt;</code> element. The title is displayed in the title bar at the top of your browser window.</li>
+</ul>
+</li>
+<li>Everything inside the <code>&lt;body&gt;</code> element is displayed in the main area of the browser.<ul>
+<li>A <code>&lt;h1&gt;</code> defines the main heading. Sub headings can be created with <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>, <code>&lt;h5&gt;</code>, and <code>&lt;h6&gt;</code>.</li>
+<li>Text between <code>&lt;p&gt;</code> and<code>&lt;/p&gt;</code> is a paragraph.</li>
+</ul>
+</li>
+<li>After each opening tag, the next element should be indented (with a tab or two spaces) for better overview. Make sure you follow this habit.</li>
+</ul>
+<div class="alert alert-info">
+  <p><strong>Tip 1:</strong> Keep this basic HTML structure handy. You can use it for any new HTML page! </p>
+  <p><strong>Tip 2:</strong> Use the keyboard shortcut <code>Ctrl+S</code> to save the current file.</p>
+  <p><strong>Tip 3:</strong> Use the keyboard shortcut <code>Ctrl+Z</code> for undo.</p>
+</div>
+
+<p>With these basic HTML elements we are well prepared to bring our website to a new level. First, let's add an image so that the home page of our portfolio looks a bit more interesting.</p>
+<h2 id="inserting-an-image">Inserting an Image</h2>
+<p>To insert an image we use the <code>&lt;img&gt;</code> element. The following example will insert my picture:</p>
+<pre class="prettyprint lang-html">
+&lt;img src="marco.jpg" alt="Picture of me">
+</pre>
+
+<p>The <code>&lt;img&gt;</code> element only has one opening but no closing tag. It contains a <code>src</code> and an <code>alt</code> attribute. The <code>src</code> attribute specifies the <abbr data-toggle="tooltip" title="Uniform Resource Locator">URL</abbr>, that is the location and file name of the image. The <code>alt</code> attribute is an "alternative text", which describes the content of the image. This text is used by search engines and if for some reason the image can not be displayed, for example on a screen reader for the blind.</p>
+<h3 id="relative-and-absolute-urls">Relative and Absolute URLs</h3>
+<p>URLs are used for the <code>src</code> attribute of images and also for the<code>href</code> attribute of links. The URL specifies the "address" of a file (for example another web page or an image). Depending on the location of the file, either a <em>relative</em> or <em>absolute</em> URL must be used.</p>
+<p>If a file <strong>is part of the same web site</strong>, then a <strong><em>relative URL</em></strong> can be used. As we have seen in the example above, this is only the name of the file.</p>
+<p>A <em>relative URL</em> is always <em>relative</em> to the current HTML page. If the target file is located in another folder, this must be taken into account. If the image from the example above were in a subfolder called <code>images</code>, the <em>relative URL</em> would be <code>images/marco.jpg</code>. If the file is in a parent folder you can reach it with <code>../</code>. The URL for the image in this case would be <code>../marco.jpg</code>.</p>
+<p>If the file is located <strong>on another website</strong>, an <strong><em>absolut URL</em></strong> must be used. Absolute URLs contain the entire domain name and path. An example would be <code>http://code.makery.ch/images/marco.jpg</code>.</p>
+<div class="alert alert-info">
+  <strong>Remember the following about URLs:</strong>
+  <ul>
+    <li>An URL that starts with <code>http://</code> is an absolute URL.</li>
+    <li>An URL without <code>http://</code> is an URL relative to the current web page.</li>
+    <li>A dot (<code>.</code>) refers to the current directory.</li>
+    <li>Two dots (<code>..</code>) refer to the parent directory.</li>
+  </ul>
+</div>
+
+
+<h5 id="examples-of-relative-and-absolute-urls">Examples of Relative and Absolute URLs</h5>
+<pre class="prettyprint lang-html">
+&lt;!-- Relative URLs -->
+&lt;a href="image-gallery.html">Image Gallery&lt;/a>
+&lt;a href="blog/first-blog-entry.html">My First Blog Entry&lt;/a>
+&lt;a href="../image-gallery.html">Back to Image Gallery&lt;/a>
+
+&lt;!-- Absolute URLs -->
+&lt;a href="http://www.my-colleague.com/blog.html">Blog of a Colleague&lt;/a>
+</pre>
+
+
+<h3 id="portfolio-with-an-image">Portfolio with an Image</h3>
+<p>If you have not already done so, try and insert an image in your portfolio. You must copy an image to your <em>Portfolio</em> folder on your computer. Make sure that you specify the exact file name, including the file extension.</p>
+<p>All of your code could now look something like this (I've added a subheading and some more text):</p>
+<h5 id="index-html-with-finished-portfolio-code">index.html with Finished Portfolio Code</h5>
+<pre class="prettyprint lang-html">
+&lt;!DOCTYPE html>
+&lt;html>
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;title>Web Portfolio of Marco&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;h1>Web Portfolio of Marco&lt;/h1>
+
+    &lt;h2>Welcome!&lt;/h2>
+
+    &lt;p>Thanks for stopping by.&lt;/p>
+
+    &lt;p>Please have a look around. In the blog section I document my experiences in programming. You may also look at my web projects. Have Fun.&lt;/p>
+
+    &lt;img src="marco.jpg" alt="Picture of me">
+
+    &lt;p>Marco :-)&lt;/p>
+  &lt;/body>
+&lt;/html>
+</pre>
+
+<p>That's how the portfolio currently looks like in the browser:</p>
+<p><img src="/assets/library/html-css/part1/portfolio.jpg" alt="Portfolio"></p>
+<h2 id="what-s-next-">What's next?</h2>
+<p>&rarr; In the next section you will learn how to publish your website on the internet. Continue with <a href="/library/html-css/part2/">Part 2: Publishing Your Website</a></p>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/html-css/" data-toggle="tooltip" title="Introduction">Intro</a>
+      </li>
+        <li class="active">
+      <a href="/library/html-css/part1/" data-toggle="tooltip" title="Part 1: Your First Website">1</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part2/" data-toggle="tooltip" title="Part 2: Publishing Your Website">2</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part3/" data-toggle="tooltip" title="Part 3: Introduction to CSS">3</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part4/" data-toggle="tooltip" title="Part 4: Development Tools in the Browser">4</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part5/" data-toggle="tooltip" title="Part 5: Blog and Other Pages">5</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part6/" data-toggle="tooltip" title="Part 6: Navigation">6</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part7/" data-toggle="tooltip" title="Part 7: Bootstrap Framework">7</a>
+      </li>
+        <li>
+      <a href="/library/html-css/next/" data-toggle="tooltip" title="Next Steps"><i class="fa fa-flag-checkered"></i></a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/html-css/part1/';
+    var disqus_url = 'http://code.makery.ch/library/html-css/part1/';
+    var disqus_title = 'HTML & CSS Tutorial - Part 1: Your First Website';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

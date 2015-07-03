@@ -1,0 +1,578 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JavaFX 8 Tutorial - Parte 6: Grafico delle Statistiche | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/javafx-8-tutorial/it/part6/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/javafx-8-tutorial/part6/" />
+    <link rel="alternate" hreflang="es" href="http://code.makery.ch/library/javafx-8-tutorial/es/part6/" />
+    <link rel="alternate" hreflang="fr" href="http://code.makery.ch/library/javafx-8-tutorial/fr/part6/" />
+    <link rel="alternate" hreflang="id" href="http://code.makery.ch/library/javafx-8-tutorial/id/part6/" />
+    <link rel="alternate" hreflang="it" href="http://code.makery.ch/library/javafx-8-tutorial/it/part6/" />
+    <link rel="alternate" hreflang="pt" href="http://code.makery.ch/library/javafx-8-tutorial/pt/part6/" />
+    <link rel="alternate" hreflang="ru" href="http://code.makery.ch/library/javafx-8-tutorial/ru/part6/" />
+    <link rel="alternate" hreflang="tr" href="http://code.makery.ch/library/javafx-8-tutorial/tr/part6/" />
+    <link rel="alternate" hreflang="uk" href="http://code.makery.ch/library/javafx-8-tutorial/uk/part6/" />
+    <link rel="alternate" hreflang="zh-cn" href="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part6/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Learn how to create a JavaFX Bar Chart.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="JavaFX 8 Tutorial - Parte 6: Grafico delle Statistiche | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Learn how to create a JavaFX Bar Chart." />
+    <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/it/part6/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/javafx-8-tutorial/part6/addressapp-part6.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/javafx-8-tutorial-it-part6.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Articoli in questa serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/it/" class="list-group-item">
+        Introduzione</a>
+      <a href="/library/javafx-8-tutorial/it/part1/" class="list-group-item">
+        Parte 1: Scene Builder</a>
+      <a href="/library/javafx-8-tutorial/it/part2/" class="list-group-item">
+        Parte 2: Model and TableView</a>
+      <a href="/library/javafx-8-tutorial/it/part3/" class="list-group-item">
+        Parte 3: Interazione con l'utente</a>
+      <a href="/library/javafx-8-tutorial/it/part4/" class="list-group-item">
+        Parte 4: CSS Styling</a>
+      <a href="/library/javafx-8-tutorial/it/part5/" class="list-group-item">
+        Parte 5: Conservazione dati come XML</a>
+      <a href="/library/javafx-8-tutorial/it/part6/" class="list-group-item active">
+        Parte 6: Grafico delle statistiche</a>
+      <a href="/library/javafx-8-tutorial/it/part7/" class="list-group-item">
+        Parte 7: Deployment</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Download Sources</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.1/addressapp-jfx8u40-part-6.zip" class="list-group-item">
+<i class="fa fa-fw fa-download"></i>        Part 6 as Eclipse Project <em>(requires at least JDK 8u40)</em></a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Languages</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/javafx-8-tutorial/es/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Español
+      </a>
+      <a href="/library/javafx-8-tutorial/fr/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Français
+      </a>
+      <a href="/library/javafx-8-tutorial/id/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Bahasa Indonesia
+      </a>
+      <a href="/library/javafx-8-tutorial/it/part6/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> Italiano
+      </a>
+      <a href="/library/javafx-8-tutorial/pt/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Português
+      </a>
+      <a href="/library/javafx-8-tutorial/ru/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Русский
+      </a>
+      <a href="/library/javafx-8-tutorial/tr/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Türkçe
+      </a>
+      <a href="/library/javafx-8-tutorial/uk/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Українська
+      </a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> 中文（简体）
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">JavaFX 8 Tutorial - Parte 6: Grafico delle Statistiche</h1>
+            <div class="article-date">
+  May 09, 2014
+  • Updated Mar 12, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Articoli in questa serie <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/javafx-8-tutorial/it/">
+        Introduzione</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/it/part1/">
+        Parte 1: Scene Builder</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/it/part2/">
+        Parte 2: Model and TableView</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/it/part3/">
+        Parte 3: Interazione con l'utente</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/it/part4/">
+        Parte 4: CSS Styling</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/it/part5/">
+        Parte 5: Conservazione dati come XML</a></li>
+      <li class=" active"><a href="/library/javafx-8-tutorial/it/part6/">
+        Parte 6: Grafico delle statistiche</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/it/part7/">
+        Parte 7: Deployment</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Download Sources <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.1/addressapp-jfx8u40-part-6.zip">
+<i class="fa fa-fw fa-download"></i>        Part 6 as Eclipse Project <em>(requires at least JDK 8u40)</em></a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Languages <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class="">
+        <a href="/library/javafx-8-tutorial/part6/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/es/part6/"><i class="fa fa-fw fa-globe"></i> Español</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/fr/part6/"><i class="fa fa-fw fa-globe"></i> Français</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/id/part6/"><i class="fa fa-fw fa-globe"></i> Bahasa Indonesia</a>
+    </li>
+      <li class=" active">
+        <a href="/library/javafx-8-tutorial/it/part6/"><i class="fa fa-fw fa-globe"></i> Italiano</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/pt/part6/"><i class="fa fa-fw fa-globe"></i> Português</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/ru/part6/"><i class="fa fa-fw fa-globe"></i> Русский</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/tr/part6/"><i class="fa fa-fw fa-globe"></i> Türkçe</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/uk/part6/"><i class="fa fa-fw fa-globe"></i> Українська</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/zh-cn/part6/"><i class="fa fa-fw fa-globe"></i> 中文（简体）</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p><img src="/assets/library/javafx-8-tutorial/part6/addressapp-part6.png" alt="Screenshot AddressApp Part 6"></p>
+<h2 id="punti-nella-parte-6">Punti nella Parte 6</h2>
+<ul>
+<li>Creare un <strong>Grafico Statistiche</strong> per visualizzare la distribuzione dei compleanni.</li>
+</ul>
+<hr>
+<h2 id="statistiche-di-compleanno">Statistiche di Compleanno</h2>
+<p>Tutte le persone nell'applicazione hanno una data di nascita. Sarebbe carino avere qualche statistica riguardo a quando le persone celebrano il compleanno.</p>
+<p>Useremo un <strong>Bar Chart</strong> contenente una barra per ogni mese. Ogni barra mostra quante persone hanno il loro compleanno in un determinato mese.</p>
+<h2 id="la-vista-fxml-statistiche">La Vista FXML Statistiche</h2>
+<ol>
+<li><p>Iniziamo creando il file <code>BirthdayStatistics.fxml</code> all'interno del package <code>ch.makery.address.view</code> (<em>Click destro su package | New | other... | New FXML Document</em>).<br><img src="/assets/library/javafx-8-tutorial/part6/birthday-statistics-fxml.png" alt="Birthday Statistics FXML"></p>
+</li>
+<li><p>Apriamo il file <code>BirthdayStatistics.fxml</code> con Scene Builder.</p>
+</li>
+<li><p>Selezioniamo la radice <code>AnchorPane</code>. Nel gruppo <em>Layout</em> settare <em>Pref Width</em> a 620 e <em>Pref Height</em> a 450.</p>
+</li>
+<li><p>Aggiungiamo <code>BarChart</code> all'<code>AnchorPane</code>.</p>
+</li>
+<li><p>Click destro su <code>BarChart</code> e selezionare <em>Fit to Parent</em>.</p>
+</li>
+<li><p>Salva il file fxml, vai su Eclipse e aggiorna il progetto.</p>
+</li>
+</ol>
+<p>Prima di tornare indietro a Scene Builder creeremo prima il controller e connetteremo tutto nella nostra<code>MainApp</code>.</p>
+<h2 id="il-controller-statistiche">Il Controller Statistiche</h2>
+<p>Nel package vista <code>ch.makery.address.view</code> creare la classe java chiamata <code>BirthdayStatisticsController.java</code>.</p>
+<p>Diamo prima un'occhiata all'intera classe controller prima di iniziare le spiegazioni:</p>
+<h5 id="birthdaystatisticscontroller-java">BirthdayStatisticsController.java</h5>
+<pre class="prettyprint lang-java">
+package ch.makery.address.view;
+
+import java.text.DateFormatSymbols;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.XYChart;
+import ch.makery.address.model.Person;
+
+/**
+ * The controller for the birthday statistics view.
+ * 
+ * @author Marco Jakob
+ */
+public class BirthdayStatisticsController {
+
+    @FXML
+    private BarChart&lt;String, Integer> barChart;
+
+    @FXML
+    private CategoryAxis xAxis;
+
+    private ObservableList&lt;String> monthNames = FXCollections.observableArrayList();
+
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the fxml file has been loaded.
+     */
+    @FXML
+    private void initialize() {
+        // Get an array with the English month names.
+        String[] months = DateFormatSymbols.getInstance(Locale.ENGLISH).getMonths();
+        // Convert it to a list and add it to our ObservableList of months.
+        monthNames.addAll(Arrays.asList(months));
+
+        // Assign the month names as categories for the horizontal axis.
+        xAxis.setCategories(monthNames);
+    }
+
+    /**
+     * Sets the persons to show the statistics for.
+     * 
+     * @param persons
+     */
+    public void setPersonData(List&lt;Person> persons) {
+        // Count the number of people having their birthday in a specific month.
+        int[] monthCounter = new int[12];
+        for (Person p : persons) {
+            int month = p.getBirthday().getMonthValue() - 1;
+            monthCounter[month]++;
+        }
+
+        XYChart.Series&lt;String, Integer> series = new XYChart.Series&lt;>();
+
+        // Create a XYChart.Data object for each month. Add it to the series.
+        for (int i = 0; i &lt; monthCounter.length; i++) {
+            series.getData().add(new XYChart.Data&lt;>(monthNames.get(i), monthCounter[i]));
+        }
+
+        barChart.getData().add(series);
+    }
+}
+</pre>
+
+
+<h4 id="come-funziona-il-controller">Come funziona il controller</h4>
+<ol>
+<li><p>Il controller avrà bisogno dell'accesso a due elementi dal nostro file FXML:</p>
+<ul>
+<li>Il <code>barChar</code>: Di tipo <code>String</code> e <code>Integer</code>. <code>String</code> è usato per il mese sull'asse X mentre <code>Integer</code> è usato per il numero di persone in uno specifico mese. </li>
+<li>Il <code>xAxis</code>: useremo questo per aggiungere le Strings mese.   </li>
+</ul>
+</li>
+<li><p>Il metodo <code>initialize()</code> riempie l'asse X con una lista di tutti i mesi.</p>
+</li>
+<li><p>Il metodo <code>setPersonData(...)</code> verrà utilizzato dalla classe <code>MainApp</code> per settare i dati personali. Cicla attraverso tutte le persone e conta i compleanni per mese. Quindi aggiunge <code>XYChart.Data</code> per ogni mese alla serie di dati. Ogni oggetto <code>XYChart.Data</code> rappresenta una barra nel grafico.</p>
+</li>
+</ol>
+<hr>
+<h2 id="connettere-la-vista-al-controller">Connettere la Vista al Controller</h2>
+<ol>
+<li><p>Apri <code>BirthdayStatistics.fxml</code> in Scene Builder.</p>
+</li>
+<li><p>Nel gruppo <em>Controller</em> setta <code>BirthdayStatisticsController</code> come controller.</p>
+</li>
+<li><p>Seleziona <code>BarChart</code> e scegli <code>barChart</code> come fx:id Property (nel gruppo <em>Code</em>).</p>
+</li>
+<li><p>Seleziona <code>CategoryAxis</code> e scegli <code>xAxis</code> come fx:id Property.<br><img src="/assets/library/javafx-8-tutorial/part6/category-axis.png" alt="Category Axis"></p>
+</li>
+<li><p>Puoi aggiungere un titolo a <code>BarChart</code> (nel gruppo <em>Properties</em>) per personalizzare lo stile.</p>
+</li>
+</ol>
+<hr>
+<h2 id="connettere-la-vista-controller-con-mainapp">Connettere la Vista/Controller con MainApp</h2>
+<p>Useremo lo stesso meccanismo per la nostra <em>birthday statistics</em> che abbiamo usato per <em>edit person dialog</em>, un semplice dialog popup.</p>
+<p>Aggiungi il seguente metodo alla classe <code>MainApp</code>:</p>
+<pre class="prettyprint lang-java">
+/**
+ * Opens a dialog to show birthday statistics.
+ */
+public void showBirthdayStatistics() {
+    try {
+        // Load the fxml file and create a new stage for the popup.
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(MainApp.class.getResource("view/BirthdayStatistics.fxml"));
+        AnchorPane page = (AnchorPane) loader.load();
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Birthday Statistics");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(primaryStage);
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+
+        // Set the persons into the controller.
+        BirthdayStatisticsController controller = loader.getController();
+        controller.setPersonData(personData);
+
+        dialogStage.show();
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+</pre>
+
+<p>Ok, abbiamo settato tutto, ma non abbiamo ancora nulla che chiami il nuovo metodo <code>showBirthdayStatistics()</code>. Fortunatamente abbiamo già un menù in <code>RootLayout.fxml</code> che può essere usato per questo scopo.</p>
+<h3 id="mostra-il-men-statistiche-di-compleanno">Mostra il Menù Statistiche di Compleanno</h3>
+<p>Nel tuo <code>RootLayoutController</code> aggiungi il seguente metodo che si occuperà dei click dell'utente nell'oggetto di menù <em>show birthday statistics</em>: </p>
+<pre class="prettyprint lang-java">
+/**
+ * Opens the birthday statistics.
+ */
+@FXML
+private void handleShowBirthdayStatistics() {
+  mainApp.showBirthdayStatistics();
+}
+</pre>
+
+<p>Ora, apri il file <code>RootLayout.fxml</code> con Scene Builder. Crea il <code>Menu</code> <em>Statistics</em> con <code>MenuItem</code> <em>Show Statistics</em>:</p>
+<p><img src="/assets/library/javafx-8-tutorial/part6/show-statistics-menu.png" alt="Show Statistics Menu"></p>
+<p>Seleziona <em>Show Statistics</em> <code>MenuItem</code> e scegli <code>handleShowBirthdayStatistics</code> per <code>On Action</code> (nel gruppo <em>Code</em>)   </p>
+<p><img src="/assets/library/javafx-8-tutorial/part6/show-statistics-on-action.png" alt="Show Statistics On Action"></p>
+<p>Vai a Eclipse, aggiorna il progetto e <strong>testalo</strong>.</p>
+<hr>
+<h2 id="altre-info-su-javafx-charts">Altre info su JavaFX Charts</h2>
+<p>Un buon posto per ulteriori informazioni è il tutorial ufficiale della Oracle a <a href="http://docs.oracle.com/javase/8/javafx/user-interface-tutorial/charts.htm">Working with JavaFX Charts</a>.</p>
+<h3 id="cosa-viene-dopo-">Cosa viene dopo?</h3>
+<p>Nell'ultimo tutorial <a href="/library/javafx-8-tutorial/it/part7/">Parte 7</a> finalmente ci occuperemo della distribuzione (i.e. pacchettizzare e distribuire la nostra app agli utenti).</p>
+<h5 id="qualche-altro-articolo-che-potresti-trovare-interessante">Qualche altro articolo che potresti trovare interessante</h5>
+<ul>
+<li><a href="/blog/javafx-dialogs-official/">JavaFX Dialogs (official)</a></li>
+<li><a href="/blog/javafx-8-date-picker/">JavaFX Date Picker</a></li>
+<li><a href="/blog/javafx-8-event-handling-examples/">JavaFX Event Handling Examples</a></li>
+<li><a href="/blog/javafx-8-tableview-sorting-filtering/">JavaFX TableView Sorting and Filtering</a></li>
+<li><a href="/blog/javafx-8-tableview-cell-renderer/">JavaFX TableView Cell Renderer</a></li>
+</ul>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/javafx-8-tutorial/it/" data-toggle="tooltip" title="Introduzione">Intro</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/it/part1/" data-toggle="tooltip" title="Parte 1: Scene Builder">1</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/it/part2/" data-toggle="tooltip" title="Parte 2: Model and TableView">2</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/it/part3/" data-toggle="tooltip" title="Parte 3: Interazione con l'utente">3</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/it/part4/" data-toggle="tooltip" title="Parte 4: CSS Styling">4</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/it/part5/" data-toggle="tooltip" title="Parte 5: Conservazione dati come XML">5</a>
+      </li>
+        <li class="active">
+      <a href="/library/javafx-8-tutorial/it/part6/" data-toggle="tooltip" title="Parte 6: Grafico delle statistiche">6</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/it/part7/" data-toggle="tooltip" title="Parte 7: Deployment">7</a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/javafx-8-tutorial/it/part6/';
+    var disqus_url = 'http://code.makery.ch/library/javafx-8-tutorial/it/part6/';
+    var disqus_title = 'JavaFX 8 Tutorial - Parte 6: Grafico delle Statistiche';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

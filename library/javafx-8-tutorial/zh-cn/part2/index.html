@@ -1,0 +1,718 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JavaFX 8 教程 - 第二部分：Model 和 TableView | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part2/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/javafx-8-tutorial/part2/" />
+    <link rel="alternate" hreflang="es" href="http://code.makery.ch/library/javafx-8-tutorial/es/part2/" />
+    <link rel="alternate" hreflang="fr" href="http://code.makery.ch/library/javafx-8-tutorial/fr/part2/" />
+    <link rel="alternate" hreflang="id" href="http://code.makery.ch/library/javafx-8-tutorial/id/part2/" />
+    <link rel="alternate" hreflang="it" href="http://code.makery.ch/library/javafx-8-tutorial/it/part2/" />
+    <link rel="alternate" hreflang="pt" href="http://code.makery.ch/library/javafx-8-tutorial/pt/part2/" />
+    <link rel="alternate" hreflang="ru" href="http://code.makery.ch/library/javafx-8-tutorial/ru/part2/" />
+    <link rel="alternate" hreflang="tr" href="http://code.makery.ch/library/javafx-8-tutorial/tr/part2/" />
+    <link rel="alternate" hreflang="uk" href="http://code.makery.ch/library/javafx-8-tutorial/uk/part2/" />
+    <link rel="alternate" hreflang="zh-cn" href="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part2/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="JavaFX 8 教程 - 第二部分：Model 和 TableView | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part2/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/javafx-8-tutorial/part2/addressapp-part2.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/javafx-8-tutorial-zh-cn-part2.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">系列文章</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/zh-cn/" class="list-group-item">
+        简介</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part1/" class="list-group-item">
+        第一部分：Scene Builder</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part2/" class="list-group-item active">
+        第二部分：Model 和 TableView</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part3/" class="list-group-item">
+        第三部分：与用户的交互</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part4/" class="list-group-item">
+        第四部分：CSS 样式</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part5/" class="list-group-item">
+        第五部分：将数据用 XML 格式存储</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part6/" class="list-group-item">
+        第六部分：统计图</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part7/" class="list-group-item">
+        第七部分：部署</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">下载源代码</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/addressapp-jfx8-part-2.zip" class="list-group-item">
+<i class="fa fa-fw fa-download"></i>        Part 2 as Eclipse Project <em>(requires at least JDK 8u20)</em></a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">语言</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/part2/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/javafx-8-tutorial/es/part2/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Español
+      </a>
+      <a href="/library/javafx-8-tutorial/fr/part2/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Français
+      </a>
+      <a href="/library/javafx-8-tutorial/id/part2/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Bahasa Indonesia
+      </a>
+      <a href="/library/javafx-8-tutorial/it/part2/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Italiano
+      </a>
+      <a href="/library/javafx-8-tutorial/pt/part2/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Português
+      </a>
+      <a href="/library/javafx-8-tutorial/ru/part2/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Русский
+      </a>
+      <a href="/library/javafx-8-tutorial/tr/part2/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Türkçe
+      </a>
+      <a href="/library/javafx-8-tutorial/uk/part2/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Українська
+      </a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part2/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> 中文（简体）
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">JavaFX 8 教程 - 第二部分：Model 和 TableView</h1>
+            <div class="article-date">
+  Oct 08, 2014
+  • Updated Jan 15, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">系列文章 <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/">
+        简介</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part1/">
+        第一部分：Scene Builder</a></li>
+      <li class=" active"><a href="/library/javafx-8-tutorial/zh-cn/part2/">
+        第二部分：Model 和 TableView</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part3/">
+        第三部分：与用户的交互</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part4/">
+        第四部分：CSS 样式</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part5/">
+        第五部分：将数据用 XML 格式存储</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part6/">
+        第六部分：统计图</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part7/">
+        第七部分：部署</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">下载源代码 <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/addressapp-jfx8-part-2.zip">
+<i class="fa fa-fw fa-download"></i>        Part 2 as Eclipse Project <em>(requires at least JDK 8u20)</em></a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">语言 <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class="">
+        <a href="/library/javafx-8-tutorial/part2/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/es/part2/"><i class="fa fa-fw fa-globe"></i> Español</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/fr/part2/"><i class="fa fa-fw fa-globe"></i> Français</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/id/part2/"><i class="fa fa-fw fa-globe"></i> Bahasa Indonesia</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/it/part2/"><i class="fa fa-fw fa-globe"></i> Italiano</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/pt/part2/"><i class="fa fa-fw fa-globe"></i> Português</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/ru/part2/"><i class="fa fa-fw fa-globe"></i> Русский</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/tr/part2/"><i class="fa fa-fw fa-globe"></i> Türkçe</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/uk/part2/"><i class="fa fa-fw fa-globe"></i> Українська</a>
+    </li>
+      <li class=" active">
+        <a href="/library/javafx-8-tutorial/zh-cn/part2/"><i class="fa fa-fw fa-globe"></i> 中文（简体）</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p><img src="/assets/library/javafx-8-tutorial/part2/addressapp-part2.png" alt="Screenshot AddressApp Part 2"></p>
+<h2 id="-">第二部分的主题</h2>
+<ul>
+<li>创建一个 <strong>模型</strong> 类。</li>
+<li>在 <strong>ObservableList</strong> 使用模型类。</li>
+<li>使用 <strong>Controllers</strong> 在 <strong>TableView</strong> 上显示数据。</li>
+</ul>
+<hr>
+<h2 id="-">创建 <strong>模型</strong> 类。</h2>
+<p>我们需要一个模型类来保存联系人信息到我们的通讯录中。在模型包中 (<code>ch.makery.address.model</code>) 添加一个叫 <code>Person</code>的类。<code>Person</code> 类将会有一些变量，名字，地址和生日。将以下代码添加到类。在代码后，我将解释一些 JavaFX 的细节。</p>
+<h5 id="person-java">Person.java</h5>
+<pre class="prettyprint lang-java">
+package ch.makery.address.model;
+
+import java.time.LocalDate;
+
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+/**
+ * Model class for a Person.
+ *
+ * @author Marco Jakob
+ */
+public class Person {
+
+    private final StringProperty firstName;
+    private final StringProperty lastName;
+    private final StringProperty street;
+    private final IntegerProperty postalCode;
+    private final StringProperty city;
+    private final ObjectProperty&lt;LocalDate&gt; birthday;
+
+    /**
+     * Default constructor.
+     */
+    public Person() {
+        this(null, null);
+    }
+
+    /**
+     * Constructor with some initial data.
+     * 
+     * @param firstName
+     * @param lastName
+     */
+    public Person(String firstName, String lastName) {
+        this.firstName = new SimpleStringProperty(firstName);
+        this.lastName = new SimpleStringProperty(lastName);
+
+        // Some initial dummy data, just for convenient testing.
+        this.street = new SimpleStringProperty("some street");
+        this.postalCode = new SimpleIntegerProperty(1234);
+        this.city = new SimpleStringProperty("some city");
+        this.birthday = new SimpleObjectProperty&lt;LocalDate&gt;(LocalDate.of(1999, 2, 21));
+    }
+
+    public String getFirstName() {
+        return firstName.get();
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName.set(firstName);
+    }
+
+    public StringProperty firstNameProperty() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName.get();
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName.set(lastName);
+    }
+
+    public StringProperty lastNameProperty() {
+        return lastName;
+    }
+
+    public String getStreet() {
+        return street.get();
+    }
+
+    public void setStreet(String street) {
+        this.street.set(street);
+    }
+
+    public StringProperty streetProperty() {
+        return street;
+    }
+
+    public int getPostalCode() {
+        return postalCode.get();
+    }
+
+    public void setPostalCode(int postalCode) {
+        this.postalCode.set(postalCode);
+    }
+
+    public IntegerProperty postalCodeProperty() {
+        return postalCode;
+    }
+
+    public String getCity() {
+        return city.get();
+    }
+
+    public void setCity(String city) {
+        this.city.set(city);
+    }
+
+    public StringProperty cityProperty() {
+        return city;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday.get();
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday.set(birthday);
+    }
+
+    public ObjectProperty&lt;LocalDate&gt; birthdayProperty() {
+        return birthday;
+    }
+}
+</pre>
+
+
+<h3 id="-">解释</h3>
+<ul>
+<li>在JavaFX中,对一个模型类的所有属性使用 <a href="http://docs.oracle.com/javase/8/javafx/api/javafx/beans/property/Property.html"><code>Properties</code></a>是很常见的. 一个 <code>Property</code> 允许我们, 打个比方, 当 <code>lastName</code> 或其他属性被改变时自动收到通知, 这有助于我们保持视图与数据的同步，阅读 <a href="http://docs.oracle.com/javase/8/javafx/properties-binding-tutorial/binding.htm">Using JavaFX Properties and Binding</a> 学习更多关于 <code>Properties</code> 的内容。</li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html"><code>LocalDate</code></a>, 我们使用了 <code>birthday</code> 类型, 这是一个新的部分在 <a href="http://docs.oracle.com/javase/tutorial/datetime/iso/">Date and Time API for JDK 8</a>.</li>
+</ul>
+<hr>
+<h2 id="-">人员列表</h2>
+<p>我们的应用主要管理的数据是一群人的信息.让我们在 <code>MainApp</code> 类里面创建一个 <code>Person</code> 对象的列表。稍后其他所有的控制器类将存取 <code>MainApp</code> 的核心列表。</p>
+<h3 id="observablelist">ObservableList</h3>
+<p>我们处理JavaFX的view classes需要在人员列表发生任何改变时都被通知.
+这是很重要的,不然视图就会和数据不同步.为了达到这个目的,JavaFX引入了一些新的<a href="http://docs.oracle.com/javase/8/javafx/collections-tutorial/collections.htm">集合类</a>. </p>
+<p>在这些集合中, 我们需要的是<code>ObservableList</code>. 将以下代码增加到<code>MainApp</code>类的开头去创建一个新的<code>ObservableList</code>. 我们也会增加一个构造器去创建一些样本数据和一个公共的getter方法:</p>
+<h5 id="mainapp-java">MainApp.java</h5>
+<pre class="prettyprint lang-java">
+
+    // ... AFTER THE OTHER VARIABLES ...
+
+    /**
+     * The data as an observable list of Persons.
+     */
+    private ObservableList&lt;Person&gt; personData = FXCollections.observableArrayList();
+
+    /**
+     * Constructor
+     */
+    public MainApp() {
+        // Add some sample data
+        personData.add(new Person("Hans", "Muster"));
+        personData.add(new Person("Ruth", "Mueller"));
+        personData.add(new Person("Heinz", "Kurz"));
+        personData.add(new Person("Cornelia", "Meier"));
+        personData.add(new Person("Werner", "Meyer"));
+        personData.add(new Person("Lydia", "Kunz"));
+        personData.add(new Person("Anna", "Best"));
+        personData.add(new Person("Stefan", "Meier"));
+        personData.add(new Person("Martin", "Mueller"));
+    }
+
+    /**
+     * Returns the data as an observable list of Persons. 
+     * @return
+     */
+    public ObservableList&lt;Person&gt; getPersonData() {
+        return personData;
+    }
+
+    // ... THE REST OF THE CLASS ...
+</pre>
+
+
+<hr>
+<h2 id="the-personoverviewcontroller">The PersonOverviewController</h2>
+<p>现在我们终于要将数据加入到表格中了,我们需要一个控制器为了<code>PersonOverview.fxml</code>,.</p>
+<ol>
+<li>在<strong>view</strong>包下创建一个名为 <code>PersonOverviewController.java</code>的普通java类(我们需要将这个类放在和<code>PersonOverview.fxml</code>相同的包下, 不然SceneBuilder会找不到它 - 至少在当前的版本).</li>
+<li>我们需要增加一些实例变量来访问表格和在视图中的标签.这些属性和一些方法有一个特殊的 <code>@FXML</code> 注解. 这对于fxml文件访问私有属性和私有方法来说是必需的. 当将一切都在fxml文件中设置好之后, 应用程序会在fxml文件被载入时自动地填充这些变量. 让我们添加以下的代码:</li>
+</ol>
+<div class="alert alert-info">
+<strong>Note:</strong> 记住要使用 <strong>javafx imports</strong>, 而不是awt和swing!
+</div>
+
+
+<h5 id="personoverviewcontroller-java">PersonOverviewController.java</h5>
+<pre class="prettyprint lang-java">
+package ch.makery.address.view;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import ch.makery.address.MainApp;
+import ch.makery.address.model.Person;
+
+public class PersonOverviewController {
+    @FXML
+    private TableView&lt;Person&gt; personTable;
+    @FXML
+    private TableColumn&lt;Person, String&gt; firstNameColumn;
+    @FXML
+    private TableColumn&lt;Person, String&gt; lastNameColumn;
+
+    @FXML
+    private Label firstNameLabel;
+    @FXML
+    private Label lastNameLabel;
+    @FXML
+    private Label streetLabel;
+    @FXML
+    private Label postalCodeLabel;
+    @FXML
+    private Label cityLabel;
+    @FXML
+    private Label birthdayLabel;
+
+    // Reference to the main application.
+    private MainApp mainApp;
+
+    /**
+     * The constructor.
+     * The constructor is called before the initialize() method.
+     */
+    public PersonOverviewController() {
+    }
+
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the fxml file has been loaded.
+     */
+    @FXML
+    private void initialize() {
+        // Initialize the person table with the two columns.
+        firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
+        lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
+    }
+
+    /**
+     * Is called by the main application to give a reference back to itself.
+     * 
+     * @param mainApp
+     */
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+
+        // Add observable list data to the table
+        personTable.setItems(mainApp.getPersonData());
+    }
+}
+</pre>
+
+
+<p>可能需要解释一下这段代码:</p>
+<ul>
+<li>所有fxml文件需要访问的属性和方法必须加上 <code>@FXML</code> 注解.实际上,只有在私有的情况下才需要, 但是让它们保持私有并且用注解标记的方式更好!</li>
+<li><code>initialize()</code> 方法在fxml文件完成载入时被自动调用. 那时, 所有的FXML属性都应已被初始化.</li>
+<li>我们在表格列上使用<code>setCellValueFactory(...)</code> 来确定为特定列使用<code>Person</code>对象的某个属性. 箭头 <code>-&gt;</code> 表示我们在使用Java 8的 <em>Lambdas</em> 特性. (另一个选择是使用 <a href="http://docs.oracle.com/javase/8/javafx/api/">PropertyValueFactory</a>, 但它不是类型安全的).</li>
+</ul>
+<h3 id="-mainapp-personoverviewcontroller">连接 MainApp 和 PersonOverviewController</h3>
+<p> <code>setMainApp(...)</code> 必须被 <code>MainApp</code> 类调用. 这让我们可以访问<code>MainApp</code>对象并得到<code>Persons</code>的列表和其他东西. 用以下代码替换<code>showPersonOverview()</code> 方法. 它包含了新增的两行:</p>
+<h5 id="mainapp-java-new-showpersonoverview-method">MainApp.java - new showPersonOverview() method</h5>
+<pre class="prettyprint lang-java">
+/**
+ * Shows the person overview inside the root layout.
+ */
+public void showPersonOverview() {
+    try {
+        // Load person overview.
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(MainApp.class.getResource("view/PersonOverview.fxml"));
+        AnchorPane personOverview = (AnchorPane) loader.load();
+
+        // Set person overview into the center of root layout.
+        rootLayout.setCenter(personOverview);
+
+        // Give the controller access to the main app.
+        PersonOverviewController controller = loader.getController();
+        controller.setMainApp(this);
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+</pre>
+
+
+
+<hr>
+<h2 id="-view-controller-">将View与Controller挂钩</h2>
+<p>我们快要完成了! 但是有件小事被遗漏了: 至今没有告诉 <code>PersonOverview.fxml</code>使用的是哪个控制器以及元素与控制器中的属性的对应关系.</p>
+<ol>
+<li><p>使用<em>SceneBuilder</em> 打开 <code>PersonOverview.fxml</code>.</p>
+</li>
+<li><p>打开左边的 <em>Controller</em> 组选择<code>PersonOverviewController</code> 作为 <strong>controller class</strong>.<br><img src="/assets/library/javafx-8-tutorial/part2/set-controller-class.png" alt="Set Controller Class(设置控制器类)"></p>
+</li>
+<li><p>在 <em>Hierarchy</em> 组选择<code>TableView</code> 并选择 <em>Code</em> 组将 <code>personTable</code> 作为 <strong>fx:id</strong>.<br><img src="/assets/library/javafx-8-tutorial/part2/set-tableview-fx-id.png" alt="Set TableView fx:id"></p>
+</li>
+<li><p>对列做相同的事并且将 <code>firstNameColumn</code> and <code>lastNameColumn</code>分别作为 <strong>fx:id</strong> .</p>
+</li>
+<li><p>对在第二列的 <strong>each label</strong> , 选择对应的 <strong>fx:id</strong>.<br><img src="/assets/library/javafx-8-tutorial/part2/set-label-fx-id.png" alt="Set Label fx:id"></p>
+</li>
+<li><p>重要事项: 回到eclipse并且 <strong>refresh the entire AddressApp project</strong> (F5). 这是必要的因为有时候eclipse并不知道在Scene Builder中作出的改变.</p>
+</li>
+</ol>
+<hr>
+<h2 id="-">启动应用程序</h2>
+<p>当你现在启动了你的应用,你应该看到了类似这篇博客开头的截图的程序界面.   </p>
+<p>恭喜!</p>
+<h3 id="-">接下去做什么?</h3>
+<p>在 <a href="/library/javafx-8-tutorial/zh-cn/part3/">Tutorial Part 3</a> 我们将加入增加,删除和编辑人员的功能.</p>
+<h5 id="-">一些你可能感兴趣的其他文章</h5>
+<ul>
+<li><a href="/blog/javafx-8-dialogs/">JavaFX Dialogs</a></li>
+<li><a href="/blog/javafx-8-date-picker/">JavaFX Date Picker</a></li>
+<li><a href="/blog/javafx-8-event-handling-examples/">JavaFX Event Handling Examples</a></li>
+<li><a href="/blog/javafx-8-tableview-sorting-filtering/">JavaFX TableView Sorting and Filtering</a></li>
+<li><a href="/blog/javafx-8-tableview-cell-renderer/">JavaFX TableView Cell Renderer</a></li>
+</ul>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/" data-toggle="tooltip" title="简介">简介</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part1/" data-toggle="tooltip" title="第一部分：Scene Builder">1</a>
+      </li>
+        <li class="active">
+      <a href="/library/javafx-8-tutorial/zh-cn/part2/" data-toggle="tooltip" title="第二部分：Model 和 TableView">2</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part3/" data-toggle="tooltip" title="第三部分：与用户的交互">3</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part4/" data-toggle="tooltip" title="第四部分：CSS 样式">4</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part5/" data-toggle="tooltip" title="第五部分：将数据用 XML 格式存储">5</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part6/" data-toggle="tooltip" title="第六部分：统计图">6</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part7/" data-toggle="tooltip" title="第七部分：部署">7</a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/javafx-8-tutorial/zh-cn/part2/';
+    var disqus_url = 'http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part2/';
+    var disqus_title = 'JavaFX 8 教程 - 第二部分：Model 和 TableView';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

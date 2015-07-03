@@ -1,0 +1,452 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HTML & CSS Tutorial - Part 6: Navigation | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/html-css/part6/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/html-css/part6/" />
+    <link rel="alternate" hreflang="de" href="http://code.makery.ch/library/html-css/de/part6/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Learn how to create a navigation for your website.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="HTML & CSS Tutorial - Part 6: Navigation | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Learn how to create a navigation for your website." />
+    <meta property="og:url" content="http://code.makery.ch/library/html-css/part6/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/html-css/portfolio.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/html-css-en-part6.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Articles in this Series</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/html-css/" class="list-group-item">
+        Introduction</a>
+      <a href="/library/html-css/part1/" class="list-group-item">
+        Part 1: Your First Website</a>
+      <a href="/library/html-css/part2/" class="list-group-item">
+        Part 2: Publishing Your Website</a>
+      <a href="/library/html-css/part3/" class="list-group-item">
+        Part 3: Introduction to CSS</a>
+      <a href="/library/html-css/part4/" class="list-group-item">
+        Part 4: Development Tools in the Browser</a>
+      <a href="/library/html-css/part5/" class="list-group-item">
+        Part 5: Blog and Other Pages</a>
+      <a href="/library/html-css/part6/" class="list-group-item active">
+        Part 6: Navigation</a>
+      <a href="/library/html-css/part7/" class="list-group-item">
+        Part 7: Bootstrap Framework</a>
+      <a href="/library/html-css/next/" class="list-group-item">
+<i class="fa fa-fw fa-flag-checkered"></i>        Next Steps</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Downloads</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-html-css/releases/download/v1.0/portfolio-part6.zip" class="list-group-item">
+<i class="fa fa-fw fa-file-archive-o"></i>        Portfolio Part 6</a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Languages</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/html-css/part6/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/html-css/de/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Deutsch
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">HTML & CSS Tutorial - Part 6: Navigation</h1>
+            <div class="article-date">
+  Apr 08, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Articles in this Series <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/html-css/">
+        Introduction</a></li>
+      <li class=""><a href="/library/html-css/part1/">
+        Part 1: Your First Website</a></li>
+      <li class=""><a href="/library/html-css/part2/">
+        Part 2: Publishing Your Website</a></li>
+      <li class=""><a href="/library/html-css/part3/">
+        Part 3: Introduction to CSS</a></li>
+      <li class=""><a href="/library/html-css/part4/">
+        Part 4: Development Tools in the Browser</a></li>
+      <li class=""><a href="/library/html-css/part5/">
+        Part 5: Blog and Other Pages</a></li>
+      <li class=" active"><a href="/library/html-css/part6/">
+        Part 6: Navigation</a></li>
+      <li class=""><a href="/library/html-css/part7/">
+        Part 7: Bootstrap Framework</a></li>
+      <li class=""><a href="/library/html-css/next/">
+<i class="fa fa-fw fa-flag-checkered"></i>        Next Steps</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Downloads <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-html-css/releases/download/v1.0/portfolio-part6.zip">
+<i class="fa fa-fw fa-file-archive-o"></i>        Portfolio Part 6</a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Languages <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=" active">
+        <a href="/library/html-css/part6/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/html-css/de/part6/"><i class="fa fa-fw fa-globe"></i> Deutsch</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p>In this part we will create a navigation so that visitors can switch between the pages.</p>
+<p>A navigation can be as simple as a few links to other pages. We will begin with this very simple approach and continuously improve it until we have a beautiful and complete navigation on all pages.</p>
+<p>We start by programming the navigation in our home page. Only when we're done, we will copy the navigation code into all the other pages.</p>
+<h2 id="navigation-with-links">Navigation with Links</h2>
+<p>Open the <code>index.html</code> of your home page.</p>
+<p>With simple links we can jump from our home page to other pages. The navigation should be at the very beginning of the <code>body</code> part. Let's insert the following four links between the <code>body</code> tag and the title.</p>
+<h5 id="index-html">index.html</h5>
+<pre class="prettyprint lang-html">
+&lt;body>
+  <mark>&lt;a href="./">Home&lt;/a></mark>
+  <mark>&lt;a href="blog/">Blog&lt;/a></mark>
+  <mark>&lt;a href="projects/">Projects&lt;/a></mark>
+  <mark>&lt;a href="contact/">Contact&lt;/a></mark>
+
+  &lt;h1 class="title">Web Portfolio of Marco&lt;/h1>
+</pre>
+
+<div class="alert alert-info">
+  <strong>Note:</strong> The link to <code>./</code> refers to the current directory. More info about this can be found in the section <a class="alert-link" href="/library/html-css/part1#relative-and-absolute-urls">relative and absolute URLs</a>.
+</div>
+
+<p>Our navigation should now look as follows:</p>
+<p><img src="/assets/library/html-css/part6/navigation-links.png" alt="Navigation with Links"></p>
+<p>Verify that the links actually work and that they lead you to the desired page.</p>
+<div class="alert alert-info">
+  <p><strong>Note:</strong> If you open the page as a file directly in the browser (without Bracket's <em>Live Preview</em>) the links might not work quite right. The reason is that the file system simply displays the folder contents and not automatically opens <code>index.html</code>. You will have to manually click on <code>index.html</code>.</p>
+  <p>As soon as you publish the site on a server, the links should work as normal.</p>
+</div>
+
+<p>At the moment our navigation is simply a series of links. Mostly, in HTML, a list of links is used for navigations. With an HTML list elements can be grouped together horizontally or vertically which will simplify their syling.</p>
+<p>Let's learn how to create HTML lists.</p>
+<h2 id="lists">Lists</h2>
+<p>There are many situations in which we use lists. In HTML, there are three different types of lists: <strong>unordered lists</strong>, <strong>ordered lists</strong>, and <strong>description lists</strong>. Description lists are not used often. Therefore, we will only look at the first two in more detail.</p>
+<h3 id="unordered-lists">Unordered Lists</h3>
+<p>An unordered list is simply a list of entries in which the order is arbitrary. Unordered lists are created in HTML with the element <code>&lt;ul&gt;</code> (stands for unordered list). For each entry in the list a <code>&lt;li&gt;</code> (list item) element is needed within the <code>&lt;ul&gt;</code> element.</p>
+<p>Here is an example of a typical todo list:</p>
+<pre class="prettyprint lang-html">
+&lt;ul>
+  &lt;li>Shopping&lt;/li>
+  &lt;li>Feeding the cat&lt;/li>
+  &lt;li>Visit grandmother&lt;/li>
+&lt;/ul>
+</pre>
+
+<p>The result looks like this:</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <ul style="margin-bottom: 0">
+      <li>Shopping</li>
+      <li>Feeding the cat</li>
+      <li>Visit grandmother</li>
+    </ul>
+  </div>
+</div>
+
+
+<h3 id="ordered-lists">Ordered Lists</h3>
+<p>In ordered lists, the order is significant and is therefore numbered. In HTML, it looks very similar to the unordered list: Instead of <code>&lt;ul&gt;</code> we use an <code>&lt;ol&gt;</code> element.</p>
+<p>A typical example of an ordered list is a recipe for a meal:</p>
+<pre class="prettyprint lang-html">
+&lt;ol>
+  &lt;li>Crack eggs, add a pinch of salt, then use a fork to beat them together well.&lt;/li>
+  &lt;li>Add milk.&lt;/li>
+  &lt;li>Melt butter in a frying pan and pour in the egg mixture.&lt;/li>
+  &lt;li>Continue cooking until thickened, then serve.&lt;/li>
+&lt;/ol>
+</pre>
+
+<p>The result looks like this:</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <ol style="margin-bottom: 0">
+      <li>Crack eggs, add a pinch of salt, then use a fork to beat them together well.</li>
+      <li>Add milk.</li>
+      <li>Melt butter in a frying pan and pour in the egg mixture.</li>
+      <li>Continue cooking until thickened, then serve.</li>
+    </ol>
+  </div>
+</div>
+
+
+<h3 id="navigation-as-list">Navigation as List</h3>
+<p>We will now program the navigation of our portfolio as an unordered list.</p>
+<p>The links of our navigation are put in <code>&lt;li&gt;</code> elements that themselves are withn an <code>&lt;ul&gt;</code> element.</p>
+<pre class="prettyprint lang-html">
+&lt;ul>
+  &lt;li>&lt;a href="./">Home&lt;/a>&lt;/li>
+  &lt;li>&lt;a href="blog/">Blog&lt;/a>&lt;/li>
+  &lt;li>&lt;a href="projects/">Projects&lt;/a>&lt;/li>
+  &lt;li>&lt;a href="contact/">Contact&lt;/a>&lt;/li>
+&lt;/ul>
+</pre>
+
+<p>In the final part of this tutorial we will see how the navigation can be displayed horizontally and nicely formatted. Once the navigation is complete, we will copy it to all other pages.</p>
+<h3 id="blog-entries-as-list">Blog Entries as List</h3>
+<p>On our blog page we had put a comment where we wanted to list our blog entries. Now that we know how lists are created in HTML, we can list the blog entries.</p>
+<p>Open the blog page <code>blog/index.html</code>. Below the "Blog Entries" heading insert the list of entries as follows.</p>
+<h5 id="blog-index-html">blog/index.html</h5>
+<pre class="prettyprint lang-html">
+&lt;h2>Blog Entries&lt;/h2>
+
+&lt;!-- Here will be a list of all the blog entries. -->
+&lt;ul>
+  &lt;li>More entries will follow...&lt;/li>
+  &lt;li>&lt;a href="second-entry/">Second Entry&lt;/a>&lt;/li>
+  &lt;li>&lt;a href="first-entry/">First Entry&lt;/a>&lt;/li>
+&lt;/ul>
+</pre>
+
+<div class="alert alert-info">
+  <strong>Note:</strong> Blog entries are often listed in reverse chronological order so that the last entry appears at the top of the list.
+</div>
+
+
+<h2 id="what-s-next-">What's next?</h2>
+<p>&rarr; Continue with <a href="/library/html-css/part7/">Part 7: Using the Bootstrap Framework</a>.</p>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/html-css/" data-toggle="tooltip" title="Introduction">Intro</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part1/" data-toggle="tooltip" title="Part 1: Your First Website">1</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part2/" data-toggle="tooltip" title="Part 2: Publishing Your Website">2</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part3/" data-toggle="tooltip" title="Part 3: Introduction to CSS">3</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part4/" data-toggle="tooltip" title="Part 4: Development Tools in the Browser">4</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part5/" data-toggle="tooltip" title="Part 5: Blog and Other Pages">5</a>
+      </li>
+        <li class="active">
+      <a href="/library/html-css/part6/" data-toggle="tooltip" title="Part 6: Navigation">6</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part7/" data-toggle="tooltip" title="Part 7: Bootstrap Framework">7</a>
+      </li>
+        <li>
+      <a href="/library/html-css/next/" data-toggle="tooltip" title="Next Steps"><i class="fa fa-flag-checkered"></i></a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/html-css/part6/';
+    var disqus_url = 'http://code.makery.ch/library/html-css/part6/';
+    var disqus_title = 'HTML & CSS Tutorial - Part 6: Navigation';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

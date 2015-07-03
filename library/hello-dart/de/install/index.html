@@ -1,0 +1,415 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hello Dart: Installation | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/hello-dart/de/install/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/hello-dart/install/" />
+    <link rel="alternate" hreflang="de" href="http://code.makery.ch/library/hello-dart/de/install/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Dart Editor installieren. Die Hello Dart Szenarien laden und ein erstes Dart Programm starten.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Hello Dart: Installation | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Dart Editor installieren. Die Hello Dart Szenarien laden und ein erstes Dart Programm starten." />
+    <meta property="og:url" content="http://code.makery.ch/library/hello-dart/de/install/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/hello-dart/hello-dart.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/hello-dart-de-install.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artikel dieser Serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/hello-dart/de/" class="list-group-item">
+        Einleitung</a>
+      <a href="/library/hello-dart/de/background/" class="list-group-item">
+<i class="fa fa-fw fa-info"></i>        Hintergrundinfos</a>
+      <a href="/library/hello-dart/de/install/" class="list-group-item active">
+<i class="fa fa-fw fa-cog"></i>        Installation</a>
+      <a href="/library/hello-dart/de/part1/" class="list-group-item">
+        Teil 1: Erste Schritte</a>
+      <a href="/library/hello-dart/de/part2/" class="list-group-item">
+        Teil 2: Schleifen</a>
+      <a href="/library/hello-dart/de/part3/" class="list-group-item">
+        Teil 3: Bedingte Anweisungen</a>
+      <a href="/library/hello-dart/de/part4/" class="list-group-item">
+        Teil 4: Variablen</a>
+      <a href="/library/hello-dart/de/part5/" class="list-group-item">
+        Teil 5: Funktionen</a>
+      <a href="/library/hello-dart/de/next/" class="list-group-item">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Links</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://www.dartlang.org/tools/download.html" class="list-group-item">
+<i class="fa fa-fw fa-download"></i>        Dart Editor Download</a>
+      <a href="https://github.com/marcojakob/hello-dart/releases" class="list-group-item">
+<i class="fa fa-fw fa-download"></i>        Hello Dart Szenarien</a>
+      <a href="/library/convert-web-page-to-word/de/" class="list-group-item">
+<i class="fa fa-fw fa-file-word-o"></i>        Seite als Word-Datei</a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Sprachen</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/hello-dart/install/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/hello-dart/de/install/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> Deutsch
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Hello Dart: Installation</h1>
+            <div class="article-date">
+  Jan 26, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Artikel dieser Serie <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/hello-dart/de/">
+        Einleitung</a></li>
+      <li class=""><a href="/library/hello-dart/de/background/">
+<i class="fa fa-fw fa-info"></i>        Hintergrundinfos</a></li>
+      <li class=" active"><a href="/library/hello-dart/de/install/">
+<i class="fa fa-fw fa-cog"></i>        Installation</a></li>
+      <li class=""><a href="/library/hello-dart/de/part1/">
+        Teil 1: Erste Schritte</a></li>
+      <li class=""><a href="/library/hello-dart/de/part2/">
+        Teil 2: Schleifen</a></li>
+      <li class=""><a href="/library/hello-dart/de/part3/">
+        Teil 3: Bedingte Anweisungen</a></li>
+      <li class=""><a href="/library/hello-dart/de/part4/">
+        Teil 4: Variablen</a></li>
+      <li class=""><a href="/library/hello-dart/de/part5/">
+        Teil 5: Funktionen</a></li>
+      <li class=""><a href="/library/hello-dart/de/next/">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Links <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://www.dartlang.org/tools/download.html">
+<i class="fa fa-fw fa-download"></i>        Dart Editor Download</a></li>
+      <li class=""><a href="https://github.com/marcojakob/hello-dart/releases">
+<i class="fa fa-fw fa-download"></i>        Hello Dart Szenarien</a></li>
+      <li class=""><a href="/library/convert-web-page-to-word/de/">
+<i class="fa fa-fw fa-file-word-o"></i>        Seite als Word-Datei</a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Sprachen <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class="">
+        <a href="/library/hello-dart/install/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class=" active">
+        <a href="/library/hello-dart/de/install/"><i class="fa fa-fw fa-globe"></i> Deutsch</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p>Zum Programmieren brauchen wir... </p>
+<ul>
+<li>den <strong>Dart Editor</strong> und </li>
+<li>die <code>Hello Dart</code>-Szenarien.</li>
+</ul>
+<h2 id="dart-editor-installieren">Dart Editor installieren</h2>
+<ol>
+<li>Laden Sie den <a href="https://www.dartlang.org/tools/download.html">Dart Editor hier</a> herunter.</li>
+<li>Entpacken Sie das Zip mit dem Dart Editor auf Ihre Festplatte.</li>
+</ol>
+<div class="alert alert-info">
+  <strong>Hinweis:</strong> Dart Editor benötigt Java in der Version 6 oder höher. Falls nötig, laden Sie die <a href="http://www.oracle.com/technetwork/java/javase/downloads/">Java Runtime</a> herunter. Bei anderen Problemen mit der Installation, suchen Sie unter <a href="https://www.dartlang.org/tools/editor/troubleshoot.html" class="alert-link">Troubleshoot</a> nach einer Lösung.
+</div>
+
+
+<h3 id="was-enth-lt-die-installation-">Was enthält die Installation?</h3>
+<hr>
+<div class="row">
+  <div class="col-md-2">
+    <img src="/assets/library/hello-dart/install/dart-editor-icon.png" alt="Dart Editor">
+  </div>
+  <div class="col-md-7">
+    Dart Editor ist ein einfacher aber trotzdem mächtiger Editor. Damit können Dart-Projekte erstellt, editert und verwaltet werden. 
+  </div>
+</div>
+
+<hr>
+<div class="row">
+  <div class="col-md-2">
+    <img src="/assets/library/hello-dart/install/chromium-icon.png" alt="Dartium">
+  </div>
+  <div class="col-md-7">
+    Dies ist eine spezielle Version des Chrome Web Browsers, genannt Dartium, welcher die Dart VM (virtual machine) enthält. Dart Programme können direkt in diesem Browser laufen. Der Dart Editor führt Projekte automatisch darin aus.
+  </div>
+</div>
+
+<hr>
+<div class="row">
+  <div class="col-md-2">
+    <img src="/assets/library/hello-dart/install/dart-sdk-icon.png" alt="Dart SDK">
+  </div>
+  <div class="col-md-7">
+    Das Verzeichnis <strong>dart-sdk</strong> enthält das Dart Software Development Kit. Hier befinden sich die Dart Standard-Bibliotheken und Tools für die Kommandozeile.
+  </div>
+</div>
+
+<hr>
+<h2 id="dart-editor-starten">Dart Editor starten</h2>
+<p><img src="/assets/library/hello-dart/install/dart-logo-21.png" alt="Dart Editor Executable"> Starten Sie den Dart Editor mit einem Doppelklick auf die ausführbare Datei im Installationsordner.</p>
+<p><img src="/assets/library/hello-dart/install/dart-editor.png" alt="Dart Editor"></p>
+<h2 id="-hello-dart-szenarien-ffnen"><code>Hello Dart</code> Szenarien öffnen</h2>
+<ol>
+<li>Laden Sie unter <a href="https://github.com/marcojakob/hello-dart/releases">Hello Dart-Releases</a> die Zip-Datei <code>hello_dart_scenarios.zip</code> herunter (nehmen Sie die neuste Version).  </li>
+<li>Entpacken Sie die Zip-Datei.</li>
+<li>Im Dart Editor: Klicken Sie auf <em>File</em> | <em>Open Existing Folder...</em>. Wählen Sie dort den Ordner <code>hello_dart_scenarios</code> aus, den Sie vorher entpackt haben.</li>
+<li>Öffnen Sie im Unterordner <code>web/part1/scenario1.01</code> die Datei <code>my_player.dart</code> mit einem Doppelklick.   <p>
+<img src="/assets/library/hello-dart/install/my-player.png" alt="My Player">
+</p></li>
+<li>Klicken Sie auf das <em>Run</em>-Symbol <img src="/assets/library/hello-dart/install/run.png" alt="Run">.</li>
+</ol>
+<p>Jetzt sollte sich automatisch der Chromium Browser öffnen mit dem ersten Szenario:</p>
+<p><img src="/assets/library/hello-dart/install/first-scenario.png" alt="First Scenario"></p>
+<hr>
+<h3 id="wie-weiter-">Wie weiter?</h3>
+<p>Im <a href="/library/hello-dart/de/part1/">Teil 1</a> machen wir unsere ersten Schritte beim Programmieren.</p>
+<hr>
+<p><em>Quellen</em><br>
+<em class="small">
+<a href="http://www.lostgarden.com/2007/05/dancs-miraculously-flexible-game.html">Planet Cute</a> Bilder stammen von Daniel Cook (Lostgarden.com), veröffentlicht unter <a href="http://creativecommons.org/licenses/by/3.0/us/">CC BY 3.0</a>.<br>
+<a href="https://www.linkedin.com/in/olegyadrov">Oleg Yadrov</a> hat die "Planet Cute" Bilder weiterentwickelt und mir zur Verfügung gestellt. Optimiert wurden sie mit dem grossartigen <a href="https://www.codeandweb.com/texturepacker">TexturePacker</a>.
+</em></p>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/hello-dart/de/" data-toggle="tooltip" title="Einleitung">Einleitung</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/background/" data-toggle="tooltip" title="Hintergrundinfos"><i class="fa fa-info"></i></a>
+      </li>
+        <li class="active">
+      <a href="/library/hello-dart/de/install/" data-toggle="tooltip" title="Installation"><i class="fa fa-cog"></i></a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part1/" data-toggle="tooltip" title="Teil 1: Erste Schritte">1</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part2/" data-toggle="tooltip" title="Teil 2: Schleifen">2</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part3/" data-toggle="tooltip" title="Teil 3: Bedingte Anweisungen">3</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part4/" data-toggle="tooltip" title="Teil 4: Variablen">4</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part5/" data-toggle="tooltip" title="Teil 5: Funktionen">5</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/next/" data-toggle="tooltip" title="Nächste Schritte"><i class="fa fa-flag-checkered"></i></a>
+      </li>
+        
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/hello-dart/de/install/';
+    var disqus_url = 'http://code.makery.ch/library/hello-dart/de/install/';
+    var disqus_title = 'Hello Dart: Installation';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

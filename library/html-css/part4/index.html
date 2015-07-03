@@ -1,0 +1,352 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HTML & CSS Tutorial - Part 4: Development Tools in the Browser | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/html-css/part4/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/html-css/part4/" />
+    <link rel="alternate" hreflang="de" href="http://code.makery.ch/library/html-css/de/part4/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Learn how to use the developer tools in the browser (Chrome Developer Tools (Chrome Developer Tools).">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="HTML & CSS Tutorial - Part 4: Development Tools in the Browser | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Learn how to use the developer tools in the browser (Chrome Developer Tools (Chrome Developer Tools)." />
+    <meta property="og:url" content="http://code.makery.ch/library/html-css/part4/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/html-css/portfolio.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/html-css-en-part4.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Articles in this Series</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/html-css/" class="list-group-item">
+        Introduction</a>
+      <a href="/library/html-css/part1/" class="list-group-item">
+        Part 1: Your First Website</a>
+      <a href="/library/html-css/part2/" class="list-group-item">
+        Part 2: Publishing Your Website</a>
+      <a href="/library/html-css/part3/" class="list-group-item">
+        Part 3: Introduction to CSS</a>
+      <a href="/library/html-css/part4/" class="list-group-item active">
+        Part 4: Development Tools in the Browser</a>
+      <a href="/library/html-css/part5/" class="list-group-item">
+        Part 5: Blog and Other Pages</a>
+      <a href="/library/html-css/part6/" class="list-group-item">
+        Part 6: Navigation</a>
+      <a href="/library/html-css/part7/" class="list-group-item">
+        Part 7: Bootstrap Framework</a>
+      <a href="/library/html-css/next/" class="list-group-item">
+<i class="fa fa-fw fa-flag-checkered"></i>        Next Steps</a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Languages</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/html-css/part4/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/html-css/de/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Deutsch
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">HTML & CSS Tutorial - Part 4: Development Tools in the Browser</h1>
+            <div class="article-date">
+  Apr 08, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Articles in this Series <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/html-css/">
+        Introduction</a></li>
+      <li class=""><a href="/library/html-css/part1/">
+        Part 1: Your First Website</a></li>
+      <li class=""><a href="/library/html-css/part2/">
+        Part 2: Publishing Your Website</a></li>
+      <li class=""><a href="/library/html-css/part3/">
+        Part 3: Introduction to CSS</a></li>
+      <li class=" active"><a href="/library/html-css/part4/">
+        Part 4: Development Tools in the Browser</a></li>
+      <li class=""><a href="/library/html-css/part5/">
+        Part 5: Blog and Other Pages</a></li>
+      <li class=""><a href="/library/html-css/part6/">
+        Part 6: Navigation</a></li>
+      <li class=""><a href="/library/html-css/part7/">
+        Part 7: Bootstrap Framework</a></li>
+      <li class=""><a href="/library/html-css/next/">
+<i class="fa fa-fw fa-flag-checkered"></i>        Next Steps</a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Languages <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=" active">
+        <a href="/library/html-css/part4/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/html-css/de/part4/"><i class="fa fa-fw fa-globe"></i> Deutsch</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p>Most browsers have a "hidden" tool that allows us to look behind the scenes of a website. This is extremely helpful, either to examine our own website or to take inspirations from other websites. Currently, Chrome has the most complete tool, called <strong>Chrome Developer Tools</strong> (abbreviated <strong>DevTools</strong>).</p>
+<h2 id="opening-chrome-devtools">Opening Chrome DevTools</h2>
+<p><em>DevTools</em> can be opened in multiple ways:</p>
+<ul>
+<li>Right-click on any element on a website and choose <strong>Inspect Element</strong>.</li>
+<li>Use <code>Ctrl+Shift+I</code> or <code>F12</code>.</li>
+</ul>
+<p>Let's try this in our portfolio website. You should now see the following window:</p>
+<p><img src="/assets/library/html-css/part4/open-devtools.png" alt="Open DevTools"></p>
+<div class="alert alert-info">
+  <strong>Hint:</strong> If you're using the Brackets editor it's best to deactivate the <em>Live Preview</em> and to reload the website in the browser. Otherwise, you will see some additional ids in the code that were added by Brackets.
+</div>
+
+
+<h2 id="inspecting-an-element">Inspecting an Element</h2>
+<p>With <em>DevTools</em> we can easily examine individual elements on our website.</p>
+<p>Take the example of the <code>h2</code> element: Right-click on the "Welcome" title and choose <em>Inspect Element</em>. This opens <em>DevTools</em> and jumps to the <code>h2</code> element.</p>
+<p><img src="/assets/library/html-css/part4/devtools-h2.png" alt="DevTools h2 Element"></p>
+<p>On the right side you can see the styles that are applied to the <code>h2</code> element. You should see the colors that we have defined in <code>main.css</code>. Below the <code>main.css</code> rules you can see an area for the <code>user agent stylesheet</code> rules. These are the default rules that are applied to <code>h2</code> elements by the browser.</p>
+<p>At the bottom you will see a colored rectangle. This shows the size, spacings, and borders of the <code>h2</code> element. For example, you can see the value <code>5</code> for <code>padding</code>, as we defined it in <code>main.css</code>.</p>
+<h3 id="changing-styles-and-html">Changing Styles and HTML</h3>
+<p>Now comes the exciting part: We can change or disable the styles and also edit the HTML live in the browser! For example, if we click on the color square of <code>background-color</code> we can select a different background color or we could enter a different value for <code>padding</code>.</p>
+<p>The HTML can be changed by right-clicking on an element in the <em>DevTools</em> window and choosing <strong>Edit...</strong>.</p>
+<p>That's a very convenient way for making experimental changes. The changes, however, are <strong>only temporary</strong>, when we reload the page, the original website is restored.</p>
+<h3 id="inspiration-from-other-websites">Inspiration From Other Websites</h3>
+<p>With <em>DevTools</em> we can investigate any web page and change it temporarily. Make frequent use of this! For example, if you see a color that you like while browsing the web, you can use <em>DevTools</em> to retrieve the <em>Hex value</em> so that you can use it in your CSS.</p>
+<p>For larger websites, styles can get quite long. There will be multiple CSS rules that override each other. You can see an example of this with our <code>h1</code> title element. The font size, which we have defined, overrides the standard font size of the browser. Therefore, this is crossed out.</p>
+<p><img src="/assets/library/html-css/part4/css-overwrite.png" alt="CSS Overwrite"></p>
+<h2 id="other-devtools-features">Other DevTools Features</h2>
+<p>There are many more ways to work with <em>DevTools</em>. If you want to know more about it, read the <a href="https://developer.chrome.com/devtools/index">DevTools documentation</a>.</p>
+<p>There is also a very good <a href="http://discover-devtools.codeschool.com/">DevTools online course</a>, which is available for free.</p>
+<h2 id="what-s-next-">What's next?</h2>
+<p>In the next part we create additional pages for a blog, projects and contact.</p>
+<p>&rarr; Continue with <a href="/library/html-css/part5/">Part 5: Blog and Other Pages</a></p>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/html-css/" data-toggle="tooltip" title="Introduction">Intro</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part1/" data-toggle="tooltip" title="Part 1: Your First Website">1</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part2/" data-toggle="tooltip" title="Part 2: Publishing Your Website">2</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part3/" data-toggle="tooltip" title="Part 3: Introduction to CSS">3</a>
+      </li>
+        <li class="active">
+      <a href="/library/html-css/part4/" data-toggle="tooltip" title="Part 4: Development Tools in the Browser">4</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part5/" data-toggle="tooltip" title="Part 5: Blog and Other Pages">5</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part6/" data-toggle="tooltip" title="Part 6: Navigation">6</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part7/" data-toggle="tooltip" title="Part 7: Bootstrap Framework">7</a>
+      </li>
+        <li>
+      <a href="/library/html-css/next/" data-toggle="tooltip" title="Next Steps"><i class="fa fa-flag-checkered"></i></a>
+      </li>
+  
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/html-css/part4/';
+    var disqus_url = 'http://code.makery.ch/library/html-css/part4/';
+    var disqus_title = 'HTML & CSS Tutorial - Part 4: Development Tools in the Browser';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

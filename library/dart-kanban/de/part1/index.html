@@ -1,0 +1,379 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dart Kanban - Teil 1: Webapplikation erstellen | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/dart-kanban/de/part1/" />
+  
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Eine erste Webapplikation mit Dart erstellen. Dart mit HTML verknüpfen und ein HTML-Element mit Dart verändern.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Dart Kanban - Teil 1: Webapplikation erstellen | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Eine erste Webapplikation mit Dart erstellen. Dart mit HTML verknüpfen und ein HTML-Element mit Dart verändern." />
+    <meta property="og:url" content="http://code.makery.ch/library/dart-kanban/de/part1/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/dart-kanban/dart-kanban.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/dart-kanban-de-part1.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artikel dieser Serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/dart-kanban/de/" class="list-group-item">
+        Einleitung</a>
+      <a href="/library/dart-kanban/de/install/" class="list-group-item">
+<i class="fa fa-fw fa-cog"></i>        Dart Editor installieren</a>
+      <a href="/library/dart-kanban/de/part1/" class="list-group-item active">
+        Teil 1: Webapp erstellen</a>
+      <a href="/library/dart-kanban/de/part2/" class="list-group-item">
+        Teil 2: HTML vorbereiten</a>
+      <a href="/library/dart-kanban/de/part3/" class="list-group-item">
+        Teil 3: Element hinzufügen</a>
+      <a href="/library/dart-kanban/de/part4/" class="list-group-item">
+        Teil 4: Element verschieben</a>
+      <a href="/library/dart-kanban/de/part5/" class="list-group-item">
+        Teil 5: Veröffentlichen</a>
+      <a href="/library/dart-kanban/de/next/" class="list-group-item">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Source Code</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-dart-kanban" class="list-group-item">
+<i class="fa fa-fw fa-github"></i>        Beispielcode auf GitHub</a>
+  </div>
+</div>
+
+          
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Dart Kanban - Teil 1: Webapplikation erstellen</h1>
+            <div class="article-date">
+  Mar 23, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Artikel dieser Serie <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/dart-kanban/de/">
+        Einleitung</a></li>
+      <li class=""><a href="/library/dart-kanban/de/install/">
+<i class="fa fa-fw fa-cog"></i>        Dart Editor installieren</a></li>
+      <li class=" active"><a href="/library/dart-kanban/de/part1/">
+        Teil 1: Webapp erstellen</a></li>
+      <li class=""><a href="/library/dart-kanban/de/part2/">
+        Teil 2: HTML vorbereiten</a></li>
+      <li class=""><a href="/library/dart-kanban/de/part3/">
+        Teil 3: Element hinzufügen</a></li>
+      <li class=""><a href="/library/dart-kanban/de/part4/">
+        Teil 4: Element verschieben</a></li>
+      <li class=""><a href="/library/dart-kanban/de/part5/">
+        Teil 5: Veröffentlichen</a></li>
+      <li class=""><a href="/library/dart-kanban/de/next/">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Source Code <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-dart-kanban">
+<i class="fa fa-fw fa-github"></i>        Beispielcode auf GitHub</a></li>
+  </ul>
+</div>
+
+            
+          </aside>
+          
+          <div class="article-content">
+            <h2 id="eine-webapplikation-erstellen">Eine Webapplikation erstellen</h2>
+<p>Um eine Webapplikation zu erstellen öffnen Sie das Menu <strong>File | New Project...</strong></p>
+<ol>
+<li>Schreiben Sie <code>dart_kanban</code> in das Feld für den <em>Project name</em>.</li>
+<li>Legen Sie im zweiten Feld den Ordner fest, wo Sie das Projekt speichern wollen.</li>
+<li>Wählen Sie <strong>ubersimplewebapp</strong> aus der Liste der Vorlagen aus.</li>
+<li>Klicken Sie auf <strong>Finish</strong>.</li>
+</ol>
+<p>Der Dart Editor erstellt daraufhin alle Dateien, die es für eine Webapplikation braucht. Wir schauen uns nun die wichtigsten Dateien an.</p>
+<h3 id="die-html-datei">Die HTML-Datei</h3>
+<p>Die Datei <code>web/index.html</code> ist die Datei, die vom Browser geladen wird und die Grundstruktur vorgibt. Ersetzen Sie den automatisch erstellen Code mit dem folgenden HTML.</p>
+<pre class="prettyprint lang-html">
+&lt;!DOCTYPE html>
+&lt;html>
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge">
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0">
+    &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    &lt;link rel="stylesheet" href="styles/main.css">
+    &lt;title>Kanban Board&lt;/title>
+  &lt;/head>
+
+  &lt;body>
+    &lt;div class="container">
+      &lt;div class="page-header">
+        &lt;h1>Kanban Board &lt;small id="subtitle">&lt;/small>&lt;/h1>
+      &lt;/div>
+    &lt;/div>
+
+    &lt;script type="application/dart" src="main.dart">&lt;/script>
+    &lt;script src="packages/browser/dart.js">&lt;/script>
+  &lt;/body>
+&lt;/html>
+</pre>
+
+<p>Speichern Sie die Datei nach den Änderungen mit <strong>File | Save</strong> oder der Tastenkombination <strong>Ctrl+S</strong>.</p>
+<h4 id="erkl-rungen-zum-html-code">Erklärungen zum HTML-Code</h4>
+<p>Im <code>head</code> werden zwei Stylesheets eingefügt. Wir verwenden hier das <a href="http://holdirbootstrap.de/">Bootstrap</a> CSS für ein attraktives Aussehen. Das zweite ist unser eigenes CSS.</p>
+<p>Der <code>body</code> enthält zwei Div-Container mit Bootstrap-Klassen und einen Titel und Untertitel. Der Untertitel hat eine ID <code>subtitle</code>, die wir später noch verwenden werden.</p>
+<p>Am Schluss befinden sich die zwei wichtigen <code>script</code>-Tags. Das erste gibt an, dass die <code>main.dart</code>-Datei geladen werden soll. Das zweite Script, <code>dart.js</code>, wird verwendet für Browser, die kein Dart unterstützten. Darin wird <code>main.dart</code> mit dem entsprechenden JavaScript ersetzt.</p>
+<h3 id="die-dart-datei">Die Dart-Datei</h3>
+<p>Öffnen Sie die Datei <code>main.dart</code> und ändern Sie den Code so ab, dass er wie folgt aussieht.</p>
+<pre class="prettyprint lang-dart">
+import 'dart:html';
+
+void main() {
+  Element subtitle = querySelector('#subtitle');
+  subtitle.text = 'von Marco';
+}
+</pre>
+
+
+<h4 id="erkl-rungen-zum-dart-code">Erklärungen zum Dart-Code</h4>
+<p>In der ersten Zeile wird Darts HTML-Bibliothek importiert. Diese beinhaltet die wichtigsten Klassen und Funktionen, um mit dem HTML-Dokument zu interagieren.</p>
+<h5 id="die-main-funktion">Die main()-Funktion</h5>
+<p>Dann folgt die <code>main()</code>-Funktion. Diese Funktion ist der Startpunkt des Dart-Programms. Jede Dart-Applikation muss <strong>genau eine main-Funktion</strong> haben.</p>
+<h5 id="queryselector-verwenden">querySelector() verwenden</h5>
+<p>Die Funktion <code>querySelector()</code> stammt aus der importierten <code>dart:html</code> Bibliothek. Damit kann man ein Element aus dem HTML-Dokument holen. In unserem Fall ist dies das Element mit der ID <code>subtitle</code>.</p>
+<p>Wir speichern das Untertitel-Element in eine Variable. Mit dem <strong>Punkt-Operator</strong> können wir auf Eigenschaften zugreifen und diese verändern. </p>
+<p>Mit dem Gleichheits-Zeichen (<code>=</code>) setzen wir den Text auf den String-Wert <code>'von Marco'</code>.</p>
+<div class="alert alert-info">
+    <strong>Alternative:</strong> Wir könnten die zwei Schritte in unserem Programm auch auf einer Zeile zusammenfassen. Damit bräuchten wir keine Variable.
+<pre class="prettyprint lang-dart">
+querySelector('#subtitle').text = 'von Marco';
+</pre>
+</div>
+
+
+<h2 id="die-webapplikation-starten">Die Webapplikation starten</h2>
+<p>Selektieren Sie nun die <code>index.html</code> und klicken Sie auf den Run-Knopf <img src="/assets/library/dart-kanban/part1/run.png" alt="Run">. Der Dart Editor öffnet Dartium (spezieller Chrome Browser mit integrierter Dart VM) und lädt die <code>index.html</code>. Der Dart-Code sorgt dafür, dass der Untertitel gesetzt wird, wie im folgenden Screenshot.</p>
+<p><img src="/assets/library/dart-kanban/part1/first-run-de.png" alt="Erster Start"></p>
+<h3 id="andere-browser">Andere Browser</h3>
+<p>Wenn Sie die Webapplikation in einem anderen Browser laufen lassen möchten, dann kann der Dart-Code nach JavaScript übersetzt werden mittels dem <a href="https://www.dartlang.org/tools/dart2js/">dart2js</a> Tool (ist bereits im Dart Editor enthalten). Dazu gibt es im Dart Editor ein praktisches Kontextmenu:</p>
+<p><img src="/assets/library/dart-kanban/part1/run-as-javascript.png" alt="Run as JavaScript"></p>
+<p>Im letzten Teil dieser Serie wird noch genauer beschrieben, wie eine Dart-Applikation in JavaScript übersetzt und auf einem Webserver veröffentlicht werden kann.</p>
+<h2 id="wie-weiter-">Wie weiter?</h2>
+<p>Im <a href="/library/dart-kanban/de/part2/">Teil 2</a> bereiten wir die Grundstruktur der HTML-Datei für unser Kanban Board vor.</p>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/dart-kanban/de/" data-toggle="tooltip" title="Einleitung">Einleitung</a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/install/" data-toggle="tooltip" title="Dart Editor installieren"><i class="fa fa-cog"></i></a>
+      </li>
+        <li class="active">
+      <a href="/library/dart-kanban/de/part1/" data-toggle="tooltip" title="Teil 1: Webapp erstellen">1</a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/part2/" data-toggle="tooltip" title="Teil 2: HTML vorbereiten">2</a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/part3/" data-toggle="tooltip" title="Teil 3: Element hinzufügen">3</a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/part4/" data-toggle="tooltip" title="Teil 4: Element verschieben">4</a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/part5/" data-toggle="tooltip" title="Teil 5: Veröffentlichen">5</a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/next/" data-toggle="tooltip" title="Nächste Schritte"><i class="fa fa-flag-checkered"></i></a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/dart-kanban/de/part1/';
+    var disqus_url = 'http://code.makery.ch/library/dart-kanban/de/part1/';
+    var disqus_title = 'Dart Kanban - Teil 1: Webapplikation erstellen';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

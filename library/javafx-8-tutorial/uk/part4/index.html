@@ -1,0 +1,643 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Підручник з JavaFX 8 - Частина 4: Стилізація за допомогою CSS | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/javafx-8-tutorial/uk/part4/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/javafx-8-tutorial/part4/" />
+    <link rel="alternate" hreflang="es" href="http://code.makery.ch/library/javafx-8-tutorial/es/part4/" />
+    <link rel="alternate" hreflang="fr" href="http://code.makery.ch/library/javafx-8-tutorial/fr/part4/" />
+    <link rel="alternate" hreflang="id" href="http://code.makery.ch/library/javafx-8-tutorial/id/part4/" />
+    <link rel="alternate" hreflang="it" href="http://code.makery.ch/library/javafx-8-tutorial/it/part4/" />
+    <link rel="alternate" hreflang="pt" href="http://code.makery.ch/library/javafx-8-tutorial/pt/part4/" />
+    <link rel="alternate" hreflang="ru" href="http://code.makery.ch/library/javafx-8-tutorial/ru/part4/" />
+    <link rel="alternate" hreflang="tr" href="http://code.makery.ch/library/javafx-8-tutorial/tr/part4/" />
+    <link rel="alternate" hreflang="uk" href="http://code.makery.ch/library/javafx-8-tutorial/uk/part4/" />
+    <link rel="alternate" hreflang="zh-cn" href="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part4/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="В JavaFX ви можете змінювати зовнішній вигляд додатку за допомогою CSS. В цій частині ми також навчимося додавати іконку нашого додатку">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Підручник з JavaFX 8 - Частина 4: Стилізація за допомогою CSS | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="В JavaFX ви можете змінювати зовнішній вигляд додатку за допомогою CSS. В цій частині ми також навчимося додавати іконку нашого додатку" />
+    <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/uk/part4/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/javafx-8-tutorial/part4/addressapp-part4.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/javafx-8-tutorial-uk-part4.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Статті цієї серії</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/uk/" class="list-group-item">
+        Вступ</a>
+      <a href="/library/javafx-8-tutorial/uk/part1/" class="list-group-item">
+        Частина 1: Scene Builder</a>
+      <a href="/library/javafx-8-tutorial/uk/part2/" class="list-group-item">
+        Частина 2: Модель та компонент TableView</a>
+      <a href="/library/javafx-8-tutorial/uk/part3/" class="list-group-item">
+        Частина 3: Взаємодія з користувачем</a>
+      <a href="/library/javafx-8-tutorial/uk/part4/" class="list-group-item active">
+        Частина 4: Стилізація за допомогою CSS</a>
+      <a href="/library/javafx-8-tutorial/uk/part5/" class="list-group-item">
+        Частина 5: Збереження даних в XML</a>
+      <a href="/library/javafx-8-tutorial/uk/part6/" class="list-group-item">
+        Частина 6: Статистична діаграма</a>
+      <a href="/library/javafx-8-tutorial/uk/part7/" class="list-group-item">
+        Частина 7: Розгортання</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Скачати вихідний код</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.1/addressapp-jfx8u40-part-4.zip" class="list-group-item">
+<i class="fa fa-fw fa-download"></i>        Частина 4 як проект Eclipse <em>(Необхідно хоча б JDK 8u40)</em></a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Мови</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/javafx-8-tutorial/es/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Español
+      </a>
+      <a href="/library/javafx-8-tutorial/fr/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Français
+      </a>
+      <a href="/library/javafx-8-tutorial/id/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Bahasa Indonesia
+      </a>
+      <a href="/library/javafx-8-tutorial/it/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Italiano
+      </a>
+      <a href="/library/javafx-8-tutorial/pt/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Português
+      </a>
+      <a href="/library/javafx-8-tutorial/ru/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Русский
+      </a>
+      <a href="/library/javafx-8-tutorial/tr/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Türkçe
+      </a>
+      <a href="/library/javafx-8-tutorial/uk/part4/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> Українська
+      </a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> 中文（简体）
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Підручник з JavaFX 8 - Частина 4: Стилізація за допомогою CSS</h1>
+            <div class="article-date">
+  Apr 25, 2014
+  • Updated Jun 25, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Статті цієї серії <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/javafx-8-tutorial/uk/">
+        Вступ</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part1/">
+        Частина 1: Scene Builder</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part2/">
+        Частина 2: Модель та компонент TableView</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part3/">
+        Частина 3: Взаємодія з користувачем</a></li>
+      <li class=" active"><a href="/library/javafx-8-tutorial/uk/part4/">
+        Частина 4: Стилізація за допомогою CSS</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part5/">
+        Частина 5: Збереження даних в XML</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part6/">
+        Частина 6: Статистична діаграма</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part7/">
+        Частина 7: Розгортання</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Скачати вихідний код <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.1/addressapp-jfx8u40-part-4.zip">
+<i class="fa fa-fw fa-download"></i>        Частина 4 як проект Eclipse <em>(Необхідно хоча б JDK 8u40)</em></a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Мови <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class="">
+        <a href="/library/javafx-8-tutorial/part4/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/es/part4/"><i class="fa fa-fw fa-globe"></i> Español</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/fr/part4/"><i class="fa fa-fw fa-globe"></i> Français</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/id/part4/"><i class="fa fa-fw fa-globe"></i> Bahasa Indonesia</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/it/part4/"><i class="fa fa-fw fa-globe"></i> Italiano</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/pt/part4/"><i class="fa fa-fw fa-globe"></i> Português</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/ru/part4/"><i class="fa fa-fw fa-globe"></i> Русский</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/tr/part4/"><i class="fa fa-fw fa-globe"></i> Türkçe</a>
+    </li>
+      <li class=" active">
+        <a href="/library/javafx-8-tutorial/uk/part4/"><i class="fa fa-fw fa-globe"></i> Українська</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/zh-cn/part4/"><i class="fa fa-fw fa-globe"></i> 中文（简体）</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p><img src="/assets/library/javafx-8-tutorial/part4/addressapp-part4.png" alt="Screenshot AddressApp Part 4" title="AddressApp Part4"></p>
+<h2 id="-4-">Частина 4: Зміст</h2>
+<ul>
+<li>Стилізація за допомогою каскадних таблиць стилів (CSS)</li>
+<li>Додавання іконки програми</li>
+</ul>
+<hr>
+<h2 id="-css">Стилізація за допомогою CSS</h2>
+<p>У JavaFX ви можете стилізувати ваш інтерфейс користувача за допомогою каскадних таблиць стилів (CSS). Це дуже добре! Ще ніколи не було так легко налаштувати зовнішній вигляд Java додатку.</p>
+<p>У цьому підручнику ми створимо тему <em>DarkTheme</em>, натхненну Метро-дизайном з Windows 8. Використовувані стилі для кнопок базуються на <a href="http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/" title="JMetro - Windows 8 Metro controls on Java">статті</a>, написаній Pedro Duque Vieira.</p>
+<h3 id="-css">Знайомство з CSS</h3>
+<p>Якщо ви хочете стилізувати ваш JavaFX додаток, ви повинні мати початкове уявлення про CSS в цілому. Гарне місце для старту - цей <a href="http://www.csstutorial.net/">підручник CSS</a>.</p>
+<p>Для отримання специфічної інформації про використання CSS в JavaFX читайте це:</p>
+<ul>
+<li><a href="http://docs.oracle.com/javase/8/javafx/user-interface-tutorial/css_tutorial.htm" title="Skinning JavaFX Applications with CSS">підручник від Oracle</a></li>
+<li><a href="http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html" title="JavaFX CSS Reference">офіційний довідник</a></li>
+</ul>
+<h3 id="-javafx-">Стилі, що використовуються в JavaFX за замовчуванням</h3>
+<p>Стиль, який використовується в JavaFX за замовчуванням, зберігається у файлі <code>modena.css</code>. Цей css файл можна знайти у файлі <code>jfxrt.jar</code>, розташованому у вашій Java-директорії<code>/jdk1.8.x/jre/lib/ext/jfxrt.jar</code>.</p>
+<p>Розпакуйте архів, і ви знайдете <code>modena.css</code> в папці <code>com/sun/javafx/scene/control/skin/modena</code>.</p>
+<p>Цей стиль завжди застосовується для JavaFX додатків за замовчуванням. Додаючи стилі користувача, ви замінюєте оригінальні стилі з файлу <code>modena.css</code>.</p>
+<div class = "alert alert-info">
+<strong>Підказка:</strong> Для того, щоб знати які стилі вам треба замінити, перегляньте цей файл.
+</div>
+
+<h3 id="-">Установка стилів користувача</h3>
+<p>Додайте файл <code>DarkTheme.css</code> в пакет <code>view</code>.</p>
+<h5 id="darktheme-css">DarkTheme.css</h5>
+<pre class="prettyprint lang-css pre-scrollable">
+.background {
+    -fx-background-color: #1d1d1d;
+}
+
+.label {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 0.6;
+}
+
+.label-bright {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.label-header {
+    -fx-font-size: 32pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.table-view {
+    -fx-base: #1d1d1d;
+    -fx-control-inner-background: #1d1d1d;
+    -fx-background-color: #1d1d1d;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 35;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-border-color: 
+        transparent
+        transparent
+        derive(-fx-base, 80%) 
+        transparent;
+    -fx-border-insets: 0 10 1 0;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 20pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-opacity: 1;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color;
+}
+
+.split-pane:horizontal > .split-pane-divider {
+    -fx-border-color: transparent #1d1d1d transparent #1d1d1d;
+    -fx-background-color: transparent, derive(#1d1d1d,20%);
+}
+
+.split-pane {
+    -fx-padding: 1 0 0 0;
+}
+
+.menu-bar {
+    -fx-background-color: derive(#1d1d1d,20%);
+}
+
+.context-menu {
+    -fx-background-color: derive(#1d1d1d,50%);
+}
+
+.menu-bar .label {
+    -fx-font-size: 14pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}
+
+.menu .left-container {
+    -fx-background-color: black;
+}
+
+.text-field {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
+/* 
+ * Metro style Push Button
+ * Author: Pedro Duque Vieira
+ * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
+ */
+.button {
+    -fx-padding: 5 22 5 22;   
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #1d1d1d;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:hover {
+    -fx-background-color: #3a3a3a;
+}
+
+.button:pressed, .button:default:hover:pressed {
+  -fx-background-color: white;
+  -fx-text-fill: #1d1d1d;
+}
+
+.button:focused {
+    -fx-border-color: white, white;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.button:disabled, .button:default:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #1d1d1d;
+    -fx-text-fill: white;
+}
+
+.button:default {
+    -fx-background-color: -fx-focus-color;
+    -fx-text-fill: #ffffff;
+}
+
+.button:default:hover {
+    -fx-background-color: derive(-fx-focus-color,30%);
+}
+</pre>
+
+<p>Тепер нам треба приєднати ці стилі до нашої сцени. Це можна зробити програмно, в коді Java, але ми будемо використовувати додаток Scene Builder для того, щоб додати стилі в наші fxml файли:</p>
+<h4 id="-rootlayout-fxml">Приєднуємо таблиці стилів до файлу RootLayout.fxml</h4>
+<ol>
+<li><p>Відкрийте файл <code>RootLayout.fxml</code> в додатку Scene Builder.</p>
+</li>
+<li><p>Виберіть кореневий контейнер <code>BorderPane</code> на вкладці <em>Hierarchy</em>, перейдіть на вкладку <em>Properties</em> і вкажіть файл <code>DarkTheme.css</code> в ролі таблиць стилів.<br><img src="/assets/library/javafx-8-tutorial/part4/darktheme-rootlayout.png" alt="DarkTheme for RootLayout" title="DarkTheme RootLayout"></p>
+</li>
+</ol>
+<h4 id="-personeditdialog-fxml">Приєднуємо таблиці стилів до файлу PersonEditDialog.fxml</h4>
+<ol>
+<li><p>Відкрийте файл <code>PersonEditDialog.fxml</code> в додатку Scene Builder. Виберіть кореневий контейнер <code>AnchorPane</code> у вкладці <em>Hierarchy</em>, перейдіть на вкладку <em>Properties</em> і вкажіть файл <code>DarkTheme.css</code> в ролі таблиць стилів.</p>
+</li>
+<li><p>Фон залишився білим, тому вкажіть для кореневого компонента <code>AnchorPane</code> в класі стилю значення <code>background</code>.<br><img src="/assets/library/javafx-8-tutorial/part4/darktheme-personeditdialog.png" alt="Add Style Class" title="DarkTheme Person Edit Dialog"></p>
+</li>
+<li><p>Виберіть кнопку <em>OK</em> і встановіть властивість <em>Default Button</em> у вкладці <em>Properties</em>. В результаті зміниться її колір і кнопка буде використовуватися за замовчуванням, коли користувач, перебуваючи у вікні, натисне клавішу enter.</p>
+</li>
+</ol>
+<h4 id="-personoverview-fxml">Приєднуємо таблиці стилів до файлу PersonOverview.fxml</h4>
+<ol>
+<li><p>Відкрийте файл <code>PersonOverview.fxml</code> в додатку Scene Builder. Виберіть кореневий контейнер <code>AnchorPane</code> у вкладці <em>Hierarchy</em>, перейдіть на вкладку <em>Properties</em> і вкажіть файл <code>DarkTheme.css</code> в ролі таблиць стилів.</p>
+</li>
+<li><p>Ви відразу повинні побачити деякі зміни: колір таблиці і кнопок став чорним. Всі класи стилів <code>.table-view</code> і <code>.button</code> з файлу <code>modena.css</code> застосувались до таблиці і кнопок. З того моменту, як ми перевизначили деякі з стилів в нашому css файлі, нові стилі застосовуються автоматично.</p>
+</li>
+<li><p>Можливо, вам буде потрібно змінити розмір кнопок для того, щоб відображався весь текст.</p>
+</li>
+<li><p>Виберіть правий компонент <code>AnchorPane</code> всередині компонента <code>SplitPane</code>.
+<img src="/assets/library/javafx-8-tutorial/part4/background-style-select.png" alt="Background Style Select"></p>
+</li>
+<li><p>Перейдіть на вкладку <em>Properties</em> та вкажіть значення <code>background</code> як клас стилю. Тепер фон стане чорного кольору.<br><img src="/assets/library/javafx-8-tutorial/part4/background-style.png" alt="Background Style"></p>
+</li>
+</ol>
+<h4 id="-">Текстові мітки з іншими стилями</h4>
+<p>Тепер всі текстові мітки з правого боку мають однаковий розмір. Для подальшої стилізації текстових міток, ми будемо використовувати вже визначені стилі <code>.label-header</code> та <code>label-bright</code>.</p>
+<ol>
+<li><p>Виберіть мітку <em>Person Details</em> і додайте в якості класу стилю значення <code>label-header</code>.
+<img src="/assets/library/javafx-8-tutorial/part4/label-header-style.png" alt="Label Header Style"></p>
+</li>
+<li><p>Для кожної мітки в правій колонці (де будуть відображатись дані наших записів) додайте як клас стилю значення <code>label-bright</code>.<br><img src="/assets/library/javafx-8-tutorial/part4/label-bright-style.png" alt="Label Bright Style" title="Label Bright Style"></p>
+</li>
+</ol>
+<hr>
+<h2 id="-">Додаємо додатку іконку</h2>
+<p>На даний момент в нашому додатку на панелі назв і панелі завдань використовується іконка за замовчуванням:</p>
+<p><img src="/assets/library/javafx-8-tutorial/part4/default-app-icon.png" alt="Default Icon" title="Default App Icon"></p>
+<p>З іконкою користувача наш додаток буде виглядати красивіше:</p>
+<p><img src="/assets/library/javafx-8-tutorial/part4/custom-app-icon.png" alt="Custom Icon"></p>
+<h3 id="-">Файл зображення</h3>
+<p>Одне з можливих місць, де можна вільно завантажити іконки - це <a href="http://www.iconfinder.com/" title="Icon Finder">Icon Finder</a>. Я завантажив маленьку іконку <a href="https://www.iconfinder.com/icons/86957/address_book_icon#size=32">адресної книги</a>.</p>
+<p>Створіть папку <strong>resources</strong> всередині вашого проекту AddressApp, а в ній папку <strong>images</strong>. Помістіть обрану вами іконку в папку зображень. Ваша структура папок повинна мати такий вигляд:</p>
+<p><img src="/assets/library/javafx-8-tutorial/part4/custom-icon-file.png" alt="Custom Icon File" title="Custom Icon File"></p>
+<h3 id="-">Встановлення іконки в додаток</h3>
+<p>Для установки обраної іконки в наш додаток, додайте наступний код в метод <code>start(...)</code> в класі <code>MainApp.java</code>:</p>
+<h5 id="mainapp-java">MainApp.java</h5>
+<pre class="prettyprint lang-java">
+this.primaryStage.getIcons().add(new Image("file:resources/images/address_book_32.png"));
+</pre>
+
+<p>Весь метод <code>start(...)</code> має виглядати приблизно так, як зображено нижче:</p>
+<pre class="prettyprint lang-java">
+public void start(Stage primaryStage) {
+    this.primaryStage = primaryStage;
+    this.primaryStage.setTitle("AddressApp");
+
+    // Set the application icon.
+    this.primaryStage.getIcons().add(new Image("file:resources/images/address_book_32.png"));
+
+    initRootLayout();
+
+    showPersonOverview();
+}
+</pre>
+
+<p>Ви також можете додати іконку в вікно редагування адресного запису.</p>
+<h3 id="-">Що далі?</h3>
+<p>В <a href="/library/javafx-8-tutorial/uk/part5/" title="JavaFX Tutorial Part 5">5 частині підручника</a> ми додамо XML сховище для наших даних.</p>
+<h5 id="-">Вам можуть бути цікаві також деякі інші статті</h5>
+<ul>
+<li><a href="/blog/javafx-dialogs-official/">JavaFX Dialogs (official)</a></li>
+<li><a href="/blog/javafx-8-date-picker/">JavaFX Date Picker</a></li>
+<li><a href="/blog/javafx-8-event-handling-examples/">JavaFX Event Handling Examples</a></li>
+<li><a href="/blog/javafx-8-tableview-sorting-filtering/">JavaFX TableView Sorting and Filtering</a></li>
+<li><a href="/blog/javafx-8-tableview-cell-renderer/">JavaFX TableView Cell Renderer</a></li>
+</ul>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/javafx-8-tutorial/uk/" data-toggle="tooltip" title="Вступ">Intro</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part1/" data-toggle="tooltip" title="Частина 1: Scene Builder">1</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part2/" data-toggle="tooltip" title="Частина 2: Модель та компонент TableView">2</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part3/" data-toggle="tooltip" title="Частина 3: Взаємодія з користувачем">3</a>
+      </li>
+        <li class="active">
+      <a href="/library/javafx-8-tutorial/uk/part4/" data-toggle="tooltip" title="Частина 4: Стилізація за допомогою CSS">4</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part5/" data-toggle="tooltip" title="Частина 5: Збереження даних в XML">5</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part6/" data-toggle="tooltip" title="Частина 6: Статистична діаграма">6</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part7/" data-toggle="tooltip" title="Частина 7: Розгортання">7</a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/javafx-8-tutorial/uk/part4/';
+    var disqus_url = 'http://code.makery.ch/library/javafx-8-tutorial/uk/part4/';
+    var disqus_title = 'Підручник з JavaFX 8 - Частина 4: Стилізація за допомогою CSS';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

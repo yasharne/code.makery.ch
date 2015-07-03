@@ -1,0 +1,820 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Підручник з JavaFX 8 - Частина 5: Збереження даних в XML | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/javafx-8-tutorial/uk/part5/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/javafx-8-tutorial/part5/" />
+    <link rel="alternate" hreflang="es" href="http://code.makery.ch/library/javafx-8-tutorial/es/part5/" />
+    <link rel="alternate" hreflang="fr" href="http://code.makery.ch/library/javafx-8-tutorial/fr/part5/" />
+    <link rel="alternate" hreflang="id" href="http://code.makery.ch/library/javafx-8-tutorial/id/part5/" />
+    <link rel="alternate" hreflang="it" href="http://code.makery.ch/library/javafx-8-tutorial/it/part5/" />
+    <link rel="alternate" hreflang="pt" href="http://code.makery.ch/library/javafx-8-tutorial/pt/part5/" />
+    <link rel="alternate" hreflang="ru" href="http://code.makery.ch/library/javafx-8-tutorial/ru/part5/" />
+    <link rel="alternate" hreflang="tr" href="http://code.makery.ch/library/javafx-8-tutorial/tr/part5/" />
+    <link rel="alternate" hreflang="uk" href="http://code.makery.ch/library/javafx-8-tutorial/uk/part5/" />
+    <link rel="alternate" hreflang="zh-cn" href="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part5/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Збереження даних в XML за допомогою JAXB. Вчимося використовувати JavaFX компоненти FileChooser та Menu">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Підручник з JavaFX 8 - Частина 5: Збереження даних в XML | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Збереження даних в XML за допомогою JAXB. Вчимося використовувати JavaFX компоненти FileChooser та Menu" />
+    <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/uk/part5/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/javafx-8-tutorial/part5/addressapp-part5.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/javafx-8-tutorial-uk-part5.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Статті цієї серії</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/uk/" class="list-group-item">
+        Вступ</a>
+      <a href="/library/javafx-8-tutorial/uk/part1/" class="list-group-item">
+        Частина 1: Scene Builder</a>
+      <a href="/library/javafx-8-tutorial/uk/part2/" class="list-group-item">
+        Частина 2: Модель та компонент TableView</a>
+      <a href="/library/javafx-8-tutorial/uk/part3/" class="list-group-item">
+        Частина 3: Взаємодія з користувачем</a>
+      <a href="/library/javafx-8-tutorial/uk/part4/" class="list-group-item">
+        Частина 4: Стилізація за допомогою CSS</a>
+      <a href="/library/javafx-8-tutorial/uk/part5/" class="list-group-item active">
+        Частина 5: Збереження даних в XML</a>
+      <a href="/library/javafx-8-tutorial/uk/part6/" class="list-group-item">
+        Частина 6: Статистична діаграма</a>
+      <a href="/library/javafx-8-tutorial/uk/part7/" class="list-group-item">
+        Частина 7: Розгортання</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Скачати вихідний код</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.1/addressapp-jfx8u40-part-5.zip" class="list-group-item">
+<i class="fa fa-fw fa-download"></i>        Частина 5 як проект Eclipse <em>(Необхідно хоча б JDK 8u40)</em></a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Мови</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/part5/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/javafx-8-tutorial/es/part5/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Español
+      </a>
+      <a href="/library/javafx-8-tutorial/fr/part5/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Français
+      </a>
+      <a href="/library/javafx-8-tutorial/id/part5/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Bahasa Indonesia
+      </a>
+      <a href="/library/javafx-8-tutorial/it/part5/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Italiano
+      </a>
+      <a href="/library/javafx-8-tutorial/pt/part5/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Português
+      </a>
+      <a href="/library/javafx-8-tutorial/ru/part5/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Русский
+      </a>
+      <a href="/library/javafx-8-tutorial/tr/part5/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Türkçe
+      </a>
+      <a href="/library/javafx-8-tutorial/uk/part5/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> Українська
+      </a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part5/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> 中文（简体）
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Підручник з JavaFX 8 - Частина 5: Збереження даних в XML</h1>
+            <div class="article-date">
+  Apr 25, 2014
+  • Updated Jun 25, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Статті цієї серії <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/javafx-8-tutorial/uk/">
+        Вступ</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part1/">
+        Частина 1: Scene Builder</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part2/">
+        Частина 2: Модель та компонент TableView</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part3/">
+        Частина 3: Взаємодія з користувачем</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part4/">
+        Частина 4: Стилізація за допомогою CSS</a></li>
+      <li class=" active"><a href="/library/javafx-8-tutorial/uk/part5/">
+        Частина 5: Збереження даних в XML</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part6/">
+        Частина 6: Статистична діаграма</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/uk/part7/">
+        Частина 7: Розгортання</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Скачати вихідний код <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.1/addressapp-jfx8u40-part-5.zip">
+<i class="fa fa-fw fa-download"></i>        Частина 5 як проект Eclipse <em>(Необхідно хоча б JDK 8u40)</em></a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Мови <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class="">
+        <a href="/library/javafx-8-tutorial/part5/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/es/part5/"><i class="fa fa-fw fa-globe"></i> Español</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/fr/part5/"><i class="fa fa-fw fa-globe"></i> Français</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/id/part5/"><i class="fa fa-fw fa-globe"></i> Bahasa Indonesia</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/it/part5/"><i class="fa fa-fw fa-globe"></i> Italiano</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/pt/part5/"><i class="fa fa-fw fa-globe"></i> Português</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/ru/part5/"><i class="fa fa-fw fa-globe"></i> Русский</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/tr/part5/"><i class="fa fa-fw fa-globe"></i> Türkçe</a>
+    </li>
+      <li class=" active">
+        <a href="/library/javafx-8-tutorial/uk/part5/"><i class="fa fa-fw fa-globe"></i> Українська</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/zh-cn/part5/"><i class="fa fa-fw fa-globe"></i> 中文（简体）</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p><img src="/assets/library/javafx-8-tutorial/part5/addressapp-part5.png" alt="Screenshot AddressApp Part 5"></p>
+<h2 id="-5-">Частина 5: Зміст</h2>
+<ul>
+<li><strong>Збереження даних в XML</strong></li>
+<li>Використання компоненту JavaFX <strong>FileChooser</strong></li>
+<li>Використання компоненту JavaFX <strong>Menu</strong></li>
+<li>Збереження шляху до останнього відкритого файлу в налаштуваннях користувача</li>
+</ul>
+<hr>
+<p>На даний момент, наш додаток вміє зберігати дані тільки в пам'яті. Кожен раз, коли ми закриваємо його, дані втрачаються. Тому настав час подумати про постійне їх збереження.</p>
+<h2 id="-">Збереження налаштувань користувача</h2>
+<p>Java дозволяє нам зберігати деякі дані про стан програми в класі <code>Preferences</code>. Залежно від операційної системи, клас <code>Preferences</code> записує дані в різні місця (наприклад, у файл регістру в ОС Windows).</p>
+<p>Ми не можемо використовувати клас <code>Preferences</code> для зберігання всього нашого записника. Але ми можемо зберегти там деякі <strong>прості налаштування програми</strong>, наприклад, <strong>шлях до останнього відкритого файлу</strong>. Маючи ці дані, ми зможемо відновлювати стан нашого додатку після перевантаження.</p>
+<p>Наступні два методи забезпечують збереження і відновлення налаштувань нашого додатку. Додайте їх в кінець класу <code>MainApp</code>:</p>
+<h5 id="mainapp-java">MainApp.java</h5>
+<pre class="prettyprint lang-java">
+/**
+ * Returns the person file preference, i.e. the file that was last opened.
+ * The preference is read from the OS specific registry. If no such
+ * preference can be found, null is returned.
+ * 
+ * @return
+ */
+public File getPersonFilePath() {
+    Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
+    String filePath = prefs.get("filePath", null);
+    if (filePath != null) {
+        return new File(filePath);
+    } else {
+        return null;
+    }
+}
+
+/**
+ * Sets the file path of the currently loaded file. The path is persisted in
+ * the OS specific registry.
+ * 
+ * @param file the file or null to remove the path
+ */
+public void setPersonFilePath(File file) {
+    Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
+    if (file != null) {
+        prefs.put("filePath", file.getPath());
+
+        // Update the stage title.
+        primaryStage.setTitle("AddressApp - " + file.getName());
+    } else {
+        prefs.remove("filePath");
+
+        // Update the stage title.
+        primaryStage.setTitle("AddressApp");
+    }
+}
+</pre>
+
+<h2 id="-xml">Збереження даних в XML</h2>
+<h3 id="-xml-">Чому саме XML?</h3>
+<p>Використання баз даних є одним з найбільш поширених способів зберігання даних. Бази даних зазвичай містять деякий вид реляційних даних (наприклад, таблиці), а дані, які ми повинні зберігати - це об'єкти. Це називається <a href="http://wikipedia.org/wiki/Object-relational_impedance_mismatch">об'єктно-реляційною невідповідністю</a>. Але для того, щоб привести наші об'єктні дані у відповідність із реляційними таблицями, потрібно виконати додаткову роботу. Існують фреймворки, які допомагають в цьому (наприклад, <a href="http://www.hibernate.org/">Hibernate</a> - один з найбільш популярних), але щоб почати їх використовувати, необхідно проробити додаткову роботу для налаштування.</p>
+<p>Для нашого простого додатку набагато легше зберігати дані у вигляді XML. Для цього ми будемо використовувати бібліотеку <a href="https://jaxb.java.net/" title="JAXB">JAXB</a> (<strong>J</strong>ava <strong>A</strong>rchitechture for <strong>X</strong>ML <strong>B</strong>inding). Написавши всього кілька рядків коду, JAXB дозволить нам згенерувати такий вихідний XML файл:</p>
+<h5 id="-xml-">Приклад згенерованого XML файлу</h5>
+<pre class="prettyprint lang-xml">
+&lt;persons&gt;
+    &lt;person&gt;
+        &lt;birthday&gt;1999-02-21&lt;/birthday&gt;
+        &lt;city&gt;some city&lt;/city&gt;
+        &lt;firstName&gt;Hans&lt;/firstName&gt;
+        &lt;lastName&gt;Muster&lt;/lastName&gt;
+        &lt;postalCode&gt;1234&lt;/postalCode&gt;
+        &lt;street&gt;some street&lt;/street&gt;
+    &lt;/person&gt;
+    &lt;person&gt;
+        &lt;birthday&gt;1999-02-21&lt;/birthday&gt;
+        &lt;city&gt;some city&lt;/city&gt;
+        &lt;firstName&gt;Anna&lt;/firstName&gt;
+        &lt;lastName&gt;Best&lt;/lastName&gt;
+        &lt;postalCode&gt;1234&lt;/postalCode&gt;
+        &lt;street&gt;some street&lt;/street&gt;
+    &lt;/person&gt;
+&lt;/persons&gt;
+</pre>
+
+<h3 id="-jaxb">Використання JAXB</h3>
+<p>Бібліотека JAXB вбудована в JDK. Це означає, що ніяких додаткових бібліотек нам підключати не доведеться.</p>
+<p>JAXB надає дві основні функції: <strong>маршалювання</strong> (marshalling) Java об'єктів в XML й зворотну - <strong>демаршалювання</strong> (unmarshalling) з XML файлу в Java об'єкти.</p>
+<p>Для того, щоб JAXB надавав можливість такої конвертації, нам необхідно підготувати нашу модель.</p>
+<h4 id="-jaxb">Підготовка класу-моделі для JAXB</h4>
+<p>Дані, які ми хочемо зберегти, знаходяться у змінній <code>personData</code> в класі <code>MainApp</code>. JAXB вимагає помітити анотацією <code>@XmlRootElement</code> зовнішній клас наших даних (тільки клас, поле цієї анотацією помітити не можна). Тип змінної <code>personData</code> є <code>ObservableList</code>, в який ми не можемо втрутитись. Тому, для того, щоб вирішити цю проблему, нам необхідно створити клас-обгортку, який буде містити тільки нашу колекцію записів, і на який ми поставимо анотацію <code>@XmlRootElement</code>.</p>
+<p>Створіть у пакеті <code>model</code> новий клас <code>PersonListWrapper</code>.</p>
+<h5 id="personlistwrapper-java">PersonListWrapper.java</h5>
+<pre class="prettyprint lang-java">
+package ch.makery.address.model;
+
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+/**
+ * Helper class to wrap a list of persons. This is used for saving the
+ * list of persons to XML.
+ * 
+ * @author Marco Jakob
+ */
+@XmlRootElement(name = "persons")
+public class PersonListWrapper {
+
+    private List&lt;Person> persons;
+
+    @XmlElement(name = "person")
+    public List&lt;Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(List&lt;Person> persons) {
+        this.persons = persons;
+    }
+}
+</pre>
+
+<p>Зверніть увагу на дві анотації:</p>
+<ul>
+<li><code>@XmlRootElement</code> визначає ім'я кореневого елемента.</li>
+<li><code>@XmlElement</code> визначає ім'я елемента, яке нам вказувати не обов'язково.</li>
+</ul>
+<h4 id="-jaxb">Читання і запис даних за допомогою JAXB</h4>
+<p>Зробимо наш клас <code>MainApp</code> відповідальним за читання і запис даних нашого додатку. Для цього додайте два методи в кінець класу <code>MainApp.java</code>:</p>
+<pre class="prettyprint lang-java">
+/**
+ * Loads person data from the specified file. The current person data will
+ * be replaced.
+ * 
+ * @param file
+ */
+public void loadPersonDataFromFile(File file) {
+    try {
+        JAXBContext context = JAXBContext
+                .newInstance(PersonListWrapper.class);
+        Unmarshaller um = context.createUnmarshaller();
+
+        // Reading XML from the file and unmarshalling.
+        PersonListWrapper wrapper = (PersonListWrapper) um.unmarshal(file);
+
+        personData.clear();
+        personData.addAll(wrapper.getPersons());
+
+        // Save the file path to the registry.
+        setPersonFilePath(file);
+
+    } catch (Exception e) { // catches ANY exception
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Could not load data");
+        alert.setContentText("Could not load data from file:\n" + file.getPath());
+
+        alert.showAndWait();
+    }
+}
+
+/**
+ * Saves the current person data to the specified file.
+ * 
+ * @param file
+ */
+public void savePersonDataToFile(File file) {
+    try {
+        JAXBContext context = JAXBContext
+                .newInstance(PersonListWrapper.class);
+        Marshaller m = context.createMarshaller();
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+        // Wrapping our person data.
+        PersonListWrapper wrapper = new PersonListWrapper();
+        wrapper.setPersons(personData);
+
+        // Marshalling and saving XML to the file.
+        m.marshal(wrapper, file);
+
+        // Save the file path to the registry.
+        setPersonFilePath(file);
+    } catch (Exception e) { // catches ANY exception
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Could not save data");
+        alert.setContentText("Could not save data to file:\n" + file.getPath());
+
+        alert.showAndWait();
+    }
+}
+</pre>
+
+<p>Можливість маршалізації та демаршалізації готові. Тепер давайте створимо пункти меню <em>"Зберегти"</em> і <em>"Завантажити"</em> для того, щоб використовувати дані можливості.</p>
+<h2 id="-">Обробка дій меню</h2>
+<p>Ми вже створювали меню в файлі <code>RootLayout.fxml</code>, яке поки що не використали. Перед тим, як ми додамо поведінку нашому меню, давайте створимо всі необхідні нам пункти.</p>
+<p>Відкрийте файл <code>RootLayout.fxml</code> в додатку Scene Builder і перенесіть необхідну кількість пунктів меню з вкладки <em>Бібліотека</em> на вкладку <em>Ієрархія</em> в <code>MenuBar</code>. Створіть наступні пункти меню: <strong>Новий</strong>, <strong>Відкрити...</strong>, <strong>Зберегти</strong>, <strong>Зберегти як...</strong> та <strong>Вихід</strong>.</p>
+<p><img src="/assets/library/javafx-8-tutorial/part5/add-menu-items.png" alt="Add Menu Items"></p>
+<p>Підказка: Використовуйте властивість <em>Accelerator</em> на вкладці <em>Properties</em> для встановлення гарячих клавіш для пунктів меню.</p>
+<h3 id="-rootlayoutcontroller">Клас RootLayoutController</h3>
+<p>Для обробки поведінки меню нам необхідний новий клас-контролер. Створіть клас <code>RootLayoutController</code> в пакеті <code>ch.makery.address.view</code>.</p>
+<p>Додайте до класу-контролера такий вміст:</p>
+<h5 id="rootlayoutcontroller-java">RootLayoutController.java</h5>
+<pre class="prettyprint lang-java pre-scrollable">
+package ch.makery.address.view;
+
+import java.io.File;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.FileChooser;
+import ch.makery.address.MainApp;
+
+/**
+ * The controller for the root layout. The root layout provides the basic
+ * application layout containing a menu bar and space where other JavaFX
+ * elements can be placed.
+ * 
+ * @author Marco Jakob
+ */
+public class RootLayoutController {
+
+    // Reference to the main application
+    private MainApp mainApp;
+
+    /**
+     * Is called by the main application to give a reference back to itself.
+     * 
+     * @param mainApp
+     */
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
+    }
+
+    /**
+     * Creates an empty address book.
+     */
+    @FXML
+    private void handleNew() {
+        mainApp.getPersonData().clear();
+        mainApp.setPersonFilePath(null);
+    }
+
+    /**
+     * Opens a FileChooser to let the user select an address book to load.
+     */
+    @FXML
+    private void handleOpen() {
+        FileChooser fileChooser = new FileChooser();
+
+        // Set extension filter
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                "XML files (*.xml)", "*.xml");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        // Show save file dialog
+        File file = fileChooser.showOpenDialog(mainApp.getPrimaryStage());
+
+        if (file != null) {
+            mainApp.loadPersonDataFromFile(file);
+        }
+    }
+
+    /**
+     * Saves the file to the person file that is currently open. If there is no
+     * open file, the "save as" dialog is shown.
+     */
+    @FXML
+    private void handleSave() {
+        File personFile = mainApp.getPersonFilePath();
+        if (personFile != null) {
+            mainApp.savePersonDataToFile(personFile);
+        } else {
+            handleSaveAs();
+        }
+    }
+
+    /**
+     * Opens a FileChooser to let the user select a file to save to.
+     */
+    @FXML
+    private void handleSaveAs() {
+        FileChooser fileChooser = new FileChooser();
+
+        // Set extension filter
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                "XML files (*.xml)", "*.xml");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        // Show save file dialog
+        File file = fileChooser.showSaveDialog(mainApp.getPrimaryStage());
+
+        if (file != null) {
+            // Make sure it has the correct extension
+            if (!file.getPath().endsWith(".xml")) {
+                file = new File(file.getPath() + ".xml");
+            }
+            mainApp.savePersonDataToFile(file);
+        }
+    }
+
+    /**
+     * Opens an about dialog.
+     */
+    @FXML
+    private void handleAbout() {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("AddressApp");
+        alert.setHeaderText("About");
+        alert.setContentText("Author: Marco Jakob\nWebsite: http://code.makery.ch");
+
+        alert.showAndWait();
+    }
+
+    /**
+     * Closes the application.
+     */
+    @FXML
+    private void handleExit() {
+        System.exit(0);
+    }
+}
+</pre>
+
+<h4 id="-filechooser">Компонент FileChooser</h4>
+<p>Зверніть увагу на методи, які використовують компонент <code>FileChooser</code> в класі <code>RootLayoutController</code>. Спершу ми створюємо новий екземпляр класу <code>FileChooser</code>. Потім ми застосовуємо фільтр розширення і при виборі файлів будуть показуватися лише ті, які мають розширення <code>.xml</code>. Ну і нарешті, ми відображаємо даний компонент над <em>PrimaryStage</em>.</p>
+<p>Якщо користувач закриває діалог вибору файлів не вибравши жодного файлу, тоді повертається <code>null</code>. В іншому випадку, ми передаємо об'єкт вибраного файлу всередину методу <code>loadPersonDataFromFile(...)</code> або <code>savePersonDataToFile(...)</code>, які знаходяться в класі <code>MainApp</code>.</p>
+<h3 id="-fxml-">З'єднання FXML файлу з класом-контролером</h3>
+<ol>
+<li><p>Відкрийте файл <code>RootLayout.fxml</code> в додатку Scene Builder. На вкладці <em>Controller</em> в якості класу-контролера виберіть значення <code>RootLayoutController</code>.</p>
+</li>
+<li><p>Перейдіть на вкладку <em>Hierarchy</em> і виберіть пункт меню. У вкладці <em>Code</em> в якості значень властивості <em>On Action</em> ви зможете побачити всі доступні методи обраного класу-контролера. Виберіть той метод з перечислених у випадаючому списку справа, який відповідає цьому пункту меню.<br><img src="/assets/library/javafx-8-tutorial/part5/menu-actions.png" alt="Menu Actions"></p>
+</li>
+<li><p>Повторіть попередній крок для кожного пункту меню.</p>
+</li>
+<li><p>Закрийте додаток Scene Builder та оновіть ваш проект (натиснувши <strong>Refresh (F5)</strong> на кореневій папці вашого проекту). Це дозволить середовищу розробки Eclipse побачити зроблені вами зміни в додатку Scene Builder.</p>
+</li>
+</ol>
+<h3 id="-mainapp-rootlayoutcontroller">З'єднання класу MainApp з класом RootLayoutController</h3>
+<p>У деяких місцях коду клас <code>RootLayoutController</code> вимагає посилання на клас <code>MainApp</code>. Поки ми це посилання ще не передали.</p>
+<p>Відкрийте клас <code>MainApp</code> і замініть метод <code>initRootLayout()</code> наступним кодом:</p>
+<pre class="prettyprint lang-java">
+/**
+ * Initializes the root layout and tries to load the last opened
+ * person file.
+ */
+public void initRootLayout() {
+    try {
+        // Load root layout from fxml file.
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(MainApp.class
+                .getResource("view/RootLayout.fxml"));
+        rootLayout = (BorderPane) loader.load();
+
+        // Show the scene containing the root layout.
+        Scene scene = new Scene(rootLayout);
+        primaryStage.setScene(scene);
+
+        // Give the controller access to the main app.
+        RootLayoutController controller = loader.getController();
+        controller.setMainApp(this);
+
+        primaryStage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+    // Try to load last opened person file.
+    File file = getPersonFilePath();
+    if (file != null) {
+        loadPersonDataFromFile(file);
+    }
+}
+</pre>
+
+<p>Зверніть увагу на дві зміни: на рядки, <em>що дають доступ контролеру до основного класу програми</em> і на три останніх рядки для <em>завантаження останнього відкритого файлу із записами</em>.</p>
+<h3 id="-">Тестування</h3>
+<p>Влаштувавши тест-драйв вашому додатку, переконайтеся, що ви здатні використовувати меню для збереження записів в файл.</p>
+<p>Коли ви відкриєте <code>xml</code> файл в редакторі, то замість значення дня народження ви побачите порожній тег <code>&lt;birthday/&gt;</code>. Справа в тому, що JAXB не знає як виконати конвертацію типу <code>LocalDate</code> у формат XML. Тому, ми повинні надати власний клас <code>LocalDateAdapter</code> і визначити процес конвертації вручну.</p>
+<p>Створіть новий клас <code>LocalDateAdapter</code> всередині пакету <code>ch.makery.address.util</code> і скопіюйте туди наступний код:</p>
+<h5 id="localdateadapter-java">LocalDateAdapter.java</h5>
+<pre class="prettyprint lang-java">
+package ch.makery.address.util;
+
+import java.time.LocalDate;
+
+import javax.xml.bind.annotation.adapters.XmlAdapter;
+
+/**
+ * Adapter (for JAXB) to convert between the LocalDate and the ISO 8601 
+ * String representation of the date such as '2012-12-03'.
+ * 
+ * @author Marco Jakob
+ */
+public class LocalDateAdapter extends XmlAdapter&lt;String, LocalDate> {
+
+    @Override
+    public LocalDate unmarshal(String v) throws Exception {
+        return LocalDate.parse(v);
+    }
+
+    @Override
+    public String marshal(LocalDate v) throws Exception {
+        return v.toString();
+    }
+}
+</pre>
+
+<p>Потім відкрийте клас <code>Person.java</code> і додайте до методу <code>getBirthday()</code> наступний код:</p>
+<pre class="prettyprint lang-java">
+@XmlJavaTypeAdapter(LocalDateAdapter.class)
+public LocalDate getBirthday() {
+    return birthday.get();
+}
+</pre>
+
+<p>Тепер протестуйте додаток ще раз. Спробуйте зберегти і завантажити XML файл з даними. Після перезапуску, додаток повинен автоматично завантажити останній відкритий файл.</p>
+<h2 id="-">Як це працює</h2>
+<p>Давайте подивимося як все це працює разом:</p>
+<ol>
+<li>Додаток запускається через метод <code>main(...)</code> з класу <code>MainApp</code>.</li>
+<li>Викликається конструктор <code>public MainApp()</code>, що додає деякі тестові дані.</li>
+<li>Далі запускається метод <code>start(...)</code> в класі <code>MainApp</code> і викликає метод <code>initRootLayout()</code> для ініціалізації кореневої розмітки з файлу <code>RootLayout.fxml</code>. Fxml файл володіє інформацією про те, який контролер використовувати та пов'язує представлення з контролером <code>RootLayoutController</code>.</li>
+<li>Клас <code>MainApp</code> отримує посилання на <code>RootLayoutController</code> з завантажувача fxml файлу і передає цьому контролеру посилання на себе. З цим посиланням контролер потім зможе отримати доступ до публічних методів класу <code>MainApp</code>.</li>
+<li>Наприкінці методу <code>initRootLayout</code> ми намагаємося отримати шлях до останнього відкритого файлу записів з налаштувань <code>Preferences</code>. Якщо налаштування мають інформацію про такий файл, то ми завантажуємо з нього дані. Ця процедура перезапише тестові дані, які ми завантажували в конструкторі.</li>
+</ol>
+<h3 id="-">Що далі?</h3>
+<p>В <a href="/library/javafx-8-tutorial/uk/part6/" title="Tutorial Part 6">6 частині підручника</a> ми додамо статистичний графік днів народження.</p>
+<h5 id="-">Вам можуть бути цікаві також деякі інші статті</h5>
+<ul>
+<li><a href="/blog/javafx-dialogs-official/">JavaFX Dialogs (official)</a></li>
+<li><a href="/blog/javafx-8-date-picker/">JavaFX Date Picker</a></li>
+<li><a href="/blog/javafx-8-event-handling-examples/">JavaFX Event Handling Examples</a></li>
+<li><a href="/blog/javafx-8-tableview-sorting-filtering/">JavaFX TableView Sorting and Filtering</a></li>
+<li><a href="/blog/javafx-8-tableview-cell-renderer/">JavaFX TableView Cell Renderer</a></li>
+</ul>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/javafx-8-tutorial/uk/" data-toggle="tooltip" title="Вступ">Intro</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part1/" data-toggle="tooltip" title="Частина 1: Scene Builder">1</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part2/" data-toggle="tooltip" title="Частина 2: Модель та компонент TableView">2</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part3/" data-toggle="tooltip" title="Частина 3: Взаємодія з користувачем">3</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part4/" data-toggle="tooltip" title="Частина 4: Стилізація за допомогою CSS">4</a>
+      </li>
+        <li class="active">
+      <a href="/library/javafx-8-tutorial/uk/part5/" data-toggle="tooltip" title="Частина 5: Збереження даних в XML">5</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part6/" data-toggle="tooltip" title="Частина 6: Статистична діаграма">6</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/uk/part7/" data-toggle="tooltip" title="Частина 7: Розгортання">7</a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/javafx-8-tutorial/uk/part5/';
+    var disqus_url = 'http://code.makery.ch/library/javafx-8-tutorial/uk/part5/';
+    var disqus_title = 'Підручник з JavaFX 8 - Частина 5: Збереження даних в XML';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

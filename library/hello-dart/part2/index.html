@@ -1,0 +1,443 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hello Dart - Part 2: Loops | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/hello-dart/part2/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/hello-dart/part2/" />
+    <link rel="alternate" hreflang="de" href="http://code.makery.ch/library/hello-dart/de/part2/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Learn to program loops with Dart. With logical operators we control the program flow.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Hello Dart - Part 2: Loops | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Learn to program loops with Dart. With logical operators we control the program flow." />
+    <meta property="og:url" content="http://code.makery.ch/library/hello-dart/part2/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/hello-dart/hello-dart.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/hello-dart-en-part2.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Articles in this Series</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/hello-dart/" class="list-group-item">
+        Introduction</a>
+      <a href="/library/hello-dart/install/" class="list-group-item">
+<i class="fa fa-fw fa-cog"></i>        Installation</a>
+      <a href="/library/hello-dart/part1/" class="list-group-item">
+        Part 1: First Steps</a>
+      <a href="/library/hello-dart/part2/" class="list-group-item active">
+        Part 2: Loops</a>
+      <a href="/library/hello-dart/part3/" class="list-group-item">
+        Part 3: Conditionals</a>
+      <a href="/library/hello-dart/part4/" class="list-group-item">
+        Part 4: Variables</a>
+      <a href="/library/hello-dart/part5/" class="list-group-item">
+        Part 5: Functions</a>
+      <a href="/library/hello-dart/next/" class="list-group-item">
+<i class="fa fa-fw fa-flag-checkered"></i>        Next Steps</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Solutions</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/hello-dart/part2-solutions/" class="list-group-item">
+<i class="fa fa-fw fa-check-square-o"></i>        Solutions Part 2</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Links</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/convert-web-page-to-word/" class="list-group-item">
+<i class="fa fa-fw fa-file-word-o"></i>        Page as Word File</a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Languages</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/hello-dart/part2/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/hello-dart/de/part2/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Deutsch
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Hello Dart - Part 2: Loops</h1>
+            <div class="article-date">
+  May 01, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Articles in this Series <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/hello-dart/">
+        Introduction</a></li>
+      <li class=""><a href="/library/hello-dart/install/">
+<i class="fa fa-fw fa-cog"></i>        Installation</a></li>
+      <li class=""><a href="/library/hello-dart/part1/">
+        Part 1: First Steps</a></li>
+      <li class=" active"><a href="/library/hello-dart/part2/">
+        Part 2: Loops</a></li>
+      <li class=""><a href="/library/hello-dart/part3/">
+        Part 3: Conditionals</a></li>
+      <li class=""><a href="/library/hello-dart/part4/">
+        Part 4: Variables</a></li>
+      <li class=""><a href="/library/hello-dart/part5/">
+        Part 5: Functions</a></li>
+      <li class=""><a href="/library/hello-dart/next/">
+<i class="fa fa-fw fa-flag-checkered"></i>        Next Steps</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Solutions <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/hello-dart/part2-solutions/">
+<i class="fa fa-fw fa-check-square-o"></i>        Solutions Part 2</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Links <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/convert-web-page-to-word/">
+<i class="fa fa-fw fa-file-word-o"></i>        Page as Word File</a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Languages <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=" active">
+        <a href="/library/hello-dart/part2/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/hello-dart/de/part2/"><i class="fa fa-fw fa-globe"></i> Deutsch</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p>In the last part, we learned how we can give our player a set of instructions. Instead of listing each and every statement, we can also repeat instructions. In programming such repetitions are called <strong>loops</strong>.</p>
+<p>As a first example of a loop, we will do the following:</p>
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-task-2-01-loop"><i class="fa fa-rocket mg-t"></i> TASK 2.01: Loop</h4>
+<p><img src="/assets/library/hello-dart/part2/loop.png" alt="Loop"></p>
+<p>The player should move forward until he can't move any more.</p>
+<p>In Dart we can express this as follows:</p>
+<pre class="prettyprint lang-dart">
+while (canMove()) {
+  move();
+}
+</pre>
+
+<p>The <code>while</code> loop is repeated as long as the condition in the paranthesis returns <code>true</code>. Once the player arrives at the edge, the sensor function <code>canMove()</code> will return <code>false</code> and the player stops moving.</p>
+<p>Test the program by adding the above <code>while</code> loop to the <code>start()</code> function of <code>scenario2.01</code>.</p>
+<h2 id="logical-operators">Logical Operators</h2>
+<p>Our sensor functions (see <a href="/library/hello-dart/#sensors">Introduction</a>) all respond with either <code>true</code> or <code>false</code> when you call them. A data type that can either be true or false is called a <a href="http://en.wikipedia.org/wiki/Boolean_data_type">Boolean</a>.</p>
+<p>Boolean values can also be combined or changed by means of logical operators. The following table shows the three most important logical operators in Dart:</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Description</th>
+      <th>Example</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>&amp;&amp;</code></td>
+      <td>and</td>
+      <td><code>treeFront() &amp;&amp; onStar()</code></td>
+      <td>Is true if both expressions are true, that means if the player is facing a tree <strong>and</strong> is on a star.</td>
+    </tr>
+    <tr>
+      <td><code>||</code></td>
+      <td>or</td>
+      <td><code>treeFront() || onStar()</code></td>
+      <td>Is true if either the first <strong>or</strong> the second expression, or both are true.</td>
+    </tr>
+    <tr>
+      <td><code>!</code></td>
+      <td>not</td>
+      <td><code>!treeFront()</code></td>
+      <td>Changes the expression from true to false and vice versa. This expression would return true if the player is <strong>not</strong> facing a tree.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>An example in Dart could look like this:</p>
+<pre class="prettyprint lang-dart">
+if (treeLeft() && onStar()) {
+  // Do something ...
+}
+</pre>
+
+<p>or combined:</p>
+<pre class="prettyprint lang-dart">
+if (treeLeft() && !treeRight()) {
+  // Do something ...
+}
+</pre>
+
+
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-task-2-02-loop-star"><i class="fa fa-rocket mg-t"></i> TASK 2.02: Loop Star</h4>
+<p><img src="/assets/library/hello-dart/part2/loop-star.png" alt="Loop Star"></p>
+<p>Open the <code>scenario 2.02</code> and program the player with a loop so that he runs forward until he stands on the star.</p>
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-task-2-03-leaving-the-tunnel"><i class="fa fa-rocket mg-t"></i> TASK 2.03: Leaving the Tunnel</h4>
+<p><img src="/assets/library/hello-dart/part2/leaving-the-tunnel.png" alt="Leaving the Tunnel"></p>
+<p>Our player is in a tunnel and wants to get out. Write a program for <code>scenario2.03</code> where the player walks out of the tunnel and stops as soon as there is no tree on one of the sides.</p>
+<p>At the end he should also put down a star.</p>
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-task-2-04-afraid-of-tunnel"><i class="fa fa-rocket mg-t"></i> TASK 2.04: Afraid of Tunnel</h4>
+<p><img src="/assets/library/hello-dart/part2/afraid-of-tunnel.png" alt="Afraid of Tunnel"></p>
+<p>The player is afraid of tunnels. He should look on every field if it is a tunnel entrance (that is, whether it has trees on both sides). If this is the case, then he should stop and say that he is afraid in a speech bubble.</p>
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-task-2-05-climbing-up"><i class="fa fa-rocket mg-t"></i> TASK 2.05: Climbing Up</h4>
+<p><img src="/assets/library/hello-dart/part2/climbing-up.png" alt="Climbing Up"></p>
+<p>The player must climb arbitraily long stairs.</p>
+<p>Write a function called <code>oneStepUp()</code> to make the player climb a single step. You'll need to figure out how the player knows if he still has to climb a step or if he's arrived at the top.</p>
+<h2 id="for-loops">For Loops</h2>
+<p>In addition to the <code>while</code> loop there is an other very important type of loop, the <code>for</code> loop.</p>
+<pre class="prettyprint lang-dart">
+for (var i = 0; i &lt; 4; i++) {
+  move();
+}
+</pre>
+
+<p>In this example, a counter <code>i</code> is used. The counter is first set to <code>0</code>. At every loop cycle the program checks if <code>i</code> is smaller than <code>4</code> and increments <code>i</code> by one. This means that the <code>move()</code> statement is executed four times in this loop.</p>
+<p>You will encounter the <code>for</code> loop a lot, in various forms. For the moment it is enough for us to know that it exists.</p>
+<h2 id="what-s-next-">What's next?</h2>
+<p>&rarr; Continue with <a href="/library/hello-dart/part3/">Part 3: Conditionals</a></p>
+<hr>
+<p><em>Credits</em><br>
+<em class="small">
+  <a href="http://www.lostgarden.com/2007/05/dancs-miraculously-flexible-game.html">Planet Cute</a> images by Daniel Cook (Lostgarden.com), published under <a href="http://creativecommons.org/licenses/by/3.0/us/">CC BY 3.0</a>.<br>
+<a href="https://www.linkedin.com/in/olegyadrov">Oleg Yadrov</a> improved the "Planet Cute" images and was so kind to let me use them. The images were optimized with the great <a href="https://www.codeandweb.com/texturepacker">TexturePacker</a>.<br>
+Some exercises in <code>Hello Dart</code>were inspired by <a href="http://www.swisseduc.ch/compscience/karatojava/javakara/">Kara</a>. Kara was developed by Jürg Nievergelt, Werner Hartmann, Raimond Reichert et. al.
+</em></p>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/hello-dart/" data-toggle="tooltip" title="Introduction">Intro</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/install/" data-toggle="tooltip" title="Installation"><i class="fa fa-cog"></i></a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/part1/" data-toggle="tooltip" title="Part 1: First Steps">1</a>
+      </li>
+        <li class="active">
+      <a href="/library/hello-dart/part2/" data-toggle="tooltip" title="Part 2: Loops">2</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/part3/" data-toggle="tooltip" title="Part 3: Conditionals">3</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/part4/" data-toggle="tooltip" title="Part 4: Variables">4</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/part5/" data-toggle="tooltip" title="Part 5: Functions">5</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/next/" data-toggle="tooltip" title="Next Steps"><i class="fa fa-flag-checkered"></i></a>
+      </li>
+      
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/hello-dart/part2/';
+    var disqus_url = 'http://code.makery.ch/library/hello-dart/part2/';
+    var disqus_title = 'Hello Dart - Part 2: Loops';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

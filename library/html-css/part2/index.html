@@ -1,0 +1,380 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HTML & CSS Tutorial - Part 2: Publishing Your Website | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/html-css/part2/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/html-css/part2/" />
+    <link rel="alternate" hreflang="de" href="http://code.makery.ch/library/html-css/de/part2/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Learn to publish a website live in the internet. Compare different hosting possibilities like BitBalloon, Dropbox, Google Drive, and GitHub Pages.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="HTML & CSS Tutorial - Part 2: Publishing Your Website | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Learn to publish a website live in the internet. Compare different hosting possibilities like BitBalloon, Dropbox, Google Drive, and GitHub Pages." />
+    <meta property="og:url" content="http://code.makery.ch/library/html-css/part2/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/html-css/portfolio.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/html-css-en-part2.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Articles in this Series</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/html-css/" class="list-group-item">
+        Introduction</a>
+      <a href="/library/html-css/part1/" class="list-group-item">
+        Part 1: Your First Website</a>
+      <a href="/library/html-css/part2/" class="list-group-item active">
+        Part 2: Publishing Your Website</a>
+      <a href="/library/html-css/part3/" class="list-group-item">
+        Part 3: Introduction to CSS</a>
+      <a href="/library/html-css/part4/" class="list-group-item">
+        Part 4: Development Tools in the Browser</a>
+      <a href="/library/html-css/part5/" class="list-group-item">
+        Part 5: Blog and Other Pages</a>
+      <a href="/library/html-css/part6/" class="list-group-item">
+        Part 6: Navigation</a>
+      <a href="/library/html-css/part7/" class="list-group-item">
+        Part 7: Bootstrap Framework</a>
+      <a href="/library/html-css/next/" class="list-group-item">
+<i class="fa fa-fw fa-flag-checkered"></i>        Next Steps</a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Languages</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/html-css/part2/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/html-css/de/part2/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Deutsch
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">HTML & CSS Tutorial - Part 2: Publishing Your Website</h1>
+            <div class="article-date">
+  Apr 08, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Articles in this Series <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/html-css/">
+        Introduction</a></li>
+      <li class=""><a href="/library/html-css/part1/">
+        Part 1: Your First Website</a></li>
+      <li class=" active"><a href="/library/html-css/part2/">
+        Part 2: Publishing Your Website</a></li>
+      <li class=""><a href="/library/html-css/part3/">
+        Part 3: Introduction to CSS</a></li>
+      <li class=""><a href="/library/html-css/part4/">
+        Part 4: Development Tools in the Browser</a></li>
+      <li class=""><a href="/library/html-css/part5/">
+        Part 5: Blog and Other Pages</a></li>
+      <li class=""><a href="/library/html-css/part6/">
+        Part 6: Navigation</a></li>
+      <li class=""><a href="/library/html-css/part7/">
+        Part 7: Bootstrap Framework</a></li>
+      <li class=""><a href="/library/html-css/next/">
+<i class="fa fa-fw fa-flag-checkered"></i>        Next Steps</a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Languages <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=" active">
+        <a href="/library/html-css/part2/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/html-css/de/part2/"><i class="fa fa-fw fa-globe"></i> Deutsch</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p>In the previous part you have created your first web site. It would be a pity if this website only stays on your computer and could never be looked at by anyone else. Therefore, we will now learn how to publish our website live on the internet.</p>
+<div class="alert alert-info">
+<strong>Note:</strong> There will not be many visitors on your website right from the start. Unless you tell people about the address of your site they will probably not find it.
+</div>
+
+
+<h2 id="hosting">Hosting</h2>
+<p>What do we need that our website can be viewed on the Internet? We need a <strong>server</strong> where our website is stored and an <strong>address</strong> (URL) so that our website can be found on the server.</p>
+<p>There are numerous services where you can rent server space. Such a service is called <a href="http://en.wikipedia.org/wiki/Web_hosting_service">Webhosting</a>. We will look at a few options for (free) hosting. If this is your first website, I recommend that you start with <strong>BitBalloon</strong>.</p>
+<h3 id="hosting-on-bitballoon">Hosting on BitBalloon</h3>
+<p><img src="/assets/library/html-css/part2/bitballoon-logo.png" alt="BitBalloon Logo"></p>
+<p><a href="https://www.bitballoon.com/">BitBalloon</a> is a wonderfully simple service which I highly recommend. Here's how you can use it.</p>
+<ol>
+<li><p>Subscribe on the <a href="https://www.bitballoon.com/">Bitballoon website</a>. Click on <em>Sign Up</em> and then choose <em>Sign in Using Persona</em>. Then enter your email address and a password.</p>
+</li>
+<li><p>Once you are logged in, you can simply drag your entire web folder (your Portfolio folder) in the provided space.<br><img src="/assets/library/html-css/part2/bitballoon-drag-and-drop.png" alt="BitBalloon drag and drop"></p>
+</li>
+<li><p>Hard to believe, but that's it. Once the page has been uploaded a URL is generated for you which points to your site. Click this URL and check whether the page is displayed correctly.</p>
+</li>
+<li><p>To shorten your URL you can click on <strong>Edit name</strong> and enter an arbitrary name.<br><img src="/assets/library/html-css/part2/bitballoon-published.png" alt="BitBalloon veröffentlicht"></p>
+</li>
+<li><p>For Updates: When you want to release a new version of your website, simply drag the folder into the box with the text <strong>Drag &amp; Drop to Update your Site</strong>.</p>
+</li>
+</ol>
+<h3 id="hosting-on-google-drive">Hosting on Google Drive</h3>
+<p><img src="/assets/library/html-css/part2/google-drive-logo.png" alt="Google Drive Logo"></p>
+<p><a href="https://drive.google.com/">Google Drive</a> may also be used as hosting service. The disadvantage is that you will get a very long URL. Here is how it works.</p>
+<ol>
+<li><p>Upload your website folder to Google Drive.</p>
+</li>
+<li><p>Select the folder on Drive and choose <strong>Share</strong>. Click on <strong>Advanced</strong> and change the access to <strong>Public on the web</strong>.</p>
+</li>
+<li><p>Open the folder in Drive and verify that all website files have been uploaded (index.html, images, etc.).</p>
+</li>
+<li><p>Copy the characters that follow after <code>#folders/</code> in the address bar of your browser. This is the ID of your folder.<br><img src="/assets/library/html-css/part2/google-drive-copy-string.png" alt="Google Drive Copy Characters"></p>
+</li>
+<li><p>In your browser, enter <code>http://googledrive.com/host/</code> followed by the characters you've copied in the last step.<br><img src="/assets/library/html-css/part2/google-drive-host-address.png" alt="Google Drive Hosting Address"></p>
+</li>
+</ol>
+<p>Anyone you send this link will be able to access your website.</p>
+<h3 id="hosting-on-dropbox">Hosting on Dropbox</h3>
+<p><img src="/assets/library/html-css/part2/dropbox-logo.png" alt="Dropbox Logo"></p>
+<p>You can also use <a href="https://www.dropbox.com/">Dropbox</a> as a hosting server. For this to work an additional service is required for forwarding website requests. Two possible services are <a href="https://pancake.io/">Pancake.io</a> or <a href="http://droppages.com/">DropPages</a>.</p>
+<h3 id="hosting-on-github">Hosting on GitHub</h3>
+<p><img src="/assets/library/html-css/part2/github-logo.jpg" alt="GitHub Logo"></p>
+<p>If you already have some experience with programming then GitHub is a great way for web site hosting. GitHub is a platform to facilitate collaboration among programmers and also offers free hosting for web pages on <a href="https://pages.github.com/">GitHub Pages</a>. GitHub Pages provides more options (for example, you can use your custom domain), but it requires skills in working with <a href="http://de.wikipedia.org/wiki/Git">Git</a>.</p>
+<hr>
+<h2 id="url-shorteners">URL Shorteners</h2>
+<p>Depending on the hosting you chose, the URL for your website might be quite long. There are simple services for shortening your URL.</p>
+<p>Shortened URLs could also be entered on a mobile phone. Some services also create a <a href="http://de.wikipedia.org/wiki/QR-Code">QR-Code</a>.</p>
+<p>Here is a list of a few URL shorteners:</p>
+<ul>
+<li><a href="https://goo.gl/">Goo.gl</a> (includes a QR-Code under <em>Details</em>)</li>
+<li><a href="https://bitly.com/">bit.ly</a></li>
+<li><a href="http://tiny.cc/">Tiny.cc</a></li>
+</ul>
+<h2 id="your-own-domain-name">Your Own Domain Name</h2>
+<p>There will come a time when you'll want your very own domain name such as <code>http://www.my-super-website.com</code>. In some cases you can register a domain name right at your hosting provider (for example at BitBalloon).</p>
+<p>Otherwise, there are numerous web hosting and registrar services. It's worth it to compare a few services. If you want personal support, you can also contact a provider in your area.</p>
+<h2 id="what-s-next-">What's next?</h2>
+<p>In the next part we will upgrade our site with some styling. </p>
+<p>&rarr; Continue with <a href="/library/html-css/part3/">Part 3: Introduction to CSS</a>.</p>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/html-css/" data-toggle="tooltip" title="Introduction">Intro</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part1/" data-toggle="tooltip" title="Part 1: Your First Website">1</a>
+      </li>
+        <li class="active">
+      <a href="/library/html-css/part2/" data-toggle="tooltip" title="Part 2: Publishing Your Website">2</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part3/" data-toggle="tooltip" title="Part 3: Introduction to CSS">3</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part4/" data-toggle="tooltip" title="Part 4: Development Tools in the Browser">4</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part5/" data-toggle="tooltip" title="Part 5: Blog and Other Pages">5</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part6/" data-toggle="tooltip" title="Part 6: Navigation">6</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part7/" data-toggle="tooltip" title="Part 7: Bootstrap Framework">7</a>
+      </li>
+        <li>
+      <a href="/library/html-css/next/" data-toggle="tooltip" title="Next Steps"><i class="fa fa-flag-checkered"></i></a>
+      </li>
+  
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/html-css/part2/';
+    var disqus_url = 'http://code.makery.ch/library/html-css/part2/';
+    var disqus_title = 'HTML & CSS Tutorial - Part 2: Publishing Your Website';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

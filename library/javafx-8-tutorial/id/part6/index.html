@@ -1,0 +1,578 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tutorial JavaFX 8 - Bagian 6: Bagan Statistika | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/javafx-8-tutorial/id/part6/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/javafx-8-tutorial/part6/" />
+    <link rel="alternate" hreflang="es" href="http://code.makery.ch/library/javafx-8-tutorial/es/part6/" />
+    <link rel="alternate" hreflang="fr" href="http://code.makery.ch/library/javafx-8-tutorial/fr/part6/" />
+    <link rel="alternate" hreflang="id" href="http://code.makery.ch/library/javafx-8-tutorial/id/part6/" />
+    <link rel="alternate" hreflang="it" href="http://code.makery.ch/library/javafx-8-tutorial/it/part6/" />
+    <link rel="alternate" hreflang="pt" href="http://code.makery.ch/library/javafx-8-tutorial/pt/part6/" />
+    <link rel="alternate" hreflang="ru" href="http://code.makery.ch/library/javafx-8-tutorial/ru/part6/" />
+    <link rel="alternate" hreflang="tr" href="http://code.makery.ch/library/javafx-8-tutorial/tr/part6/" />
+    <link rel="alternate" hreflang="uk" href="http://code.makery.ch/library/javafx-8-tutorial/uk/part6/" />
+    <link rel="alternate" hreflang="zh-cn" href="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part6/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Belajar bagaimana membuat bagan palang JavaFX.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Tutorial JavaFX 8 - Bagian 6: Bagan Statistika | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Belajar bagaimana membuat bagan palang JavaFX." />
+    <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/id/part6/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/javafx-8-tutorial/part6/addressapp-part6.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/javafx-8-tutorial-id-part6.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Seri Artikel</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/id/" class="list-group-item">
+        Pengenalan</a>
+      <a href="/library/javafx-8-tutorial/id/part1/" class="list-group-item">
+        Bagian 1: Scene Builder</a>
+      <a href="/library/javafx-8-tutorial/id/part2/" class="list-group-item">
+        Bagian 2: Model dan TableView</a>
+      <a href="/library/javafx-8-tutorial/id/part3/" class="list-group-item">
+        Bagian 3: Berinteraksi dengan pengguna</a>
+      <a href="/library/javafx-8-tutorial/id/part4/" class="list-group-item">
+        Bagian 4: Memberikan gaya dengan CSS</a>
+      <a href="/library/javafx-8-tutorial/id/part5/" class="list-group-item">
+        Bagian 5: Menyimpan data sebagai XML</a>
+      <a href="/library/javafx-8-tutorial/id/part6/" class="list-group-item active">
+        Bagian 6: Bagan Statistika</a>
+      <a href="/library/javafx-8-tutorial/id/part7/" class="list-group-item">
+        Bagian 7: Penyebaran</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Unduh kode sumber</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.1/addressapp-jfx8u40-part-6.zip" class="list-group-item">
+<i class="fa fa-fw fa-download"></i>        Bagian 6 - Proyek dari Eclise <em>(Diperlukan setidaknya JDK 8u40)</em></a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Bahasa</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/javafx-8-tutorial/es/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Español
+      </a>
+      <a href="/library/javafx-8-tutorial/fr/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Français
+      </a>
+      <a href="/library/javafx-8-tutorial/id/part6/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> Bahasa Indonesia
+      </a>
+      <a href="/library/javafx-8-tutorial/it/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Italiano
+      </a>
+      <a href="/library/javafx-8-tutorial/pt/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Português
+      </a>
+      <a href="/library/javafx-8-tutorial/ru/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Русский
+      </a>
+      <a href="/library/javafx-8-tutorial/tr/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Türkçe
+      </a>
+      <a href="/library/javafx-8-tutorial/uk/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Українська
+      </a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part6/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> 中文（简体）
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Tutorial JavaFX 8 - Bagian 6: Bagan Statistika</h1>
+            <div class="article-date">
+  May 09, 2014
+  • Updated Mar 12, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Seri Artikel <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/javafx-8-tutorial/id/">
+        Pengenalan</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/id/part1/">
+        Bagian 1: Scene Builder</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/id/part2/">
+        Bagian 2: Model dan TableView</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/id/part3/">
+        Bagian 3: Berinteraksi dengan pengguna</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/id/part4/">
+        Bagian 4: Memberikan gaya dengan CSS</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/id/part5/">
+        Bagian 5: Menyimpan data sebagai XML</a></li>
+      <li class=" active"><a href="/library/javafx-8-tutorial/id/part6/">
+        Bagian 6: Bagan Statistika</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/id/part7/">
+        Bagian 7: Penyebaran</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Unduh kode sumber <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.1/addressapp-jfx8u40-part-6.zip">
+<i class="fa fa-fw fa-download"></i>        Bagian 6 - Proyek dari Eclise <em>(Diperlukan setidaknya JDK 8u40)</em></a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Bahasa <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class="">
+        <a href="/library/javafx-8-tutorial/part6/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/es/part6/"><i class="fa fa-fw fa-globe"></i> Español</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/fr/part6/"><i class="fa fa-fw fa-globe"></i> Français</a>
+    </li>
+      <li class=" active">
+        <a href="/library/javafx-8-tutorial/id/part6/"><i class="fa fa-fw fa-globe"></i> Bahasa Indonesia</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/it/part6/"><i class="fa fa-fw fa-globe"></i> Italiano</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/pt/part6/"><i class="fa fa-fw fa-globe"></i> Português</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/ru/part6/"><i class="fa fa-fw fa-globe"></i> Русский</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/tr/part6/"><i class="fa fa-fw fa-globe"></i> Türkçe</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/uk/part6/"><i class="fa fa-fw fa-globe"></i> Українська</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/zh-cn/part6/"><i class="fa fa-fw fa-globe"></i> 中文（简体）</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p><img src="/assets/library/javafx-8-tutorial/part6/addressapp-part6.png" alt="Tangkapan layar AddressApp bagian 6"></p>
+<h2 id="pembahasan-di-bagian-6-6">Pembahasan di bagian 6 6</h2>
+<ul>
+<li>Membuat <strong>Bagan Statistika</strong> untuk menampilkan tanggal lahir.</li>
+</ul>
+<hr>
+<h2 id="statistika-tanggal-lahir">Statistika Tanggal lahir</h2>
+<p>Semua orang di AddressApp memiliki tanggal lahir. Bukankan akan lebih menyenangkan jika ada statistika tentang ketika mereka merayakannya.</p>
+<p>Kita akan menggunakan <strong>Bagan Palang</strong> berisi sebuah palang untuk tiap bulan. Tiap palang menampilkan berapa banyak orang yang memiliki tanggal lahir di bulan tersebut.</p>
+<h2 id="tampilan-fxml-statistik">Tampilan FXML Statistik</h2>
+<ol>
+<li><p>Kita mulai dengan membuat berkas <code>BirthdayStatistics.fxml</code> didalam paket <code>ch.makery.address.view</code> (<em>Klik kanan pada paket | New | other... | New FXML Document</em>).<br><img src="/assets/library/javafx-8-tutorial/part6/birthday-statistics-fxml.png" alt="FXML Statistika tanggal lahir"></p>
+</li>
+<li><p>Buka berkas <code>BirthdayStatistics.fxml</code> di Scene Builder.</p>
+</li>
+<li><p>Pilih akar <code>AnchorPane</code>. Pada kelompok <em>Layout</em> atur <em>Pref Width</em> ke 620 dan <em>Pref Height</em> ke 450.</p>
+</li>
+<li><p>Tambah <code>BarChart</code> ke <code>AnchorPane</code>.</p>
+</li>
+<li><p>Klik kanan pada<code>BarChart</code> dan pilih <em>Fit to Parent</em>.</p>
+</li>
+<li><p>Simpan berkas fxml, pada Eclipse segarkan (f5).</p>
+</li>
+</ol>
+<p>Sebelum kita beralih ke Scene Builder, kita akan terlebih dahulu membuat pengendali dan menghubungkan semuanya pada <code>MainApp</code>.</p>
+<h2 id="pengendali-statistika">Pengendali Statistika</h2>
+<p>DI paket tampilan <code>ch.makery.address.view</code> buat kelas java bernama <code>BirthdayStatisticsController.java</code>.</p>
+<p>Mari kita lihat pada keseluruhan kelas pengendali sebelum saya mulai menjelaskan:</p>
+<h5 id="birthdaystatisticscontroller-java">BirthdayStatisticsController.java</h5>
+<pre class="prettyprint lang-java">
+package ch.makery.address.view;
+
+import java.text.DateFormatSymbols;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.XYChart;
+import ch.makery.address.model.Person;
+
+/**
+ * The controller for the birthday statistics view.
+ * 
+ * @author Marco Jakob
+ */
+public class BirthdayStatisticsController {
+
+    @FXML
+    private BarChart&lt;String, Integer> barChart;
+
+    @FXML
+    private CategoryAxis xAxis;
+
+    private ObservableList&lt;String> monthNames = FXCollections.observableArrayList();
+
+    /**
+     * Initializes the controller class. This method is automatically called
+     * after the fxml file has been loaded.
+     */
+    @FXML
+    private void initialize() {
+        // Get an array with the English month names.
+        String[] months = DateFormatSymbols.getInstance(Locale.ENGLISH).getMonths();
+        // Convert it to a list and add it to our ObservableList of months.
+        monthNames.addAll(Arrays.asList(months));
+
+        // Assign the month names as categories for the horizontal axis.
+        xAxis.setCategories(monthNames);
+    }
+
+    /**
+     * Sets the persons to show the statistics for.
+     * 
+     * @param persons
+     */
+    public void setPersonData(List&lt;Person> persons) {
+        // Count the number of people having their birthday in a specific month.
+        int[] monthCounter = new int[12];
+        for (Person p : persons) {
+            int month = p.getBirthday().getMonthValue() - 1;
+            monthCounter[month]++;
+        }
+
+        XYChart.Series&lt;String, Integer> series = new XYChart.Series&lt;>();
+
+        // Create a XYChart.Data object for each month. Add it to the series.
+        for (int i = 0; i &lt; monthCounter.length; i++) {
+            series.getData().add(new XYChart.Data&lt;>(monthNames.get(i), monthCounter[i]));
+        }
+
+        barChart.getData().add(series);
+    }
+}
+</pre>
+
+
+<h4 id="bagaimana-pengendali-bekerja">Bagaimana Pengendali Bekerja</h4>
+<ol>
+<li><p>Pengendali akan memerlukan akses ke 2 elemn dari berkas FXML :</p>
+<ul>
+<li><code>barChar</code>: ini memiliki tipe <code>String</code> dan <code>Integer</code>. <code>String</code> digunakan untuk bulan pada x-axis dan <code>Integer</code> digunakan pada jumlah orang pada bulan tertentu.</li>
+<li><code>xAxis</code>: Kita akan menggunakan ini untuk menambah String bulan.</li>
+</ul>
+</li>
+<li><p>Metode <code>initialize()</code> mengisi x-axis dengan daftar semua bulan.</p>
+</li>
+<li><p>Metode <code>setPersonData(...)</code> akan di akses oleh kelas <code>MainApp</code> untuk mengatur data person. Ini akan mengulang melewati semua orang dan menghitung tanggal kelahiran perbulan, kemudian ni menambah <code>XYChart.Data</code> .Data untuk tiap bulan ke seri data. Tiap <code>XYChart.Data</code> Objek akan mewakilkan satu palang didalam bagan.</p>
+</li>
+</ol>
+<hr>
+<h2 id="menghubungkan-tampilan-dan-pengendali-">Menghubungkan Tampilan dan Pengendali.</h2>
+<ol>
+<li><p>Buka <code>BirthdayStatistics.fxml</code> di Scene Builder.</p>
+</li>
+<li><p>Pada kelompok <em>Controller</em> atur <code>BirthdayStatisticsController</code> sebagai pengendali.</p>
+</li>
+<li><p>Pilih <code>BarChart</code> kemudian pilih <code>barChart</code> sebagai properti fx:id  (didalam kelommpok <em>Code</em>).</p>
+</li>
+<li><p>Pilih <code>CategoryAxis</code> dan pilih <code>xAxis</code> sebagai prperti fx:id.<br><img src="/assets/library/javafx-8-tutorial/part6/category-axis.png" alt="Kategori Axis"></p>
+</li>
+<li><p>Kamu mungkin menambah judul ke <code>BarChart</code> (di kelompok <em>Properties</em>) untuk membuat gaya lebih lanjut.</p>
+</li>
+</ol>
+<hr>
+<h2 id="menghubungkan-tampilan-pengendali-dengan-mainapp">Menghubungkan Tampilan/Pengendali dengan MainApp</h2>
+<p>Kita akan menggunakan mekanisme yang sama untuk  <em>statistika tanggal lahir</em> yang kita gunakan untuk memperbaharui <em>memperbaharui dialog person</em>, dengan sebuah dialog munculan.</p>
+<p>Tambahkan metode berikut ke kelas <code>MainApp</code>:</p>
+<pre class="prettyprint lang-java">
+/**
+ * Opens a dialog to show birthday statistics.
+ */
+public void showBirthdayStatistics() {
+    try {
+        // Load the fxml file and create a new stage for the popup.
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(MainApp.class.getResource("view/BirthdayStatistics.fxml"));
+        AnchorPane page = (AnchorPane) loader.load();
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Birthday Statistics");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(primaryStage);
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+
+        // Set the persons into the controller.
+        BirthdayStatisticsController controller = loader.getController();
+        controller.setPersonData(personData);
+
+        dialogStage.show();
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+</pre>
+
+<p>Semuanya telah di atur, tetapi kita tidak meiliki apapun yang sebenarnya memanggil metode <code>showBirthdayStatistics()</code>. Untungnya kita telah memiliki menu di <code>RootLayout.fxml</code> yang bisa digunakan.</p>
+<h3 id="tampilkan-menu-statistika-tanggal-lahir">Tampilkan Menu Statistika Tanggal lahir</h3>
+<p>Di <code>RootLayoutController</code> tambah metode berikut yang akan menangani klik pengguna untuk menampilkan bulir menu <em>statistika tanggal lahir</em>: </p>
+<pre class="prettyprint lang-java">
+/**
+ * Opens the birthday statistics.
+ */
+@FXML
+private void handleShowBirthdayStatistics() {
+  mainApp.showBirthdayStatistics();
+}
+</pre>
+
+<p>Sekarang buka berkas <code>RootLayout.fxml</code> dengan Scene Builder. Buat <em>Statistics</em> <code>Menu</code> dengan <em>Show Statistics</em> <code>MenuItem</code>:</p>
+<p><img src="/assets/library/javafx-8-tutorial/part6/show-statistics-menu.png" alt="Menu tampilkan statistika"></p>
+<p>Pilih <em>Show Statistics</em> <code>MenuItem</code> dan pilih <code>handleShowBirthdayStatistics</code> untuk <code>On Action</code> (didalam kelompok <em>Code</em>)   </p>
+<p><img src="/assets/library/javafx-8-tutorial/part6/show-statistics-on-action.png" alt="Tampilkan statistika On Action"></p>
+<p>Pada Eclipse, segarkan (F5) <strong>dan cobalah</strong>.</p>
+<hr>
+<h2 id="informasi-lebih-lanjut-pada-bagan-javafx">Informasi lebih lanjut pada bagan JavaFX</h2>
+<p>Sebuah tempat bagus untuk informasi adalah tutorial dari oracle <a href="http://docs.oracle.com/javase/8/javafx/user-interface-tutorial/charts.htm">Working with JavaFX Charts</a>.</p>
+<h3 id="berikutnya">Berikutnya</h3>
+<p>Di tutorial terakhir <a href="/library/javafx-8-tutorial/id/part7/">Bagian 7</a> kita akan menyebarkan aplikasi kita (yaitu paket dan memberikan aplikasi kepada pengguna kita)</p>
+<h5 id="beberapa-artikel-menarik-lainnya">Beberapa artikel menarik lainnya</h5>
+<ul>
+<li><a href="/blog/javafx-dialogs-official/">JavaFX Dialogs (official)</a></li>
+<li><a href="/blog/javafx-8-date-picker/">JavaFX Date Picker</a></li>
+<li><a href="/blog/javafx-8-event-handling-examples/">JavaFX Event Handling Examples</a></li>
+<li><a href="/blog/javafx-8-tableview-sorting-filtering/">JavaFX TableView Sorting and Filtering</a></li>
+<li><a href="/blog/javafx-8-tableview-cell-renderer/">JavaFX TableView Cell Renderer</a></li>
+</ul>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/javafx-8-tutorial/id/" data-toggle="tooltip" title="Pengenalan">Intro</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/id/part1/" data-toggle="tooltip" title="Bagian 1: Scene Builder">1</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/id/part2/" data-toggle="tooltip" title="Bagian 2: Model dan TableView">2</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/id/part3/" data-toggle="tooltip" title="Bagian 3: Berinteraksi dengan pengguna">3</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/id/part4/" data-toggle="tooltip" title="Bagian 4: Memberikan gaya dengan CSS">4</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/id/part5/" data-toggle="tooltip" title="Bagian 5: Menyimpan data sebagai XML">5</a>
+      </li>
+        <li class="active">
+      <a href="/library/javafx-8-tutorial/id/part6/" data-toggle="tooltip" title="Bagian 6: Bagan Statistika">6</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/id/part7/" data-toggle="tooltip" title="Bagian 7: Penyebaran">7</a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/javafx-8-tutorial/id/part6/';
+    var disqus_url = 'http://code.makery.ch/library/javafx-8-tutorial/id/part6/';
+    var disqus_title = 'Tutorial JavaFX 8 - Bagian 6: Bagan Statistika';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

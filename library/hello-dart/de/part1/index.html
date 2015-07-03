@@ -1,0 +1,424 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hello Dart - Teil 1: Erste Schritte | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/hello-dart/de/part1/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/hello-dart/part1/" />
+    <link rel="alternate" hreflang="de" href="http://code.makery.ch/library/hello-dart/de/part1/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Die ersten Schritte im Programmieren mit Dart. Lernen Sie Klassen und Funktionen kennen und verstehen Sie, was die main-Funktion bewirkt.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Hello Dart - Teil 1: Erste Schritte | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Die ersten Schritte im Programmieren mit Dart. Lernen Sie Klassen und Funktionen kennen und verstehen Sie, was die main-Funktion bewirkt." />
+    <meta property="og:url" content="http://code.makery.ch/library/hello-dart/de/part1/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/hello-dart/part1/around-tree.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/hello-dart-de-part1.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artikel dieser Serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/hello-dart/de/" class="list-group-item">
+        Einleitung</a>
+      <a href="/library/hello-dart/de/background/" class="list-group-item">
+<i class="fa fa-fw fa-info"></i>        Hintergrundinfos</a>
+      <a href="/library/hello-dart/de/install/" class="list-group-item">
+<i class="fa fa-fw fa-cog"></i>        Installation</a>
+      <a href="/library/hello-dart/de/part1/" class="list-group-item active">
+        Teil 1: Erste Schritte</a>
+      <a href="/library/hello-dart/de/part2/" class="list-group-item">
+        Teil 2: Schleifen</a>
+      <a href="/library/hello-dart/de/part3/" class="list-group-item">
+        Teil 3: Bedingte Anweisungen</a>
+      <a href="/library/hello-dart/de/part4/" class="list-group-item">
+        Teil 4: Variablen</a>
+      <a href="/library/hello-dart/de/part5/" class="list-group-item">
+        Teil 5: Funktionen</a>
+      <a href="/library/hello-dart/de/next/" class="list-group-item">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Lösungen</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/hello-dart/de/part1-solutions/" class="list-group-item">
+<i class="fa fa-fw fa-check-square-o"></i>        Lösungen zu Teil 1</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Links</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/convert-web-page-to-word/de/" class="list-group-item">
+<i class="fa fa-fw fa-file-word-o"></i>        Seite als Word-Datei</a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Sprachen</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/hello-dart/part1/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/hello-dart/de/part1/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> Deutsch
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Hello Dart - Teil 1: Erste Schritte</h1>
+            <div class="article-date">
+  Jan 21, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Artikel dieser Serie <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/hello-dart/de/">
+        Einleitung</a></li>
+      <li class=""><a href="/library/hello-dart/de/background/">
+<i class="fa fa-fw fa-info"></i>        Hintergrundinfos</a></li>
+      <li class=""><a href="/library/hello-dart/de/install/">
+<i class="fa fa-fw fa-cog"></i>        Installation</a></li>
+      <li class=" active"><a href="/library/hello-dart/de/part1/">
+        Teil 1: Erste Schritte</a></li>
+      <li class=""><a href="/library/hello-dart/de/part2/">
+        Teil 2: Schleifen</a></li>
+      <li class=""><a href="/library/hello-dart/de/part3/">
+        Teil 3: Bedingte Anweisungen</a></li>
+      <li class=""><a href="/library/hello-dart/de/part4/">
+        Teil 4: Variablen</a></li>
+      <li class=""><a href="/library/hello-dart/de/part5/">
+        Teil 5: Funktionen</a></li>
+      <li class=""><a href="/library/hello-dart/de/next/">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Lösungen <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/hello-dart/de/part1-solutions/">
+<i class="fa fa-fw fa-check-square-o"></i>        Lösungen zu Teil 1</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Links <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/convert-web-page-to-word/de/">
+<i class="fa fa-fw fa-file-word-o"></i>        Seite als Word-Datei</a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Sprachen <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class="">
+        <a href="/library/hello-dart/part1/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class=" active">
+        <a href="/library/hello-dart/de/part1/"><i class="fa fa-fw fa-globe"></i> Deutsch</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p>In diesem ersten Teil wagen wir unsere ersten Schritte im Programmieren.  </p>
+<p><img src="/assets/library/hello-dart/part1/hello.png" alt="Hello Dart"></p>
+<h3 id="voraussetzungen">Voraussetzungen</h3>
+<ul>
+<li>Sie brauchen keine Vorkenntnisse im Programmieren, um mit <code>Hello Dart</code> zu starten!</li>
+<li>Sie müssen den Dart Editor mit den <code>Hello Dart</code>-Szenarien installiert haben. Falls Sie das noch nicht gemacht haben, finden Sie hier eine <a href="/library/hello-dart/de/install/">Installationsanleitung</a>.</li>
+</ul>
+<hr>
+<h2 id="die-klasse-myplayer-">Die Klasse <code>MyPlayer</code></h2>
+<p>Öffnen Sie die Datei <code>my_player.dart</code> aus dem Ordner <code>scenario1.01</code>.</p>
+<p><img src="/assets/library/hello-dart/part1/my-player.png" alt="My Player"></p>
+<p>Betrachten wir einmal die <strong>Klasse</strong> <code>MyPlayer</code>. Zwischen den geschweiften Klammern <code>{</code> und <code>}</code> werden die Eigenschaften und das Verhalten unseres Spielers definiert. </p>
+<p>Das Einzige, was im Moment in dieser Klasse steht ist <code>start()</code> und drei Anweisungen für die Bewegungen des Spielers. <code>start()</code> ist eine Funktion (wird manchmal auch <em>Methode</em> genannt). Darin können wir das Verhalten unseres Spieleres verändern.</p>
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-aufgabe-1-01-first-steps"><i class="fa fa-rocket mg-t"></i> AUFGABE 1.01: First Steps</h4>
+<p>Ändern Sie die <code>start()</code>-Funktion so ab, dass der Spieler zuerst einen Schritt macht, dann einen Stern legt und schliesslich wieder einen Schritt macht.</p>
+<p>In der <a href="/library/hello-dart/de/">Einleitung</a> finden Sie alle Befehle, die ein Spieler ausführen kann.</p>
+<div class="alert alert-info">
+  <strong>Beachten Sie:</strong> Nach jedem Befehl muss ein Strichpunkt <code>;</code> stehen. 
+</div>
+
+<p>Klicken Sie auf das <em>Run</em>-Symbol <img src="/assets/library/hello-dart/part1/run.png" alt="Run">, um Ihr Programm zu testen.</p>
+<h2 id="-index-html-und-die-main-funktion"><code>index.html</code> und die <code>main()</code>-Funktion</h2>
+<p>Da wir unsere Programme in einem Webbrowser laufen lassen, brauchen wir immer eine <code>html</code>-Datei. In <code>index.html</code> finden Sie jeweils eine Angabe, dass das Script <code>my_player.dart</code> geladen werden soll. Damit der Browser weiss, wo das Dart-Programm beginnt, braucht es eine <code>main()</code>-Funktion. </p>
+<p>Zuunterst in der Dart-Datei finden Sie die <code>main()</code>-Funktion. Jedes Dart-Programm muss genau eine <code>main()</code>-Funktion als Einstiegspunkt haben.</p>
+<p>In unserer <code>main()</code>-Funktion rufen wir die Funktion <code>createWorld(...)</code> auf. Diese Funktion ist Teil von <code>Hello Dart</code> und zeichnet die ganze Welt mit dem Spieler und den Feldern. Sobald alles parat ist wird automatisch unsere <code>start()</code>-Funktion aufgerufen und der Spieler beginnt sich zu bewegen.</p>
+<h2 id="welt-gestalten">Welt gestalten</h2>
+<p>Die Szenarien von <code>Hello Dart</code> beinhalten zusätzliche Grafiken, die Sie nach Ihren Vorlieben einschalten können.</p>
+<p><img src="/assets/library/hello-dart/part1/catgirl.png" alt="Catgirl"></p>
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-aufgabe-1-02-world-design"><i class="fa fa-rocket mg-t"></i> AUFGABE 1.02: World Design</h4>
+<p>Ändern Sie die <code>main()</code>-Funktion wie folgt ab:</p>
+<pre class="prettyprint lang-dart">
+main() {
+  character = 'catgirl';
+  field = 'stone';
+
+  createWorld('scenario.txt', new MyPlayer());
+}
+</pre>
+
+<p>Für <strong>character</strong> können Sie innerhalb der Anführungszeichen die Werte <code>boy</code>, <code>catgirl</code>, <code>stargirl</code> oder <code>pinkgirl</code> verwenden.</p>
+<p>Für <strong>field</strong> sind die Werte <code>grass</code>, <code>stone</code>, <code>wood</code> oder <code>dirt</code> gültig.</p>
+<div class="alert alert-info">
+  <strong>Tipp:</strong> Um eine Änderung zu testen geht es am schnellsten, wenn man <code>Ctrl+S</code> (oder <code>⌘+S</code>) zum Speichern und anschliessend im Browser <code>F5</code> (oder <code>⌘+R</code>) zum Aktualisieren klickt.
+</div>
+
+
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-aufgabe-1-03-around-tree"><i class="fa fa-rocket mg-t"></i> AUFGABE 1.03: Around Tree</h4>
+<p>Öffnen Sie <code>scenario1.03</code>. Wenn Sie das Szenario starten, dann sollten Sie eine Welt mit drei Bäumen und einem Stern sehen.</p>
+<p>Schreiben Sie ein Programm, welches Ihren Spieler auf dem angegebenen Weg zum Stern führt. Er muss dabei um die Bäume herumlaufen. Beim Stern angekommen, soll er ihn entfernen.</p>
+<p><img src="/assets/library/hello-dart/part1/around-tree.png" alt="Around Tree"></p>
+<h2 id="neue-funktionen">Neue Funktionen</h2>
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-aufgabe-1-04-around-tree-with-function"><i class="fa fa-rocket mg-t"></i> AUFGABE 1.04: Around Tree with Function</h4>
+<p>Wenn Sie Aufgabe 1.03 korrekt gelöst haben, so wird Ihr Programm wahrscheinlich <em>drei gleiche Teile</em> enthalten, nämlich für das Herumgehen um jeden Baum. Dies können wir zur besseren Übersicht noch etwas erweitern, indem wir eine neue Funktion einführen. Unterhalb der schliessenden Klammer <code>}</code> von der <code>start()</code>-Funktion erstellen wir eine neue Funktion:</p>
+<pre class="prettyprint lang-dart">
+goAroundTree() {
+
+}
+</pre>
+
+<p>Schreiben Sie zwischen die geschweiften Klammern der Funktion die Befehle, die es braucht, um um den Baum zu kommen.</p>
+<p>Benutzen Sie nun innerhalb der <code>start()</code>-Funktion die Funktion <code>goAroundTree()</code> für jeden der drei Bäume.</p>
+<h2 id="wie-weiter-">Wie weiter?</h2>
+<p>&rarr; Fahren Sie weiter mit <a href="/library/hello-dart/de/part2/">Teil 2: Schleifen</a>.</p>
+<hr>
+<p><em>Quellen</em><br>
+<em class="small">
+<a href="http://www.lostgarden.com/2007/05/dancs-miraculously-flexible-game.html">Planet Cute</a> Bilder stammen von Daniel Cook (Lostgarden.com), veröffentlicht unter <a href="http://creativecommons.org/licenses/by/3.0/us/">CC BY 3.0</a>.<br>
+<a href="https://www.linkedin.com/in/olegyadrov">Oleg Yadrov</a> hat die "Planet Cute" Bilder weiterentwickelt und mir zur Verfügung gestellt. Optimiert wurden sie mit dem grossartigen <a href="https://www.codeandweb.com/texturepacker">TexturePacker</a>.<br>
+Einige Übungen in <code>Hello Dart</code> sind inspiriert von <a href="http://www.swisseduc.ch/informatik/karatojava/">Kara</a>. Kara wurde entwickelt von Jürg Nievergelt, Werner Hartmann, Raimond Reichert und anderen.
+</em></p>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/hello-dart/de/" data-toggle="tooltip" title="Einleitung">Einleitung</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/background/" data-toggle="tooltip" title="Hintergrundinfos"><i class="fa fa-info"></i></a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/install/" data-toggle="tooltip" title="Installation"><i class="fa fa-cog"></i></a>
+      </li>
+        <li class="active">
+      <a href="/library/hello-dart/de/part1/" data-toggle="tooltip" title="Teil 1: Erste Schritte">1</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part2/" data-toggle="tooltip" title="Teil 2: Schleifen">2</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part3/" data-toggle="tooltip" title="Teil 3: Bedingte Anweisungen">3</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part4/" data-toggle="tooltip" title="Teil 4: Variablen">4</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part5/" data-toggle="tooltip" title="Teil 5: Funktionen">5</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/next/" data-toggle="tooltip" title="Nächste Schritte"><i class="fa fa-flag-checkered"></i></a>
+      </li>
+      
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/hello-dart/de/part1/';
+    var disqus_url = 'http://code.makery.ch/library/hello-dart/de/part1/';
+    var disqus_title = 'Hello Dart - Teil 1: Erste Schritte';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

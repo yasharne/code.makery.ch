@@ -1,0 +1,587 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HTML & CSS Tutorial - Part 3: Introduction to CSS | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/html-css/part3/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/html-css/part3/" />
+    <link rel="alternate" hreflang="de" href="http://code.makery.ch/library/html-css/de/part3/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Learn how to style websites with CSS. ">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="HTML & CSS Tutorial - Part 3: Introduction to CSS | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Learn how to style websites with CSS. " />
+    <meta property="og:url" content="http://code.makery.ch/library/html-css/part3/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/html-css/portfolio.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/html-css-en-part3.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Articles in this Series</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/html-css/" class="list-group-item">
+        Introduction</a>
+      <a href="/library/html-css/part1/" class="list-group-item">
+        Part 1: Your First Website</a>
+      <a href="/library/html-css/part2/" class="list-group-item">
+        Part 2: Publishing Your Website</a>
+      <a href="/library/html-css/part3/" class="list-group-item active">
+        Part 3: Introduction to CSS</a>
+      <a href="/library/html-css/part4/" class="list-group-item">
+        Part 4: Development Tools in the Browser</a>
+      <a href="/library/html-css/part5/" class="list-group-item">
+        Part 5: Blog and Other Pages</a>
+      <a href="/library/html-css/part6/" class="list-group-item">
+        Part 6: Navigation</a>
+      <a href="/library/html-css/part7/" class="list-group-item">
+        Part 7: Bootstrap Framework</a>
+      <a href="/library/html-css/next/" class="list-group-item">
+<i class="fa fa-fw fa-flag-checkered"></i>        Next Steps</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Downloads</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-html-css/releases/download/v1.0/portfolio-part3.zip" class="list-group-item">
+<i class="fa fa-fw fa-file-archive-o"></i>        Portfolio Part 3</a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Languages</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/html-css/part3/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/html-css/de/part3/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Deutsch
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">HTML & CSS Tutorial - Part 3: Introduction to CSS</h1>
+            <div class="article-date">
+  Apr 08, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Articles in this Series <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/html-css/">
+        Introduction</a></li>
+      <li class=""><a href="/library/html-css/part1/">
+        Part 1: Your First Website</a></li>
+      <li class=""><a href="/library/html-css/part2/">
+        Part 2: Publishing Your Website</a></li>
+      <li class=" active"><a href="/library/html-css/part3/">
+        Part 3: Introduction to CSS</a></li>
+      <li class=""><a href="/library/html-css/part4/">
+        Part 4: Development Tools in the Browser</a></li>
+      <li class=""><a href="/library/html-css/part5/">
+        Part 5: Blog and Other Pages</a></li>
+      <li class=""><a href="/library/html-css/part6/">
+        Part 6: Navigation</a></li>
+      <li class=""><a href="/library/html-css/part7/">
+        Part 7: Bootstrap Framework</a></li>
+      <li class=""><a href="/library/html-css/next/">
+<i class="fa fa-fw fa-flag-checkered"></i>        Next Steps</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Downloads <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-html-css/releases/download/v1.0/portfolio-part3.zip">
+<i class="fa fa-fw fa-file-archive-o"></i>        Portfolio Part 3</a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Languages <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=" active">
+        <a href="/library/html-css/part3/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/html-css/de/part3/"><i class="fa fa-fw fa-globe"></i> Deutsch</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p>In the previous part we have created and published our first website. I admit, the website has very little content and doesn't yet look particularly appealing. We want to change this now. In this part you will learn how you can use CSS to style the page. In a later part we will add more style to our website with the help of a framework called Bootstrap.</p>
+<h2 id="structure-and-style">Structure and Style</h2>
+<p>Just as a reminder: <abbr data-toggle="tooltip" title="Hypertext Markup Language">HTML</abbr> describes the structure of a web page while <abbr data-toggle="tooltip" title="Cascading Style Sheet">CSS</abbr> defines the visual appearance.</p>
+<p>Separating structure and style has many advantages, as we shall see. It is not mandatory, but usually it is better to also write HTML and CSS in separate files.</p>
+<h2 id="linking-to-a-css-file">Linking to a CSS File</h2>
+<p>A CSS file is an ordinary text file with the extension <code>.css</code>. We will link to the CSS file from within the HTML file.</p>
+<p>Create a <strong>New File</strong> in your <em>Portfolio</em> folder. Name the new file <code>main.css</code>.</p>
+<p><img src="/assets/library/html-css/part3/new-css-file.png" alt="New CSS File"></p>
+<p>Now open your <code>index.html</code> and add a <code>&lt;link&gt;</code> element inside the <code>&lt;head&gt;</code> element. With the <code>&lt;link&gt;</code> element, we tell the HTML page to load the CSS file:</p>
+<h5 id="link-to-the-css-file">Link to the CSS File</h5>
+<pre class="prettyprint lang-html">
+&lt;link rel="stylesheet" href="main.css">
+</pre>
+
+<p>Insert this element in your <code>&lt;head&gt;</code> block. Now your code should look like the following:</p>
+<pre class="prettyprint lang-html">
+&lt;!DOCTYPE html>
+&lt;html>
+  &lt;head>
+    &lt;meta charset="utf-8">
+    <mark>&lt;link rel="stylesheet" href="main.css"></mark>
+    &lt;title>Web Portfolio of Marco&lt;/title>
+  &lt;/head>
+  &lt;body>
+    &lt;h1>Web Portfolio of Marco&lt;/h1>
+
+    &lt;h2>Welcome!&lt;/h2>
+
+    &lt;p>Thanks for stopping by.&lt;/p>
+
+    &lt;p>Please have a look around. In the blog section I document my experiences in programming. You may also look at my web projects. Have fun.&lt;/p>
+
+    &lt;img src="marco.jpg" alt="Picture of me">
+
+    &lt;p>Marco :-)&lt;/p>
+  &lt;/body>
+&lt;/html>
+</pre>
+
+<div class="alert alert-info">
+  <strong>Important:</strong> In order for the CSS to be found, the <code>href</code> attribute must contain the correct file path. This also means that if the file were in a subfolder, the subfolder would also need to be specified. For example, we would have to write <code>href="subfolder/main.css"</code>. Learn more about this in part 1 under <a class="alert-link" href="/library/html-css/part1#relative-and-absolute-urls">relative and absolute URL's</a>.
+</div>
+
+
+<h2 id="colors">Colors</h2>
+<p>Up to this point the CSS file is still empty. Let's write our first lines of CSS. In CSS we write so-called <em>CSS rules</em>. With a CSS rule we can specify what the browser should do with a specific part of our HTML.</p>
+<p>As an example, we will change the background color and text color of the second heading. Write the following lines in your CSS file.</p>
+<h5 id="main-css">main.css</h5>
+<pre class="prettyprint lang-css">
+h2 {
+  background-color: #607d8b;
+  color: #ffffff;
+}
+</pre>
+
+<p>The result should look like this:</p>
+<p><img src="/assets/library/html-css/part3/changed-color.png" alt="Changed Color"></p>
+<h2 id="color-codes">Color Codes</h2>
+<p>Colors are created on a screen by a mixture of different portions of red, green and blue (RGB). The combination of red, green and blue can be expressed in CSS in two ways: as <em>RGB values</em> or as <em>Hexadecimal values</em> (hex values). The <em>Hexadecimal</em> notation is the most common.</p>
+<p>Let's look at our example with the blue-gray background color from above:</p>
+<ul>
+<li>As Hex values: <code>#607d8b</code></li>
+<li>As RGB values: <code>rgb(96, 125, 139)</code></li>
+</ul>
+<p>In the <em>Hex</em> notation, the first two characters represent the red channel, the middle characters the green channel, and the last two characters represent the blue channel.</p>
+<h3 id="working-with-color-codes">Working with Color Codes</h3>
+<p>Expressing colors with hexadecimal values is very popular because with it you can represent a huge amout of color combinations (over 16.7 million). However, it is somewhat difficult to work with them. In most cases, you will need a color picker.</p>
+<p>If you are using the <a href="http://brackets.io/">Brackets</a> editor, you can open a color picker right in your CSS file: Right-click on the color code and select <strong>Quick Edit</strong> or press <code>Ctrl+E</code>.</p>
+<p><img src="/assets/library/html-css/part3/quick-edit.png" alt="Quick Edit"></p>
+<p>This immediately displays a color picker where you can easily choose a color. You can even switch between the various notations with the three buttons at the bottom.</p>
+<p><img src="/assets/library/html-css/part3/color-chooser.png" alt="Color Chooser"></p>
+<h3 id="online-color-pickers">Online Color Pickers</h3>
+<p>If you do not have a color picker integrated in your editor, you can turn to numerous online color selectors:</p>
+<ul>
+<li><a href="http://html-color-codes.info/">HTML Color Codes</a></li>
+<li><a href="http://www.colorpicker.com/">ColorPicker</a></li>
+<li>And many more...</li>
+</ul>
+<h3 id="online-color-palettes">Online Color Palettes</h3>
+<p>In most cases you'll need more than just one color for your website. You'll need a color palette. With just a simple color picker it is quite difficult to pick colors that work well together.</p>
+<p>There are several tools that make finding a color palette easier. Here are a few examples:</p>
+<h5 id="predefined-color-palettes">Predefined Color Palettes</h5>
+<ul>
+<li><a href="http://www.colourlovers.com/palettes">Colour Lovers</a></li>
+<li><a href="http://design-seeds.com/">Design Seeds</a></li>
+<li><a href="http://www.google.com/design/spec/style/color.html">Google Color Palette</a></li>
+</ul>
+<h5 id="color-palette-generators">Color Palette Generators</h5>
+<ul>
+<li><a href="https://kuler.adobe.com">Kuler</a> - define a color rule, pull the knob with the small arrow and you've got five colors that fit together</li>
+<li><a href="http://www.paletton.com">Paletton</a> - a sophisticated controller for finding color palettes</li>
+<li><a href="http://colourco.de/">Colourco.de</a> - another practical palette generator</li>
+</ul>
+<h2 id="css-rules">CSS Rules</h2>
+<p>You have already seen how CSS rules can change the color of an HTML element. Let's look more closely at how CSS rules are constructed.</p>
+<p>A CSS rule consists of three elements, a <em>selector</em>, a <em>property</em>, and a <em>value</em>.</p>
+<p><img src="/assets/library/html-css/part3/css-rule.png" alt="CSS-Regel"></p>
+<p>This rule states that all <code>&lt;h2&gt;</code> elements should get a background color of <code>#607d8b</code>.</p>
+<h2 id="css-selectors">CSS Selectors</h2>
+<p>Selectors indicate which HTML elements a CSS rule is applied to.</p>
+<div class="alert alert-info">
+  <strong>Note:</strong> We will learn only the most important selectors. You will aready get quite far with those. For a more extensive list, search the internet for "CSS selectors."
+</div>
+
+
+<h3 id="type-selectors">Type Selectors</h3>
+<p>The type selector targets all elements with a specific HTML tag. If we wanted to address all <code>p</code> elements, as an example, this would look like the following:</p>
+<h5 id="css">CSS</h5>
+<pre class="prettyprint lang-css">
+p {
+  ...
+}
+</pre>
+
+
+<h5 id="html">HTML</h5>
+<pre class="prettyprint lang-html">
+&lt;p>...&lt;/p>
+&lt;p>...&lt;/p>
+</pre>
+
+
+<h3 id="class-selectors">Class Selectors</h3>
+<p>Class selectors are used very frequently. They are a bit more specific than type selectors, as they target a particular group of elements rather than all elements of one type.</p>
+<p>To use class selectors add a <code>class</code> attribute to an element and give it an arbitrary value. In CSS, you can now address all elements that have the same <code>class</code> attribute. Classes are denoted by a <strong>leading period</strong>, followed by the <code>class</code> value. </p>
+<p>In the following example, the class selector targets all elements that have a <code>class</code> attribute with the value <code>highlight</code>.</p>
+<h5 id="css">CSS</h5>
+<pre class="prettyprint lang-css">
+.highlight {
+  ...
+}
+</pre>
+
+
+<h5 id="html">HTML</h5>
+<pre class="prettyprint lang-html">
+&lt;p class="highlight">...&lt;/p>
+&lt;p>...&lt;/p>
+&lt;p class="highlight new">...&lt;/p>
+</pre>
+
+<p>In this HTML, the CSS rule would be applied to the first and third <code>p</code> elements. As you can see, it is also possible for an item to have multiple classes (<code>highlight</code> and <code>new</code>), separated by a space.</p>
+<h3 id="id-selectors">ID Selectors</h3>
+<p>Id selectors are very similar to class selectors. They select all HTML elements with an attribute <code>id</code> with a specific value. Ids are denoted by a <strong>leading hash</strong> sign (<code>#</code>), followed by the <code>id</code> attribute value. </p>
+<p>The important difference to class selectors is that ID selectors <strong>should occur only once</strong> per HTML page, while a class may be used for any number of elements.</p>
+<p>In the following example, the ID selector selects the element that has an <code>id</code> attribute with value <code>navigation</code>.</p>
+<h5 id="css">CSS</h5>
+<pre class="prettyprint lang-css">
+#navigation {
+  ...
+}
+</pre>
+
+
+<h5 id="html">HTML</h5>
+<pre class="prettyprint lang-html">
+&lt;p id="navigation">...&lt;/p>
+&lt;p>...&lt;/p>
+</pre>
+
+
+<h3 id="descendant-selectors">Descendant Selectors</h3>
+<p>With a descendant selector you can select descendants of a matching element. </p>
+<p>Let's look at an example before we get into a little more detail.</p>
+<h5 id="css">CSS</h5>
+<pre class="prettyprint lang-css">
+p a {
+  ...
+}
+</pre>
+
+<h5 id="html">HTML</h5>
+<pre class="prettyprint lang-html">
+&lt;p>
+  &lt;a href="http://code.makery.ch">My Website&lt;/a>
+&lt;/p>
+&lt;a href="http://www.example.com">Example Website&lt;/a>
+</pre>
+
+<p>The descendant selector <code>p a</code> selects all <code>a</code> elements that occur anywhere within a <code>p</code> element. In our example, the CSS rule would apply to <em>My Website</em>, but not to the <em>Example Website</em>.</p>
+<div class="alert alert-info">
+  <strong>Note:</strong> The <code>a</code> element in the example above does not necessarily have be a direct child of the <code>p</code> element. The descendent selector applies to <em>any descendant</em>. For the other case, there would be a child selector (<code>&gt;</code>), which we will not discuss in detail here.
+</div>
+
+
+<h2 id="css-properties">CSS Properties</h2>
+<p>CSS rules determine how HTML elements should be displayed. There are many properties that can be defined in CSS. Two of them we have already seen, <code>background-color</code> and <code>color</code>.</p>
+<p>I will not explain more of the many CSS properties here. But I want to show how you can learn more CSS knowledge by yourselves. It makes more sense when you learn them when you actually have a specific need for them. There are two scenarios on how to proceed.</p>
+<h4 id="case-1-you-see-a-css-property-that-you-do-not-know-">Case 1: You see a CSS property that you do not know ...</h4>
+<p>... <strong>search the internet for the property</strong>. Use the property name together with <code>CSS</code> as your search term. You could try it right now by figuring out what the following CSS rule does:</p>
+<pre class="prettyprint lang-css">
+padding: 5px;
+</pre>
+
+<p>Use <code>CSS padding</code> as your search term. Do not settle only for the first search result but open the first 5 or more. Then decide on which website you want to read the details.</p>
+<p>Try to apply this CSS rule to the <code>h2</code> element in your portfolio project.</p>
+<h4 id="case-2-you-want-to-change-something-but-you-do-not-know-the-css-property-">Case 2: You want to change something but you do not know the CSS property ...</h4>
+<p>... <strong>search the internet for what you want to do</strong> togehter with the keyword <code>CSS</code> in your search terms. You will probably need several tries before you find what you were looking for.</p>
+<p>An example: Let's say you want to change the text size. In this case use <code>text size CSS</code> as search terms. Again, do not settle only for the first search result.</p>
+<h2 id="css-values">CSS Values</h2>
+<p>We have already seen a few CSS values: For example, hexadecimal values like <code>#ffffff</code> or size specifications like <code>5px</code>. Depending on the CSS property you must sometimes use specific words such as <code>left</code> or <code>right</code> for text alignment, for example.</p>
+<p>One of the most frequently used CSS values are size specifications. Therefore, we'll look at them in more detail.</p>
+<p>Often the size is defined in <strong>pixels</strong>, which is abbreviated as <code>px</code>.</p>
+<pre class="prettyprint lang-css">
+p {
+  font-size: 16px;
+}
+</pre>
+
+<p>Another possibility is to indicate sizes in <strong>percentages</strong>. Percentages are always relative to a parent element. If, in the following example, the parent of <code>p</code> spans the whole width of the screen, <code>p</code> will be 60% of that width.</p>
+<pre class="prettyprint lang-css">
+p {
+  width: 60%;
+}
+</pre>
+
+<p>Another popular unit for sizes is <code>em</code>. An <code>em</code> is always relative to the font size. This means that if you change the font size the size of one <code>em</code> will also be changed.</p>
+<p>An example: If an element has a font size of <code>20px</code> and a width of <code>5em</code>, the width of the element would then be <code>100px</code>.</p>
+<pre class="prettyprint lang-css">
+p {
+  font-size: 20px;
+  width: 5em;
+}
+</pre>
+
+
+<h2 id="class-selectors-in-our-portfolio">Class Selectors in Our Portfolio</h2>
+<p>Let's say we want to enlarge the main heading "Web Portfolio of Marco". That would obviously be possible by defining a CSS rule for the <code>h1</code> element like this:</p>
+<pre class="prettyprint lang-css">
+h1 {
+  font-size: 65px;
+}
+</pre>
+
+<p>The problem with this is that <strong>all</strong> <code>h1</code> elements on our entire website will be enlarged. But if we only want to enlarge the first heading, we should better use a <strong>class selector</strong>.</p>
+<p>To do this we add a class attribute to the <code>h1</code> element in HTML. We can assign any value for that class, I chose the value <code>title</code>.</p>
+<pre class="prettyprint lang-html">
+&lt;h1 class="title">Web Portfolio of Marco&lt;/h1>
+</pre>
+
+<p>Now we can target this title in CSS with <code>.title</code>. The CSS rule looks like the following:</p>
+<pre class="prettyprint lang-css">
+.title {
+  font-size: 65px;
+}
+</pre>
+
+<p>If all goes well the portfolio now looks like this:</p>
+<p><img src="/assets/library/html-css/part3/portfolio.jpg" alt="Portfolio"></p>
+<h2 id="what-s-next-">What's next?</h2>
+<p>&rarr; Continue with <a href="/library/html-css/part4/">Part 4: Development Tools in the Browser</a>.</p>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/html-css/" data-toggle="tooltip" title="Introduction">Intro</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part1/" data-toggle="tooltip" title="Part 1: Your First Website">1</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part2/" data-toggle="tooltip" title="Part 2: Publishing Your Website">2</a>
+      </li>
+        <li class="active">
+      <a href="/library/html-css/part3/" data-toggle="tooltip" title="Part 3: Introduction to CSS">3</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part4/" data-toggle="tooltip" title="Part 4: Development Tools in the Browser">4</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part5/" data-toggle="tooltip" title="Part 5: Blog and Other Pages">5</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part6/" data-toggle="tooltip" title="Part 6: Navigation">6</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part7/" data-toggle="tooltip" title="Part 7: Bootstrap Framework">7</a>
+      </li>
+        <li>
+      <a href="/library/html-css/next/" data-toggle="tooltip" title="Next Steps"><i class="fa fa-flag-checkered"></i></a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/html-css/part3/';
+    var disqus_url = 'http://code.makery.ch/library/html-css/part3/';
+    var disqus_title = 'HTML & CSS Tutorial - Part 3: Introduction to CSS';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

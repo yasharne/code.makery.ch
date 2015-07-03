@@ -1,0 +1,570 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hello Dart - Teil 4: Variablen | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/hello-dart/de/part4/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/hello-dart/part4/" />
+    <link rel="alternate" hreflang="de" href="http://code.makery.ch/library/hello-dart/de/part4/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Mit Variablen können wir Daten speichern in Dart. Lernen Sie die verschiedenen Datentypen von Dart kennen.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Hello Dart - Teil 4: Variablen | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Mit Variablen können wir Daten speichern in Dart. Lernen Sie die verschiedenen Datentypen von Dart kennen." />
+    <meta property="og:url" content="http://code.makery.ch/library/hello-dart/de/part4/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/hello-dart/hello-dart.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/hello-dart-de-part4.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artikel dieser Serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/hello-dart/de/" class="list-group-item">
+        Einleitung</a>
+      <a href="/library/hello-dart/de/background/" class="list-group-item">
+<i class="fa fa-fw fa-info"></i>        Hintergrundinfos</a>
+      <a href="/library/hello-dart/de/install/" class="list-group-item">
+<i class="fa fa-fw fa-cog"></i>        Installation</a>
+      <a href="/library/hello-dart/de/part1/" class="list-group-item">
+        Teil 1: Erste Schritte</a>
+      <a href="/library/hello-dart/de/part2/" class="list-group-item">
+        Teil 2: Schleifen</a>
+      <a href="/library/hello-dart/de/part3/" class="list-group-item">
+        Teil 3: Bedingte Anweisungen</a>
+      <a href="/library/hello-dart/de/part4/" class="list-group-item active">
+        Teil 4: Variablen</a>
+      <a href="/library/hello-dart/de/part5/" class="list-group-item">
+        Teil 5: Funktionen</a>
+      <a href="/library/hello-dart/de/next/" class="list-group-item">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Lösungen</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/hello-dart/de/part4-solutions/" class="list-group-item">
+<i class="fa fa-fw fa-check-square-o"></i>        Lösungen zu Teil 4</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Links</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/convert-web-page-to-word/de/" class="list-group-item">
+<i class="fa fa-fw fa-file-word-o"></i>        Seite als Word-Datei</a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Sprachen</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/hello-dart/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/hello-dart/de/part4/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> Deutsch
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Hello Dart - Teil 4: Variablen</h1>
+            <div class="article-date">
+  Jan 21, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Artikel dieser Serie <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/hello-dart/de/">
+        Einleitung</a></li>
+      <li class=""><a href="/library/hello-dart/de/background/">
+<i class="fa fa-fw fa-info"></i>        Hintergrundinfos</a></li>
+      <li class=""><a href="/library/hello-dart/de/install/">
+<i class="fa fa-fw fa-cog"></i>        Installation</a></li>
+      <li class=""><a href="/library/hello-dart/de/part1/">
+        Teil 1: Erste Schritte</a></li>
+      <li class=""><a href="/library/hello-dart/de/part2/">
+        Teil 2: Schleifen</a></li>
+      <li class=""><a href="/library/hello-dart/de/part3/">
+        Teil 3: Bedingte Anweisungen</a></li>
+      <li class=" active"><a href="/library/hello-dart/de/part4/">
+        Teil 4: Variablen</a></li>
+      <li class=""><a href="/library/hello-dart/de/part5/">
+        Teil 5: Funktionen</a></li>
+      <li class=""><a href="/library/hello-dart/de/next/">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Lösungen <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/hello-dart/de/part4-solutions/">
+<i class="fa fa-fw fa-check-square-o"></i>        Lösungen zu Teil 4</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Links <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/convert-web-page-to-word/de/">
+<i class="fa fa-fw fa-file-word-o"></i>        Seite als Word-Datei</a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Sprachen <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class="">
+        <a href="/library/hello-dart/part4/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class=" active">
+        <a href="/library/hello-dart/de/part4/"><i class="fa fa-fw fa-globe"></i> Deutsch</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p>Mit Schleifen haben wir gelernt, bestimmte Ereignisse zu wiederholen, solange eine Bedingung erfüllt ist. Nun möchten wir aber folgendes tun:</p>
+<p><em>Der Spieler soll eine Spur von fünf Sternen legen.</em></p>
+<p><img src="/assets/library/hello-dart/part4/five-stars.png" alt="Fünf Sterne"></p>
+<p>Dies wäre natürlich recht einfach, wenn wir <code>putStar()</code> und <code>move()</code> fünfmal aufrufen, jedoch wenig elegant. Schöner wäre es, wenn unser Spieler mitzählt, wie viele Sterne er bereits abgelegt hat. Damit der Spieler zählen kann, braucht er ein "Gedächtnis", d.h. konkret einen Speicher. Beim Programmieren sind die Speicherplätze durch Variablen ansprechbar.</p>
+<h2 id="z-hlen-mit-variablen">Zählen mit Variablen</h2>
+<pre class="prettyprint lang-dart">
+var i;
+i = 0;
+
+while (i &lt; 5) {
+  putStar();
+  move();
+
+  i = i + 1;
+}
+</pre>
+
+
+<h4 id="erkl-rungen">Erklärungen</h4>
+<ol>
+<li>Mit <code>var i;</code> wird Speicherplatz für eine Variable mit dem Namen <code>i</code> reserviert. Man sagt: Die <strong>Variable i wird deklariert</strong>.</li>
+<li>Durch <code>i = 0;</code> wird der Variable <code>i</code> der Wert <code>0</code> zugewiesen. Da es die erste Wertzuweisung für die Variable ist, sagt man auch: Die <strong>Variable i wird initialisiert</strong>.</li>
+<li>Deklaration und Initialisierung werden meistens zusammengefasst wie folgt:<br><code>var i = 0;</code></li>
+<li>Für die Bedingung <code>i &lt; 5</code> wird der Vergleichsoperator <code>&lt;</code> benutzt (weitere Vergleichsoperatoren siehe Tabelle weiter unten).</li>
+<li>Bei der Zuweisung <code>i = i + 1;</code> muss man zuerst den rechten Teil anschauen. Es bedeutet: "Nimm den aktuellen Wert von i, addiere 1 dazu und speichere den neuen Wert wieder unter dem Namen i ab."</li>
+</ol>
+<h4 id="weitere-hinweise-zu-variablen">Weitere Hinweise zu Variablen</h4>
+<ul>
+<li>Es ist möglich, eine Variable mit einem endgültigen, unveränderlichen Wert zu versehen, d.h. sie zu einer Konstanten zu machen:<br><code>const anzahl = 5;</code><br>Dann könnte man im obigen Programmbeispiel <code>while (i &lt; anzahl)</code> schreiben.</li>
+<li>Variablen schreibt man mit einem Kleinbuchstaben, wie die Methodennamen.</li>
+</ul>
+<hr>
+<h2 id="datentypen-in-dart">Datentypen in Dart</h2>
+<p>In Dart gibt es ein paar vordefinierte Datentypen. Mit Datentypen gibt man an, was in eine Variable gespeichert wird. Diese Angaben sind in Dart freiwillig. Das heisst, man kann alle Variablen einfach mit <code>var</code> deklarieren, wie wir es oben gemacht haben. Ich empfehle aber, meistens den Datentyp anzugeben. Dies hilft Fehler früh zu erkennen, da Dart Hinweise geben wird, wenn wir versuchen einen falschen Datentyp in eine Variable zu speichern.</p>
+<div class="alert alert-info">
+  <strong>Merke:</strong> Alles, was in eine Variable gespeichert werden kann, wird in Dart als <strong>Objekt</strong> bezeichnet. Der Datentyp eines Objektes nennen wir eine <strong>Klasse</strong>. Klassen und Objekte sind die Grundelemente der <a class="alert-link" href="http://de.wikipedia.org/wiki/Objektorientierte_Programmierung">objektorientierten Programmierung</a>.
+</div>
+
+<p>Später werden wir unsere eigenen Klassen erstellen. Jetzt schauen wir uns zuerst die Grunddatentypen von Dart an.</p>
+<p><em>Für weitere Informationen zu den Grunddatentypen siehe <a href="https://www.dartlang.org/docs/dart-up-and-running/ch02.html#built-in-types">Dart Up and Running - Chapter 2: Built-in types</a>.</em></p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Typ</th>
+      <th>Beschreibung</th>
+      <th>Beispiel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>int</code></td>
+      <td>Ganze Zahlen</td>
+      <td><code>1</code>, <code>2</code>, <code>-1233123</code></td>
+    </tr>
+    <tr>
+      <td><code>double</code></td>
+      <td>Fliesskommazahlen</td>
+      <td><code>0.5</code>, <code>-333.234</code></td>
+    </tr>
+    <tr>
+      <td><code>String</code></td>
+      <td>Text in einer beliebigen Länge. Text wird immer <em>zwischen einfache oder doppelte Anführungszeichen</em> gestellt.</td>
+      <td><code>'Ich bin ein Text'</code> oder <code>"Ich bin auch ein Text"</code></td>
+    </tr>
+    <tr>
+      <td><code>bool</code></td>
+      <td>Ein Boolean ist ein Wahrheitswert, der entweder <em>wahr</em> oder <em>falsch</em> sein kann.</td>
+      <td><code>true</code> oder <code>false</code></td>
+    </tr>
+    <tr>
+      <td><code>List</code></td>
+      <td>Eine Sammlung von Objekten. Wird manchmal auch <em>Array</em> genannt.</td>
+      <td><code>[1, 2, 3]</code></td>
+    </tr>
+    <tr>
+      <td><code>Map</code></td>
+      <td>In einer Map kann man Objekte speichern als <em>Schlüssel</em> und <em>Werte</em>.</td>
+      <td><code>{ 'schlüssel-1': 'wert-1', 'schlüssel-2': 'wert-2' }</code></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h2 id="vergleichsoperatoren">Vergleichsoperatoren</h2>
+<p>Folgende Operatoren können in Dart für Vergleiche verwendet werden. Das Ergebnis ist jeweils ein <code>bool</code>, das heisst entweder <code>true</code> oder <code>false</code>.</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Beschreibung</th>
+      <th>Beispiel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>==</code></td>
+      <td>gleich</td>
+      <td><code>k == 2</code></td>
+    </tr>
+    <tr>
+      <td><code>!=</code></td>
+      <td>ungleich</td>
+      <td><code>k != 12</code></td>
+    </tr>
+    <tr>
+      <td><code>&gt;</code></td>
+      <td>grösser als</td>
+      <td><code>k &gt; 67</code></td>
+    </tr>
+    <tr>
+      <td><code>&lt;</code></td>
+      <td>kleiner als</td>
+      <td><code>k &lt; 12</code></td>
+    </tr>
+    <tr>
+      <td><code>&gt;=</code></td>
+      <td>grösser als oder gleich</td>
+      <td><code>k &gt;= 45</code></td>
+    </tr>
+    <tr>
+      <td><code>&lt;=</code></td>
+      <td>kleiner als oder gleich</td>
+      <td><code>k &lt;= 23</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Achtung:</strong> Der Vergleich auf "Gleichheit" hat immer zwei Gleichheitszeichen <code>==</code>. Mit einem einzelnen Gleichheitszeichen <code>=</code> geschieht eine Zuweisung!</p>
+<h2 id="arithmetische-operatoren">Arithmetische Operatoren</h2>
+<p>Zur Berechnung können folgende arithmetische Operatoren verwendet werden:</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Beschreibung</th>
+      <th>Beispiel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>+</code></td>
+      <td>Addition</td>
+      <td><code>h = w + 34</code></td>
+    </tr>
+    <tr>
+      <td><code>-</code></td>
+      <td>Subtraktion</td>
+      <td><code>y = 3.4 – t</code></td>
+    </tr>
+    <tr>
+      <td><code>*</code></td>
+      <td>Multiplikation</td>
+      <td><code>z = h * 3.56</code></td>
+    </tr>
+    <tr>
+      <td><code>/</code></td>
+      <td>Division</td>
+      <td><code>d = m / v</code></td>
+    </tr>
+    <tr>
+      <td><code>%</code></td>
+      <td>Modulo (liefert den Rest der Division)</td>
+      <td><code>count = w % 2</code></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<hr>
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-aufgabe-4-01-counting-stars"><i class="fa fa-rocket mg-t"></i> AUFGABE 4.01: Counting Stars</h4>
+<p><img src="/assets/library/hello-dart/part4/counting-stars.png" alt="Sternenspur"></p>
+<p>Der Spieler soll von links nach rechts gehen und dabei die Sterne zählen.</p>
+<p><em>Hinweise:</em></p>
+<ol>
+<li>Definieren und initialisieren Sie eine Variable, zum Beispiel mit<br><code>int count = 0;</code></li>
+<li>Schreiben Sie darunter eine Schleife, in der die Variable immer um eins erhöht wird:<br><code>count = count + 1;</code></li>
+<li>Die Variable sollte nur erhöht werden, wenn der Spieler auf einem Stern ist.</li>
+<li>Am Schluss soll der Spieler angeben, wie viele Sterne er gezählt hat. Mit <code>${count}</code> können wir die Variable in einen Text einfügen:<br><code>say('Ich habe ${count} Sterne gefunden.');</code></li>
+</ol>
+<div class="alert alert-info">
+  <strong>Gültigkeitsbereich von Variablen:</strong> Variablen sind immer nur innerhalb des Blockes (zwischen den geschweiften Klammern) gültig, in welchem sie deklariert wurden. Man kann sie auch ausserhalb der Funktionen deklarieren. Dann sind sie in der ganzen Klasse verfügbar, oder, falls sie sogar ausserhalb einer Klasse deklariert werden, sind sie überall verfügbar.
+</div>
+
+
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-aufgabe-4-02-cleaning-up"><i class="fa fa-rocket mg-t"></i> AUFGABE 4.02: Cleaning Up</h4>
+<p><img src="/assets/library/hello-dart/part4/cleaning-up.png" alt="Aufräumen"></p>
+<p>Der Spieler soll alle Sterne wegräumen.</p>
+<p><em>Hinweise:</em></p>
+<ol>
+<li>Sie können den Baum verwenden, um herauszufinden, wann der Spieler am Ende angekommen ist mit einer Schleife <code>while (!treeFront()) {...}</code>.</li>
+<li>Entfernen Sie zuerst die Sterne auf der ersten Zeile.</li>
+<li>Drehen Sie am Rand und entfernen Sie die Sterne auf der zweiten Zeile.</li>
+<li>Führen Sie nun eine <code>bool</code>-Variable ein, damit sich der Spieler merkt, in welche Richtung er läuft, zum Beispiel so:<br><code>bool goingRight = true;</code></li>
+<li>Mit dieser Variable können Sie nun herausfinden, ob der Spieler am rechten oder am linken Rand angekommen ist und entsprechend umdrehen muss. Ein <code>bool</code> kann wie folgt in einer Bedingung verwendet werden:<br><code>if (goingRight) {...}</code></li>
+<li>Denken Sie daran, die neue Richtung in die Variable zu setzen, sobald sich der Spieler dreht:<br><code>goingRight = false;</code></li>
+<li><em>Verbesserung</em>: Damit der Code übersichtlicher wird, könnten Sie zwei Funktionen machen zum Umdrehen: <code>turnAroundRight()</code> und <code>turnAroundLeft()</code>.</li>
+</ol>
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-aufgabe-4-03-inverting"><i class="fa fa-rocket mg-t"></i> AUFGABE 4.03: Inverting</h4>
+<p><img src="/assets/library/hello-dart/part4/inverting.png" alt="Invertieren"></p>
+<p>Die Welt hat eine quadratische Fläche und am Schluss einen Baum. Innerhalb der Fläche ist ein Muster aus Sternen gelegt, das vom Spieler invertiert (=umgedreht) werden soll. Achten Sie darauf, dass Ihr Code übersichtlich bleibt und lagern Sie allenfalls Teile in eigene Funktionen aus.</p>
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-aufgabe-4-04-chessboard"><i class="fa fa-rocket mg-t"></i> AUFGABE 4.04: Chessboard</h4>
+<p><img src="/assets/library/hello-dart/part4/chessboard.png" alt="Schachbrett"></p>
+<p>Die Welt hat eine quadratische Fläche und am Schluss einen Baum. Innerhalb der Fläche soll ein schachbrettartiges Muster aus Sternen gelegt werden.</p>
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-aufgabe-4-04-schwierig-tree-line"><i class="fa fa-rocket mg-t"></i> AUFGABE 4.04 (schwierig): Tree Line</h4>
+<p><img src="/assets/library/hello-dart/part4/tree-line.jpg" alt="Baumreihe"></p>
+<p>In dieser Welt hat es verschiedene Baumreihen. Der Spieler soll nun die Länge (in Anzahl Bäumen) der längsten Baumreihe ermitteln und ausgeben. Zwischen den Baumreihen ist immer mindestens ein Feld Platz. Auf dem letzten Feld liegt ein Stern.</p>
+<hr>
+<h2 id="wie-weiter-">Wie weiter?</h2>
+<p>Fahren Sie weiter mit <a href="/library/hello-dart/de/part5/">Teil 5: Funktionen</a></p>
+<hr>
+<p><em>Quellen</em><br>
+<em class="small">
+<a href="http://www.lostgarden.com/2007/05/dancs-miraculously-flexible-game.html">Planet Cute</a> Bilder stammen von Daniel Cook (Lostgarden.com), veröffentlicht unter <a href="http://creativecommons.org/licenses/by/3.0/us/">CC BY 3.0</a>.<br>
+<a href="https://www.linkedin.com/in/olegyadrov">Oleg Yadrov</a> hat die "Planet Cute" Bilder weiterentwickelt und mir zur Verfügung gestellt. Optimiert wurden sie mit dem grossartigen <a href="https://www.codeandweb.com/texturepacker">TexturePacker</a>.<br>
+Einige Übungen in <code>Hello Dart</code> sind inspiriert von <a href="http://www.swisseduc.ch/informatik/karatojava/">Kara</a>. Kara wurde entwickelt von Jürg Nievergelt, Werner Hartmann, Raimond Reichert und anderen.
+</em></p>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/hello-dart/de/" data-toggle="tooltip" title="Einleitung">Einleitung</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/background/" data-toggle="tooltip" title="Hintergrundinfos"><i class="fa fa-info"></i></a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/install/" data-toggle="tooltip" title="Installation"><i class="fa fa-cog"></i></a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part1/" data-toggle="tooltip" title="Teil 1: Erste Schritte">1</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part2/" data-toggle="tooltip" title="Teil 2: Schleifen">2</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part3/" data-toggle="tooltip" title="Teil 3: Bedingte Anweisungen">3</a>
+      </li>
+        <li class="active">
+      <a href="/library/hello-dart/de/part4/" data-toggle="tooltip" title="Teil 4: Variablen">4</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part5/" data-toggle="tooltip" title="Teil 5: Funktionen">5</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/next/" data-toggle="tooltip" title="Nächste Schritte"><i class="fa fa-flag-checkered"></i></a>
+      </li>
+      
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/hello-dart/de/part4/';
+    var disqus_url = 'http://code.makery.ch/library/hello-dart/de/part4/';
+    var disqus_title = 'Hello Dart - Teil 4: Variablen';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

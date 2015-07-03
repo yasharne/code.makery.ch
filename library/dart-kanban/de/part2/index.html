@@ -1,0 +1,404 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dart Kanban - Teil 2: HTML vorbereiten | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/dart-kanban/de/part2/" />
+  
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Das Kanban Board in der HTML-Datei vorbereiten. Drei Spalten mit dem Bootstrap-Raster erstellen.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Dart Kanban - Teil 2: HTML vorbereiten | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Das Kanban Board in der HTML-Datei vorbereiten. Drei Spalten mit dem Bootstrap-Raster erstellen." />
+    <meta property="og:url" content="http://code.makery.ch/library/dart-kanban/de/part2/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/dart-kanban/dart-kanban.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/dart-kanban-de-part2.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artikel dieser Serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/dart-kanban/de/" class="list-group-item">
+        Einleitung</a>
+      <a href="/library/dart-kanban/de/install/" class="list-group-item">
+<i class="fa fa-fw fa-cog"></i>        Dart Editor installieren</a>
+      <a href="/library/dart-kanban/de/part1/" class="list-group-item">
+        Teil 1: Webapp erstellen</a>
+      <a href="/library/dart-kanban/de/part2/" class="list-group-item active">
+        Teil 2: HTML vorbereiten</a>
+      <a href="/library/dart-kanban/de/part3/" class="list-group-item">
+        Teil 3: Element hinzufügen</a>
+      <a href="/library/dart-kanban/de/part4/" class="list-group-item">
+        Teil 4: Element verschieben</a>
+      <a href="/library/dart-kanban/de/part5/" class="list-group-item">
+        Teil 5: Veröffentlichen</a>
+      <a href="/library/dart-kanban/de/next/" class="list-group-item">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Source Code</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-dart-kanban" class="list-group-item">
+<i class="fa fa-fw fa-github"></i>        Beispielcode auf GitHub</a>
+  </div>
+</div>
+
+          
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Dart Kanban - Teil 2: HTML vorbereiten</h1>
+            <div class="article-date">
+  Mar 23, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Artikel dieser Serie <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/dart-kanban/de/">
+        Einleitung</a></li>
+      <li class=""><a href="/library/dart-kanban/de/install/">
+<i class="fa fa-fw fa-cog"></i>        Dart Editor installieren</a></li>
+      <li class=""><a href="/library/dart-kanban/de/part1/">
+        Teil 1: Webapp erstellen</a></li>
+      <li class=" active"><a href="/library/dart-kanban/de/part2/">
+        Teil 2: HTML vorbereiten</a></li>
+      <li class=""><a href="/library/dart-kanban/de/part3/">
+        Teil 3: Element hinzufügen</a></li>
+      <li class=""><a href="/library/dart-kanban/de/part4/">
+        Teil 4: Element verschieben</a></li>
+      <li class=""><a href="/library/dart-kanban/de/part5/">
+        Teil 5: Veröffentlichen</a></li>
+      <li class=""><a href="/library/dart-kanban/de/next/">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Source Code <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-dart-kanban">
+<i class="fa fa-fw fa-github"></i>        Beispielcode auf GitHub</a></li>
+  </ul>
+</div>
+
+            
+          </aside>
+          
+          <div class="article-content">
+            <p>Unser Ziel ist eine <strong>dymanische Webapplikation</strong>: Der Benutzer soll direkt Änderungen vornehmen können. Es gibt aber auch Teile unserer Webapplikation, die statisch sind und sich somit nicht verändern werden (wie zum Beispiel der Titel "Kanban Board").</p>
+<p>Es wäre zwar möglich, alles HTML, auch das statische, aus dem Dart-Code heraus zu generieren. Meistens ist es aber einfacher, gewisse Teile in der HTML-Datei bereits zu definieren. Wir werden deshalb die ganze Grundstruktur vom Kanban Board im HTML vorbereiten.</p>
+<h2 id="textfeld-und-knopf">Textfeld und Knopf</h2>
+<p>Zuerst erstellen wir ein Textfeld (Input) und einen Knopf (Button). Öffnen Sie die <code>index.html</code> und ergänzen Sie ihren Code mit dem gelb markierten Zeilen.</p>
+<pre class="prettyprint lang-html">
+&lt;div class="page-header">
+  &lt;h1>Kanban Board &lt;small id="subtitle">&lt;/small>&lt;/h1>
+&lt;/div>
+
+<mark>&lt;input id="todo-input" type="text" class="form-control" placeholder="Was soll erledigt werden?">
+&lt;button id="todo-button" type="button" class="btn btn-primary">Hinzufügen&lt;/button></mark>
+</pre>
+
+<p><em>Achten Sie darauf, dass Sie die zwei Code-Zeilen an der richtigen Stelle einfügen.</em></p>
+<h3 id="styling">Styling</h3>
+<p>Wir verwenden Bootstrap-Klassen für das <a href="http://holdirbootstrap.de/css/#forms">Input-Element</a> und für den <a href="http://holdirbootstrap.de/css/#buttons">Button</a>.</p>
+<p><img src="/assets/library/dart-kanban/part2/input-button-de.png" alt="Textfeld und Knopf"></p>
+<p>Standardmässig werden die Textfelder in Bootstrap auf der ganzen Breite angezeigt. Wir möchten jedoch, dass der Knopf schön neben dem Textfeld positioniert wird.</p>
+<p>Solche Anpassungen können wir in der zugehörigen CSS-Datei vornehmen. Öffnen Sie also die Datei <code>styles/main.css</code>, löschen Sie den generierten Code und ersetzen Sie ihn mit folgendem CSS:</p>
+<pre class="prettyprint lang-css">
+body {
+  background-color: #e9e6e1;
+}
+
+.page-header {
+  border-bottom: 1px solid #888;
+}
+
+#todo-input {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+}
+</pre>
+
+<p>Die beiden ersten Regeln verändern die Farbe des Hintergrunds und der feinen Linie. Sie können natürlich eine beliebige Farbe wählen.</p>
+<p>Bei der dritten Regel sprechen wir das Textfeld an über die ID <code>todo-input</code>. Darin geben wir an, dass es nicht die gesamte Breite einnehmen soll.</p>
+<p><img src="/assets/library/dart-kanban/part2/input-button-styled-de.png" alt="Textfeld und Knopf"></p>
+<h2 id="drei-spalten-todo-doing-done">Drei Spalten - Todo, Doing, Done</h2>
+<p>Als nächstes brauchen wir die drei Spalten für unser Kanban Board: <em>Todo</em>, <em>Doing</em> und <em>Done</em>.</p>
+<p>Dafür empfielt es sich das Bootstrap-Raster zu verwenden. Im Artikel über <a href="/library/more-html-css/de/website-layout/">Website-Layout</a> erkläre ich ausführlich, wie das Bootstrap-Layout verwendet werden kann.</p>
+<p>Der fertige Code in <code>index.html</code> sieht mit den drei Spalten wie folgt aus:</p>
+<pre class="prettyprint lang-html">
+&lt;!DOCTYPE html>
+
+&lt;html>
+  &lt;head>
+    &lt;meta charset="utf-8">
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge">
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0">
+    &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    &lt;link rel="stylesheet" href="styles/main.css">
+
+    &lt;title>Kanban Board&lt;/title>
+  &lt;/head>
+
+  &lt;body>
+    &lt;div class="container">
+      &lt;div class="page-header">
+        &lt;h1>Kanban Board &lt;small id="subtitle">&lt;/small>&lt;/h1>
+      &lt;/div>
+
+      &lt;input id="todo-input" type="text" class="form-control" placeholder="Was soll erledigt werden?">
+      &lt;button id="todo-button" type="button" class="btn btn-primary">Hinzufügen&lt;/button>
+
+<mark>      &lt;div class="row">
+        &lt;div class="col-sm-4">
+          &lt;h2>&lt;span class="glyphicon glyphicon-inbox">&lt;/span> Todo&lt;/h2>
+          &lt;div id="todo-list" class="list-group">
+            &lt;a href="#" class="list-group-item">Mein erstes Todo&lt;/a>
+          &lt;/div>
+        &lt;/div>
+        &lt;div class="col-sm-4">
+          &lt;h2>&lt;span class="glyphicon glyphicon-cog">&lt;/span> Doing&lt;/h2>
+          &lt;div id="doing-list" class="list-group">
+          &lt;/div>
+        &lt;/div>
+        &lt;div class="col-sm-4">
+          &lt;h2>&lt;span class="glyphicon glyphicon-thumbs-up">&lt;/span> Done&lt;/h2>
+          &lt;div id="done-list" class="list-group">
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+      &lt;/div></mark>
+
+    &lt;script type="application/dart" src="main.dart">&lt;/script>
+    &lt;script data-pub-inline src="packages/browser/dart.js">&lt;/script>
+  &lt;/body>
+&lt;/html>
+</pre>
+
+
+<h4 id="erkl-rungen">Erklärungen</h4>
+<p>Das Layout enthält eine Zeile mit Klasse <code>row</code> und für Spalten mit Klasse <code>col-sm-4</code>. Bootstrap sorgt dafür, dass die Spalten bei kleinen Bildschirmen untereinander angezeigt werden.</p>
+<p>In jeder Spaltenüberschrift verwenden wir ein Icon. Die <a href="http://holdirbootstrap.de/komponenten/#glyphicons">Glyphicons</a> sind bei Bootstrap automatisch dabei.</p>
+<p>Jede Spalte enthält ein <code>div</code>-Element mit der Klasse <code>list-group</code>. Dies sind <a href="http://holdirbootstrap.de/komponenten/#list-group">Bootstrap-Listengruppen</a>. Darin werden wir die einzelen Todo-Elemente auflisten.</p>
+<p>Die erste Listengruppe enthält bereits ein Beispielelement mit dem Text <em>"Mein erstes Todo"</em>. </p>
+<h3 id="testen">Testen</h3>
+<p>Wenn Sie das Programm jetzt starten, sollte es wie folgt aussehen. Testen Sie auch, wie es aussieht, wenn sie das Browser-Fenster ganz schmal machen.</p>
+<p><img src="/assets/library/dart-kanban/part2/columns-de.png" alt="Bootstrap Spalten"></p>
+<h2 id="wie-weiter-">Wie weiter?</h2>
+<p>Wir könnten natürlich im HTML-Code weitere Todo-Elemente in die drei Spalten einfügen. Aber das Ziel ist offensichtlich, dass dies dynamisch möglich ist. Das heisst, dass man neue Elemente mit dem Textfeld und dem Knopf hinzufügen kann.</p>
+<p>So etwas ist mit reinem HTML nicht möglich. Im <a href="/library/dart-kanban/de/part3/">Teil 3</a> lernen wir, wie wir neue Elemente mit Dart dynamisch hinzufügen können.</p>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/dart-kanban/de/" data-toggle="tooltip" title="Einleitung">Einleitung</a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/install/" data-toggle="tooltip" title="Dart Editor installieren"><i class="fa fa-cog"></i></a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/part1/" data-toggle="tooltip" title="Teil 1: Webapp erstellen">1</a>
+      </li>
+        <li class="active">
+      <a href="/library/dart-kanban/de/part2/" data-toggle="tooltip" title="Teil 2: HTML vorbereiten">2</a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/part3/" data-toggle="tooltip" title="Teil 3: Element hinzufügen">3</a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/part4/" data-toggle="tooltip" title="Teil 4: Element verschieben">4</a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/part5/" data-toggle="tooltip" title="Teil 5: Veröffentlichen">5</a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/next/" data-toggle="tooltip" title="Nächste Schritte"><i class="fa fa-flag-checkered"></i></a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/dart-kanban/de/part2/';
+    var disqus_url = 'http://code.makery.ch/library/dart-kanban/de/part2/';
+    var disqus_title = 'Dart Kanban - Teil 2: HTML vorbereiten';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

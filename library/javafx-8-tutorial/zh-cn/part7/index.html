@@ -1,0 +1,532 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JavaFX 8 教程 - 第七部分：部署 | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part7/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/javafx-8-tutorial/part7/" />
+    <link rel="alternate" hreflang="es" href="http://code.makery.ch/library/javafx-8-tutorial/es/part7/" />
+    <link rel="alternate" hreflang="fr" href="http://code.makery.ch/library/javafx-8-tutorial/fr/part7/" />
+    <link rel="alternate" hreflang="id" href="http://code.makery.ch/library/javafx-8-tutorial/id/part7/" />
+    <link rel="alternate" hreflang="it" href="http://code.makery.ch/library/javafx-8-tutorial/it/part7/" />
+    <link rel="alternate" hreflang="pt" href="http://code.makery.ch/library/javafx-8-tutorial/pt/part7/" />
+    <link rel="alternate" hreflang="ru" href="http://code.makery.ch/library/javafx-8-tutorial/ru/part7/" />
+    <link rel="alternate" hreflang="tr" href="http://code.makery.ch/library/javafx-8-tutorial/tr/part7/" />
+    <link rel="alternate" hreflang="uk" href="http://code.makery.ch/library/javafx-8-tutorial/uk/part7/" />
+    <link rel="alternate" hreflang="zh-cn" href="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part7/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="JavaFX 8 教程 - 第七部分：部署 | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="" />
+    <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part7/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/javafx-8-tutorial/part7/addressapp-macos.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/javafx-8-tutorial-zh-cn-part7.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">系列文章</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/zh-cn/" class="list-group-item">
+        简介</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part1/" class="list-group-item">
+        第一部分：Scene Builder</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part2/" class="list-group-item">
+        第二部分：Model 和 TableView</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part3/" class="list-group-item">
+        第三部分：与用户的交互</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part4/" class="list-group-item">
+        第四部分：CSS 样式</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part5/" class="list-group-item">
+        第五部分：将数据用 XML 格式存储</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part6/" class="list-group-item">
+        第六部分：统计图</a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part7/" class="list-group-item active">
+        第七部分：部署</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">下载源代码</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/addressapp-jfx8-part-7.zip" class="list-group-item">
+<i class="fa fa-fw fa-download"></i>        Part 7 as Eclipse Project <em>(requires at least JDK 8u20)</em></a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">语言</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/javafx-8-tutorial/es/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Español
+      </a>
+      <a href="/library/javafx-8-tutorial/fr/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Français
+      </a>
+      <a href="/library/javafx-8-tutorial/id/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Bahasa Indonesia
+      </a>
+      <a href="/library/javafx-8-tutorial/it/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Italiano
+      </a>
+      <a href="/library/javafx-8-tutorial/pt/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Português
+      </a>
+      <a href="/library/javafx-8-tutorial/ru/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Русский
+      </a>
+      <a href="/library/javafx-8-tutorial/tr/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Türkçe
+      </a>
+      <a href="/library/javafx-8-tutorial/uk/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Українська
+      </a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part7/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> 中文（简体）
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">JavaFX 8 教程 - 第七部分：部署</h1>
+            <div class="article-date">
+  Oct 08, 2014
+  • Updated Jan 16, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">系列文章 <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/">
+        简介</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part1/">
+        第一部分：Scene Builder</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part2/">
+        第二部分：Model 和 TableView</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part3/">
+        第三部分：与用户的交互</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part4/">
+        第四部分：CSS 样式</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part5/">
+        第五部分：将数据用 XML 格式存储</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/zh-cn/part6/">
+        第六部分：统计图</a></li>
+      <li class=" active"><a href="/library/javafx-8-tutorial/zh-cn/part7/">
+        第七部分：部署</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">下载源代码 <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/addressapp-jfx8-part-7.zip">
+<i class="fa fa-fw fa-download"></i>        Part 7 as Eclipse Project <em>(requires at least JDK 8u20)</em></a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">语言 <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class="">
+        <a href="/library/javafx-8-tutorial/part7/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/es/part7/"><i class="fa fa-fw fa-globe"></i> Español</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/fr/part7/"><i class="fa fa-fw fa-globe"></i> Français</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/id/part7/"><i class="fa fa-fw fa-globe"></i> Bahasa Indonesia</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/it/part7/"><i class="fa fa-fw fa-globe"></i> Italiano</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/pt/part7/"><i class="fa fa-fw fa-globe"></i> Português</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/ru/part7/"><i class="fa fa-fw fa-globe"></i> Русский</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/tr/part7/"><i class="fa fa-fw fa-globe"></i> Türkçe</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/uk/part7/"><i class="fa fa-fw fa-globe"></i> Українська</a>
+    </li>
+      <li class=" active">
+        <a href="/library/javafx-8-tutorial/zh-cn/part7/"><i class="fa fa-fw fa-globe"></i> 中文（简体）</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p><img src="/assets/library/javafx-8-tutorial/part7/addressapp-part7.png" alt="Screenshot AddressApp Part 7"></p>
+<p>我想已经写到本教程系列的最后一部分了，应该教你如何部署（例如：打包和发布）AddressApp</p>
+<hr>
+<h2 id="-7-">第7部分的主题</h2>
+<ul>
+<li>使用e(fx)clipse<strong>本地包（Native Package）</strong>部署我们的JavaFX应用程序。</li>
+</ul>
+<hr>
+<h2 id="-">什么是部署</h2>
+<p>部署是打包和发布软件给用户的过程。这是软件开发的关键部分，因为它是第一次与使用我们软件的用户交流。</p>
+<p>Java的广告口号是<strong>编写一次，到处运行</strong>，这说明Java语言的<strong>跨平台</strong>好处。理想情况下，这意味着我们Java应用可以运行在任何装备有JVM的设备上。
+在过去，安装Java应用程序的用户经验不总是平滑的。如果用户在系统中没有要求的Java版本，它必须首先直接安装它。这导致有些困难，例如，需要管理员权限，Java版本之间的兼容问题等等。
+幸运的是，JavaFX提供新的部署选项称为<strong>本地打包</strong>（也称为自包含应用程序包）。一个本地包是一个包含你的应用代码和平台指定的Java运行时的打包程序。
+Oracle提供的官方JavaFx文档包含一个所有<a href="http://docs.oracle.com/javafx/2/deployment/jfxpub-deployment.htm">JavaFX部署选项</a>的扩展指南。
+在本章节中，我们教你如何使用Eclipse和<a href="http://www.eclipse.org/efxclipse/"><strong>e(fx)clipse插件</strong></a>创建<strong>本地包</strong>。</p>
+<hr>
+<h2 id="-">创建本地包</h2>
+<p>目标是在用户的计算机上单个目录中创建一个自包含的应用程序。下面是AddressApp应用看起来的样子（在Windows上）:</p>
+<p><img src="/assets/library/javafx-8-tutorial/part7/native-package.png" alt="AddressApp本地包"></p>
+<p><code>app</code>目录包含我们的应用数据和<code>runtime</code>目录（包含平台相关的Java运行时）。</p>
+<p>为了让用户更加舒适，我们也提供一个安装器：</p>
+<ul>
+<li>Windows下的<code>exe</code>文件安装器</li>
+<li>MacOS下的<code>dmg</code>（拖放）安装器。</li>
+</ul>
+<p>E(fx)clipse插件会帮助我们生成本地包和安装器。</p>
+<h3 id="-1-build-fxbuild">第1步 编辑build.fxbuild</h3>
+<p>E(fx)clipse使用<code>build.fxbuild</code>文件生成一个被Ant编译工具使用的文件。（如果你没有一个<code>build.fxbuid</code>文件，在Eclipse中创建一个新的<strong>Java FX项目</strong>，并且拷贝生成的文件过来。</p>
+<ol>
+<li><p>从项目的根目录下打开<code>build.fxbuild</code>。</p>
+</li>
+<li><p>填写包含一个星号的字段。<em>对于MacOS：在应用程序标题中不能使用空格，因为好像会产生问题</em>。
+<img src="/assets/library/javafx-8-tutorial/part7/fxbuild-settings.png" alt="fxbuild设置"></p>
+</li>
+<li><p>在Windows下<strong>Packaging Format</strong>选择<code>exe</code>，MacOS下选择<code>dmg</code>，Linux下选择<code>rpm</code></p>
+</li>
+<li><p>点击<code>Generate ant build.xml only</code>的连接（在右边可以找到）。
+<img src="/assets/library/javafx-8-tutorial/part7/generate-ant-build.png" alt="生成ant编译"></p>
+</li>
+<li><p>验证是否创建一个新的<code>build</code>目录和文件<code>build.xml</code></p>
+</li>
+</ol>
+<h3 id="-2-">第2步 添加安装程序的图标</h3>
+<p>我们希望安装程序有一些好看的图标:</p>
+<ul>
+<li><a href="/assets/library/javafx-8-tutorial/part7/AddressApp.ico">AddressApp.ico</a> 安装文件图标</li>
+<li><a href="/assets/library/javafx-8-tutorial/part7/AddressApp-setup-icon.bmp">AddressApp-setup-icon.bmp</a> 安装启动画面图标</li>
+<li><a href="/assets/library/javafx-8-tutorial/part7/AddressApp.icns">AddressApp.icns</a> Mac安装程序图标</li>
+</ul>
+<ol>
+<li>在<code>build</code>目录下创建下面的子目录:<ul>
+<li><code>build/package/windows</code> (只用于Windows)</li>
+<li><code>build/package/macos</code> (只用于macos)</li>
+</ul>
+</li>
+<li>拷贝上面的相关图标到这些目录中，现在它应该看起来如下所示:<br><img src="/assets/library/javafx-8-tutorial/part7/installer-icons.png" alt="安装器图标"></li>
+<li><strong>重要</strong>：图标的名称必须精确匹配<code>build.fxbuild</code>中指定的<strong>Application的标题名</strong>：<ul>
+<li><code>YourAppTitle.ico</code></li>
+<li><code>YourAppTitle-setup-icon.bmp</code></li>
+<li><code>YourAppTitle.icns</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="-3-">第3步 添加资源</h3>
+<p>我们的<code>resources</code>目录不能自动拷贝。我们必须手动添加它到build目录下:</p>
+<ol>
+<li>在<code>build</code>目录下创建下面的子目录:<ul>
+<li><code>build/dist</code>   </li>
+</ul>
+</li>
+<li>拷贝<code>resources</code>目录（包含我们应用的图标）到<code>build/dist</code>.<br><img src="/assets/library/javafx-8-tutorial/part7/build-resources.png" alt="编译资源"></li>
+</ol>
+<h3 id="-4-build-xml-">第4步 编辑build.xml包含图标</h3>
+<p>E(fx)clipse生成的<code>build/build.xml</code>文件（准备使用<strong>Ant</strong>执行）。我们的安装器图标和资源图像不能正常工作。</p>
+<p>当e(fx)clipse没有告诉它包含其它资源，例如<code>resources</code>目录和上面添加的安装文件图标时，我们必须手动编辑<code>build.xml</code>文件。</p>
+<p>打开<code>build.xml</code>文件，找到路径<code>fxant</code>。添加一行到<code>${basedir}</code>（将让我们安装器图标可用）。</p>
+<h5 id="build-xml-basedir-">build.xml - 添加"basedir"</h5>
+<pre class="prettyprint lang-xml">
+&lt;path id="fxant"&gt;
+  &lt;filelist&gt;
+    &lt;file name="${java.home}\..\lib\ant-javafx.jar"/&gt;
+    &lt;file name="${java.home}\lib\jfxrt.jar"/&gt;
+    <mark>&lt;file name="${basedir}"/&gt;</mark>
+  &lt;/filelist&gt;
+&lt;/path&gt;
+</pre>    
+
+
+<p>找到块<code>fx:resources id="appRes"</code>，文件的更下面位置。为<code>resources</code>添加一行：</p>
+<h5 id="build-xml-resources-">build.xml - 添加"resources"</h5>
+<pre class="prettyprint lang-xml">
+&lt;fx:resources id="appRes"&gt;
+    &lt;fx:fileset dir="dist" includes="AddressApp.jar"/&gt;
+    &lt;fx:fileset dir="dist" includes="libs/*"/&gt;
+    <mark>&lt;fx:fileset dir="dist" includes="resources/**"/&gt;</mark>
+&lt;/fx:resources&gt; 
+</pre>
+
+
+<p>有时候，版本数不能添加到<code>fx:application</code>中，使得安装器总是缺省的版本<code>1.0</code>（在注释中很多人指出这个问题）。为了修复它，手动添加版本号（感谢Marc找到解决办法）。
+<a href="http://code.makery.ch/library/javafx-8-tutorial/part7/#comment-1566725959">解决</a>):</p>
+<h5 id="build-xml-version-">build.xml - 添加 "version"</h5>
+<pre class="prettyprint lang-xml">
+&lt;fx:application id="fxApplication"
+    name="AddressApp"
+    mainClass="ch.makery.address.MainApp"
+    <mark>version="1.0"</mark>
+/>
+</pre>
+
+<p>现在，我们已经能够使用ant编译运行<code>build.xml</code>了。这将会生成一个可运行的项目jar文件。但是我们希望更进一步，创建一个很好的安装器。</p>
+<h3 id="-5-windows-windows-exe-">第5步（Windows） - Windows exe安装器</h3>
+<p><img src="/assets/library/javafx-8-tutorial/part7/addressapp-windows.png" alt="Windows下AddressApp"></p>
+<p>使用<strong>Inno Setup</strong>，我们能为我们的应用程序创建一个单独<code>.exe</code>文件的Windows安装器。生成的<code>.exe</code>执行用户级别的安装（无需管理员权限）。也创建一个快捷方式（菜单和桌面）。</p>
+<ol>
+<li><p>下载<a href="http://www.jrsoftware.org/isdl.php">Inno Setup 5</a>以后版本，安装Inno程序到你的计算机上。我们的Ant脚本将使用它自动生成安装器。</p>
+</li>
+<li><p>告诉Windows Inno程序的安装路径（例如：<code>C:\Program Files (x86)\Inno Setup 5）</code>。添加Inno安装路径到Path环境变量中。如果你不知道哪里可以找到它，阅读<a href="http://www.computerhope.com/issues/ch000549.htm">Windows中如何设置路径和环境变量</a>.</p>
+</li>
+<li><p>重启Eclipse，并且继续第6步。</p>
+</li>
+</ol>
+<h3 id="-5-mac-macos-dmg-">第5步（MAC） - MacOS dmg安装器</h3>
+<p><img src="/assets/library/javafx-8-tutorial/part7/addressapp-macos.png" alt="MAC中AddressApp"></p>
+<p>为了创建Mac OS <code>dmg</code>拖放安装器，不需要任何的要求。</p>
+<p>注意：为了让安装器映像能工作，它的名称必须与应用名称相同。</p>
+<h3 id="-5-linux-linux-rpm-">第5步（Linux等） Linux rpm安装器</h3>
+<p>其它打包选项（Windows的<code>msi</code>，Linux的<code>rpm</code>）参考本地打包<a href="https://blogs.oracle.com/talkingjavadeployment/entry/native_packaging_for_javafx">博客</a> 或者本<a href="http://docs.oracle.com/javafx/2/deployment/self-contained-packaging.htm#A1324980">oracle 文档</a>.</p>
+<h3 id="-6-build-xml">第6步 运行build.xml</h3>
+<p>最后一步，我们使用ant运行<code>build.xml</code>，<em>右击</em> <code>build.xml</code>文件| <em>Run As</em> | <em>Ant Build</em>。</p>
+<p><img src="/assets/library/javafx-8-tutorial/part7/run-ant-build.png" alt="运行Ant编译"></p>
+<p>编译将<strong>运行一会</strong>（在我的计算机上大概1分钟）。</p>
+<p>如果一切都成功，你应该在<code>build/deploy/bundles</code>目录下找到本地打包。Windows版本看起来如下所示：</p>
+<p><img src="/assets/library/javafx-8-tutorial/part7/deployed-file.png" alt="部署文件"></p>
+<p>文件<code>AddressApp-1.0.exe</code>可以用作为单个文件安装应用。该安装程序将拷贝打包到<code>C:/Users/[yourname]/AppData/Local/AddressApp</code>目录下。</p>
+<h3 id="-">下一步是什么？</h3>
+<p>我希望本教程对你开始学习JavaFX会有所帮助，从此你将能够编写自己的JavaFX项目。</p>
+<p>我感谢你的反馈。如果你有任何建议或者不清楚的地方，随便写评论。</p>
+<h5 id="-">一些其它的你可能感兴趣的文章</h5>
+<ul>
+<li><a href="/blog/javafx-8-dialogs/">JavaFX对话框</a></li>
+<li><a href="/blog/javafx-8-date-picker/">JavaFX日期选择器</a></li>
+<li><a href="/blog/javafx-8-event-handling-examples/">JavaFX事件处理例子</a></li>
+<li><a href="/blog/javafx-8-tableview-sorting-filtering/">JavaFX TableView排序和过滤</a></li>
+<li><a href="/blog/javafx-8-tableview-cell-renderer/">JavaFX TableView单元渲染器</a></li>
+</ul>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/" data-toggle="tooltip" title="简介">简介</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part1/" data-toggle="tooltip" title="第一部分：Scene Builder">1</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part2/" data-toggle="tooltip" title="第二部分：Model 和 TableView">2</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part3/" data-toggle="tooltip" title="第三部分：与用户的交互">3</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part4/" data-toggle="tooltip" title="第四部分：CSS 样式">4</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part5/" data-toggle="tooltip" title="第五部分：将数据用 XML 格式存储">5</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/zh-cn/part6/" data-toggle="tooltip" title="第六部分：统计图">6</a>
+      </li>
+        <li class="active">
+      <a href="/library/javafx-8-tutorial/zh-cn/part7/" data-toggle="tooltip" title="第七部分：部署">7</a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/javafx-8-tutorial/zh-cn/part7/';
+    var disqus_url = 'http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part7/';
+    var disqus_title = 'JavaFX 8 教程 - 第七部分：部署';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,580 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tutorial JavaFX 8 - Parte 1: Scene Builder | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/javafx-8-tutorial/pt/part1/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/javafx-8-tutorial/part1/" />
+    <link rel="alternate" hreflang="es" href="http://code.makery.ch/library/javafx-8-tutorial/es/part1/" />
+    <link rel="alternate" hreflang="fr" href="http://code.makery.ch/library/javafx-8-tutorial/fr/part1/" />
+    <link rel="alternate" hreflang="id" href="http://code.makery.ch/library/javafx-8-tutorial/id/part1/" />
+    <link rel="alternate" hreflang="it" href="http://code.makery.ch/library/javafx-8-tutorial/it/part1/" />
+    <link rel="alternate" hreflang="pt" href="http://code.makery.ch/library/javafx-8-tutorial/pt/part1/" />
+    <link rel="alternate" hreflang="ru" href="http://code.makery.ch/library/javafx-8-tutorial/ru/part1/" />
+    <link rel="alternate" hreflang="tr" href="http://code.makery.ch/library/javafx-8-tutorial/tr/part1/" />
+    <link rel="alternate" hreflang="uk" href="http://code.makery.ch/library/javafx-8-tutorial/uk/part1/" />
+    <link rel="alternate" hreflang="zh-cn" href="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part1/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Este tutorial de sete partes aborda os processos de design, programação e immplantação de uma aplicação de cadastro de endereços feita com JavaFX.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Tutorial JavaFX 8 - Parte 1: Scene Builder | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Este tutorial de sete partes aborda os processos de design, programação e immplantação de uma aplicação de cadastro de endereços feita com JavaFX." />
+    <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/pt/part1/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/javafx-8-tutorial/part1/addressapp-part1.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/javafx-8-tutorial-pt-part1.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artigos nesta serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/pt/" class="list-group-item">
+        Introdução</a>
+      <a href="/library/javafx-8-tutorial/pt/part1/" class="list-group-item active">
+        Parte 1: Scene Builder</a>
+      <a href="/library/javafx-8-tutorial/pt/part2/" class="list-group-item">
+        Parte 2: Modelo e TableView</a>
+      <a href="/library/javafx-8-tutorial/pt/part3/" class="list-group-item">
+        Parte 3: Interagindo com o usuário</a>
+      <a href="/library/javafx-8-tutorial/pt/part4/" class="list-group-item">
+        Parte 4: Estilos usando CSS</a>
+      <a href="/library/javafx-8-tutorial/pt/part5/" class="list-group-item">
+        Parte 5: Salvando dados como XML</a>
+      <a href="/library/javafx-8-tutorial/pt/part6/" class="list-group-item">
+        Parte 6: Gráficos de Estatistica</a>
+      <a href="/library/javafx-8-tutorial/pt/part7/" class="list-group-item">
+        Parte 7: Implantação</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Download de Códigos Fonte</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/addressapp-jfx8-part-1.zip" class="list-group-item">
+<i class="fa fa-fw fa-download"></i>        Parte 1 como um projeto Eclipse <em>(versão mínima requirida: JDK 8u20)</em></a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Linguagens</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/part1/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/javafx-8-tutorial/es/part1/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Español
+      </a>
+      <a href="/library/javafx-8-tutorial/fr/part1/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Français
+      </a>
+      <a href="/library/javafx-8-tutorial/id/part1/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Bahasa Indonesia
+      </a>
+      <a href="/library/javafx-8-tutorial/it/part1/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Italiano
+      </a>
+      <a href="/library/javafx-8-tutorial/pt/part1/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> Português
+      </a>
+      <a href="/library/javafx-8-tutorial/ru/part1/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Русский
+      </a>
+      <a href="/library/javafx-8-tutorial/tr/part1/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Türkçe
+      </a>
+      <a href="/library/javafx-8-tutorial/uk/part1/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Українська
+      </a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part1/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> 中文（简体）
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Tutorial JavaFX 8 - Parte 1: Scene Builder</h1>
+            <div class="article-date">
+  Sep 10, 2014
+  • Updated Nov 06, 2014
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Artigos nesta serie <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/javafx-8-tutorial/pt/">
+        Introdução</a></li>
+      <li class=" active"><a href="/library/javafx-8-tutorial/pt/part1/">
+        Parte 1: Scene Builder</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/pt/part2/">
+        Parte 2: Modelo e TableView</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/pt/part3/">
+        Parte 3: Interagindo com o usuário</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/pt/part4/">
+        Parte 4: Estilos usando CSS</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/pt/part5/">
+        Parte 5: Salvando dados como XML</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/pt/part6/">
+        Parte 6: Gráficos de Estatistica</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/pt/part7/">
+        Parte 7: Implantação</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Download de Códigos Fonte <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.0/addressapp-jfx8-part-1.zip">
+<i class="fa fa-fw fa-download"></i>        Parte 1 como um projeto Eclipse <em>(versão mínima requirida: JDK 8u20)</em></a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Linguagens <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class="">
+        <a href="/library/javafx-8-tutorial/part1/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/es/part1/"><i class="fa fa-fw fa-globe"></i> Español</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/fr/part1/"><i class="fa fa-fw fa-globe"></i> Français</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/id/part1/"><i class="fa fa-fw fa-globe"></i> Bahasa Indonesia</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/it/part1/"><i class="fa fa-fw fa-globe"></i> Italiano</a>
+    </li>
+      <li class=" active">
+        <a href="/library/javafx-8-tutorial/pt/part1/"><i class="fa fa-fw fa-globe"></i> Português</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/ru/part1/"><i class="fa fa-fw fa-globe"></i> Русский</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/tr/part1/"><i class="fa fa-fw fa-globe"></i> Türkçe</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/uk/part1/"><i class="fa fa-fw fa-globe"></i> Українська</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/zh-cn/part1/"><i class="fa fa-fw fa-globe"></i> 中文（简体）</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p><img src="/assets/library/javafx-8-tutorial/part1/addressapp-part1.png" alt="Screenshot AddressApp Part 1"></p>
+<h3 id="t-picos-na-parte-1">Tópicos na Parte 1</h3>
+<ul>
+<li>Conhecendo o JavaFX</li>
+<li>Criando e inicializando um projeto JavaFX</li>
+<li>Utilizando o Scene Builder para modelar a interce com o usuário</li>
+<li>Estrutura básica da aplicação utilizando o padrão Model-View-Controller (MVC)</li>
+</ul>
+<hr>
+<h3 id="pr-requisitos">Pré-requisitos</h3>
+<ul>
+<li>Ultima versão <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java JDK 8</a> (Que inclua o <strong>JavaFX 8</strong>).</li>
+<li>Eclipse 4.3ou posterior  com o plugin  e(fx)clipse . A modo mais fácil é efetuar o download da distro pré-configurada da fonte: <a href="http://efxclipse.bestsolution.at/install.html#all-in-one">e(fx)clipse website</a>. Como alternativa você pode usar o: <a href="http://www.eclipse.org/efxclipse/install.html">update site</a> para sua insalação do Eclipse.</li>
+<li><a href="http://www.oracle.com/technetwork/java/javase/downloads/javafxscenebuilder-info-2157684.html">Scene Builder 2.0</a> ou posterior.</li>
+</ul>
+<h3 id="configura-es-do-eclipse">Configurações do Eclipse</h3>
+<p>Nós precisamos configurar o Eclipse para usar o JDK 8, bem como onde ele ira encontrar o Scene Builder:</p>
+<ol>
+<li><p>Abra a aba Preferences do Eclipse  e navegue até <em>Java | Installed JREs</em>.</p>
+</li>
+<li><p>Clique em <em>Add...</em>, selecione  <em>Standard VM</em> e a informe a <em>Pasta</em> onde se encontra o JDK 8.</p>
+</li>
+<li><p>Remova os outros JREs ou JDKs então o  <strong>JDK 8 torna-se o padrão</strong>.<br><img src="/assets/library/javafx-8-tutorial/part1/preferences-jdk.png" alt="Preferences JDK"></p>
+</li>
+<li><p>Navegue até <em>Java | Compiler</em>. Altere o <strong>Compiler compliance level para 1.8</strong>.<br><img src="/assets/library/javafx-8-tutorial/part1/preferences-compliance.png" alt="Preferences Compliance"></p>
+</li>
+<li><p>Naviegue até preferences na aba <em>JavaFX</em> . Especifique o caminho até o executável do Scene Builder.<br><img src="/assets/library/javafx-8-tutorial/part1/preferences-javafx.png" alt="Preferences JavaFX"></p>
+</li>
+</ol>
+<h3 id="links-teis">Links Úteis</h3>
+<p>Você pode querer colocar os links seguintes nos favoritos (em inglês):</p>
+<ul>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/">Java 8 API</a> - JavaDoc para classes Java padrão</li>
+<li><a href="http://docs.oracle.com/javase/8/javafx/api/">JavaFX 8 API</a> - JavaDoc para classes JavaFX</li>
+<li><a href="http://controlsfx.bitbucket.org/">ControlsFX API</a> - JavaDoc para o <a href="http://fxexperience.com/controlsfx/">Projeto ControlsFX</a> para controles JavaFX adicionais</li>
+<li><a href="http://docs.oracle.com/javase/8/javafx/get-started-tutorial/get_start_apps.htm">Oracle's JavaFX Tutorials</a> - Tutoriais Oficiais JavaFX da Oracle</li>
+</ul>
+<p>Agora vamos começar!</p>
+<hr>
+<h2 id="criar-um-novo-projeto-javafx">Criar um novo Projeto JavaFX</h2>
+<p>No Eclipse (com o plugin e(fx)clipse instalado) vá em <em>File | New | Other...</em> e escolha <em>JavaFX Project</em>.<br>Especifique o nome do projeto (ex.: <em>AddressApp</em>) e clique em <em>Finish</em>.</p>
+<p>Remova o pacote o conteúdo da <em>aplicação</em> se foi gerado automaticamente.</p>
+<h3 id="criar-os-pacotes">Criar os Pacotes</h3>
+<p>Bem no começo, nós seguiremos os Design Patterns (Padrões de Design) para desenvolvermos um bom software. Uma boa prática muito importante é usar o Design Pattern <a href="http://en.wikipedia.org/wiki/Model_View_Controller"><strong>Model-View-Controller</strong> (MVC)</a>. De acordo com este Pattern (Padrão) nós dividimos nosso  código em 3 unidades e criamos um pacote para cada (Clique com botão direito na pasta src, <em>New... | Package</em>):</p>
+<ul>
+<li><code>ch.makery.address</code> - contém a <em>maioria</em> das classes controller(regras de negócio)</li>
+<li><code>ch.makery.address.model</code> - contém classes de modelo</li>
+<li><code>ch.makery.address.view</code> - contém views</li>
+</ul>
+<p><strong>Nota:</strong> Nosso pacote view também terá alguns controladores que estão diretamente ligados a uma única view. Vamos chamá-los de <strong>view-controllers</strong>.</p>
+<hr>
+<h2 id="criar-o-arquivo-de-layout-fxml">Criar o Arquivo de Layout FXML</h2>
+<p>Existem duas maneiras de criar a interface de usuário. Usando um arquivo XML ou programando tudo em Java. Pesquisando na internet você encontrará ambas formas. Nós usaremos XML (terminando em .fxml) para a maioria das partes. Eu acho que esta é uma maneira mais clara de manter o controller e a view separados entre si. Além disso, nós podemos usar o editor gráfico Scene Builder para editar nosso XML. Isso significa que nós nãotemos que trabalhar diretamente com XML.</p>
+<p>Clique com o botão direito no pacote view e crie um novo <em>FXML Document</em> chamado <code>PersonOverview</code>.</p>
+<p><img src="/assets/library/javafx-8-tutorial/part1/new-fxml-document.png" alt="New FXML Document"></p>
+<p><img src="/assets/library/javafx-8-tutorial/part1/new-person-overview.png" alt="New PersonOverview"></p>
+<hr>
+<h2 id="design-com-scene-builder">Design com Scene Builder</h2>
+<div class="alert alert-warning">
+  <strong>Note:</strong> Se você não poder obtê-lo para trabalhar, baixe o código fonte desta parte do tutorial e use o arquivo FXML pronto.
+</div>
+
+<p>Clique com o botão direito em <code>PersonOverview.fxml</code> e escolha <em>Open with Scene Builder</em>. Agora você deve ver o Scene Builder com apenas um <em>AnchorPane</em> (visível na Hierarquia (Hierarchy) a esquerda).</p>
+<ol>
+<li><p>Selecione o <em>Anchor Pane</em> na sua Hierarchy e ajuste o tamanho em Layout (lado direito):<br><img src="/assets/library/javafx-8-tutorial/part1/anchor-pane-size.png" alt="Anchor Pane Size"></p>
+</li>
+<li><p>Adicione um <em>Split Pane (Horizontal Flow)</em> arrastando ele da Biblioteca (Library) até a área principal. Clique com o botão direito no <em>Split Pane</em> na parte <em>Hierarchy</em> e selecione <em>Fit to Parent</em>.<br><img src="/assets/library/javafx-8-tutorial/part1/fit-to-parent.png" alt="Fit to Parent"></p>
+</li>
+<li><p>Arraste uma <em>TableView</em> (em <em>Controls</em>) para dentro do lado esquerdo do <em>SplitPane</em>. Selecione a TableView (não uma Column) e defina a seguinte restrição de layout (layout constraints) à TableView. Dentro de um <em>AnchorPane</em> você pode sempre definir âncoras (anchors) para as quatro bordas (<a href="http://docs.oracle.com/javase/8/javafx/layout-tutorial/builtin_layouts.htm">mais informação sobre Layouts (em inglês)</a>).<br><img src="/assets/library/javafx-8-tutorial/part1/table-view-anchors.png" alt="TableView Anchors"></p>
+</li>
+<li><p>Vá ao menu <em>Preview | Show Preview in Window</em> para ver, se ele se comporta coretamente. Tente redimensionar a janela. A TableView deve redimensionar junto com a jaanela como ela foi ancorada às bordas.</p>
+</li>
+<li><p>Mude o texto da coluna (em Properties) para "First Name" e "Last Name".<br><img src="/assets/library/javafx-8-tutorial/part1/column-texts.png" alt="Column Texts"></p>
+</li>
+<li><p>Selecione a <em>TableView</em>, escolha <em>constrained-resize</em> para a <em>Column Resize Policy</em> (em Properties). Isso certifica que a coluna sempre toma todo o espaço disponível.<br><img src="/assets/library/javafx-8-tutorial/part1/column-resize-policy.png" alt="Column Resize Policy"></p>
+</li>
+<li><p>Adicione uma <em>Label</em> no lado direito com o texto "Person Details" (dica: use  a pesquisa para encontrar a <em>Label</em>). Ajuste seu layout usando anchors.<br><img src="/assets/library/javafx-8-tutorial/part1/person-details-label.png" alt="Person Details Label"></p>
+</li>
+<li><p>Adicione um <em>GridPane</em> no lado direito, selecione-o e ajuste seu layout usando âncoras (top, right and left).
+<img src="/assets/library/javafx-8-tutorial/part1/grid-pane-layout.png" alt="GridPane Layout"></p>
+</li>
+<li><p>Adicione as seguintes Labels às celulas.<br><em>Nota: Para adicionar uma linha ao GridPane selecione um número de linha existente(ficará amarelo), clique com o botão direito em um número de linha e escolha "Add Row".</em><br><img src="/assets/library/javafx-8-tutorial/part1/add-labels.png" alt="Add labels"></p>
+</li>
+<li><p>Adicione três botões na parte de baixo. Dica: Selecione todos eles, clique com o botão direito e clique em  <em>Wrap In &gt; HBox</em>. Este agrupa os botões juntos. Você pode precisar de especificar a <em>spacing (espaçamento)</em> dentro do HBox. Então, definir as âncoras (direita e em baixo) então eles ficam no lugar certo.
+<img src="/assets/library/javafx-8-tutorial/part1/button-group.png" alt="Button Group"></p>
+</li>
+<li><p>Agora você deve ver algo como o seguinte. Use o menu <em>Preview</em> para testar o comportamento do redimensionamento.<br><img src="/assets/library/javafx-8-tutorial/part1/scene-builder-preview.png" alt="Preview"></p>
+</li>
+</ol>
+<hr>
+<h2 id="criar-a-aplica-o-principal">Criar a Aplicação Principal</h2>
+<p>Nós precisamos de outro FXML para nosso layout base que conterá uma barra de menu e envolve a <code>PersonOverview.fxml</code> criada.</p>
+<ol>
+<li><p>Crie outro <em>FXML Document</em> dentro do pacote view chamado <code>RootLayout.fxml</code>. Desta vez, escolha <em>BorderPane</em> como o elemento base (root element).<br><img src="/assets/library/javafx-8-tutorial/part1/new-root-layout.png" alt="New RootLayout"></p>
+</li>
+<li><p>Abra o <code>RootLayout.fxml</code> no Scene Builder.</p>
+</li>
+<li><p>Redimensione o <em>BorderPane</em> com <em>Pref Width</em> definida em 600 e <em>Pref Height</em> definida em 400.<br><img src="/assets/library/javafx-8-tutorial/part1/root-layout-size.png" alt="RootLayout Size"></p>
+</li>
+<li><p>Adicione uma <em>MenuBar</em> no slot TOP. Nós não implementaremos a funcionalidade do menu agora.<br><img src="/assets/library/javafx-8-tutorial/part1/menu-bar.png" alt="MenuBar"></p>
+</li>
+</ol>
+<h3 id="a-classe-principal-javafx">A Classe Principal JavaFX</h3>
+<p>Agora, nós precisamos criar a <strong>main java class (classe principal java)</strong> que inicia nossa aplicação com o <code>RootLayout.fxml</code> e adiciona o <code>PersonOverview.fxml</code> no centro. </p>
+<ol>
+<li><p>Clique com o botão direito em nosso projeto e escola <em>New | Other...</em> e escolha <em>JavaFX Main Class</em>.<br><img src="/assets/library/javafx-8-tutorial/part1/new-main-class.png" alt="New JavaFX Main Class"></p>
+</li>
+<li><p>Nós chamaremos a classe de <code>MainApp</code> e colocaremos no pacote de controller <code>ch.makery.address</code> (nota: este é o pacote pai dos subpacotes <code>view</code> e <code>model</code>).<br><img src="/assets/library/javafx-8-tutorial/part1/new-main-class2.png" alt="New JavaFX Main Class"></p>
+</li>
+</ol>
+<p>A classe <code>MainApp.java</code> gerada estende de <code>Application</code> e contém dois métodos. Esta é a estrutura básica que nós precisamos para iniciar uma aplicação JavaFX. A parte mais importante para nós é o método <code>start(Stage primaryStage)</code>. Ele é chamado automaticamente quando a aplicação quando a aplicação é <code>launched</code> (lançada) do método <code>main</code>.</p>
+<p>Como você vê, o método <code>start(...)</code> recebe um <code>Stage</code> como parâmetro. O gráfico seguinte ilustra a estrutura de cada aplicação JavaFX:</p>
+<p><img src="/assets/library/javafx-8-tutorial/part1/javafx-hierarchy.png" alt="New FXML Document"><br><em>Image Source: <a href="http://www.oracle.com">http://www.oracle.com</a></em></p>
+<p><strong> É como uma peça de teatro</strong>: O <code>Stage</code> (palco) é o container principal que é geralmente uma <code>Window</code> (janela) com uma borda e os botões típicos minimizar, maximizar e fechar. Dentro do <code>Stage</code> (palco) você adiciona uma <code>Scene</code> (cena) que pode, é claro, ser trocada por outra <code>Scene</code> (cena). Dentro da <code>Scene</code> (cena) os nodos do JavaFX como <code>AnchorPane</code>, <code>TextBox</code>, etc. são adicionados.</p>
+<p>Para mais informações sobre como <a href="http://docs.oracle.com/javase/8/javafx/scene-graph-tutorial/scenegraph.htm">Trabalhando com JavaFX Scene Graph (inglês)</a>.</p>
+<hr>
+<p>Abra <code>MainApp.java</code> e troque o código com o seguinte:</p>
+<pre class="prettyprint lang-java">
+package ch.makery.address;
+
+import java.io.IOException;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+public class MainApp extends Application {
+
+    private Stage primaryStage;
+    private BorderPane rootLayout;
+
+    @Override
+    public void start(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+        this.primaryStage.setTitle("AddressApp");
+
+        initRootLayout();
+
+        showPersonOverview();
+    }
+
+    /**
+     * Inicializa o root layout (layout base).
+     */
+    public void initRootLayout() {
+        try {
+            // Carrega o root layout do arquivo fxml.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
+            rootLayout = (BorderPane) loader.load();
+
+            // Mostra a scene (cena) contendo oroot layout.
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Mostra o person overview dentro do root layout.
+     */
+    public void showPersonOverview() {
+        try {
+            // Carrega o person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/PersonOverview.fxml"));
+            AnchorPane personOverview = (AnchorPane) loader.load();
+
+            // Define o person overview dentro do root layout.
+            rootLayout.setCenter(personOverview);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Retorna o palco principal.
+     * @return
+     */
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+</pre>
+
+<p>Os vários comentários devem te dar uma idéia do que está acontecendo.</p>
+<p>Se você rodar a sua aplicação agora, você deve ver algo como o screenshot no começo deste post.</p>
+<h3 id="problemas-frequentes">Problemas Frequentes</h3>
+<p>Se o JavaFX não puder encontrar o arquivo <code>fxml</code> que você especificou, você deve ver a seguinte mensagem de erro:</p>
+<p><code>java.lang.IllegalStateException: Location is not set.</code></p>
+<p>Para resolver isso, verifique novamente se você escreveu o nome dos seus arquivos <code>fxml</code> corretamente!</p>
+<div class="alert alert-warning">
+  Se isso ainda não funcionar, baixe o código fonte desta parte do tutorial e tente com o arquivo fxml incluso.
+</div>
+
+
+<hr>
+<h3 id="o-que-vem-depois-">O Que Vem Depois?</h3>
+<p>No <a href="/library/javafx-8-tutorial/pt/part2/">Tutorial Parte 2</a>  nós adicionaremos algumas funcionalidades de dados à nossa AddressApp.</p>
+<h5 id="alguns-outros-artigos-que-voc-deve-achar-interessante-ingl-s-">Alguns outros artigos que você deve achar interessante (inglês)</h5>
+<ul>
+<li><a href="/blog/javafx-8-dialogs/">JavaFX Dialogs</a></li>
+<li><a href="/blog/javafx-8-date-picker/">JavaFX Date Picker</a></li>
+<li><a href="/blog/javafx-8-event-handling-examples/">JavaFX Exemplo de Manipulação de Eventos</a></li>
+<li><a href="/blog/javafx-8-tableview-sorting-filtering/">JavaFX Ordenamento e Filtragem de TableView</a></li>
+<li><a href="/blog/javafx-8-tableview-cell-renderer/">JavaFX Renderizador de Células da TableView</a></li>
+</ul>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/javafx-8-tutorial/pt/" data-toggle="tooltip" title="Introdução">Intro</a>
+      </li>
+        <li class="active">
+      <a href="/library/javafx-8-tutorial/pt/part1/" data-toggle="tooltip" title="Parte 1: Scene Builder">1</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/pt/part2/" data-toggle="tooltip" title="Parte 2: Modelo e TableView">2</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/pt/part3/" data-toggle="tooltip" title="Parte 3: Interagindo com o usuário">3</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/pt/part4/" data-toggle="tooltip" title="Parte 4: Estilos usando CSS">4</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/pt/part5/" data-toggle="tooltip" title="Parte 5: Salvando dados como XML">5</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/pt/part6/" data-toggle="tooltip" title="Parte 6: Gráficos de Estatistica">6</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/pt/part7/" data-toggle="tooltip" title="Parte 7: Implantação">7</a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+    
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

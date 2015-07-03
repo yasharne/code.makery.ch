@@ -1,0 +1,454 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>More HTML & CSS: Website Layout with Bootstrap | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/more-html-css/website-layout/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/more-html-css/website-layout/" />
+    <link rel="alternate" hreflang="de" href="http://code.makery.ch/library/more-html-css/de/website-layout/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Learn how to layout elements on web pages using the bootstrap grid.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="More HTML & CSS: Website Layout with Bootstrap | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Learn how to layout elements on web pages using the bootstrap grid." />
+    <meta property="og:url" content="http://code.makery.ch/library/more-html-css/website-layout/" />
+    <meta property="og:image" content="http://code.makery.ch" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/more-html-css-en-website-layout.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Articles in this Series</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/more-html-css/" class="list-group-item">
+        Introduction</a>
+      <a href="/library/more-html-css/website-layout/" class="list-group-item active">
+<i class="fa fa-fw fa-th-large"></i>        Website Layout with Bootstrap</a>
+      <a href="/library/more-html-css/icons/" class="list-group-item">
+<i class="fa fa-fw fa-flag"></i>        Icons</a>
+      <a href="/library/more-html-css/image-bootstrap/" class="list-group-item">
+<i class="fa fa-fw fa-image"></i>        Images with Bootstrap</a>
+      <a href="/library/more-html-css/image-editing/" class="list-group-item">
+<i class="fa fa-fw fa-image"></i>        Image Editing</a>
+      <a href="/library/more-html-css/image-sources/" class="list-group-item">
+<i class="fa fa-fw fa-image"></i>        Free Image Sources</a>
+      <a href="/library/more-html-css/text/" class="list-group-item">
+<i class="fa fa-fw fa-font"></i>        Formatting Text</a>
+      <a href="/library/more-html-css/javascript-bootstrap/" class="list-group-item">
+<i class="fa fa-fw fa-code"></i>        JavaScript with Bootstrap</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Links</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/html-css/" class="list-group-item">
+<i class="fa fa-fw fa-external-link"></i>        HTML & CSS Tutorial</a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Languages</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/more-html-css/website-layout/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/more-html-css/de/website-layout/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Deutsch
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">More HTML & CSS: Website Layout with Bootstrap</h1>
+            <div class="article-date">
+  Apr 09, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Articles in this Series <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/more-html-css/">
+        Introduction</a></li>
+      <li class=" active"><a href="/library/more-html-css/website-layout/">
+<i class="fa fa-fw fa-th-large"></i>        Website Layout with Bootstrap</a></li>
+      <li class=""><a href="/library/more-html-css/icons/">
+<i class="fa fa-fw fa-flag"></i>        Icons</a></li>
+      <li class=""><a href="/library/more-html-css/image-bootstrap/">
+<i class="fa fa-fw fa-image"></i>        Images with Bootstrap</a></li>
+      <li class=""><a href="/library/more-html-css/image-editing/">
+<i class="fa fa-fw fa-image"></i>        Image Editing</a></li>
+      <li class=""><a href="/library/more-html-css/image-sources/">
+<i class="fa fa-fw fa-image"></i>        Free Image Sources</a></li>
+      <li class=""><a href="/library/more-html-css/text/">
+<i class="fa fa-fw fa-font"></i>        Formatting Text</a></li>
+      <li class=""><a href="/library/more-html-css/javascript-bootstrap/">
+<i class="fa fa-fw fa-code"></i>        JavaScript with Bootstrap</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Links <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/html-css/">
+<i class="fa fa-fw fa-external-link"></i>        HTML & CSS Tutorial</a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Languages <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=" active">
+        <a href="/library/more-html-css/website-layout/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/more-html-css/de/website-layout/"><i class="fa fa-fw fa-globe"></i> Deutsch</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p>By default, HTML elements are arranged in two ways:</p>
+<p><strong>Block elements</strong> always start on a new line. Examples of block elements are <code>&lt;div&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, and <code>&lt;li&gt;</code>.</p>
+<p><img src="/assets/library/more-html-css/website-layout/block-elements.png" alt="Block Elements"></p>
+<p><strong>Inline Elements</strong> are displayed in a line. Examples of inline elements are <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, and <code>&lt;img&gt;</code>.</p>
+<p><img src="/assets/library/more-html-css/website-layout/inline-elements.png" alt="Inline Elements"></p>
+<p>However, these two options are not enough to create a proper layout for a web page.</p>
+<p>Most websites either have a layout with <strong>two columns</strong> ...</p>
+<p><img src="/assets/library/more-html-css/website-layout/two-columns.png" alt="Two-column Layout"></p>
+<p>... or they have a layout with <strong>three columns</strong>.</p>
+<p><img src="/assets/library/more-html-css/website-layout/three-columns.png" alt="Three-column Layout"></p>
+<p>To create a layout like this without a CSS framework like <em>Bootstrap</em> would be quite a challenge. With Bootstrap it gets much easier.</p>
+<p>In addition, the layout in Bootstrap is automatically adjusted to the screen size (so-called <a href="http://en.wikipedia.org/wiki/Responsive_web_design">Responsive Layout</a>). For example, we can specify that the columns should be displayed below each other on small screens, because they would not fit if displayed horizontally.</p>
+<h2 id="the-bootstrap-grid">The Bootstrap Grid</h2>
+<div class="alert alert-warning">
+  If you haven't yet integrated Bootstrap in your project, please read <a href="/library/html-css/part7/" class="alert-link">how to use the Bootstrap Framework</a> in the HTML &amp; CSS Tutorial.
+</div>
+
+<p>Bootstrap contains a <strong>12-column grid system</strong> for the layout (see <a href="http://getbootstrap.com/css/#grid">documentation of the Bootstrap grid</a>). A grid can be thought of as an invisible table with twelve columns.</p>
+<p><img src="/assets/library/more-html-css/website-layout/bootstrap-twelve-columns.png" alt="Twelve Columns"></p>
+<p>We can define our own columns by specifying how many wide they should be inside the Bootstrap grid.</p>
+<h3 id="example-for-a-two-column-layout">Example for a Two-Column Layout</h3>
+<p>In this example, we define a left column with a width of 4 and a right column with a width of 8. On the left we could have a navigation while on the right we would put the page's content.</p>
+<p><img src="/assets/library/more-html-css/website-layout/bootstrap-two-columns.png" alt="2-Column Layout"></p>
+<p>In the HTML code of this layout would look like the following:</p>
+<pre class="prettyprint lang-html">
+&lt;div class="<mark>container</mark>">
+  &lt;div class="<mark>row</mark>">
+    &lt;div class="<mark>col-sm-4</mark>">
+      Content of the left column.
+    &lt;/div>
+    &lt;div class="<mark>col-sm-8</mark>">
+      Content of the right column.
+    &lt;/div>
+  &lt;/div>
+&lt;/div>
+</pre>
+
+<div class="alert alert-info">
+  <strong>Hints about the Bootstrap grid:</strong>
+
+  <ul>
+    <li>The grid should always be in a <code>&lt;div&gt;</code> with the <code>container</code> class. (To use a full width container, spanning the entire width of the viewport use the <code>container-fluid</code> class.)</li>
+    <li>Inside the container is a <code>&lt;div&gt;</code> with class <code>row</code>. We this we define a row in the grid.</li>
+    <li>Inside a row we define the columns with the various <code>col</code> classes.</li>
+  </ul>
+</div>
+
+
+<h3 id="screen-sizes">Screen Sizes</h3>
+<p>Every Bootstrap column class contains an indication of the screen size. There are four scree sizes:</p>
+<ul>
+<li><code>col-xs</code> - Column for extra small devices (smartphones, lower than 768px)</li>
+<li><code>col-sm</code> - Column for small devices (tablets, 768px and up)</li>
+<li><code>col-md</code> - Column for medium devices (desktops, 992px and up)</li>
+<li><code>col-lg</code> - Column for large devices (large desktops, 1200px and up)</li>
+</ul>
+<p>Specifying <code>col-sm-4</code> in our example above thus means, that a column of width 4 will be displayed on screens that have at least the size of a tablet.</p>
+<p>On all screens that are smaller all columns will automatically be stacked vertically.</p>
+<p>This is how our example for a two-column layout would look like <strong>on a smartphone</strong>:</p>
+<p><img src="/assets/library/more-html-css/website-layout/bootstrap-two-columns-smartphone.png" alt="Two-Column Layout Smartphone"></p>
+<h3 id="example-for-a-three-column-layout">Example for a Three-Column Layout</h3>
+<p>In this example, we define three columns.</p>
+<p><img src="/assets/library/more-html-css/website-layout/bootstrap-three-columns.png" alt="Three-Column Layout"></p>
+<p>In HTML code this layout would look like this:</p>
+<pre class="prettyprint lang-html">
+&lt;div class="<mark>container</mark>">
+  &lt;div class="<mark>row</mark>">
+    &lt;div class="<mark>col-sm-3</mark>">
+      Content of the left column.
+    &lt;/div>
+    &lt;div class="<mark>col-sm-6</mark>">
+      Content of the middle column.
+    &lt;/div>
+    &lt;div class="<mark>col-sm-3</mark>">
+      Content of the right column.
+    &lt;/div>
+  &lt;/div>
+&lt;/div>
+</pre>
+
+
+<h2 id="applying-it-to-our-portfolio-blog">Applying it to our Portfolio Blog</h2>
+<p>In the <a href="/library/html-css/">HTML &amp; CSS Tutorial</a> we developed a portfolio with a blog page. The following example shows a <strong>two-column layout</strong> for the blog page. The left column contains the list of blog entries. In the right column, we now have some space for things like a list of links.</p>
+<p><img src="/assets/library/more-html-css/website-layout/portfolio-two-columns.png" alt="Portfolio" class="img-thumbnail"></p>
+<h5 id="blog-index-html">blog/index.html</h5>
+<pre class="prettyprint lang-html">
+&lt;div class="container">
+  &lt;h1 class="title">Blog&lt;/h1>
+  &lt;p>I write about things I encounter while learning web programming.&lt;/p>
+
+  &lt;div class="row">
+    &lt;div class="col-sm-8">
+      &lt;h2>Blog Entries&lt;/h2>
+      &lt;ul>
+        &lt;li>More entries will follow...&lt;/li>
+        &lt;li>&lt;a href="second-entry/">Second Entry&lt;/a>&lt;/li>
+        &lt;li>&lt;a href="first-entry/">First Entry&lt;/a>&lt;/li>
+      &lt;/ul>
+    &lt;/div>
+
+    &lt;div class="col-sm-3 col-sm-offset-1">
+      &lt;h3>Links&lt;/h3>
+        &lt;p>
+          Have a look at the following blogs of my friends:
+        &lt;/p>
+        &lt;ul class="list-unstyled">
+          &lt;li>&lt;a href="#">Blog 1&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="#">Blog 2&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="#">Blog 3&lt;/a>&lt;/li>
+          &lt;li>&lt;a href="#">Blog 4&lt;/a>&lt;/li>
+        &lt;/ul>
+    &lt;/div>
+  &lt;/div>
+&lt;/div>
+</pre>
+
+<h4 id="explanations">Explanations</h4>
+<ul>
+<li>In the right column I've added a second CSS class called <code>col-sm-offset-1</code>. This causes that the right to be moved one position to the right. Thus we get a slightly larger distance between the two columns.</li>
+<li>Test the layout by resizing your browser window.</li>
+<li>The class <code>list-unstyled</code> removes the bullet points of the list items (see <a href="http://getbootstrap.com/css/#type-lists">Bootstrap Lists</a>).</li>
+</ul>
+<h2 id="more-infos-on-bootstrap-layout">More Infos on Bootstrap Layout</h2>
+<p>Read the section about the <a href="http://getbootstrap.com/css/#grid">Grid System</a> in the Bootstrap documentation.</p>
+<p>An extensive and very good explanation about how the Bootstrap grid system works can be found in <a href="http://www.helloerik.com/the-subtle-magic-behind-why-the-bootstrap-3-grid-works">The Subtle Magic Behind Why the Bootstrap 3 Grid Works</a>.</p>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/more-html-css/" data-toggle="tooltip" title="Introduction">Intro</a>
+      </li>
+        <li class="active">
+      <a href="/library/more-html-css/website-layout/" data-toggle="tooltip" title="Website Layout with Bootstrap">1</a>
+      </li>
+        <li>
+      <a href="/library/more-html-css/icons/" data-toggle="tooltip" title="Icons">2</a>
+      </li>
+        <li>
+      <a href="/library/more-html-css/image-bootstrap/" data-toggle="tooltip" title="Images with Bootstrap">3</a>
+      </li>
+        <li>
+      <a href="/library/more-html-css/image-editing/" data-toggle="tooltip" title="Image Editing">4</a>
+      </li>
+        <li>
+      <a href="/library/more-html-css/image-sources/" data-toggle="tooltip" title="Free Image Sources">5</a>
+      </li>
+        <li>
+      <a href="/library/more-html-css/text/" data-toggle="tooltip" title="Formatting Text">6</a>
+      </li>
+        <li>
+      <a href="/library/more-html-css/javascript-bootstrap/" data-toggle="tooltip" title="JavaScript with Bootstrap">7</a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/more-html-css/website-layout/';
+    var disqus_url = 'http://code.makery.ch/library/more-html-css/website-layout/';
+    var disqus_title = 'More HTML & CSS: Website Layout with Bootstrap';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

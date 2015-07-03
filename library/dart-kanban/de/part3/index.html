@@ -1,0 +1,398 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dart Kanban - Teil 3: Elemente hinzufügen | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/dart-kanban/de/part3/" />
+  
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Mit Dart neue HTML-Elemente hinzufügen. Auf Events vom Benutzer reagieren. Lernen, wie man mit der HTML-Bibliothek von Dart arbeitet.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Dart Kanban - Teil 3: Elemente hinzufügen | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Mit Dart neue HTML-Elemente hinzufügen. Auf Events vom Benutzer reagieren. Lernen, wie man mit der HTML-Bibliothek von Dart arbeitet." />
+    <meta property="og:url" content="http://code.makery.ch/library/dart-kanban/de/part3/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/dart-kanban/dart-kanban.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/dart-kanban-de-part3.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artikel dieser Serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/dart-kanban/de/" class="list-group-item">
+        Einleitung</a>
+      <a href="/library/dart-kanban/de/install/" class="list-group-item">
+<i class="fa fa-fw fa-cog"></i>        Dart Editor installieren</a>
+      <a href="/library/dart-kanban/de/part1/" class="list-group-item">
+        Teil 1: Webapp erstellen</a>
+      <a href="/library/dart-kanban/de/part2/" class="list-group-item">
+        Teil 2: HTML vorbereiten</a>
+      <a href="/library/dart-kanban/de/part3/" class="list-group-item active">
+        Teil 3: Element hinzufügen</a>
+      <a href="/library/dart-kanban/de/part4/" class="list-group-item">
+        Teil 4: Element verschieben</a>
+      <a href="/library/dart-kanban/de/part5/" class="list-group-item">
+        Teil 5: Veröffentlichen</a>
+      <a href="/library/dart-kanban/de/next/" class="list-group-item">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Source Code</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-dart-kanban" class="list-group-item">
+<i class="fa fa-fw fa-github"></i>        Beispielcode auf GitHub</a>
+  </div>
+</div>
+
+          
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Dart Kanban - Teil 3: Elemente hinzufügen</h1>
+            <div class="article-date">
+  Mar 23, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Artikel dieser Serie <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/dart-kanban/de/">
+        Einleitung</a></li>
+      <li class=""><a href="/library/dart-kanban/de/install/">
+<i class="fa fa-fw fa-cog"></i>        Dart Editor installieren</a></li>
+      <li class=""><a href="/library/dart-kanban/de/part1/">
+        Teil 1: Webapp erstellen</a></li>
+      <li class=""><a href="/library/dart-kanban/de/part2/">
+        Teil 2: HTML vorbereiten</a></li>
+      <li class=" active"><a href="/library/dart-kanban/de/part3/">
+        Teil 3: Element hinzufügen</a></li>
+      <li class=""><a href="/library/dart-kanban/de/part4/">
+        Teil 4: Element verschieben</a></li>
+      <li class=""><a href="/library/dart-kanban/de/part5/">
+        Teil 5: Veröffentlichen</a></li>
+      <li class=""><a href="/library/dart-kanban/de/next/">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Source Code <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-dart-kanban">
+<i class="fa fa-fw fa-github"></i>        Beispielcode auf GitHub</a></li>
+  </ul>
+</div>
+
+            
+          </aside>
+          
+          <div class="article-content">
+            <p>In diesem Teil programmieren wir die dynamische Funktionalität von unserem Kanban Board mit Dart.</p>
+<h2 id="elemente-vom-html-dokument-ansprechen">Elemente vom HTML-Dokument ansprechen</h2>
+<p>Im ersten Teil haben wir bereits ein kurzes Beispiel gesehen, wie wir mit Dart das Untertitel-Element aus dem HTML-Dokument holen konnten:</p>
+<pre class="prettyprint lang-dart">
+querySelector('#subtitle');
+</pre>
+
+<p>Schauen Sie kurz in der <code>index.html</code>-Datei nach. Dort haben wir bereits alle wichtigen Elemente mit einer ID versehen. Über diese IDs können wir nun sehr einfach die Elemente aus dem Dart-Code heraus ansprechen und schliesslich auch verändern.</p>
+<p>Wir ergänzen nun unser <code>main.dart</code> wie folgt:</p>
+<pre class="prettyprint lang-dart">
+import 'dart:html';
+
+InputElement todoInput;
+ButtonElement todoButton;
+
+DivElement todoList;
+DivElement doingList;
+DivElement doneList;
+
+void main() {
+  // Den Untertitel setzen.
+  querySelector('#subtitle').text = 'von Marco';
+
+  // Die Referenzen auf die HTML-Elemente holen.
+  todoInput = querySelector('#todo-input');
+  todoButton = querySelector('#todo-button');
+
+  todoList = querySelector('#todo-list');
+  doingList = querySelector('#doing-list');
+  doneList = querySelector('#done-list');
+}
+</pre>
+
+
+<h4 id="erkl-rungen">Erklärungen</h4>
+<p>Weil wir die verschiedenen Elemente (Textfeld, Knopf und Listen) immer wieder brauchen werden, <strong>speichern</strong> wir diese <strong>in eigene Variablen</strong>. Wir definieren die Variablen ausserhalb der <code>main()</code>-Funktion, damit wir später auch aus anderen Funktionen darauf zugreifen können.</p>
+<p>Wichtig sind auch die <strong>Typen der Variablen</strong> wie zum Beispiel <code>InputElement</code> und <code>ButtonElement</code>.</p>
+<div class="alert alert-info">
+  <strong>Objektorientierte Progammiersprachen:</strong> Typen von Variablen werden in Dart auch <em>Klassen</em> genannt. Klassen und schliesslich auch <em>Objekte</em> sind Begriffe, die in objektorierten Programmiersprachen verwendet werden. Wir werden später noch genauer auf Klassen und Objekte eingehen.</div>
+
+<p>Schauen wir uns mal das <strong>Beispiel vom Button</strong> an: Oberhalb der <code>main()</code>-Funktion wird die Variable <code>todoButton</code> mit dem Typ <code>ButtonElement</code> definiert. Innerhalb der <code>main()</code>-Funktion wird dann das entsprechende Element aus dem HTML-Dokument geholt und in die Variable gespeichert.</p>
+<h2 id="ein-element-hinzuf-gen">Ein Element hinzufügen</h2>
+<p>Die HTML-Elemente, die wir per Knopfdruck in die Todo-Liste hinzufügen möchten, sehen wie folgt aus:</p>
+<pre class="prettyprint lang-html">
+&lt;a href="#" class="list-group-item">Neues Todo&lt;/a>
+</pre>
+
+<p>Wir erstellen eine neue Funktion, die solche Elemente erstellt und diese an die richtige Liste anhängt. Fügen Sie folgende Funktion ganz am Ende der Dart-Datei hinzu:</p>
+<pre class="prettyprint lang-dart">
+/// Fügt ein neues Todo-Element zur Liste hinzu.
+void addTodoItem(Event e) {
+  AnchorElement newTodo = new AnchorElement();
+  newTodo.href = '#';
+  newTodo.text = todoInput.value;
+  newTodo.classes.add('list-group-item');
+
+  todoList.children.add(newTodo);
+
+  // Löscht das Textfeld.
+  todoInput.value = '';
+}
+</pre>
+
+
+<h4 id="erkl-rungen">Erklärungen</h4>
+<p>Mit <code>void addTodoItem(Event e)</code> wird die Funktion definiert. <code>void</code> bedeutet, dass diese Funktion keinen Wert zurückliefert. Wir wollen einfach eine Aktion ausführen, nämlich, dass ein neues Todo-Element hinzugefügt wird.</p>
+<p>In der nächsten Zeile wird ein neues <code>&lt;a&gt;</code>-Element (<code>AnchorElement</code>) erstellt.</p>
+<p>Jedes <code>&lt;a&gt;</code>-Element braucht einen Link. Da wir aber nirgendwo hinspringen wollen bei einem Klick, setzen wir den Link auf ein <code>#</code>. </p>
+<p>Mit <code>todoInput.value</code> holen wir den Wert aus dem Textfeld und setzen ihn gleich in unser neues Todo-Element.</p>
+<p>Damit die Elemente schön dargestellt werden, fügen wir die Bootstrap-Klasse <code>list-group-item</code> hinzu.</p>
+<h5 id="kind-elemente">Kind-Elemente</h5>
+<p>Jedes HTML-Element hat eine Liste von allen untergeordneten Elementen (genannt Kind-Elemente). Auch unser <code>todoList</code>-Element hat eine solche Liste, die wir mit <code>.children</code> ansprechen können. Wir können also mit <code>todoList.children.add(newTodo)</code> unser neues Todo-Element an diese Liste anfügen. Dies bewirkt, dass der Browser dieses Element anzeigt.  </p>
+<h2 id="auf-events-reagieren">Auf Events reagieren</h2>
+<p>Wenn Sie jetzt das Programm starten, dann funktioniert das Hinzufügen noch nicht. Was fehlt, ist, dass wir auf den Knopfdruck reagieren.</p>
+<p>Bei einem Knopfdruck werden vom Browser Events produziert, die wir abfangen können.</p>
+<p>Fügen Sie die folgende Code-Zeile am Schluss der <code>main()</code>-Funktion ein:</p>
+<pre class="prettyprint lang-dart">
+void main() {
+  ...Bisheriger Code...
+
+  // Auf Knopfdruck-Event reagieren.
+  todoButton.onClick.listen(addTodoItem);
+}
+</pre>
+
+
+<h4 id="erkl-rungen">Erklärungen</h4>
+<p>Wir geben an, dass wir beim <code>todoButton</code> auf den Click-Event reagieren möchten. Die <code>listen</code>-Funktion akzeptiert einen sogenanntent <em>Event Handler</em>. Ein <em>Event Handler</em> ist eine Funktion, die genau ein Argument, nämlich einen <code>Event</code> erwartet. Dies entspricht genau unserer <code>addTodoItem</code>-Funktion. Somit können wir diese Funktion dort angeben.</p>
+<p>Sobald nun der Knopf gedrückt wird, so wird unserer <code>addTodoItem()</code>-Funktion aufgerufen und ein neues Todo-Element wird hinzufgefügt.</p>
+<p>Testen Sie das Programm, indem Sie einen Text in das Feld eingeben und auf den Knopf drücken.</p>
+<h2 id="weitere-informationen">Weitere Informationen</h2>
+<ul>
+<li>Auf der Seite von Mozilla finden Sie die ganze <a href="https://developer.mozilla.org/de/docs/Web/HTML/Element">Liste von möglichen HTML-Elementen</a>. Viele dieser HTML-Elemente haben in Dart einen entsprechenden Typ (Klasse), wie zum Beispiel <code>InputElement</code>, <code>TextAreaElement</code>, <code>SpanElement</code> und <code>ListElement</code>.</li>
+<li>Weitere Informationen über die Verwendung von Dart mit HTML finden Sie im Online-Buch <a href="https://www.dartlang.org/docs/dart-up-and-running/ch03.html#darthtml---browser-based-apps">Dart: Up and Running</a> (Englisch). Dort werden die ganze Dart-Sprache und wichtige Bibliotheken und Tools erklärt.</li>
+</ul>
+<h2 id="wie-weiter-">Wie weiter?</h2>
+<p>Im <a href="/library/dart-kanban/de/part4/">Teil 4</a> werden unser Kanban Board so erweitern, damit die Todos in die zwei anderen spalten verschoben werden können.</p>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/dart-kanban/de/" data-toggle="tooltip" title="Einleitung">Einleitung</a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/install/" data-toggle="tooltip" title="Dart Editor installieren"><i class="fa fa-cog"></i></a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/part1/" data-toggle="tooltip" title="Teil 1: Webapp erstellen">1</a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/part2/" data-toggle="tooltip" title="Teil 2: HTML vorbereiten">2</a>
+      </li>
+        <li class="active">
+      <a href="/library/dart-kanban/de/part3/" data-toggle="tooltip" title="Teil 3: Element hinzufügen">3</a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/part4/" data-toggle="tooltip" title="Teil 4: Element verschieben">4</a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/part5/" data-toggle="tooltip" title="Teil 5: Veröffentlichen">5</a>
+      </li>
+        <li>
+      <a href="/library/dart-kanban/de/next/" data-toggle="tooltip" title="Nächste Schritte"><i class="fa fa-flag-checkered"></i></a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/dart-kanban/de/part3/';
+    var disqus_url = 'http://code.makery.ch/library/dart-kanban/de/part3/';
+    var disqus_title = 'Dart Kanban - Teil 3: Elemente hinzufügen';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

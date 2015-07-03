@@ -1,0 +1,333 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Making Content Editors and Web Developers Happy Again | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/blog/making-content-editors-and-web-developers-happy/" />
+  
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="How to create a Static CMS that combines the advantages of a static site generator and a web-based CMS.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Making Content Editors and Web Developers Happy Again | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="How to create a Static CMS that combines the advantages of a static site generator and a web-based CMS." />
+    <meta property="og:url" content="http://code.makery.ch/blog/making-content-editors-and-web-developers-happy/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/blog/15-03-16-making-content-editors-and-web-developers-happy/static-cms-workflow.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+
+    <div class="container post-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="black-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="main-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <article>
+        <header class="post-header">
+          <h1 class="post-title">Making Content Editors and Web Developers Happy Again</h1>
+          
+          
+          
+          <div class="post-date text-center">
+  <span>
+    Mar 16, 2015
+    
+  </span>
+  
+     • 
+    
+      <span>
+        <a href="/blog/tag/web/">Web</a>
+      </span>
+    
+  
+</div>
+        </header>
+
+        <div class="post-content">
+          <p>I love static websites. I have been using and enjoying various static website generators for almost three years now (like this website) and I wouldn't want to go back to using more complex systems. But, while I'm comfortable writing my Markdown files in a text editer most non-technical content editors aren't. They'd rather want a nice, web-based CMS.</p>
+<blockquote>
+<p>Why can't we have both &ndash; a static site generator that makes web developers happy and a web-based CMS for content editors?</p>
+</blockquote>
+<p>In this article I would like to share my ideas how such a <strong>Static CMS</strong> could be designed and evaluate some existing tools in this area. First, let's have a look at why having static websites is such a great thing.</p>
+<h2 id="static-websites">Static Websites</h2>
+<p>In the old days, the web would basically be a bunch of HTML files on servers. Whenever someone would visit a website, a server would just send the requested HTML file over the wire. Today, we still receive HTML files from the servers but there is much more going on behind the scenes. </p>
+<p>The majority of the web is now powered by database-driven websites. Databases are great for online editing and collaboration. But it also means that every time a website is accessed, the server has to get the data from the database and run it through the template engine until it can be served. This is a process that uses server memory and processing power (=money), slows down the website and introduces vulnerability. But most of all it creates complexity for developers and removes the joy of creating websites.</p>
+<p>For most sites this complexity of regenerating the page on each request is completely unnecessary. After all, most websites only change when the content editor or the designer make a change. So, let's go back to static, but it's a different static than we had in the early days. With <strong>static site generators</strong> we can create almost any website of any size we want. And it makes the web fun again.   </p>
+<ul>
+<li><strong>Speed.</strong> The website is pre-generated HTML and ready to be served. That's as fast as it can possibly be.</li>
+<li><strong>Reliable and Scalable.</strong> Because there is no database the website can easily be served from multiple servers all around the world through <a href="http://en.wikipedia.org/wiki/Content_delivery_network">content delivery networks</a>. If one server goes down, traffic just goes somewhere else.</li>
+<li><strong>Secure.</strong> Malware is a <a href="http://www.smashingmagazine.com/2012/10/09/four-malware-infections-wordpress/">major issue</a> for database-driven websites. No database, no php or server scripts means there is no way to inject malware in static websites.</li>
+<li><strong>Maintainable.</strong> No server maintenance or server updates are needed.</li>
+<li><strong>Cost.</strong> It's very cheap to host and scale a static website.</li>
+<li><strong>Simple and Fun.</strong> The simplicity of static websites fit in my brain and I feel I know what's going on. It's a joy for a developer to work with the fundamental elements of the web.</li>
+</ul>
+<h2 id="the-content">The Content</h2>
+<p>The most valuable part of a website usually is its content. I want my content to be in a format that can be used in various contexts. The content should stay readable even years from now and should be easy to convert to other formats.</p>
+<p><strong>Databases make me nervous.</strong> They are very complex systems that store my precious data in some format I don't really understand. If some day the database stops working I might have a lot of trouble getting my data out of the system. Things change quickly and I don't want to depend on some strange database export tool to migrate my data to the next system.</p>
+<p>Text-based file formats have been gaining a lot of popularity, Markdown probably being the most prominent. Most static site generators support Markdown (I'm also writing this post in Markdown). I love it and it makes data simple again. It's also very easy to create backups or version the data so that we can revert any changes. </p>
+<h3 id="complex-content">Complex Content</h3>
+<p><strong>Markdownify everything?</strong> I believe we need just a little bit more. Most static generators use a <a href="http://en.wikipedia.org/wiki/YAML">YAML</a> front-matter in every file for meta-data like <em>title</em>, <em>date</em>, and <em>author</em> followed by the Markdown content. For more <strong>complex content</strong> this might still not be enough because we might need <strong>multiple content sections</strong> instead of just one per file.</p>
+<p>Instead of using YAML only for the meta-data, we could use it also for the content. This allows us to define multiple content sections. While we're at it I would strongly suggest to use <a href="https://github.com/toml-lang/toml">TOML</a> as an alternative to YAML.</p>
+<p>Here is an example of how such a TOML file could look like. It is a <em>product page for a book</em>. In it you will see three markdown sections: <code>book_description</code>, <code>product_details</code>, and <code>customer_reviews</code>.</p>
+<h5 id="example-book-toml">example-book.toml</h5>
+<pre class="prettyprint">
+title = "Go Programming By Example"
+date = "2015-03-15"
+
+book_description = """
+Go, commonly referred to as golang, is a programming language initially developed at Google in 2007. This book helps you to get started with Go programming. The following is highlight topics in this book: 
+
+* Development Environment 
+* Go Programming Language 
+* And more...
+"""
+
+product_details = """
+## E-Book
+
+* File Size: 4752 KB
+
+## Print
+
+* Print Length: 136 pages
+"""
+
+customer_reviews = """
+## Go is awesome
+
+So far I like this book, and Go is just a wonderful language as it's very powerful, very fast, with a clean and simple language structure. I just wish I had more time to devote to Go...
+"""
+</pre>
+
+<p>Every page would have such a TOML file. The static site generator takes the TOML files, runs them through the template engine and creates the website. </p>
+<h2 id="the-cms">The CMS</h2>
+<p>Although possible, editing the TOML files in a normal text editor isn't an option. We need a file-based CMS that shows nice forms where a content editor can make the changes. Instead of saving to a database, the CMS should save the content back to the text files.</p>
+<p>We need to give the CMS some information about the structure of our data. This will allow it to display the correct form elements and possibly also some helper texts for content editors.</p>
+<p>Let's call this information about our data <strong>content types</strong>. It could also be defined in TOML. Here is a possible content type description of the book example I described above:</p>
+<h5 id="content-types-toml">content-types.toml</h5>
+<pre class="prettyprint">
+[book]
+name = "Book"
+
+  [[book.fields]]
+  name = "title"
+  label = "Title"
+  required = true
+  type = "text"
+
+  [[book.fields]]
+  name = "date"
+  label = "Date"
+  required = true
+  type = "datetime"
+
+  [[book.fields]]
+  name = "product_description"
+  label = "Product Description"
+  type = "markdown"
+
+  [[book.fields]]
+  name = "product_details"
+  label = "Product Details"
+  type = "markdown"
+
+  [[book.fields]]
+  name = "customer_reviews"
+  label = "Customer Reviews"
+  type = "markdown"
+</pre>
+
+
+<h2 id="components-and-workflow">Components and Workflow</h2>
+<p>For such a <strong>Static CMS</strong> system we need five main components:</p>
+<ul>
+<li>Static Site Generator</li>
+<li>File Storage</li>
+<li>Web-Based CMS</li>
+<li>Deployment Platform</li>
+<li>Hosting Platform</li>
+</ul>
+<p>Each component has a very specific task and can be grasped by the developer's brain. The beauty of this setup is that each component is independent and can be replaced or reimplemented quite easily.</p>
+<p>Here is the basic workflow: </p>
+<p><img src="/assets/blog/15-03-16-making-content-editors-and-web-developers-happy/static-cms-workflow.png" alt="Static CMS Workflow"></p>
+<h2 id="tools">Tools</h2>
+<p>There is one platform I would like to point out that provides an <em>all-in-one</em> solution for what I described above (except it's not file-based). It's called <a href="http://www.webhook.com/">Webhook</a>. If you haven't seen it I recommend you check it out! I really like Webhook but in my opinion they integrate too much which leads to problems: There are so many parts that it is difficult to understand what it actually does. And I can't (easily) exchange individual components. For example, I would love to use their web-based CMS but I would rather want to use another static generator than the one that is built in. And I also might not want to host my site on their infrastructure.</p>
+<p>In the following I will present tools for each individual component. This is highly opinionated and most of those components may be replaced by other tools (as they likely will over time, anyways). </p>
+<h3 id="static-site-generator">Static Site Generator</h3>
+<p>There is a nice list of <a href="https://www.staticgen.com/">Static Site Generators</a>, ranked by GitHub stars.</p>
+<p>My current favorite is <a href="http://gohugo.io/">Hugo</a>. It is very easy to install (which isn't the case with most static generators), it is very fast, has a nice templating language, supports TOML, and is written in Go.</p>
+<p>Hugo has (almost) everything we need. I only have a few wishes that are mostly already on the <a href="http://gohugo.io/meta/roadmap/">Hugo Roadmap</a>.</p>
+<h4 id="my-wishlist-for-hugo">My Wishlist for Hugo</h4>
+<p><strong>Allow content with non-MD extensions:</strong> The setup for complex content as described above is already possible with Hugo. But, the <code>.md</code> extension doesn't really make sense if the content file only contains TOML. When issue <a href="https://github.com/spf13/hugo/issues/147">#147</a> will be fixed, Non-MD files will be accepted in the content folder. We would need to make sure that the <code>.toml</code> files would also be processed like <code>.md</code> files.</p>
+<p><strong>Assets in the content directory:</strong> I'm desperately waiting for Issue <a href="https://github.com/spf13/hugo/issues/147">#147</a> to be fixed. This would allow us to place content like images next to the <code>MD/TOML</code> file. I would love to have a subfolder for each page that bundles all assets for a page together! This would greatly simplify things for the CMS.</p>
+<p><strong>Dynamic image resizing:</strong> Ideally, the <em>content editor</em> would not need to worry about the image sizes but would just upload it to the content folder. Hugo would then pick up the image and resize it, based on the size defined in the template. We would need to figure out a good place for the resized images to be stored so that they don't need to be recreated every time.</p>
+<h3 id="file-storage">File Storage</h3>
+<p>The obvious choice for storing the files is <a href="https://github.com">GitHub</a>. It  is a nice tool for developers to work with and provides the versioning we need. </p>
+<h3 id="web-based-cms">Web-Based CMS</h3>
+<p>The CMS is currently the biggest missing piece in our setup.</p>
+<p>Although, an interactive web based editor is is already being <a href="http://discuss.gohugo.io/t/web-based-editor/155/18">discussed</a> and is on the <a href="http://gohugo.io/meta/roadmap/">Hugo Roadmap</a>, I don't know if it is such a good idea to include this in Hugo. I think it would be better to <strong>keep the CMS and website generation separate</strong>.</p>
+<p>There are some File-Based CMS systems but none of them are complete:</p>
+<ul>
+<li><a href="http://prose.io/">prose.io</a>: This is the closest to what we would need. It is missing a way of reading <code>TOML</code> config files and displaying a corresponding form with fields. It has something similar for <code>YAML</code>, but it's too basic.</li>
+<li><a href="http://getkirby.com/">Kirby</a>: Nice. They store the <a href="http://getkirby.com/docs/content/media">media files</a> directly in the page folder. It has a way to define <em>content types</em> called <a href="http://getkirby.com/docs/panel/blueprints">Blueprints</a>. I don't like their custom <a href="http://getkirby.com/docs/content/adding-content">file format for content</a> - I'd rather use <code>TOML</code> which is well defined and has good parsers.</li>
+<li><a href="http://statamic.com/">Statamic</a>: Similar to Kirby. Also provides a way to define the <em>content types</em> in so called <a href="http://statamic.com/learn/control-panel/fields-and-fieldsets">Fieldsets</a> .</li>
+<li><a href="http://picocms.org/">PicoCMS</a>: Open Source but missing a lot of features (and documentation!).</li>
+<li><a href="http://learn.getgrav.org/content/modular">Grav</a>: It says it is a CMS, but it doesn't have a CMS interface. That means you have to edit the Markdown files directly. But it has an interesting feature called <a href="http://learn.getgrav.org/content/modular">modular pages</a> that lets you build a complex page from mutliple markdown files.</li>
+<li><a href="http://automad.org/">Automad</a>: An interesting way to show a <a href="http://automad.org/features#Graphical_User_Interface">GUI for file-based CMS</a>.</li>
+</ul>
+<h3 id="deployment-platform">Deployment Platform</h3>
+<p>Whenever something changes in either the content or the templates (on GitHub), the deployment platform must regenerate the website and deploy it on the hosting server. This is already well supported and there is even a <a href="http://gohugo.io/tutorials/automated-deployments/">tutorial about Hugo deployments with Wercker</a>.</p>
+<h3 id="hosting-platform">Hosting Platform</h3>
+<p>An easy and cheap solution would be to use <a href="https://pages.github.com/">GitHub Pages</a> as hosting platform. How this can be done is already described in the Hugo/Wercker tutorial mentioned above.</p>
+<p>If more features are needed I would use a platform like <a href="https://divshot.com/">DivShot</a> that has spezialized hosting for static websites. Another option is <a href="https://www.netlify.com/">Netlify</a> which is a combination of deployment and hosting.</p>
+<h2 id="summary">Summary</h2>
+<p>I tried to show how the best aspects of <strong>static site generators</strong> and <strong>file-based CMS</strong> could be combined to create a <strong>Static CMS</strong>:</p>
+<ol>
+<li>All content is stored in <code>TOML</code> files that have a well-defined structure. It is in simple text files that can be versioned and provides easy backup and migration posibilities.</li>
+<li>The structure (content types) are also defined as <code>TOML</code>. The CMS picks up the content types and shows a nice form where the <em>content editor</em> can write the content.<br>&rarr; <strong>the content editor is happy :-)</strong></li>
+<li>The <em>develper</em> works with his favorite static site generator (Hugo, for example) and sets up templates, themes and the content types.<br>&rarr; <strong>the developer is happy :-)</strong></li>
+<li>Whenever the <em>content editor</em> or <em>developer</em> commits a change (to GitHub), the site is automatically rebuilt. The served website is static with all its benefits (speed, security, reliability, etc.).<br>&rarr; <strong>everybody is happy :-)</strong></li>
+</ol>
+
+
+        </div>
+      </article>
+      
+      
+      <hr>
+      <section>
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+      </section>
+      
+    </div>
+    
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/blog/making-content-editors-and-web-developers-happy/';
+    var disqus_url = 'http://code.makery.ch/blog/making-content-editors-and-web-developers-happy/';
+    var disqus_title = 'Making Content Editors and Web Developers Happy Again';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+  </body>
+</html>

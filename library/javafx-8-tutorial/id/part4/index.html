@@ -1,0 +1,642 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tutorial JavaFX 8 - Bagian 4: Memberikan gaya dengan CSS | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/javafx-8-tutorial/id/part4/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/javafx-8-tutorial/part4/" />
+    <link rel="alternate" hreflang="es" href="http://code.makery.ch/library/javafx-8-tutorial/es/part4/" />
+    <link rel="alternate" hreflang="fr" href="http://code.makery.ch/library/javafx-8-tutorial/fr/part4/" />
+    <link rel="alternate" hreflang="id" href="http://code.makery.ch/library/javafx-8-tutorial/id/part4/" />
+    <link rel="alternate" hreflang="it" href="http://code.makery.ch/library/javafx-8-tutorial/it/part4/" />
+    <link rel="alternate" hreflang="pt" href="http://code.makery.ch/library/javafx-8-tutorial/pt/part4/" />
+    <link rel="alternate" hreflang="ru" href="http://code.makery.ch/library/javafx-8-tutorial/ru/part4/" />
+    <link rel="alternate" hreflang="tr" href="http://code.makery.ch/library/javafx-8-tutorial/tr/part4/" />
+    <link rel="alternate" hreflang="uk" href="http://code.makery.ch/library/javafx-8-tutorial/uk/part4/" />
+    <link rel="alternate" hreflang="zh-cn" href="http://code.makery.ch/library/javafx-8-tutorial/zh-cn/part4/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Di JavaFX anda bisa memberi gaya pada antarmuka pengguna menggunakan CSS. Jika juga akan memberikan ikon aplikasi pada tutorial ini.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Tutorial JavaFX 8 - Bagian 4: Memberikan gaya dengan CSS | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Di JavaFX anda bisa memberi gaya pada antarmuka pengguna menggunakan CSS. Jika juga akan memberikan ikon aplikasi pada tutorial ini." />
+    <meta property="og:url" content="http://code.makery.ch/library/javafx-8-tutorial/id/part4/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/javafx-8-tutorial/part4/addressapp-part4.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/javafx-8-tutorial-id-part4.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Seri Artikel</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/id/" class="list-group-item">
+        Pengenalan</a>
+      <a href="/library/javafx-8-tutorial/id/part1/" class="list-group-item">
+        Bagian 1: Scene Builder</a>
+      <a href="/library/javafx-8-tutorial/id/part2/" class="list-group-item">
+        Bagian 2: Model dan TableView</a>
+      <a href="/library/javafx-8-tutorial/id/part3/" class="list-group-item">
+        Bagian 3: Berinteraksi dengan pengguna</a>
+      <a href="/library/javafx-8-tutorial/id/part4/" class="list-group-item active">
+        Bagian 4: Memberikan gaya dengan CSS</a>
+      <a href="/library/javafx-8-tutorial/id/part5/" class="list-group-item">
+        Bagian 5: Menyimpan data sebagai XML</a>
+      <a href="/library/javafx-8-tutorial/id/part6/" class="list-group-item">
+        Bagian 6: Bagan Statistika</a>
+      <a href="/library/javafx-8-tutorial/id/part7/" class="list-group-item">
+        Bagian 7: Penyebaran</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Unduh kode sumber</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.1/addressapp-jfx8u40-part-4.zip" class="list-group-item">
+<i class="fa fa-fw fa-download"></i>        Bagian 4 - Proyek dari Eclise <em>(Diperlukan setidaknya JDK 8u40)</em></a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Bahasa</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/javafx-8-tutorial/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/javafx-8-tutorial/es/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Español
+      </a>
+      <a href="/library/javafx-8-tutorial/fr/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Français
+      </a>
+      <a href="/library/javafx-8-tutorial/id/part4/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> Bahasa Indonesia
+      </a>
+      <a href="/library/javafx-8-tutorial/it/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Italiano
+      </a>
+      <a href="/library/javafx-8-tutorial/pt/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Português
+      </a>
+      <a href="/library/javafx-8-tutorial/ru/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Русский
+      </a>
+      <a href="/library/javafx-8-tutorial/tr/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Türkçe
+      </a>
+      <a href="/library/javafx-8-tutorial/uk/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Українська
+      </a>
+      <a href="/library/javafx-8-tutorial/zh-cn/part4/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> 中文（简体）
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Tutorial JavaFX 8 - Bagian 4: Memberikan gaya dengan CSS</h1>
+            <div class="article-date">
+  Apr 25, 2014
+  • Updated Jan 05, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Seri Artikel <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/javafx-8-tutorial/id/">
+        Pengenalan</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/id/part1/">
+        Bagian 1: Scene Builder</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/id/part2/">
+        Bagian 2: Model dan TableView</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/id/part3/">
+        Bagian 3: Berinteraksi dengan pengguna</a></li>
+      <li class=" active"><a href="/library/javafx-8-tutorial/id/part4/">
+        Bagian 4: Memberikan gaya dengan CSS</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/id/part5/">
+        Bagian 5: Menyimpan data sebagai XML</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/id/part6/">
+        Bagian 6: Bagan Statistika</a></li>
+      <li class=""><a href="/library/javafx-8-tutorial/id/part7/">
+        Bagian 7: Penyebaran</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Unduh kode sumber <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-javafx-8/releases/download/v1.1/addressapp-jfx8u40-part-4.zip">
+<i class="fa fa-fw fa-download"></i>        Bagian 4 - Proyek dari Eclise <em>(Diperlukan setidaknya JDK 8u40)</em></a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Bahasa <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class="">
+        <a href="/library/javafx-8-tutorial/part4/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/es/part4/"><i class="fa fa-fw fa-globe"></i> Español</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/fr/part4/"><i class="fa fa-fw fa-globe"></i> Français</a>
+    </li>
+      <li class=" active">
+        <a href="/library/javafx-8-tutorial/id/part4/"><i class="fa fa-fw fa-globe"></i> Bahasa Indonesia</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/it/part4/"><i class="fa fa-fw fa-globe"></i> Italiano</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/pt/part4/"><i class="fa fa-fw fa-globe"></i> Português</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/ru/part4/"><i class="fa fa-fw fa-globe"></i> Русский</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/tr/part4/"><i class="fa fa-fw fa-globe"></i> Türkçe</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/uk/part4/"><i class="fa fa-fw fa-globe"></i> Українська</a>
+    </li>
+      <li class="">
+        <a href="/library/javafx-8-tutorial/zh-cn/part4/"><i class="fa fa-fw fa-globe"></i> 中文（简体）</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p><img src="/assets/library/javafx-8-tutorial/part4/addressapp-part4.png" alt="Tangkapan layar AddressApp bagian 4"></p>
+<h2 id="pembahasan-di-bagian-4">Pembahasan di bagian 4</h2>
+<ul>
+<li><strong>Memberi gaya CSS</strong></li>
+<li>Menambah <strong>Ikon Aplikasi</strong></li>
+</ul>
+<hr>
+<h2 id="memberi-gaya-css">Memberi gaya CSS</h2>
+<p>Di JavaFX anda bisa memberi gaya pada antarmuka pengguna menggunakan Cascading Style Sheet (CSS). Ini adalah hal yang sangat hebat, tidak pernah semudah ini untuk mengubah sesuaikan tampilan JavaFX.</p>
+<p>Ditutorial ini kita akan membuat <em>DarkTheme</em> terinspirasi oleh desain Windows 8 Metro. Css untuk tombol berdasarkan <a href="http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/">JMetro - Windows 8 Metro controls on Java</a> oleh Pedro Duque Vieira.</p>
+<h3 id="membuat-terbiasa-dengan-css">Membuat Terbiasa dengan CSS</h3>
+<p>Jika anda ingin memberi gaya pada aplikasi JavaFX anda seharusnya memiliki pengetahuan dasar mengenai CSS secara umum. Tempat yang bagus untuk memulainya adalah <a href="http://www.csstutorial.net/">CSS tutorial</a>.</p>
+<p>Untuk lebih banyak informasi terkait CSS di JavaFX :</p>
+<ul>
+<li><a href="http://docs.oracle.com/javase/8/javafx/user-interface-tutorial/css_tutorial.htm">Skinning JavaFX Applications with CSS</a> - Tutorial oleh Oracle</li>
+<li><a href="http://docs.oracle.com/javase/8/javafx/api/javafx/scene/doc-files/cssref.html">JavaFX CSS Reference</a> - Referensi Resmi</li>
+</ul>
+<h3 id="javafx-css-baku">JavaFX CSS Baku</h3>
+<p>Sumber CSS baku dalam JavaFX 8 di panggil <strong><code>modena.css</code></strong>. Berkas css ini dapat di temukan pada berkas <code>jfxrt.jar</code> bertempat di folder java yang berlokasi di <code>/jdk1.8.x/jre/lib/ext/jfxrt.jar</code>.</p>
+<p>Unzip the <code>jfxrt.jar</code>. Anda akan menemukan <code>modena.css</code> didalam <code>com/sun/javafx/scene/control/skin/modena/</code></p>
+<p>Gaya baku ini selalu diterapkan ke aplikasi JavaFX. Dengan menambah CSS yang disesuaikan kita dapat mengesampingkan gaya baku dari <code>modena.css</code>.   </p>
+<div class="alert alert-info">
+<strong>Petunjuk:</strong> Akan membantu untuk melihat CSS baku, untuk melihat gaya mana yang perlu untuk dikesampingkan
+</div>
+
+
+<h3 id="melampirkan-css">Melampirkan CSS</h3>
+<p>Tambahkan CSS berikut yang bernama <code>DarkTheme.css</code>  kedalam paket <em>view</em>.</p>
+<h5 id="darktheme-css">DarkTheme.css</h5>
+<pre class="prettyprint lang-css pre-scrollable">
+.background {
+    -fx-background-color: #1d1d1d;
+}
+
+.label {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 0.6;
+}
+
+.label-bright {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.label-header {
+    -fx-font-size: 32pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.table-view {
+    -fx-base: #1d1d1d;
+    -fx-control-inner-background: #1d1d1d;
+    -fx-background-color: #1d1d1d;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 35;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-border-color: 
+        transparent
+        transparent
+        derive(-fx-base, 80%) 
+        transparent;
+    -fx-border-insets: 0 10 1 0;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 20pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-opacity: 1;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color;
+}
+
+.split-pane:horizontal > .split-pane-divider {
+    -fx-border-color: transparent #1d1d1d transparent #1d1d1d;
+    -fx-background-color: transparent, derive(#1d1d1d,20%);
+}
+
+.split-pane {
+    -fx-padding: 1 0 0 0;
+}
+
+.menu-bar {
+    -fx-background-color: derive(#1d1d1d,20%);
+}
+
+.context-menu {
+    -fx-background-color: derive(#1d1d1d,50%);
+}
+
+.menu-bar .label {
+    -fx-font-size: 14pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-opacity: 0.9;
+}
+
+.menu .left-container {
+    -fx-background-color: black;
+}
+
+.text-field {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
+/* 
+ * Metro style Push Button
+ * Author: Pedro Duque Vieira
+ * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
+ */
+.button {
+    -fx-padding: 5 22 5 22;   
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #1d1d1d;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:hover {
+    -fx-background-color: #3a3a3a;
+}
+
+.button:pressed, .button:default:hover:pressed {
+  -fx-background-color: white;
+  -fx-text-fill: #1d1d1d;
+}
+
+.button:focused {
+    -fx-border-color: white, white;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
+
+.button:disabled, .button:default:disabled {
+    -fx-opacity: 0.4;
+    -fx-background-color: #1d1d1d;
+    -fx-text-fill: white;
+}
+
+.button:default {
+    -fx-background-color: -fx-focus-color;
+    -fx-text-fill: #ffffff;
+}
+
+.button:default:hover {
+    -fx-background-color: derive(-fx-focus-color,30%);
+}
+</pre>
+
+<p>Kita sekarang perlu melampirkan CSS ke Scene. Kita dapat melakukan ini melalui kode, tetapi kita akan menggunakan Scene Builder untuk menambah ke berkas fxml: </p>
+<h4 id="melampirkan-css-ke-rootlayout-fxml">Melampirkan CSS ke RootLayout.fxml</h4>
+<ol>
+<li><p>Buka berkas <code>RootLayout.fxml</code> di Scene Builder. </p>
+</li>
+<li><p>Pilih akar <code>BorderPane</code> di Hierarchy. Dibawah kelompok <em>Properties</em> tambah berkas <code>DarkTheme.css</code> file as stylesheet.<br><img src="/assets/library/javafx-8-tutorial/part4/darktheme-rootlayout.png" alt="DarkTheme untuk RootLayout"></p>
+</li>
+</ol>
+<h4 id="lampirkan-css-ke-personeditdialog-fxml">Lampirkan CSS ke PersonEditDialog.fxml</h4>
+<ol>
+<li><p>Buka berkas <code>PersonEditDialog.fxml</code> di Scene Builder. Pilih akar <code>AnchorPane</code> dan pilih <code>DarkTheme.css</code> in the kelompok <em>Properties</em> sebagai stylesheet.</p>
+</li>
+<li><p>atar belakang masih berwarna putih, jadi tambah kelas gaya <code>background</code> ke akar <code>AnchorPane</code>.<br><img src="/assets/library/javafx-8-tutorial/part4/darktheme-personeditdialog.png" alt="Menambah kelas gaya"></p>
+</li>
+<li><p>Pilih tombol OK dan pilih <em>Default Button</em> di tampilan Properties. Ini akan merubah warnah dan membuat tombol baku ketika tombol <em>enter</em> ditekan oleh pengguna.</p>
+</li>
+</ol>
+<h4 id="lampirkan-css-ke-personoverview-fxml">Lampirkan CSS ke PersonOverview.fxml</h4>
+<ol>
+<li><p>Buka berkas <code>PersonOverview.fxml</code> di Scene Builder. Pilih akar <code>AnchorPane</code> pada kelompok <em>Hierarchy</em>. Pada Properties tambahkan <code>DarkTheme.css</code> sebagai stylesheet.</p>
+</li>
+<li><p>Anda seharusnay melihat beberapa perubahan saat ini. Tabel dan tombol berwarna hitam. Semua kelas gaya <code>.table-view</code> dan <code>.button</code> dari <code>modena.css</code> diterapkan ke tabel dan tombol. Karena kita telah mendefinisikan ulang (dan dengan demikian diganti) beberapa dari gaya di penyesuaian CSS kita, gaya baru akan diterapkan secara otomatis.</p>
+</li>
+<li><p>Anda mungkin perlu menyesuaian ukuran dari tombol sehingga semua teks ditampilkan.</p>
+</li>
+<li><p>Pilih <code>AnchorPane</code> yang tepat didalam <code>SplitPane</code>.<br><img src="/assets/library/javafx-8-tutorial/part4/background-style-select.png" alt="Background Style Select">   </p>
+</li>
+<li><p>Pada keompok <em>Properties</em> pilih <code>background</code> sebagai kelas gaya. Latarbelakang akan berwarna hitam.<br><img src="/assets/library/javafx-8-tutorial/part4/background-style.png" alt="Background Style"></p>
+</li>
+</ol>
+<h4 id="label-dengan-gaya-yang-berbeda">Label dengan Gaya yang berbeda</h4>
+<p>Saat ini semua label pada sisi kanan memliki ukuran yang sama. Sudah ada beberapa gaya yang didefinisikan dalam berkas CSS bernama<code>.label-header</code> dan <code>.label-bright</code> kita akan gunakan ini sebagai gaya.</p>
+<ol>
+<li><p>Pilih label <em>Person Details</em> dan tambahkan <code>label-header</code> sebagai kelas gaya.<br><img src="/assets/library/javafx-8-tutorial/part4/label-header-style.png" alt="Label Header Style"></p>
+</li>
+<li><p>Untuk tiap label di sisi kanan kolom (dimana rinncian person ditampilkan) tambah kelas gaya <code>label-bright</code>.<br><img src="/assets/library/javafx-8-tutorial/part4/label-bright-style.png" alt="Label Bright Style"></p>
+</li>
+</ol>
+<hr>
+<h2 id="menambah-ikon-aplikasi">Menambah Ikon Aplikasi</h2>
+<p>Saat ini aplikasi kita hanya memiliki ikon baku di palang judul dan palang tugas:</p>
+<p><img src="/assets/library/javafx-8-tutorial/part4/default-app-icon.png" alt="Default Icon"></p>
+<p>Akan lebih terlihat lebih baik jika memiliki ikon khusus:</p>
+<p><img src="/assets/library/javafx-8-tutorial/part4/custom-app-icon.png" alt="Custom Icon"></p>
+<h3 id="berkas-ikon">Berkas Ikon</h3>
+<p>Tempat yang memungkinkan untuk mendapatkan ikon2 ada di  <a href="http://www.iconfinder.com">Icon Finder</a>. Saya telah mengunduhe <a href="https://www.iconfinder.com/icons/86957/address_book_icon#size=32">address book icon</a>.</p>
+<p>Buat sebuah folder didalam proyek AddressApp bernama <strong>resources</strong> dan subfolder bernama <strong>images</strong>.Taruh ikon dalam images folder. Struktur folder anda akan terlihat seperti :</p>
+<p><img src="/assets/library/javafx-8-tutorial/part4/custom-icon-file.png" alt="Custom Icon File"></p>
+<h3 id="atur-ikon-ke-scene">Atur Ikon Ke Scene</h3>
+<p>Untuk mengatur ikon pada scene, tambahkan baris berikut pada metode <code>start(...)</code> didalam <code>MainApp.java</code></p>
+<h5 id="mainapp-java">MainApp.java</h5>
+<pre class="prettyprint lang-java">
+this.primaryStage.getIcons().add(new Image("file:resources/images/address_book_32.png"));
+</pre>
+
+<p>Keseluruhan metode <code>start(...)</code> terlihat seperti ini :</p>
+<pre class="prettyprint lang-java">
+public void start(Stage primaryStage) {
+    this.primaryStage = primaryStage;
+    this.primaryStage.setTitle("AddressApp");
+
+    // Set the application icon.
+    this.primaryStage.getIcons().add(new Image("file:resources/images/address_book_32.png"));
+
+    initRootLayout();
+
+    showPersonOverview();
+}
+</pre>
+
+<p>Anda tentunya juga dapat menambah ikon pada stage dari  dialog pembaharuan person:</p>
+<h3 id="berikutnya-">Berikutnya?</h3>
+<p>Didalam <a href="/library/javafx-8-tutorial/id/part5/">Tutorial Bagian 5</a> kita akan menggunakan XML sebagai penyimpanan data.</p>
+<h5 id="beberapa-artikel-menarik-lainnya">Beberapa artikel menarik lainnya</h5>
+<ul>
+<li><a href="/blog/javafx-dialogs-official/">JavaFX Dialogs (official)</a></li>
+<li><a href="/blog/javafx-8-date-picker/">JavaFX Date Picker</a></li>
+<li><a href="/blog/javafx-8-event-handling-examples/">JavaFX Event Handling Examples</a></li>
+<li><a href="/blog/javafx-8-tableview-sorting-filtering/">JavaFX TableView Sorting and Filtering</a></li>
+<li><a href="/blog/javafx-8-tableview-cell-renderer/">JavaFX TableView Cell Renderer</a></li>
+</ul>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/javafx-8-tutorial/id/" data-toggle="tooltip" title="Pengenalan">Intro</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/id/part1/" data-toggle="tooltip" title="Bagian 1: Scene Builder">1</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/id/part2/" data-toggle="tooltip" title="Bagian 2: Model dan TableView">2</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/id/part3/" data-toggle="tooltip" title="Bagian 3: Berinteraksi dengan pengguna">3</a>
+      </li>
+        <li class="active">
+      <a href="/library/javafx-8-tutorial/id/part4/" data-toggle="tooltip" title="Bagian 4: Memberikan gaya dengan CSS">4</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/id/part5/" data-toggle="tooltip" title="Bagian 5: Menyimpan data sebagai XML">5</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/id/part6/" data-toggle="tooltip" title="Bagian 6: Bagan Statistika">6</a>
+      </li>
+        <li>
+      <a href="/library/javafx-8-tutorial/id/part7/" data-toggle="tooltip" title="Bagian 7: Penyebaran">7</a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/javafx-8-tutorial/id/part4/';
+    var disqus_url = 'http://code.makery.ch/library/javafx-8-tutorial/id/part4/';
+    var disqus_title = 'Tutorial JavaFX 8 - Bagian 4: Memberikan gaya dengan CSS';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

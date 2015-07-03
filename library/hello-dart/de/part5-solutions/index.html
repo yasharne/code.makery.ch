@@ -1,0 +1,623 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hello Dart - Lösungen Teil 5 | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/hello-dart/de/part5-solutions/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/hello-dart/part5-solutions/" />
+    <link rel="alternate" hreflang="de" href="http://code.makery.ch/library/hello-dart/de/part5-solutions/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Lösungen zu Hello Dart Teil 5.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Hello Dart - Lösungen Teil 5 | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Lösungen zu Hello Dart Teil 5." />
+    <meta property="og:url" content="http://code.makery.ch/library/hello-dart/de/part5-solutions/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/hello-dart/hello-dart.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/hello-dart-de-part5-solutions.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artikel dieser Serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/hello-dart/de/" class="list-group-item">
+        Einleitung</a>
+      <a href="/library/hello-dart/de/background/" class="list-group-item">
+<i class="fa fa-fw fa-info"></i>        Hintergrundinfos</a>
+      <a href="/library/hello-dart/de/install/" class="list-group-item">
+<i class="fa fa-fw fa-cog"></i>        Installation</a>
+      <a href="/library/hello-dart/de/part1/" class="list-group-item">
+        Teil 1: Erste Schritte</a>
+      <a href="/library/hello-dart/de/part2/" class="list-group-item">
+        Teil 2: Schleifen</a>
+      <a href="/library/hello-dart/de/part3/" class="list-group-item">
+        Teil 3: Bedingte Anweisungen</a>
+      <a href="/library/hello-dart/de/part4/" class="list-group-item">
+        Teil 4: Variablen</a>
+      <a href="/library/hello-dart/de/part5/" class="list-group-item">
+        Teil 5: Funktionen</a>
+      <a href="/library/hello-dart/de/next/" class="list-group-item">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Lösungen</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/hello-dart/de/part5-solutions/" class="list-group-item active">
+<i class="fa fa-fw fa-check-square-o"></i>        Lösungen zu Teil 5</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Links</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/convert-web-page-to-word/de/" class="list-group-item">
+<i class="fa fa-fw fa-file-word-o"></i>        Seite als Word-Datei</a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Sprachen</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/hello-dart/part5-solutions/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/hello-dart/de/part5-solutions/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> Deutsch
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Hello Dart - Lösungen Teil 5</h1>
+            <div class="article-date">
+  Jan 21, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Artikel dieser Serie <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/hello-dart/de/">
+        Einleitung</a></li>
+      <li class=""><a href="/library/hello-dart/de/background/">
+<i class="fa fa-fw fa-info"></i>        Hintergrundinfos</a></li>
+      <li class=""><a href="/library/hello-dart/de/install/">
+<i class="fa fa-fw fa-cog"></i>        Installation</a></li>
+      <li class=""><a href="/library/hello-dart/de/part1/">
+        Teil 1: Erste Schritte</a></li>
+      <li class=""><a href="/library/hello-dart/de/part2/">
+        Teil 2: Schleifen</a></li>
+      <li class=""><a href="/library/hello-dart/de/part3/">
+        Teil 3: Bedingte Anweisungen</a></li>
+      <li class=""><a href="/library/hello-dart/de/part4/">
+        Teil 4: Variablen</a></li>
+      <li class=""><a href="/library/hello-dart/de/part5/">
+        Teil 5: Funktionen</a></li>
+      <li class=""><a href="/library/hello-dart/de/next/">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Lösungen <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=" active"><a href="/library/hello-dart/de/part5-solutions/">
+<i class="fa fa-fw fa-check-square-o"></i>        Lösungen zu Teil 5</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Links <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/convert-web-page-to-word/de/">
+<i class="fa fa-fw fa-file-word-o"></i>        Seite als Word-Datei</a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Sprachen <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class="">
+        <a href="/library/hello-dart/part5-solutions/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class=" active">
+        <a href="/library/hello-dart/de/part5-solutions/"><i class="fa fa-fw fa-globe"></i> Deutsch</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <h4 id="-i-class-fa-fa-check-square-o-mg-t-lg-i-l-sung-aufgabe-5-01-counting-stars"><i class="fa fa-check-square-o mg-t-lg"></i> LÖSUNG AUFGABE 5.01: Counting Stars</h4>
+<pre class="prettyprint lang-dart">
+class MyPlayer extends Player {
+
+  start() {
+    drawRectangle(21, 4);
+  }
+
+  /// Zeichnet ein Rechteck mit [width] als Breite und [height] als Höhe.
+  drawRectangle(int width, int height) {
+    int i = 0;
+    while (i < height) {
+      putStars(width);
+      turnAround();
+      multiMove(width);
+
+      // Zur nächsten Zeile gehen.
+      turnRight();
+      move();
+      turnRight();
+
+      i = i + 1;
+    }
+  }
+
+  /// Legt eine Spur von [count] Sternen.
+  putStars(int count) {
+    int i = 0;
+    while (i < count) {
+      putStar();
+      move();
+      i = i + 1;
+    }
+  }
+
+  /// Macht die Anzahl [steps] in die aktuelle Richtung.
+  multiMove(int steps) {
+    int i = 0;
+    while (i < steps) {
+      move();
+      i = i + 1;
+    }
+  }
+
+  /// Dreht um 180 Grad um.
+  turnAround() {
+    turnLeft();
+    turnLeft();
+  }
+}
+</pre>
+
+
+<h4 id="-i-class-fa-fa-check-square-o-mg-t-lg-i-l-sung-aufgabe-5-02-candles-on-cake"><i class="fa fa-check-square-o mg-t-lg"></i> LÖSUNG AUFGABE 5.02: Candles on Cake</h4>
+<pre class="prettyprint lang-dart">
+class MyPlayer extends Player {
+
+  start() {
+    drawRectangle(21, 4);
+    drawCandles(10);
+  }
+
+  /// Zeichnet Kerzen.
+  drawCandles(int count) {
+    int i = 0;
+    while (i < count) {
+      move();
+      turnLeft();
+      putStars(3);
+      turnAround();
+      multiMove(3);
+      turnLeft();
+      move();
+      i = i + 1;
+    }
+  }
+
+  /// Zeichnet ein Rechteck mit [width] als Breite und [height] als Höhe.
+  drawRectangle(int width, int height) {
+    int i = 0;
+    while (i < height) {
+      putStars(width);
+      turnAround();
+      multiMove(width);
+
+      // Zur nächsten Zeile gehen.
+      turnRight();
+      move();
+      turnRight();
+
+      i = i + 1;
+    }
+  }
+
+  /// Legt eine Spur von [count] Sternen.
+  putStars(int count) {
+    int i = 0;
+    while (i < count) {
+      putStar();
+      move();
+      i = i + 1;
+    }
+  }
+
+  /// Macht die Anzahl [steps] in die aktuelle Richtung.
+  multiMove(int steps) {
+    int i = 0;
+    while (i < steps) {
+      move();
+      i = i + 1;
+    }
+  }
+
+  /// Dreht um 180 Grad um.
+  turnAround() {
+    turnLeft();
+    turnLeft();
+  }
+}
+</pre>
+
+
+<h4 id="-i-class-fa-fa-check-square-o-mg-t-lg-i-l-sung-aufgabe-5-03-candles-for-age"><i class="fa fa-check-square-o mg-t-lg"></i> LÖSUNG AUFGABE 5.03: Candles for Age</h4>
+<pre class="prettyprint lang-dart">
+class MyPlayer extends Player {
+
+  /// Your program.
+  start() {
+    drawRectangle(21, 4);
+
+    int candles = (howOldIsGrandma() / 10).toInt();
+    drawCandles(candles);
+  }
+
+  /// Gibt an, wie alt die Grossmutter ist.
+  int howOldIsGrandma() {
+    return 80;
+  }
+
+  /// Zeichnet Kerzen.
+  drawCandles(int count) {
+    int i = 0;
+    while (i < count) {
+      move();
+      turnLeft();
+      putStars(3);
+      turnAround();
+      multiMove(3);
+      turnLeft();
+      move();
+      i = i + 1;
+    }
+  }
+
+  /// Zeichnet ein Rechteck mit [width] als Breite und [height] als Höhe.
+  drawRectangle(int width, int height) {
+    int i = 0;
+    while (i < height) {
+      putStars(width);
+      turnAround();
+      multiMove(width);
+
+      // Zur nächsten Zeile gehen.
+      turnRight();
+      move();
+      turnRight();
+
+      i = i + 1;
+    }
+  }
+
+  /// Legt eine Spur von [count] Sternen.
+  putStars(int count) {
+    int i = 0;
+    while (i < count) {
+      putStar();
+      move();
+      i = i + 1;
+    }
+  }
+
+  /// Macht die Anzahl [steps] in die aktuelle Richtung.
+  multiMove(int steps) {
+    int i = 0;
+    while (i < steps) {
+      move();
+      i = i + 1;
+    }
+  }
+
+  /// Dreht um 180 Grad um.
+  turnAround() {
+    turnLeft();
+    turnLeft();
+  }
+}
+</pre>
+
+
+<h4 id="-i-class-fa-fa-check-square-o-mg-t-lg-i-l-sung-aufgabe-5-04-layered-cake"><i class="fa fa-check-square-o mg-t-lg"></i> LÖSUNG AUFGABE 5.04: Layered Cake</h4>
+<pre class="prettyprint lang-dart">
+class MyPlayer extends Player {
+
+  /// Your program.
+  start() {
+    int layers = (howOldIsGrandma() / 10 - 5).toInt();
+    drawLayers(layers);
+  }
+
+  /// Gibt an, wie alt die Grossmutter ist.
+  int howOldIsGrandma() {
+    return 80;
+  }
+
+  /// Zeichnet Schichten.
+  drawLayers(int count) {
+    int currentWidth = 21;
+
+    for (int i = 0; i < count; i++) {
+      drawRectangle(currentWidth, 2);
+      move();
+      move();
+
+      currentWidth = currentWidth - 4;
+    }
+  }
+
+  /// Zeichnet ein Rechteck mit [width] als Breite und [height] als Höhe.
+  drawRectangle(int width, int height) {
+    int i = 0;
+    while (i < height) {
+      putStars(width);
+      turnAround();
+      multiMove(width);
+
+      // Zur nächsten Zeile gehen.
+      turnRight();
+      move();
+      turnRight();
+
+      i = i + 1;
+    }
+  }
+
+  /// Legt eine Spur von [count] Sternen.
+  putStars(int count) {
+    int i = 0;
+    while (i < count) {
+      putStar();
+      move();
+      i = i + 1;
+    }
+  }
+
+  /// Macht die Anzahl [steps] in die aktuelle Richtung.
+  multiMove(int steps) {
+    int i = 0;
+    while (i < steps) {
+      move();
+      i = i + 1;
+    }
+  }
+
+  /// Dreht um 180 Grad um.
+  turnAround() {
+    turnLeft();
+    turnLeft();
+  }
+}
+</pre>
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/hello-dart/de/" data-toggle="tooltip" title="Einleitung">Einleitung</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/background/" data-toggle="tooltip" title="Hintergrundinfos"><i class="fa fa-info"></i></a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/install/" data-toggle="tooltip" title="Installation"><i class="fa fa-cog"></i></a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part1/" data-toggle="tooltip" title="Teil 1: Erste Schritte">1</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part2/" data-toggle="tooltip" title="Teil 2: Schleifen">2</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part3/" data-toggle="tooltip" title="Teil 3: Bedingte Anweisungen">3</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part4/" data-toggle="tooltip" title="Teil 4: Variablen">4</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part5/" data-toggle="tooltip" title="Teil 5: Funktionen">5</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/next/" data-toggle="tooltip" title="Nächste Schritte"><i class="fa fa-flag-checkered"></i></a>
+      </li>
+      
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/hello-dart/de/part5-solutions/';
+    var disqus_url = 'http://code.makery.ch/library/hello-dart/de/part5-solutions/';
+    var disqus_title = 'Hello Dart - Lösungen Teil 5';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

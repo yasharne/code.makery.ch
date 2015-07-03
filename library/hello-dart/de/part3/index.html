@@ -1,0 +1,472 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hello Dart - Teil 3: Bedingte Anweisungen | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/hello-dart/de/part3/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/hello-dart/part3/" />
+    <link rel="alternate" hreflang="de" href="http://code.makery.ch/library/hello-dart/de/part3/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Lernen Sie den Programmablauf mit bedingten Anweisungen zu steuern. Zahlreiche Hello Dart Übungen helfen beim Verständnis.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Hello Dart - Teil 3: Bedingte Anweisungen | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Lernen Sie den Programmablauf mit bedingten Anweisungen zu steuern. Zahlreiche Hello Dart Übungen helfen beim Verständnis." />
+    <meta property="og:url" content="http://code.makery.ch/library/hello-dart/de/part3/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/hello-dart/hello-dart.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/hello-dart-de-part3.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Artikel dieser Serie</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/hello-dart/de/" class="list-group-item">
+        Einleitung</a>
+      <a href="/library/hello-dart/de/background/" class="list-group-item">
+<i class="fa fa-fw fa-info"></i>        Hintergrundinfos</a>
+      <a href="/library/hello-dart/de/install/" class="list-group-item">
+<i class="fa fa-fw fa-cog"></i>        Installation</a>
+      <a href="/library/hello-dart/de/part1/" class="list-group-item">
+        Teil 1: Erste Schritte</a>
+      <a href="/library/hello-dart/de/part2/" class="list-group-item">
+        Teil 2: Schleifen</a>
+      <a href="/library/hello-dart/de/part3/" class="list-group-item active">
+        Teil 3: Bedingte Anweisungen</a>
+      <a href="/library/hello-dart/de/part4/" class="list-group-item">
+        Teil 4: Variablen</a>
+      <a href="/library/hello-dart/de/part5/" class="list-group-item">
+        Teil 5: Funktionen</a>
+      <a href="/library/hello-dart/de/next/" class="list-group-item">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Lösungen</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/hello-dart/de/part3-solutions/" class="list-group-item">
+<i class="fa fa-fw fa-check-square-o"></i>        Lösungen zu Teil 3</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Links</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/convert-web-page-to-word/de/" class="list-group-item">
+<i class="fa fa-fw fa-file-word-o"></i>        Seite als Word-Datei</a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Sprachen</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/hello-dart/part3/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/hello-dart/de/part3/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> Deutsch
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">Hello Dart - Teil 3: Bedingte Anweisungen</h1>
+            <div class="article-date">
+  Jan 21, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Artikel dieser Serie <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/hello-dart/de/">
+        Einleitung</a></li>
+      <li class=""><a href="/library/hello-dart/de/background/">
+<i class="fa fa-fw fa-info"></i>        Hintergrundinfos</a></li>
+      <li class=""><a href="/library/hello-dart/de/install/">
+<i class="fa fa-fw fa-cog"></i>        Installation</a></li>
+      <li class=""><a href="/library/hello-dart/de/part1/">
+        Teil 1: Erste Schritte</a></li>
+      <li class=""><a href="/library/hello-dart/de/part2/">
+        Teil 2: Schleifen</a></li>
+      <li class=" active"><a href="/library/hello-dart/de/part3/">
+        Teil 3: Bedingte Anweisungen</a></li>
+      <li class=""><a href="/library/hello-dart/de/part4/">
+        Teil 4: Variablen</a></li>
+      <li class=""><a href="/library/hello-dart/de/part5/">
+        Teil 5: Funktionen</a></li>
+      <li class=""><a href="/library/hello-dart/de/next/">
+<i class="fa fa-fw fa-flag-checkered"></i>        Nächste Schritte</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Lösungen <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/hello-dart/de/part3-solutions/">
+<i class="fa fa-fw fa-check-square-o"></i>        Lösungen zu Teil 3</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Links <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/convert-web-page-to-word/de/">
+<i class="fa fa-fw fa-file-word-o"></i>        Seite als Word-Datei</a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Sprachen <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class="">
+        <a href="/library/hello-dart/part3/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class=" active">
+        <a href="/library/hello-dart/de/part3/"><i class="fa fa-fw fa-globe"></i> Deutsch</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p>Neben Schleifen gibt es eine zweite Struktur, die sehr wichtig ist, um den Programmablauf zu steuern. Mit <strong>bedingten Anweisungen</strong> kann man angeben, wann ein Block von Anweisungen ausgeführt werden soll und wann nicht.</p>
+<pre class="prettyprint lang-dart">
+if (treeFront()) {  // Bedingung.
+  turnLeft();       // Block 1 wird ausgeführt, wenn Bedingung zutrifft (=true).
+} else {
+  move();           // Block 2 wird ausgeführt, wenn Bedingung nicht zutrifft (=false).
+}
+</pre>
+
+<div class="alert alert-info">
+  <strong>Hinweis:</strong> Der <code>else</code>-Teil (Block 2) kann weggelassen werden, wenn er nicht benötigt wird.
+</div>
+
+
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-aufgabe-3-01-conditionals"><i class="fa fa-rocket mg-t"></i> AUFGABE 3.01: Conditionals</h4>
+<p>Beschreiben Sie mit Worten, was die folgenden Codebeispiele bewirken. Testen Sie diese anschliessend im <code>scenario3.01</code>. Damit die bedingten Anweisungen nicht nur einmal ausgeführt werden, sollten Sie diese in die vorbereitete Schleife setzen.</p>
+<h5 id="a-">a.</h5>
+<pre class="prettyprint lang-dart">
+if (onStar()) {
+  removeStar();
+}
+move();
+</pre>
+
+
+<h5 id="b-">b.</h5>
+<pre class="prettyprint lang-dart">
+if (onStar()) {
+  removeLeaf();
+} else {
+  putLeaf();
+}
+move();
+</pre>
+
+
+<h5 id="c-">c.</h5>
+<p>Bedingte Anweisungen können auch ineinander verschachtelt werden:</p>
+<pre class="prettyprint lang-dart">
+if (treeLeft()) {
+  if (onStar()) {
+    removeStar();
+  }
+}
+move();
+</pre>
+
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-aufgabe-3-02-star-track"><i class="fa fa-rocket mg-t"></i> AUFGABE 3.02: Star Track</h4>
+<p><img src="/assets/library/hello-dart/part3/star-track.png" alt="Sternenspur"></p>
+<p>Der Spieler soll vorwärts laufen und dabei überall einen Stern legen, wo keiner ist. Achten Sie am Schluss darauf, dass auch auf dem letzten Feld noch ein Stern liegt.</p>
+<p>Öffnen Sie das <code>scenario3.02</code> und schreiben Sie das Programm dazu.</p>
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-aufgabe-3-03-star-at-tree"><i class="fa fa-rocket mg-t"></i> AUFGABE 3.03: Star at Tree</h4>
+<p><img src="/assets/library/hello-dart/part3/star-at-tree.png" alt="Stern beim Baum"></p>
+<p>Der Spieler soll geradeaus gehen und überall dort einen Stern legen, wo entweder links oder rechts ein Baum steht.</p>
+<p>Beachten Sie, dass Sie, wie bei den Schleifen erklärt, auch hier die <em>Logischen Operatoren</em> <code>&amp;&amp;</code>, <code>||</code> und <code>!</code> verwenden können.</p>
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-aufgabe-3-04-around-tree-ii"><i class="fa fa-rocket mg-t"></i> AUFGABE 3.04: Around Tree II</h4>
+<p><img src="/assets/library/hello-dart/part3/around-tree-a.png" alt="Um Baum herum A"></p>
+<p>Um die Bäume herum laufen kennen wir bereits aus dem Teil 1. Wir haben es dort wie folgt gelöst:</p>
+<pre class="prettyprint lang-dart">
+class MyPlayer extends Player {
+
+  start() {
+    move();
+    goAroundTree();
+    goAroundTree();
+    move();
+    goAroundTree();
+    removeStar();
+  }
+
+  goAroundTree() {
+    turnLeft();
+    move();
+    turnRight();
+    move();
+    move();
+    turnRight();
+    move();
+    turnLeft();
+  }
+}
+</pre>
+
+<p>Dieses Programm funktioniert ganz gut, solange die Welt mit den Bäumen immer genau gleich aussieht. Sobald ein Baum verschoben wird, gibt es Probleme.</p>
+<p><img src="/assets/library/hello-dart/part3/around-tree-b.png" alt="Um Baum herum B"></p>
+<p>Das <code>scenario3.04</code> hat drei Varianten. Öffnen Sie dieses Szenario und ändern Sie in der <code>main()</code>-Funktion den Text <code>scenario-a.txt</code> in <code>scenario-b.txt</code> um. Testen Sie nun, was passiert, wenn Sie das Programm wie oben dargestellt starten.</p>
+<p>Sie kennen nun etliche Möglichkeiten, wie Sie mit Hilfe von Sensor-Methoden auf Umstände reagieren können. Versuchen Sie nun das Programm so abzuändern, dass unser Spieler den Stern in allen Welten mit folgenden Eigenschaften erreicht:</p>
+<ul>
+<li>Der Stern liegt immer gerade vor ihm. Er muss also um die Bäume herumlaufen.</li>
+<li>Es stehen nie zwei Bäume nebeneinander.</li>
+</ul>
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-aufgabe-3-05-round-trip"><i class="fa fa-rocket mg-t"></i> AUFGABE 3.05: Round Trip</h4>
+<p><img src="/assets/library/hello-dart/part3/round-trip.png" alt="Rundgang"></p>
+<p>Der Spieler geht in einem Rundgang auf die Suche nach einem Stern (und liest diesen auf). Jedes Feld im Rundgang hat genau zwei freie benachbarte Felder. Eines liegt immer hinter dem Spieler; von diesem Feld aus ist er auf das aktuelle Feld gekommen.</p>
+<p>Laden Sie das <code>scenario3.05</code> und schreiben Sie ein Programm dazu. Testen Sie das Programm in <strong>allen drei Welten</strong>, <code>scenario-a.txt</code>, <code>scenario-b.txt</code> und <code>scenario-c.txt</code>.</p>
+<p><em>Tipp: Schreiben Sie zuerst eine Schleife, die stoppt, sobald der Spieler auf einem Stern ist. Stellen Sie sich dann vor, was nach jedem einzelnen durchgang durch die Schleife geschehen soll.</em></p>
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-aufgabe-3-06-around-tree-iii"><i class="fa fa-rocket mg-t"></i> AUFGABE 3.06: Around Tree III</h4>
+<p><img src="/assets/library/hello-dart/part3/around-tree-iii.png" alt="Um Baum herum III"></p>
+<p>Dies ist die ähnliche Übung wie die Aufgabe 3.04: Der Spieler soll den Stern finden, der geradeaus vor ihm liegt. Nun können aber eine beliebige Anzahl Bäume hintereinander stehen.</p>
+<p>Laden Sie das <code>scenario3.06</code> und verbessern Sie die Methode <code>goAroundTree()</code> so, dass der Spieler um mehrere Bäume herumgehen kann. Testen Sie Ihr Programm in allen vorgegebenen Welten (a, b, c und d).</p>
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-aufgabe-3-07-schwierig-follow-the-trail"><i class="fa fa-rocket mg-t"></i> AUFGABE 3.07 (schwierig): Follow the Trail</h4>
+<p><img src="/assets/library/hello-dart/part3/follow-the-trail.png" alt="Rundgang"></p>
+<p>Der Spieler soll einer Spur von Sternen folgen und diese jeweils auflesen. Vor den Bäumen soll er anhalten.</p>
+<p><em>Wichtig: Schreiben Sie zur besseren Übersicht für gewisse Programmteile eigene Methoden.</em></p>
+<h4 id="-i-class-fa-fa-rocket-mg-t-i-aufgabe-3-08-schwierig-guard"><i class="fa fa-rocket mg-t"></i> AUFGABE 3.08 (schwierig): Guard</h4>
+<p><img src="/assets/library/hello-dart/part3/guard.png" alt="Wächter"></p>
+<p>Der Spieler soll einen Wald bewachen voller Sterne. Er soll aussen am Waldrand entlang laufen.</p>
+<p>Beginnen Sie mit einem einzelnen Rundgang um den Wald. Anschliessend können Sie mit einer Endlosschleife <code>while (true)</code> den Spieler mehrere Rundgänge machen lassen.</p>
+<p>Testen Sie Ihr Programm auch in der zweiten Welt.</p>
+<h2 id="wie-weiter-">Wie weiter?</h2>
+<p>Lernen Sie im <a href="/library/hello-dart/de/part4/">Teil 4</a>, wie wir mit Variablen etwas speichern können.</p>
+<hr>
+<p><em>Quellen</em><br>
+<em class="small">
+<a href="http://www.lostgarden.com/2007/05/dancs-miraculously-flexible-game.html">Planet Cute</a> Bilder stammen von Daniel Cook (Lostgarden.com), veröffentlicht unter <a href="http://creativecommons.org/licenses/by/3.0/us/">CC BY 3.0</a>.<br>
+<a href="https://www.linkedin.com/in/olegyadrov">Oleg Yadrov</a> hat die "Planet Cute" Bilder weiterentwickelt und mir zur Verfügung gestellt. Optimiert wurden sie mit dem grossartigen <a href="https://www.codeandweb.com/texturepacker">TexturePacker</a>.<br>
+Einige Übungen in <code>Hello Dart</code> sind inspiriert von <a href="http://www.swisseduc.ch/informatik/karatojava/">Kara</a>. Kara wurde entwickelt von Jürg Nievergelt, Werner Hartmann, Raimond Reichert und anderen.
+</em></p>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/hello-dart/de/" data-toggle="tooltip" title="Einleitung">Einleitung</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/background/" data-toggle="tooltip" title="Hintergrundinfos"><i class="fa fa-info"></i></a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/install/" data-toggle="tooltip" title="Installation"><i class="fa fa-cog"></i></a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part1/" data-toggle="tooltip" title="Teil 1: Erste Schritte">1</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part2/" data-toggle="tooltip" title="Teil 2: Schleifen">2</a>
+      </li>
+        <li class="active">
+      <a href="/library/hello-dart/de/part3/" data-toggle="tooltip" title="Teil 3: Bedingte Anweisungen">3</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part4/" data-toggle="tooltip" title="Teil 4: Variablen">4</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/part5/" data-toggle="tooltip" title="Teil 5: Funktionen">5</a>
+      </li>
+        <li>
+      <a href="/library/hello-dart/de/next/" data-toggle="tooltip" title="Nächste Schritte"><i class="fa fa-flag-checkered"></i></a>
+      </li>
+      
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/hello-dart/de/part3/';
+    var disqus_url = 'http://code.makery.ch/library/hello-dart/de/part3/';
+    var disqus_title = 'Hello Dart - Teil 3: Bedingte Anweisungen';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,541 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HTML & CSS Tutorial - Part 7: Bootstrap Framework | code.makery.ch</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    /**
+     * @license
+     * MyFonts Webfont Build ID 2872352, 2014-08-27T06:57:40-0400
+     * 
+     * The fonts listed in this notice are subject to the End User License
+     * Agreement(s) entered into by the website owner. All other parties are 
+     * explicitly restricted from using the Licensed Webfonts(s).
+     * 
+     * You may obtain a valid license at the URLs below.
+     * 
+     * Webfont: Museo Slab 700 by exljbris
+     * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/700/
+     * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+     * Licensed pageviews: 500,000
+     * 
+     * License: http://www.myfonts.com/viewlicense?type=web&buildid=2872352
+     * 
+     * © 2014 MyFonts Inc
+    */
+    -->
+    <link href="/theme/css/style.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="canonical" href="http://code.makery.ch/library/html-css/part7/" />
+  
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="en" href="http://code.makery.ch/library/html-css/part7/" />
+    <link rel="alternate" hreflang="de" href="http://code.makery.ch/library/html-css/de/part7/" />
+
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" href="/rss" title="code.makery.ch - RSS Feed">
+
+    <meta name="description" content="Learn to use the Bootstrap Framework in your website.">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="HTML & CSS Tutorial - Part 7: Bootstrap Framework | code.makery.ch" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Learn to use the Bootstrap Framework in your website." />
+    <meta property="og:url" content="http://code.makery.ch/library/html-css/part7/" />
+    <meta property="og:image" content="http://code.makery.ch/assets/library/html-css/portfolio.png" />
+    
+    <link rel="author" href="https://plus.google.com/+MarcoJakob7"/>
+    
+    <link href="/theme/css/prettify.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-34917397-3', 'makery.ch');
+  ga('send', 'pageview');
+</script>
+  </head>
+  <body onload="prettyPrint()">
+    <header class="site-header container">
+  <h1 class="site-title">
+    <a href="/"><span class="main-text">code</span>.makery</a>
+  </h1>
+  <div class="site-intro">
+    <p>Learning how to code.</p>
+  </div>
+  
+  <div class="ribbon">
+    <a href="https://tinyletter.com/codemakery" title="Get Updates">Subscribe to <i class="fa fa-envelope-o"></i> Updates </a>
+  </div>
+</header>
+    
+    <div class="container article-container">
+      
+<nav class="site-navigation">
+  <ul>
+    <li><a class="black-link" href="/">Home</a></li>
+    <li><a class="main-link" href="/library/">Library</a></li>
+    <li><a class="black-link" href="/paths/">Paths</a></li>
+    <li><a class="black-link" href="/blog/">Blog</a></li>
+    <li><a class="black-link" href="/about/">About</a></li>
+  </ul>
+</nav>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="github-edit">
+            <a href="https://github.com/marcojakob/code.makery.ch/edit/master/collections/library/html-css-en-part7.md">Edit on GitHub</a>
+          </div>
+        </div>
+      </div>
+      
+      <article class="row">
+        <aside class="col-md-3">
+          <div class="visible-md-block visible-lg-block">
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Articles in this Series</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="/library/html-css/" class="list-group-item">
+        Introduction</a>
+      <a href="/library/html-css/part1/" class="list-group-item">
+        Part 1: Your First Website</a>
+      <a href="/library/html-css/part2/" class="list-group-item">
+        Part 2: Publishing Your Website</a>
+      <a href="/library/html-css/part3/" class="list-group-item">
+        Part 3: Introduction to CSS</a>
+      <a href="/library/html-css/part4/" class="list-group-item">
+        Part 4: Development Tools in the Browser</a>
+      <a href="/library/html-css/part5/" class="list-group-item">
+        Part 5: Blog and Other Pages</a>
+      <a href="/library/html-css/part6/" class="list-group-item">
+        Part 6: Navigation</a>
+      <a href="/library/html-css/part7/" class="list-group-item active">
+        Part 7: Bootstrap Framework</a>
+      <a href="/library/html-css/next/" class="list-group-item">
+<i class="fa fa-fw fa-flag-checkered"></i>        Next Steps</a>
+  </div>
+</div>
+<div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Downloads</h4>  
+  </div>
+
+  <div class="list-group">
+      <a href="https://github.com/marcojakob/tutorial-html-css/releases/download/v1.0/portfolio-part7.zip" class="list-group-item">
+<i class="fa fa-fw fa-file-archive-o"></i>        Portfolio Part 7</a>
+  </div>
+</div>
+
+          <div class="panel panel-default sidebar">
+  <div class="panel-heading">
+    <h4 class="panel-title">Languages</h4>  
+  </div>
+  <div class="list-group">
+      <a href="/library/html-css/part7/" class="list-group-item active">
+        <i class="fa fa-fw fa-globe"></i> English
+      </a>
+      <a href="/library/html-css/de/part7/" class="list-group-item">
+        <i class="fa fa-fw fa-globe"></i> Deutsch
+      </a>
+  </div>
+</div>
+
+          </div>
+        </aside>
+        <div class="col-md-9">
+          <header class="article-header">
+            <h1 class="article-title">HTML & CSS Tutorial - Part 7: Bootstrap Framework</h1>
+            <div class="article-date">
+  Apr 08, 2015
+
+</div>
+          </header>
+          
+          <aside class="visible-xs-block visible-sm-block">
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Articles in this Series <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="/library/html-css/">
+        Introduction</a></li>
+      <li class=""><a href="/library/html-css/part1/">
+        Part 1: Your First Website</a></li>
+      <li class=""><a href="/library/html-css/part2/">
+        Part 2: Publishing Your Website</a></li>
+      <li class=""><a href="/library/html-css/part3/">
+        Part 3: Introduction to CSS</a></li>
+      <li class=""><a href="/library/html-css/part4/">
+        Part 4: Development Tools in the Browser</a></li>
+      <li class=""><a href="/library/html-css/part5/">
+        Part 5: Blog and Other Pages</a></li>
+      <li class=""><a href="/library/html-css/part6/">
+        Part 6: Navigation</a></li>
+      <li class=" active"><a href="/library/html-css/part7/">
+        Part 7: Bootstrap Framework</a></li>
+      <li class=""><a href="/library/html-css/next/">
+<i class="fa fa-fw fa-flag-checkered"></i>        Next Steps</a></li>
+  </ul>
+</div>
+<div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Downloads <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=""><a href="https://github.com/marcojakob/tutorial-html-css/releases/download/v1.0/portfolio-part7.zip">
+<i class="fa fa-fw fa-file-archive-o"></i>        Portfolio Part 7</a></li>
+  </ul>
+</div>
+
+            <div class="btn-group sidebar-dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Languages <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      <li class=" active">
+        <a href="/library/html-css/part7/"><i class="fa fa-fw fa-globe"></i> English</a>
+    </li>
+      <li class="">
+        <a href="/library/html-css/de/part7/"><i class="fa fa-fw fa-globe"></i> Deutsch</a>
+    </li>
+  </ul>
+</div>
+
+          </aside>
+          
+          <div class="article-content">
+            <p>So far we have programmed all HTML and CSS from scratch. Our <em>web portfolio</em> project already has a few HTML pages with some content, a navigation and some styling.</p>
+<p>To manually evolve our project to a complete and modern web presence would mean a <strong>large amount of work</strong>! Here is a list of some important tasks that we would have to deal with (do not worry, there is a solution!):</p>
+<ul>
+<li>Customize font and font sizes for all headings and sections.</li>
+<li>Beautifully design buttons, text boxes, etc. (the browser defaults look a bit outdated).</li>
+<li>Define margins and position elements on the page (very difficult).</li>
+<li>Define a consistent style for all different browsers so they show about the same thing.</li>
+<li>Optimize the web pages for different screen sizes (mobile, tablet and desktop).</li>
+<li>And more...</li>
+</ul>
+<p>Fortunately, we are not alone with these tasks &ndash; this applies more or less to all web designers. Since it hardly makes sense for all to solve the same tasks over and over again, so-called <em>frameworks</em> were developed that make this job a lot easier.</p>
+<p><img src="/assets/library/html-css/part7/bootstrap-logo.png" alt="Bootstrap Logo"></p>
+<p>The best known of these frameworks is <strong>Bootstrap</strong>, developed by Twitter. The <em>Bootstrap framework</em> is a tremendous help for us as web developers. Step-by-step we will discover what we can do with <em>Bootstrap</em>. Here is some taste of the effect <em>Bootstrap</em> could have on the styling of our project:</p>
+<p><img src="/assets/library/html-css/part7/bootstrap-effect.png" alt="Bootstrap Effect"></p>
+<p>With <em>Bootstrap</em> the elements don't only look better, they are also  consistent across different browsers.</p>
+<h2 id="using-bootstrap">Using Bootstrap</h2>
+<h3 id="documentation">Documentation</h3>
+<p>The official <a href="http://getbootstrap.com/">Bootstrap documentation</a> is the best place to learn what's possible. It contains a lot of examples that you can copy and paste into your website. You should have this website open very frequently!</p>
+<h3 id="linking-to-the-bootstrap-css">Linking to the Bootstrap CSS</h3>
+<p>The most important part of Bootstrap consists of a large CSS file. For more complex elements there is also a JavaScript file. However, for the moment we will only use the CSS file.</p>
+<p>Now let's integrate the Bootstrap CSS in our HTML pages.</p>
+<ol>
+<li><p>Open the <a href="http://getbootstrap.com/getting-started/">Bootstrap website</a>. You will find that there are several ways to download Bootstrap. Instead of downloading Bootstrap we will use the <strong>Bootstrap CDN</strong>. We only need to specify the location of the CSS file in our HTML. It will then be downloaded directly from the <em>CDN</em> servers every time our website is accessed. <em>CDN</em> servers are servers that are located all over the world so that they can deliver a file very quickly.</p>
+</li>
+<li><p>From the <em>Bootstrap CDN</em> section copy the first line with the <code>link</code> element.</p>
+</li>
+<li><p>Insert the <code>link</code> element into your HTML pages. It is important that you place the reference to the Bootstrap CSS <strong>above</strong> the <code>link</code> element of the <code>main.css</code> file. This enables us to override CSS rules from the Bootstrap CSS in our own CSS.</p>
+</li>
+</ol>
+<p>That's how your <code>head</code> section should look like (possibly with a newer version number of Bootstrap):</p>
+<h5 id="index-html">index.html</h5>
+<pre class="prettyprint lang-html">
+&lt;head>
+  &lt;meta charset="utf-8">
+  <mark>&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></mark>
+  &lt;link rel="stylesheet" href="main.css">
+  &lt;title>Web Portfolio of Marco&lt;/title>
+&lt;/head>
+</pre>
+
+
+<h3 id="how-does-bootstrap-work-">How does Bootstrap Work?</h3>
+<p>Some styles from the Bootstrap CSS are applied directly to HTML elements. If we look, for example, at a link in <em>Chrome DevTools</em>, we see how through the Bootstrap CSS the link color was changed and the underscore was removed with <code>text-decoration</code>.</p>
+<p><img src="/assets/library/html-css/part7/bootstrap-link-color.png" alt="Bootstrap Link Color"></p>
+<p>Such styling is automatically applied. But a lot of Bootstrap styles require that we add specific <strong>CSS classes</strong> to elements, as we will see next.</p>
+<h3 id="using-bootstrap-classes">Using Bootstrap Classes</h3>
+<p>As an example, let's look at how the text alignment can be changed using Bootstrap. In the Bootstrap documentation under <a href="http://getbootstrap.com/css/#type-alignment">Alignment classes</a> you can find instructions on text alignment.</p>
+<p>Let's say we want to center the <code>h2</code> title. We can do this by adding the <code>text-center</code> class as follows:</p>
+<pre class="prettyprint lang-html">
+&lt;h2 class="text-center">Welcome!&lt;/h2>
+</pre>
+
+<p>Our <code>h1</code> title already has a <code>class</code> attribute. If we want to center this item, we can add <code>text-center</code> as a second class. <strong>Multiple CSS classes are always separated by blank spaces</strong>.</p>
+<pre class="prettyprint lang-html">
+&lt;h1 class="title text-center">Web Portfolio of Marco&lt;/h1>
+</pre>
+
+<p>But what if we want to center a bigger part of our website? It would be tedious if we had to add a <code>text-center</code> for each element. It is thus possible that we can add it to a parent element. Many CSS rules are automatically passed on to all sub-elements.</p>
+<p>We could even add a <code>text-center</code> class to the <code>body</code> element. This would center everything on our page. If you just want to center a part of the page, it is common to use a <code>&lt;div&gt;</code> element.</p>
+<h2 id="div-elements">div Elements</h2>
+<p>With the <code>&lt;div&gt;</code> element other elements are grouped into a block. With Bootstrap <code>&lt;div&gt;</code> elements are used quite often to apply styles to an entire section of the page.</p>
+<p>An essential CSS class in Bootstrap is <code>container</code>. The <code>container</code> automatically adjusts its content to the width of the page and guarantees a reasonable margin to the edges. You should always have a <code>&lt;div&gt;</code> element with the<code>container</code> class in your page. Read the Bootstrap documentation for a <a href="http://getbootstrap.com/css/#overview-container">description of containers</a>.</p>
+<p>We will now pack the main content of our home page between a <code>&lt;div class="container"&gt;</code> and the closing <code>&lt;/div&gt;</code>. (We will deal with the navigation separately below.)</p>
+<p>The <code>&lt;body&gt;</code> part of your page should look like this (pay attention to indentation of elements so that your code stays readable):</p>
+<h5 id="index-html">index.html</h5>
+<pre class="prettyprint lang-html">
+&lt;body>
+  &lt;ul>
+    &lt;li>&lt;a href="./">Home&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="blog/">Blog&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="projects/">Projects&lt;/a>&lt;/li>
+    &lt;li>&lt;a href="contact/">Contact&lt;/a>&lt;/li>
+  &lt;/ul>
+
+  <mark>&lt;div class="container"></mark>
+    &lt;h1 class="title">Web Portfolio of Marco&lt;/h1>
+
+    &lt;h2>Welcome!&lt;/h2>
+
+    &lt;p>Thanks for stopping by.&lt;/p>
+
+    &lt;p>Please have a look around. In the blog section I document my experiences in programming. You may also look at my web projects. Have Fun.&lt;/p>
+
+    &lt;img src="marco.jpg" alt="Picture of me">
+
+    &lt;p>Marco :-)&lt;/p>
+  <mark>&lt;/div></mark>
+&lt;/body>
+</pre>
+
+<p>The browser always displays <code>&lt;div&gt;</code> elements <strong>on a new line</strong>. Such elements, because they claim all available width, are called <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements">block elements</a>.</p>
+<h2 id="span-elements">span Elements</h2>
+<p>In contrast to <code>&lt;div&gt;</code> elements, a <code>&lt;span&gt;</code> element does not start on a new line. A <code>&lt;span&gt;</code> element is only as wide as its content. Such elements are called <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elemente">inline elements</a>.</p>
+<p>Here is an example of how we could use a <code>span</code> element:</p>
+<pre class="prettyprint lang-html">
+I would like to &lt;span class="text-warning">highlight those words&lt;/span>.
+</pre>
+
+
+<h2 id="navigation-with-bootstrap">Navigation with Bootstrap</h2>
+<p>Finally, we want to make the navigation more beautiful with the help of Bootstrap. In the Bootstrap documentation a <a href="http://getbootstrap.com/components/#navbar">Navbar</a> is described. However, the example is very complex and includes menus, text boxes and buttons. We'll implement a simpler version.</p>
+<p>Program the following steps. I recommend you test what happens after every step.</p>
+<ol>
+<li><p>Insert the two classes <code>nav</code> and <code>navbar-nav</code> to the <code>ul</code> element in your navigation.<br><code>&lt;ul class="nav navbar-nav"&gt;</code></p>
+</li>
+<li><p>Surround the entire navigation with a new <code>&lt;div&gt;</code> with the <code>container</code> class. This has the effect that the distances from the edges are the same as in our main content. Do not forget the closing <code>&lt;/div&gt;</code> tag after the navigation code.<br><code>&lt;div class="container"&gt;</code></p>
+</li>
+<li><p>Surround it all with yet another <code>&lt;div&gt;</code>. This time we will need the three classes <code>navbar</code>, <code>navbar-default</code>, and <code>navbar-static-top</code>. Those classes ensure that the navigation is displayed at the top of the screen. Don't forget the closing <code>&lt;/div&gt;</code> tag.<br><code>&lt;div class="navbar navbar-default navbar-static-top"&gt;</code></p>
+</li>
+<li><p>In the <code>&lt;li&gt;</code> element of our home, insert a class called <code>active</code>. This has the effect that the <em>Home</em> link is highlighted. This tells the visitor about the currently active page.<br><code>&lt;li class="active"&gt;&lt;a href="./"&gt;Home&lt;/a&gt;&lt;/li&gt;</code></p>
+</li>
+</ol>
+<p>This is how the complete code will look like after the previous steps (pay attention to correct indentation!):</p>
+<h5 id="index-html">index.html</h5>
+<pre class="prettyprint lang-html">
+<mark>&lt;div class="navbar navbar-default navbar-static-top"></mark>
+  <mark>&lt;div class="container"></mark>
+    &lt;ul <mark>class="nav navbar-nav"></mark>
+      &lt;li <mark>class="active"</mark>>&lt;a href="./">Home&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="blog/">Blog&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="projects/">Projects&lt;/a>&lt;/li>
+      &lt;li>&lt;a href="contact/">Contact&lt;/a>&lt;/li>
+    &lt;/ul>
+  <mark>&lt;/div></mark>
+<mark>&lt;/div></mark>
+</pre>
+
+<p>And this is how it looks like:</p>
+<p><img src="/assets/library/html-css/part7/navbar-default.png" alt="Navbar"></p>
+<h3 id="dark-version">Dark Version</h3>
+<p>There is an alternative to the gray navigation:</p>
+<p><img src="/assets/library/html-css/part7/navbar-inverse.png" alt="Navbar Inverse"></p>
+<p>To activate the alternative style, replace the <code>navbar-default</code> class with <code>navbar-inverse</code>.</p>
+<h2 id="optimizing-for-mobile">Optimizing for Mobile</h2>
+<p>With Bootstrap and the new navigation the website looks already quite appealing in a desktop browser. Try opening it on a mobile phone (you will need to <a href="/library/html-css/part2/">publish it online</a> to do this).</p>
+<p>You will notice that the page either doesn't fit the screen or the navigation is displayed too small.</p>
+<p><img src="/assets/library/html-css/part7/mobile-without-viewport.png" alt="Mobile without Viewport"></p>
+<p>With a <code>meta</code> info inside <code>head</code> we can tell the mobile browsers to properly scale the page.</p>
+<pre class="prettyprint lang-html">
+&lt;head>
+  &lt;meta charset="utf-8">
+  <mark>&lt;meta name="viewport" content="width=device-width, initial-scale=1"></mark>
+  &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  &lt;link rel="stylesheet" href="main.css">
+  &lt;title>Web Portfolio of Marco&lt;/title>
+&lt;/head>
+</pre>
+
+<p>It should now look something like this:</p>
+<p><img src="/assets/library/html-css/part7/mobile-with-viewport.png" alt="Mobile with Viewport"></p>
+<p>Bootstrap was designed so that it <a href="http://getbootstrap.com/css/#overview-mobile">works well on mobile screens</a>. In the screenshot above you can see how the navigation is automatically displayed vertically when the width of the screen is too small. If you're not using a mobile phone you can also simulate this by simply resizing your browser window.</p>
+<p>Web design that is optimized for different screen sizes is called <a href="http://en.wikipedia.org/wiki/Responsive_web_design">responsive web design</a>.</p>
+<div class="alert alert-warning">
+  <strong>Note:</strong> Bootstrap is capable of automatically collapsing the menu into a menu button. But this requires additional JavaScript files. In the <a class="alert-link" href="/library/more-html-css/javascript-bootstrap/">JavaScript with Bootstrap</a> article I explain how you can program such navigations.
+</div>
+
+
+<h2 id="bootstrap-and-navigation-in-all-pages">Bootstrap and Navigation in all Pages</h2>
+<p>So far, we have inserted Bootstrap and the navigation only in our home page. The goal, of course, is that they are included in all pages.</p>
+<p>With small adjustments we can copy the code from the home page to all other pages (blog, blog entries, contact, etc.).</p>
+<h4 id="1-insert-viewport-and-bootstrap-css">1. Insert Viewport and Bootstrap CSS</h4>
+<p>Copy the line with the <code>viewport</code> and the line with the Bootstrap CSS from the <code>head</code> area of the home page and paste it in all other sites.</p>
+<pre class="prettyprint lang-html">
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1">
+  &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</pre>
+
+
+<h4 id="2-insert-navigation">2. Insert Navigation</h4>
+<p>Copy the entire navigation of the home page and paste it into all the other pages. Make sure that you add the <code>active</code> class to the current <code>li</code> element.</p>
+<pre class="prettyprint lang-html">
+&lt;div class="navbar navbar-default navbar-static-top">
+  &lt;div class="container">
+    &lt;ul class="nav navbar-nav">
+      &lt;li>&lt;a <mark>href="../"</mark>>Home&lt;/a>&lt;/li>
+      &lt;li <mark>class="active"</mark>>&lt;a <mark>href="../blog/"</mark>>Blog&lt;/a>&lt;/li>
+      &lt;li>&lt;a <mark>href="../projects/"</mark>>Projects&lt;/a>&lt;/li>
+      &lt;li>&lt;a <mark>href="../contact/"</mark>>Contact&lt;/a>&lt;/li>
+    &lt;/ul>
+  &lt;/div>
+&lt;/div>
+</pre>
+
+<div class="alert alert-info">
+  <p><strong>Remember:</strong> Links in subfolders must be prefixed with <code>../</code> to point to the parent folder.</p>
+  <p>Because the blog entries are in a sub-subfolder the links must be prefixed with <code>../../</code> to point to the root folder.</p>
+</div>
+
+
+<h4 id="3-insert-container-div">3. Insert Container div</h4>
+<p>When you open some pages in the browser you will notice that the margins are not correct. To fix this we need the entire content (everything below the navigation) to be surrounded by a <code>&lt;div&gt;</code>. This <code>&lt;div&gt;</code> must have the <code>container</code> class. Put containers in all the pages that don't have it yet.</p>
+<pre class="prettyprint lang-html">
+[... navigation ...]
+
+<mark>&lt;div class="container"></mark>
+  [... content ...]
+<mark>&lt;/div></mark>
+</pre>
+
+
+<h4 id="4-testing-and-cleanup">4. Testing and Cleanup</h4>
+<p>It's very important that you navigate through all pages and carefully <strong>test all the links</strong>!</p>
+<p>Then look at your code and make sure that the HTML is <strong>clean</strong>. Each time an HTML tag is opened the next line should be indented. The closing tag is then moved to the left again.</p>
+<h2 id="what-s-next-">What's next?</h2>
+<p>&rarr; Read about the <a href="/library/html-css/next/">Next Steps</a>.</p>
+
+
+          </div>
+          
+          <hr>
+          
+  <nav>
+    <div class="article-paging">
+      <ul class="pagination">
+              <li>
+      <a href="/library/html-css/" data-toggle="tooltip" title="Introduction">Intro</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part1/" data-toggle="tooltip" title="Part 1: Your First Website">1</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part2/" data-toggle="tooltip" title="Part 2: Publishing Your Website">2</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part3/" data-toggle="tooltip" title="Part 3: Introduction to CSS">3</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part4/" data-toggle="tooltip" title="Part 4: Development Tools in the Browser">4</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part5/" data-toggle="tooltip" title="Part 5: Blog and Other Pages">5</a>
+      </li>
+        <li>
+      <a href="/library/html-css/part6/" data-toggle="tooltip" title="Part 6: Navigation">6</a>
+      </li>
+        <li class="active">
+      <a href="/library/html-css/part7/" data-toggle="tooltip" title="Part 7: Bootstrap Framework">7</a>
+      </li>
+        <li>
+      <a href="/library/html-css/next/" data-toggle="tooltip" title="Next Steps"><i class="fa fa-flag-checkered"></i></a>
+      </li>
+    
+      </ul>
+    </div>
+  </nav>
+
+        </div>
+      </article>
+      
+      
+      <section class="row">
+        <div class="col-md-offset-3 col-md-9">
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </div>
+      </section>
+      
+    </div>
+        
+    <footer class="site-footer container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+      <p>
+        <a class="btn btn-sm btn-social-icon btn-twitter" href="https://twitter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Follow me on Twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-googleplus" href="https://plus.google.com/+MarcoJakob7" data-toggle="tooltip" data-placement="top" title="Follow me on Google+">
+          <i class="fa fa-google-plus"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-rss" href="/rss" data-toggle="tooltip" data-placement="top" title="Subscribe to RSS Feed">
+          <i class="fa fa-rss"></i>
+        </a>
+        <a class="btn btn-sm btn-social-icon btn-mail" href="https://tinyletter.com/codemakery" data-toggle="tooltip" data-placement="top" title="Receive Email Updates">
+          <i class="fa fa-envelope" style="margin-top: -1px;"></i>
+        </a>
+      </p>
+      <p>
+        Subscribe to receive updates by <a href="https://tinyletter.com/codemakery">Email</a>.
+      </p>
+      
+      <form class="form-inline" action="https://tinyletter.com/codemakery" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/codemakery', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <div class="form-group">
+          <input type="text" class="form-control" name="email" id="tlemail" placeholder="Enter email" />
+          <input type="hidden" value="1" name="embed"/>
+          <input type="submit" class="form-control btn-primary" value="Get updates" />
+        </div>
+      </form>
+      
+      <p>
+        <small>
+          Created by <a href="/about">Marco Jakob</a> • Licensed under <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0</a>
+        </small>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    
+    
+    
+  <script type="text/javascript" src="/theme/js/prettify.min.js"></script>
+
+                                    
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'codemakery'; // Required - the forum shortname
+    var disqus_identifier = '/library/html-css/part7/';
+    var disqus_url = 'http://code.makery.ch/library/html-css/part7/';
+    var disqus_title = 'HTML & CSS Tutorial - Part 7: Bootstrap Framework';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+    
+
+    
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/theme/js/bootstrap-init-tooltips.min.js"></script>
+    
+  </body>
+</html>
